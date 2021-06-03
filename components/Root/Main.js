@@ -1,9 +1,8 @@
 import mainStyles from "./main.module.css";
-import { UilGithub, UilLinkedin } from "@iconscout/react-unicons";
+import { UilGithub, UilLinkedin, UilPen } from "@iconscout/react-unicons";
 import rootStyles from "./root.module.css";
 import cn from "classnames";
 import Image from "next/image";
-import { UilDocumentLayoutCenter } from "@iconscout/react-unicons";
 import Link from "next/link";
 
 export default function Main() {
@@ -52,7 +51,7 @@ export default function Main() {
             <Link href="/blog">
               <a className={cn(mainStyles.blogButton)}>
                 Blog
-                <UilDocumentLayoutCenter />
+                <UilPen />
               </a>
             </Link>
           </div>
