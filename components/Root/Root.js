@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "./Footer";
 import Main from "./Main";
 import Nav from "./Nav";
 
@@ -14,6 +15,7 @@ export default function Root() {
       </Head>
       <Nav />
       <Main />
+      <Footer />
     </>
   );
 }

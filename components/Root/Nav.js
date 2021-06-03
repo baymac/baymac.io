@@ -65,13 +65,11 @@ export default function Nav() {
           />
         </div>
         <div className="nav__btns">
-          <div
-            className={cn(styles.nav__toggle)}
+          <UilApps
+            className={styles.nav__toggle}
             id="nav_toggle"
             onClick={() => setNavBarOpen(true)}
-          >
-            <UilApps size="25" color="#61DAFB" />
-          </div>
+          />
         </div>
       </nav>
     </header>
