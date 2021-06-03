@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function Main() {
   return (
-    <main className={cn(mainStyles.home, rootStyles.section)} id="home">
+    <main className={cn(mainStyles.home, mainStyles.section)} id="home">
       <div
         className={cn(
           mainStyles.home__container,

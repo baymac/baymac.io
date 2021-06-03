@@ -5,6 +5,8 @@ import {
   UilMessage,
   UilTimes,
   UilApps,
+  UilMoon,
+  UilSun,
 } from "@iconscout/react-unicons";
 import rootStyles from "./root.module.css";
 import styles from "./nav.module.css";
@@ -28,7 +30,7 @@ const NavMenuItems = [
   },
 ];
 
-export default function Nav() {
+export default function Nav({ darkMode, setDarkMode }) {
   const [navBarOpen, setNavBarOpen] = useState(false);
 
   return (
@@ -64,7 +66,21 @@ export default function Nav() {
             onClick={() => setNavBarOpen(false)}
           />
         </div>
-        <div className="nav__btns">
+        <div className={styles.nav__btns}>
+          {!darkMode && (
+            <UilMoon
+              className={cn(styles.changeTheme)}
+              id="theme-button"
+              onClick={() => setDarkMode(true)}
+            ></UilMoon>
+          )}
+          {darkMode && (
+            <UilSun
+              className={cn(styles.changeTheme)}
+              id="theme-button"
+              onClick={() => setDarkMode(false)}
+            ></UilSun>
+          )}
           <UilApps
             className={styles.nav__toggle}
             id="nav_toggle"

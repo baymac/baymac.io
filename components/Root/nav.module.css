@@ -6,17 +6,26 @@
   align-items: center;
 }
 
+.nav__btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .nav__logo,
-.nav__toggle {
+.nav__toggle,
+.changeTheme {
   color: var(--title-color);
   font-weight: var(--font-medium);
 }
 
-.nav__logo:hover {
+.nav__logo:hover,
+.changeTheme:hover {
   color: var(--first-color);
 }
 
-.nav__toggle {
+.nav__toggle,
+.changeTheme {
   font-size: 1.1rem;
   cursor: pointer;
 }
