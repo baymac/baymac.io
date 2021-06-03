@@ -36,10 +36,10 @@ export default function Main() {
           <div className={mainStyles.home__img}>
             <Image
               priority
-              src="/images/blob.svg"
+              src="/images/profile.png"
               className={mainStyles.borderCircle}
-              height={144}
-              width={144}
+              height={150}
+              width={150}
               alt={"Parichay"}
             />
           </div>
