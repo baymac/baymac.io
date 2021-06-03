@@ -45,7 +45,7 @@ export default function Nav({ darkMode, setDarkMode }) {
           })}
           id="nav-menu"
         >
-          <ul className={cn(styles.nav__list, rootStyles.grid)}>
+          <ul className={cn(rootStyles.grid, styles.nav__list)}>
             {NavMenuItems.map((NavMenuItem) => (
               <li className="nav__item" key={NavMenuItem.label}>
                 <a

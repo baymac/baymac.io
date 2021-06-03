@@ -91,3 +91,45 @@
 .blogButton:focus::after {
   transform: scale(1.32, 2.1);
 }
+
+@media screen and (max-width: 350px) {
+  .home__content {
+    grid-template-columns: 0.25rem 3fr;
+  }
+}
+
+@media screen and (min-width: 568px) {
+  .home__content {
+    grid-template-columns: max-content 1fr 1fr;
+  }
+  .home__data {
+    grid-column: initial;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section {
+    padding: 6rem;
+  }
+
+  .section__subtitle {
+    margin-bottom: 4rem;
+  }
+
+  .home__container {
+    row-gap: 5rem;
+  }
+  .home__content {
+    padding-top: 5.5rem;
+    column-gap: 2rem;
+  }
+  .home__img {
+    display: flex;
+    justify-content: center;
+  }
+}

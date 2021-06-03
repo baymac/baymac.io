@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Main() {
   return (
-    <main className={cn(mainStyles.home, mainStyles.section)} id="home">
+    <main className={cn(mainStyles.main, mainStyles.section)} id="home">
       <div
         className={cn(
           mainStyles.home__container,
@@ -36,7 +36,7 @@ export default function Main() {
             <Image
               priority
               src="/images/profile.png"
-              className={mainStyles.borderCircle}
+              className={mainStyles.profileImage}
               height={150}
               width={150}
               alt={"Parichay"}

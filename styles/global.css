@@ -103,6 +103,7 @@ body {
   font-size: var(--normail-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
+  height: 100vh;
 }
 
 h1,
@@ -142,9 +143,8 @@ img {
   background-color: var(--text-color-light);
 }
 
-/*==================== MEDIA QUERIES ====================*/
-/* For small devices */
-
-/* For medium devices */
-
-/* For large devices */
+@media screen and (min-width: 768px) {
+  body {
+    margin: 0;
+  }
+}
