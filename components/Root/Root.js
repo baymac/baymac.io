@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Main from "./Main";
 import Nav from "./Nav";
 
 export default function Root() {
@@ -12,6 +13,7 @@ export default function Root() {
         />
       </Head>
       <Nav />
+      <Main />
     </>
   );
 }
