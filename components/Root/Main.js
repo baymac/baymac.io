@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Main() {
   return (
-    <main className={cn(mainStyles.main, mainStyles.section)} id="home">
+    <main className={cn(mainStyles.section)} id="home">
       <div
         className={cn(
           mainStyles.home__container,
@@ -16,7 +16,7 @@ export default function Main() {
         )}
       >
         <div className={cn(mainStyles.home__content, rootStyles.grid)}>
-          <div className={mainStyles.home__social}>
+          <div className={cn(mainStyles.home__social, rootStyles.grid)}>
             <a
               href="https://github.com/baymac"
               target="_blank"
