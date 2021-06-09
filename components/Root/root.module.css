@@ -1,7 +1,7 @@
 .container {
   max-width: 100%;
-  margin-left: var(--mb-1-5);
-  margin-right: var(--mb-1-5);
+  margin-left: var(--mb-1);
+  margin-right: var(--mb-1);
 }
 
 .grid {
@@ -9,9 +9,9 @@
   gap: 1.5rem;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (min-width: 351px) {
   .container {
-    margin-left: var(--mb-1);
-    margin-right: var(--mb-1);
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
   }
 }
