@@ -26,7 +26,7 @@ export default function Root() {
   }, [darkMode]);
 
   return (
-    <div className={styles.root}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -37,6 +37,6 @@ export default function Root() {
       <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
       <Main />
       <Footer />
-    </div>
+    </>
   );
 }

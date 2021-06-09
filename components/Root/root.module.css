@@ -1,7 +1,3 @@
-.root {
-  min-height: 100vh;
-}
-
 .container {
   max-width: 100%;
   margin-left: var(--mb-1-5);
@@ -13,26 +9,9 @@
   gap: 1.5rem;
 }
 
-.header {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: var(--z-fixed);
-  background-color: var(--body-color);
-}
-
 @media screen and (max-width: 350px) {
   .container {
     margin-left: var(--mb-1);
     margin-right: var(--mb-1);
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .header {
-    top: 0;
-    bottom: initial;
-    padding: 0 6rem;
   }
 }

@@ -103,7 +103,7 @@ body {
   font-size: var(--normail-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 h1,

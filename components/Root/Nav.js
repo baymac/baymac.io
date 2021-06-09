@@ -34,7 +34,7 @@ export default function Nav({ darkMode, setDarkMode }) {
   const [navBarOpen, setNavBarOpen] = useState(false);
 
   return (
-    <header className={rootStyles.header} id="header">
+    <header className={styles.header} id="header">
       <nav className={cn(styles.nav, rootStyles.container)}>
         <a href="#" className={styles.nav__logo}>
           Parichay

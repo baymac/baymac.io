@@ -1,15 +1,18 @@
+.header {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color);
+}
+
 .nav {
   min-width: 100wh;
   height: var(--header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.nav__btns {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 }
 
 .nav__logo,
@@ -34,25 +37,6 @@
   color: var(--first-color);
 }
 
-@media screen and (max-width: 767px) {
-  .nav__menu {
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--body-color);
-    padding: 2rem 1.5rem 4rem;
-    box-shadow: 0 -1px 4px rgba(0, 0, 0, 1.5);
-    border-radius: 1.5rem 1.5rem 0 0;
-    transition: 0.3s;
-  }
-}
-
-.nav__list {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
 .nav__link {
   display: flex;
   flex-direction: column;
@@ -66,38 +50,58 @@
   color: var(--first-color);
 }
 
-.nav__icon {
-  font-size: 1.2rem;
-}
-
-.nav__close {
-  position: absolute;
-  right: 1.3rem;
-  bottom: 0.5rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--first-color);
-}
-
-.nav__close:hover {
-  color: var(--first-color-alt);
-}
-
-.show_menu {
-  bottom: 0;
-}
-
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 767px) {
   .nav__menu {
-    padding: 2rem 0.25rem 4rem;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--body-color);
+    padding: 2rem 1.5rem 4rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 1.5);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transition: 0.3s;
   }
 
   .nav__list {
-    column-gap: 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .nav__btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav__icon {
+    font-size: 1.2rem;
+  }
+
+  .nav__close {
+    position: absolute;
+    right: 1.3rem;
+    bottom: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--first-color);
+  }
+
+  .nav__close:hover {
+    color: var(--first-color-alt);
+  }
+
+  .show_menu {
+    bottom: 0;
   }
 }
 
 @media screen and (min-width: 768px) {
+  .header {
+    top: 0;
+    bottom: initial;
+    padding: 0 6rem;
+  }
   .nav {
     height: calc(var(--header-height) + 1.5rem);
     column-gap: 1rem;
