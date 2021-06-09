@@ -2,13 +2,13 @@
   padding-top: 2rem;
 }
 
-.footer__container {
-  row-gap: 3.5rem;
-}
-
 .footer__bg {
   background-color: var(--first-color-second);
   padding: 2rem 0 3rem;
+}
+
+.footer__container {
+  row-gap: 3.5rem;
 }
 
 .footer__title {
@@ -60,20 +60,15 @@
 }
 
 @media screen and (min-width: 768px) {
-  .footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-  }
   .footer__container {
     grid-template-columns: repeat(3, 1fr);
-
     padding: 0 6rem;
   }
 
   .footer__bg {
     padding: 3rem 0 3.5rem;
   }
+
   .footer__links {
     flex-direction: row;
     column-gap: 2rem;
