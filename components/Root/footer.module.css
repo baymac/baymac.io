@@ -1,4 +1,5 @@
 .footer {
+  margin-top: auto;
   padding-top: 2rem;
 }
 
@@ -44,6 +45,7 @@
   text-align: center;
   color: var(--text-color-light);
   margin-top: var(--mb-3);
+  margin-bottom: var(--mb-3);
 }
 
 .footer__title,
@@ -81,5 +83,6 @@
 
   .footer__copy {
     margin-top: 4.5rem;
+    margin-bottom: 0;
   }
 }

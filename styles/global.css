@@ -94,6 +94,7 @@ body.dark_theme {
 }
 
 html {
+  height: 100%;
   scroll-behavior: smooth;
 }
 
@@ -103,7 +104,7 @@ body {
   font-size: var(--normail-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 h1,
