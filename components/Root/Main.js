@@ -59,7 +59,7 @@ export default function Main() {
         <div className={mainStyles.underConstructionFlex}>
           <div className={cn(mainStyles.underConstructionContainer, rootStyles.grid)}>
             <UilJackhammer className={mainStyles.underConstructionIcon} />
-            <h2 style={{ textAlign: 'center' }}>This website is under construction so a few features might not work</h2>
+            <h2 className={mainStyles.underConstructionText}>This website is under construction so a few features might not work</h2>
             <UilJackhammer className={mainStyles.underConstructionIcon} />
           </div>
         </div>
