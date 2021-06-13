@@ -105,10 +105,6 @@
   .home__data {
     grid-column: initial;
   }
-
-  .underConstructionIcon {
-    /* margin: 0 1rem; */
-  }
 }
 
 @media screen and (min-width: 768px) {
