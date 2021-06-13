@@ -76,6 +76,23 @@
   transform: scale(1.32, 2.1);
 }
 
+.underConstructionFlex {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.underConstructionContainer {
+  grid-template-columns: max-content 1fr max-content;
+  gap: 1rem;
+}
+
+.underConstructionIcon {
+  align-self: center;
+}
+
 @media screen and (min-width: 568px) {
   .home__content {
     grid-template-columns: max-content 1fr 1fr;
@@ -87,6 +104,10 @@
 
   .home__data {
     grid-column: initial;
+  }
+
+  .underConstructionIcon {
+    /* margin: 0 1rem; */
   }
 }
 

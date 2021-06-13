@@ -1,5 +1,5 @@
 import mainStyles from "./main.module.css";
-import { UilGithub, UilLinkedin, UilPen } from "@iconscout/react-unicons";
+import { UilGithub, UilLinkedin, UilPen, UilJackhammer } from "@iconscout/react-unicons";
 import rootStyles from "./root.module.css";
 import cn from "classnames";
 import Image from "next/image";
@@ -54,6 +54,13 @@ export default function Main() {
                 <UilPen />
               </a>
             </Link>
+          </div>
+        </div>
+        <div className={mainStyles.underConstructionFlex}>
+          <div className={cn(mainStyles.underConstructionContainer, rootStyles.grid)}>
+            <UilJackhammer className={mainStyles.underConstructionIcon} />
+            <h2 style={{ textAlign: 'center' }}>This website is under construction so a few features might not work</h2>
+            <UilJackhammer className={mainStyles.underConstructionIcon} />
           </div>
         </div>
       </div>
