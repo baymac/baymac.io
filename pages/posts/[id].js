@@ -1,8 +1,9 @@
 import { getAllPostIds, getPostData } from "../../lib/posts";
-import BlogLayout from "../../components/BlogLayout";
+import BlogLayout from "../../components/Blog/BlogLayout";
 import Head from "next/head";
-import utilStyles from "../../styles/utils.module.css";
-import Date from "../../components/date";
+import blogStyles from "../../styles/blog.module.css";
+import Date from "../../components/Blog/Date";
+import cn from 'classnames'
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
@@ -28,11 +29,11 @@ export default function Post({ postData }) {
         <title>{postData.title}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
+        <h1 className={blogStyles.headingXl}>{postData.title}</h1>
+        <div className={cn(blogStyles.lightText, blogStyles.postDate)}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div className={blogStyles.lightText} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </BlogLayout>
   );
