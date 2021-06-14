@@ -3,11 +3,15 @@ import Image from "next/image";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
+import { useRouter } from 'next/router'
 
-const name = "Your Name";
-export const siteTitle = "Next.js Sample Website";
+const name = "Parichay";
+export const siteTitle = "Parichay's blog";
 
-export default function Layout({ children, home }) {
+export default function BlogLayout({ children }) {
+
+  const router = useRouter()
+
   return (
     <div className={styles.container}>
       <Head>
@@ -26,7 +30,7 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        {home ? (
+        {router.pathname === 'blog' ? (
           <>
             <Image
               priority
@@ -60,8 +64,17 @@ export default function Layout({ children, home }) {
           </>
         )}
       </header>
-      <main>{children}</main>
-      {!home && (
+      <main>
+        {children}
+      </main>
+      {router.pathname.startsWith('/posts') && (
+        <div className={styles.backToHome}>
+          <Link href="/blog">
+            <a>← Back to blog</a>
+          </Link>
+        </div>
+      )}
+      {router.pathname === '/blog' && (
         <div className={styles.backToHome}>
           <Link href="/">
             <a>← Back to home</a>

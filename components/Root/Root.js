@@ -4,6 +4,7 @@ import Main from "./Main";
 import Nav from "./Nav";
 import styles from "./root.module.css";
 import { useState, useEffect } from "react";
+import { siteTitle } from '../../utils/info'
 
 export default function Root() {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,11 +29,15 @@ export default function Root() {
   return (
     <div className={styles.root}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="logo.svg" />
+        {/* <meta name="theme-color" content="#ffffff" />
+        <link rel="mask-icon" href="mask-icon.svg" color="#000000" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.png" /> */}
         <meta
           name="description"
           content="Parichay's personal website using Next.js"
         />
+        <title>{siteTitle}</title>
       </Head>
       <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
       <Main />
