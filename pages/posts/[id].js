@@ -36,5 +36,5 @@ export default function Post({ postData }) {
         <div className={blogStyles.lightText} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </BlogLayout>
-  );
+  )
 }

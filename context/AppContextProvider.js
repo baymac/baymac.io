@@ -7,7 +7,7 @@ export function useAppContext() {
 }
 
 export default function AppContextProvider({ children }) {
-    const [darkMode, setDarkMode] = useState(true);
+    const [darkMode, setDarkMode] = useState(false);
 
     const value = {
         darkMode,

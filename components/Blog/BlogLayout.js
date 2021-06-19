@@ -1,42 +1,24 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "./layout.module.css";
-import blogStyles from "../../styles/blog.module.css";
 import Link from "next/link";
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { useAppContext } from "../../context/AppContextProvider";
+import { useRouter } from 'next/router';
+import blogStyles from "../../styles/blog.module.css";
+import styles from "./layout.module.css";
+import useDarkMode̦ from '../../hooks/useDarkMode'
 
 const name = "Parichay";
 export const siteTitle = "Parichay's blog";
 
 export default function BlogLayout({ children }) {
 
-  const { darkMode, setDarkMode } = useAppContext()
-
-  useEffect(() => {
-    if (localStorage.getItem("theme") === "dark_theme") {
-      document.querySelector("body").classList.add("dark_theme");
-      setDarkMode(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      localStorage.setItem("theme", "dark_theme");
-      document.querySelector("body").classList.add("dark_theme");
-    } else {
-      localStorage.removeItem("theme");
-      document.querySelector("body").classList.remove("dark_theme");
-    }
-  }, [darkMode]);
+  useDarkMode̦()
 
   const router = useRouter()
 
   return (
     <div className={styles.container}>
       <Head>
-        <link rel="icon" href="logo.svg" />
+        <link rel="icon" href="../logo.svg" />
         <meta
           name="description"
           content="This is Parichay's blog using Next.js"

@@ -1,34 +1,16 @@
 import Head from "next/head";
-import { useEffect } from "react";
-import { useAppContext } from "../../context/AppContextProvider";
+import useDarkMode̦ from '../../hooks/useDarkMode';
+import useKeyboardShortcut from '../../hooks/useKeyBoardShortCut';
 import { siteTitle } from '../../utils/info';
 import Footer from "./Footer";
 import Main from "./Main";
 import Nav from "./Nav";
 import styles from "./root.module.css";
-import useKeyboardShortcut from '../../hooks/useKeyBoardShortCut'
 
 export default function Root() {
-  const { darkMode, setDarkMode } = useAppContext()
+  useDarkMode̦()
 
-  useKeyboardShortcut(['Shift', 'H'], () => setDarkMode(!darkMode), { overrideSystem: false })
-
-  useEffect(() => {
-    if (localStorage.getItem("theme") === "dark_theme") {
-      document.querySelector("body").classList.add("dark_theme");
-      setDarkMode(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      localStorage.setItem("theme", "dark_theme");
-      document.querySelector("body").classList.add("dark_theme");
-    } else {
-      localStorage.removeItem("theme");
-      document.querySelector("body").classList.remove("dark_theme");
-    }
-  }, [darkMode]);
+  useKeyboardShortcut(['Shift', 'H'], () => setDarkMode, { overrideSystem: false })
 
   return (
     <div className={styles.root}>
