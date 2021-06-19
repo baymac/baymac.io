@@ -1,0 +1,43 @@
+.blogButton {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--title-color);
+  font-size: var(--font-medium);
+  position: relative;
+  padding: 0.75rem;
+}
+
+.blogButtonFlex {
+  display: flex;
+  height: 4rem;
+  background-color: var(--first-color-lighter);
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .blogButton {
+    font-size: var(--h3-font-size);
+  }
+
+  .blogButton::after {
+    content: "";
+    position: absolute;
+    background: var(--first-color-lighter);
+    height: 1rem;
+    width: 75%;
+    left: 0;
+    top: 55%;
+    z-index: -1;
+    transition: transform 175ms cubic-bezier(0.91, 0, 0.55, 1.64);
+    transform-origin: bottom left;
+  }
+
+  .blogButton:hover::after,
+  .blogButton:focus::after {
+    transform: scale(1.32, 2.1);
+  }
+}

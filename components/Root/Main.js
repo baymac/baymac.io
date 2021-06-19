@@ -2,18 +2,17 @@ import mainStyles from "./main.module.css";
 import {
   UilGithub,
   UilLinkedin,
-  UilPen,
   UilJackhammer,
 } from "@iconscout/react-unicons";
 import rootStyles from "./root.module.css";
 import cn from "classnames";
 import Image from "next/image";
-import Link from "next/link";
-import { useMediaQuery } from 'react-responsive'
+
+import dynamic from 'next/dynamic'
+
+const BlogButton = dynamic(() => import('../Blog/BlogButton/BlogButton'), { ssr: false })
 
 export default function Main() {
-
-  const isBigScreen = useMediaQuery({ query: '(min-width: 768px)' })
 
   return (
     <main className={cn(mainStyles.section)} id="home">
@@ -57,14 +56,7 @@ export default function Main() {
             <p className={mainStyles.home_description}>
               High level experience in web design and bla bla bla..
             </p>
-            <Link href="/blog">
-              <a className={cn(mainStyles.blogButton, {
-                [mainStyles.blogButtonFlex]: !isBigScreen
-              })}>
-                Blog
-                <UilPen />
-              </a>
-            </Link>
+            <BlogButton />
           </div>
         </div>
         <div className={mainStyles.underConstructionFlex}>
