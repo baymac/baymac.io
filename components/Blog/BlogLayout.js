@@ -15,10 +15,10 @@ export default function BlogLayout({ children }) {
   return (
     <div className={styles.container}>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="logo.svg" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="This is Parichay's blog using Next.js"
         />
         <meta
           property="og:image"
@@ -70,17 +70,17 @@ export default function BlogLayout({ children }) {
       {router.pathname.startsWith('/posts') && (
         <div className={styles.backToHome}>
           <Link href="/blog">
-            <a>← Back to blog</a>
+            <a className={blogStyles.blog__postLink}>← Back to blog</a>
           </Link>
         </div>
       )}
       {router.pathname === '/blog' && (
         <div className={styles.backToHome}>
           <Link href="/">
-            <a>← Back to home</a>
+            <a className={blogStyles.blog__postLink}>← Back to home</a>
           </Link>
         </div>
       )}
     </div>
-  );
+  )
 }

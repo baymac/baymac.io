@@ -7,12 +7,12 @@ import Link from "next/link";
 import { getSortedPostsData } from "../lib/posts";
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+  const allPostsData = getSortedPostsData()
   return {
     props: {
       allPostsData,
     },
-  };
+  }
 }
 
 export default function Blog({ allPostsData }) {
@@ -21,13 +21,13 @@ export default function Blog({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={`${blogStyles.headingMd} ${blogStyles.padding1px}`}>
-        <h2 className={blogStyles.headingLg}>Blog</h2>
-        <ul className={blogStyles.list}>
+      <section className={`${blogStyles.blog__section}`}>
+        <h2 className={blogStyles.blog__heading}>Blog</h2>
+        <ul className={blogStyles.blog__list}>
           {allPostsData.map(({ id, date, title }) => (
-            <li className={blogStyles.listItem} key={id}>
+            <li className={blogStyles.blog__listItem} key={id}>
               <Link href={`/posts/${id}`}>
-                <a>{title}</a>
+                <a className={blogStyles.blog__postLink}>{title}</a>
               </Link>
               <br />
               <small className={blogStyles.lightText}>
@@ -38,5 +38,5 @@ export default function Blog({ allPostsData }) {
         </ul>
       </section>
     </BlogLayout>
-  );
+  )
 }

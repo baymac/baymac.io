@@ -14,15 +14,17 @@
   margin: 1rem 0;
 }
 
-.headingLg {
-  font-size: 1.5rem;
+.blog__heading {
   line-height: 1.4;
   margin: 1rem 0;
+  font-size: var(--h1-font-size);
+  color: var(--title-color);
 }
 
-.headingMd {
+.blog__section {
   font-size: 1.2rem;
   line-height: 1.5;
+  padding-top: 0.5rem;
 }
 
 .borderCircle {
@@ -37,14 +39,18 @@
   padding-top: 1px;
 }
 
-.list {
+.blog__list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.listItem {
+.blog__listItem {
   margin: 0 0 1.25rem;
+}
+
+.blog__postLink {
+  color: var(--title-color);
 }
 
 .lightText {
