@@ -6,9 +6,12 @@ import Footer from "./Footer";
 import Main from "./Main";
 import Nav from "./Nav";
 import styles from "./root.module.css";
+import useKeyboardShortcut from '../../hooks/useKeyBoardShortCut'
 
 export default function Root() {
   const { darkMode, setDarkMode } = useAppContext()
+
+  useKeyboardShortcut(['Shift', 'H'], () => setDarkMode(!darkMode), { overrideSystem: false })
 
   useEffect(() => {
     if (localStorage.getItem("theme") === "dark_theme") {
