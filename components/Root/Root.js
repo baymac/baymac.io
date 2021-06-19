@@ -1,13 +1,14 @@
 import Head from "next/head";
+import { useEffect } from "react";
+import { useAppContext } from "../../context/AppContextProvider";
+import { siteTitle } from '../../utils/info';
 import Footer from "./Footer";
 import Main from "./Main";
 import Nav from "./Nav";
 import styles from "./root.module.css";
-import { useState, useEffect } from "react";
-import { siteTitle } from '../../utils/info'
 
 export default function Root() {
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, setDarkMode } = useAppContext()
 
   useEffect(() => {
     if (localStorage.getItem("theme") === "dark_theme") {
@@ -39,7 +40,7 @@ export default function Root() {
         />
         <title>{siteTitle}</title>
       </Head>
-      <Nav darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Nav />
       <Main />
       <Footer />
     </div>

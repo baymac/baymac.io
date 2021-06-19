@@ -11,6 +11,8 @@ import {
 import rootStyles from "./root.module.css";
 import styles from "./nav.module.css";
 import cn from "classnames";
+import { useAppContext } from '../../context/AppContextProvider'
+
 
 const NavMenuItems = [
   {
@@ -30,8 +32,9 @@ const NavMenuItems = [
   },
 ];
 
-export default function Nav({ darkMode, setDarkMode }) {
+export default function Nav() {
   const [navBarOpen, setNavBarOpen] = useState(false);
+  const { darkMode, setDarkMode } = useAppContext();
 
   return (
     <header className={styles.header} id="header">
