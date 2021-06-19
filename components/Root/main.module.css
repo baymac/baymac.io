@@ -41,11 +41,11 @@
   margin-bottom: var(--mb-0-75);
 }
 
-.home_description {
+.home__description {
   margin-bottom: var(--mb-2);
 }
 
-.underConstructionFlex {
+.home__underConstructionFlex {
   width: 100%;
   margin: auto;
   display: flex;
@@ -53,16 +53,16 @@
   margin-top: 80px;
 }
 
-.underConstructionContainer {
+.home__underConstructionContainer {
   grid-template-columns: max-content 1fr max-content;
   gap: 1rem;
 }
 
-.underConstructionIcon {
+.home__underConstructionIcon {
   align-self: center;
 }
 
-.underConstructionText {
+.home__underConstructionText {
   text-align: center;
 }
 

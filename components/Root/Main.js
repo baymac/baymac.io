@@ -52,25 +52,25 @@ export default function Main() {
           <div className={mainStyles.home__data}>
             <h1 className={mainStyles.home__title}>Hi, I am Parichay</h1>
             <h3 className={mainStyles.home__subtitle}>Software Engineer</h3>
-            <p className={mainStyles.home_description}>
+            <p className={mainStyles.home__description}>
               High level experience in web design and bla bla bla..
             </p>
             <BlogButton />
           </div>
         </div>
-        <div className={mainStyles.underConstructionFlex}>
+        <div className={mainStyles.home__underConstructionFlex}>
           <div
             className={cn(
-              mainStyles.underConstructionContainer,
+              mainStyles.home__underConstructionContainer,
               rootStyles.grid
             )}
           >
-            <UilJackhammer className={mainStyles.underConstructionIcon} />
-            <h2 className={mainStyles.underConstructionText}>
+            <UilJackhammer className={mainStyles.home__underConstructionIcon} />
+            <h2 className={mainStyles.home__underConstructionText}>
               This website is under construction so a few features might not
               work
             </h2>
-            <UilJackhammer className={mainStyles.underConstructionIcon} />
+            <UilJackhammer className={mainStyles.home__underConstructionIcon} />
           </div>
         </div>
       </div>

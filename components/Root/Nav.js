@@ -41,7 +41,7 @@ export default function Nav({ darkMode, setDarkMode }) {
         </a>
         <div
           className={cn(styles.nav__menu, {
-            [styles.show_menu]: navBarOpen,
+            [styles.nav__show_menu]: navBarOpen,
           })}
           id="nav-menu"
         >
@@ -67,19 +67,14 @@ export default function Nav({ darkMode, setDarkMode }) {
           />
         </div>
         <div className={styles.nav__btns}>
-          {!darkMode && (
-            <UilMoon
-              className={cn(styles.changeTheme)}
-              id="theme-button"
-              onClick={() => setDarkMode(true)}
-            ></UilMoon>
-          )}
-          {darkMode && (
-            <UilSun
-              className={cn(styles.changeTheme)}
-              id="theme-button"
-              onClick={() => setDarkMode(false)}
-            ></UilSun>
+          {createElement(
+            darkMode ? UilSun : UilMoon,
+            {
+              className: cn(styles.nav__changeTheme),
+              id: "theme-button",
+              onClick: () => setDarkMode(!darkMode)
+            },
+            null
           )}
           <UilApps
             className={styles.nav__toggle}

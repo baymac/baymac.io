@@ -18,18 +18,18 @@
 
 .nav__logo,
 .nav__toggle,
-.changeTheme {
+.nav__changeTheme {
   color: var(--title-color);
   font-weight: var(--font-medium);
 }
 
 .nav__logo:hover,
-.changeTheme:hover {
+.nav__changeTheme:hover {
   color: var(--first-color);
 }
 
 .nav__toggle,
-.changeTheme {
+.nav__changeTheme {
   font-size: 1.1rem;
   cursor: pointer;
 }
@@ -92,7 +92,7 @@
     color: var(--first-color-alt);
   }
 
-  .show_menu {
+  .nav__show_menu {
     bottom: 0;
   }
 }
@@ -123,7 +123,7 @@
     margin-left: auto;
   }
 
-  .changeTheme {
+  .nav__changeTheme {
     margin: 0;
   }
 }
