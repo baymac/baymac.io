@@ -23,9 +23,21 @@
   font-weight: var(--font-medium);
 }
 
-.nav__logo:hover,
 .nav__changeTheme:hover {
   color: var(--first-color);
+}
+
+.nav__logo {
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+}
+
+.nav__logo:hover {
+  color: var(--default-bw);
+  background-color: var(--first-color);
 }
 
 .nav__toggle,
