@@ -7,7 +7,6 @@ import {
 import rootStyles from "./root.module.css";
 import cn from "classnames";
 import Image from "next/image";
-
 import dynamic from 'next/dynamic'
 
 const BlogButton = dynamic(() => import('../Blog/BlogButton/BlogButton'), { ssr: false })
