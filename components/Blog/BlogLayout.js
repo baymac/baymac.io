@@ -4,11 +4,32 @@ import styles from "./layout.module.css";
 import blogStyles from "../../styles/blog.module.css";
 import Link from "next/link";
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { useAppContext } from "../../context/AppContextProvider";
 
 const name = "Parichay";
 export const siteTitle = "Parichay's blog";
 
 export default function BlogLayout({ children }) {
+
+  const { darkMode, setDarkMode } = useAppContext()
+
+  useEffect(() => {
+    if (localStorage.getItem("theme") === "dark_theme") {
+      document.querySelector("body").classList.add("dark_theme");
+      setDarkMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (darkMode) {
+      localStorage.setItem("theme", "dark_theme");
+      document.querySelector("body").classList.add("dark_theme");
+    } else {
+      localStorage.removeItem("theme");
+      document.querySelector("body").classList.remove("dark_theme");
+    }
+  }, [darkMode]);
 
   const router = useRouter()
 
