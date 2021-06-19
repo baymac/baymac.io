@@ -5,6 +5,7 @@
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
+  box-shadow: 0 0px 2px var(--inverted-bw);
 }
 
 .nav {
