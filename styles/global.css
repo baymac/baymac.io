@@ -37,6 +37,7 @@
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
   /* Footer bg */
   --footer-color: hsl(0, 0%, 15%);
+  --inverted-bw: #000;
 
   /*========== Font and typography ==========*/
   --body-font: "IBM Plex Sans", sans-serif;
@@ -99,6 +100,7 @@ body.dark_theme {
   --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
   --footer-color: hsl(0, 0%, 0%);
+  --inverted-bw: #fff;
 }
 
 /*========== Button Dark/Light ==========*/
