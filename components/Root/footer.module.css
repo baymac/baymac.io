@@ -4,7 +4,7 @@
 }
 
 .footer__bg {
-  background-color: var(--first-color-second);
+  background-color: var(--footer-color);
   padding: 2rem 0 3rem;
 }
 
@@ -27,17 +27,14 @@
   row-gap: 1.5rem;
 }
 
-.footer__link:hover {
-  color: var(--first-color-lighter);
-}
-
 .footer__social_icon {
   font-size: 1.25rem;
   margin-right: var(--mb-1-5);
 }
 
+.footer__link:hover,
 .footer__social_icon:hover {
-  color: var(--first-color-lighter);
+  color: var(--first-color-lighter-alt);
 }
 
 .footer__copy {

@@ -1,11 +1,20 @@
 import mainStyles from "./main.module.css";
-import { UilGithub, UilLinkedin, UilPen, UilJackhammer } from "@iconscout/react-unicons";
+import {
+  UilGithub,
+  UilLinkedin,
+  UilPen,
+  UilJackhammer,
+} from "@iconscout/react-unicons";
 import rootStyles from "./root.module.css";
 import cn from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import { useMediaQuery } from 'react-responsive'
 
 export default function Main() {
+
+  const isBigScreen = useMediaQuery({ query: '(min-width: 768px)' })
+
   return (
     <main className={cn(mainStyles.section)} id="home">
       <div
@@ -49,7 +58,9 @@ export default function Main() {
               High level experience in web design and bla bla bla..
             </p>
             <Link href="/blog">
-              <a className={cn(mainStyles.blogButton)}>
+              <a className={cn(mainStyles.blogButton, {
+                [mainStyles.blogButtonFlex]: !isBigScreen
+              })}>
                 Blog
                 <UilPen />
               </a>
@@ -57,9 +68,17 @@ export default function Main() {
           </div>
         </div>
         <div className={mainStyles.underConstructionFlex}>
-          <div className={cn(mainStyles.underConstructionContainer, rootStyles.grid)}>
+          <div
+            className={cn(
+              mainStyles.underConstructionContainer,
+              rootStyles.grid
+            )}
+          >
             <UilJackhammer className={mainStyles.underConstructionIcon} />
-            <h2 className={mainStyles.underConstructionText}>This website is under construction so a few features might not work</h2>
+            <h2 className={mainStyles.underConstructionText}>
+              This website is under construction so a few features might not
+              work
+            </h2>
             <UilJackhammer className={mainStyles.underConstructionIcon} />
           </div>
         </div>

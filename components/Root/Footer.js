@@ -16,7 +16,7 @@ export default function Footer() {
           )}
         >
           <div>
-            <h1 className={footerStyles.footer_title}>Parichay</h1>
+            <h1 className={footerStyles.footer__title}>Parichay</h1>
             <span className={footerStyles.footer__subtitle}>
               Software Engineer
             </span>
