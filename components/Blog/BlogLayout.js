@@ -47,12 +47,12 @@ export default function BlogLayout({ children }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className={styles.backToHome}>
-        <Link href={backLinkRef}>
-          <a className={blogStyles.blog__postLink}>← Back to {backLinkLabel}</a>
-        </Link>
-      </div>
       <main>
+        <div className={styles.backToHome}>
+          <Link href={backLinkRef}>
+            <a className={blogStyles.blog__postLink}>← Back to {backLinkLabel}</a>
+          </Link>
+        </div>
         {children}
       </main>
     </div>
