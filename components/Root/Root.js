@@ -3,7 +3,7 @@ import useDarkMode̦ from '../../hooks/useDarkMode';
 import useKeyboardShortcut from '../../hooks/useKeyBoardShortCut';
 import { siteTitle } from '../../utils/info';
 import Footer from "./Footer";
-import Main from "./Main";
+import Home from "./Home";
 import Nav from "./Nav";
 import styles from "./root.module.css";
 
@@ -26,7 +26,7 @@ export default function Root() {
         <title>{siteTitle}</title>
       </Head>
       <Nav />
-      <Main />
+      <Home />
       <Footer />
     </div>
   );
