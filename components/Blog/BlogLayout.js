@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import blogStyles from "../../styles/blog.module.css";
 import styles from "./layout.module.css";
 import useDarkMode̦ from '../../hooks/useDarkMode'
+import { useState, useEffect } from "react";
 
 const name = "Parichay";
 export const siteTitle = "Parichay's blog";
@@ -14,6 +15,20 @@ export default function BlogLayout({ children }) {
   useDarkMode̦()
 
   const router = useRouter()
+
+  const [backLinkLabel, setBackLinkLabel] = useState('/blog')
+  const [backLinkRef, setBackLinkRef] = useState('/')
+
+  useEffect(() => {
+    if (router.pathname === '/blog') {
+      setBackLinkRef('/')
+      setBackLinkLabel('home')
+    } else {
+      setBackLinkRef('/blog')
+      setBackLinkLabel('blog')
+    }
+
+  }, [router])
 
   return (
     <div className={styles.container}>
@@ -32,58 +47,14 @@ export default function BlogLayout({ children }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
-        {router.pathname === 'blog' ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.png"
-              className={blogStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={blogStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.png"
-                  className={blogStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={blogStyles.headingLg}>
-              <Link href="/">
-                <a className={blogStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
+      <div className={styles.backToHome}>
+        <Link href={backLinkRef}>
+          <a className={blogStyles.blog__postLink}>← Back to {backLinkLabel}</a>
+        </Link>
+      </div>
       <main>
         {children}
       </main>
-      {router.pathname.startsWith('/posts') && (
-        <div className={styles.backToHome}>
-          <Link href="/blog">
-            <a className={blogStyles.blog__postLink}>← Back to blog</a>
-          </Link>
-        </div>
-      )}
-      {router.pathname === '/blog' && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a className={blogStyles.blog__postLink}>← Back to home</a>
-          </Link>
-        </div>
-      )}
     </div>
   )
 }

@@ -27,19 +27,6 @@
   color: var(--first-color);
 }
 
-.nav__logo {
-  display: flex;
-  height: 2rem;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 0.8rem;
-}
-
-.nav__logo:hover {
-  color: var(--default-bw);
-  background-color: var(--first-color);
-}
-
 .nav__toggle,
 .nav__changeTheme {
   font-size: 1.1rem;
@@ -110,6 +97,20 @@
 }
 
 @media screen and (min-width: 768px) {
+  .nav__logo {
+    display: flex;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0.8rem;
+    box-shadow: 0 0px 1px var(--inverted-bw);
+  }
+
+  .nav__logo:hover {
+    color: var(--default-bw);
+    background-color: var(--first-color);
+  }
+
   .header {
     top: 0;
     bottom: initial;
