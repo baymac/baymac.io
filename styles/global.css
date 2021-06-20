@@ -133,6 +133,12 @@ body {
 
 h1,
 h2,
+h3 {
+  line-height: 1.1;
+}
+
+h1,
+h2,
 h3,
 h4 {
   color: var(--title-color);
@@ -150,6 +156,7 @@ a {
 img {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
 /*========== SCROLL BAR ==========*/
