@@ -107,8 +107,7 @@
   }
 
   .nav__logo:hover {
-    color: var(--default-bw);
-    background-color: var(--first-color);
+    background-color: var(--first-color-lighter);
   }
 
   .header {

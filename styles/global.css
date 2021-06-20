@@ -12,7 +12,8 @@
 
   /* HSL color mode */
   /* Mostly used in navbar and main social links */
-  --first-color: hsl(var(--hue-color), 70%, 60%);
+  /* Alternate to --first-color-lighter in dark mode */
+  --first-color: hsl(var(--hue-color), 70%, 65%);
   /* Unused */
   --first-color-second: hsl(var(--hue-color), 69%, 60%);
   /* Hover on close in nav and social in main */
@@ -95,7 +96,7 @@ body.dark_theme {
   --text-color: hsl(var(--hue-color), 8%, 75%);
   --input-color: hsl(var(--hue-color), 29%, 16%);
   --body-color: hsl(0, 0%, 9%);
-  --first-color-lighter: hsl(var(--hue-color), 70%, 60%);
+  --first-color-lighter: hsl(var(--hue-color), 70%, 65%);
   --default-bw: #000;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
