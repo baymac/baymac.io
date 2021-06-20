@@ -1,0 +1,39 @@
+.about__section {
+  background-color: var(--first-color-lighter);
+}
+
+.about__container {
+  gap: 2rem;
+}
+
+.about__title {
+}
+
+.about__subtitle {
+  background: white;
+  padding: 0.25rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.about__title,
+.about__subtitle {
+  grid-column: 1;
+}
+
+.about__description {
+}
+
+.about__description,
+.about__image {
+  grid-column: 2;
+}
+
+.about__image {
+  grid-row: 1 / -1; /* Staring at the top and ending at the last row */
+}
+
+@media (min-width: 600px) {
+  .about__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
