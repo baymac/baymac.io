@@ -1,20 +1,19 @@
-import homeStyles from "./home.module.css";
 import {
   UilGithub,
-  UilLinkedin,
-  UilJackhammer,
+  UilLinkedin
 } from "@iconscout/react-unicons";
-import rootStyles from "./root.module.css";
 import cn from "classnames";
+import dynamic from 'next/dynamic';
 import Image from "next/image";
-import dynamic from 'next/dynamic'
+import homeStyles from "./home.module.css";
+import rootStyles from "./root.module.css";
 
 const BlogButton = dynamic(() => import('./BlogButton/BlogButton'), { ssr: false })
 
 export default function Main() {
 
   return (
-    <section className={cn(homeStyles.section)} id="home">
+    <section className={cn(rootStyles.section)} id="home">
       <div
         className={cn(
           homeStyles.home__container,
@@ -56,21 +55,6 @@ export default function Main() {
               High level experience in web design and bla bla bla..
             </p>
             <BlogButton />
-          </div>
-        </div>
-        <div className={homeStyles.home__underConstructionFlex}>
-          <div
-            className={cn(
-              homeStyles.home__underConstructionContainer,
-              rootStyles.grid
-            )}
-          >
-            <UilJackhammer className={homeStyles.home__underConstructionIcon} />
-            <h2 className={homeStyles.home__underConstructionText}>
-              This website is under construction so a few features might not
-              work
-            </h2>
-            <UilJackhammer className={homeStyles.home__underConstructionIcon} />
           </div>
         </div>
       </div>

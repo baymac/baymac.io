@@ -21,7 +21,6 @@ export default function Footer() {
               Software Engineer
             </span>
           </div>
-
           <ul className={footerStyles.footer__links}>
             <li>
               <Link href="/blog">

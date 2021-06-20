@@ -39,7 +39,7 @@ export default function Nav() {
   return (
     <header className={styles.header} id="header">
       <nav className={cn(styles.nav, rootStyles.container)}>
-        <a href="#" className={styles.nav__logo}>
+        <a href="/" className={styles.nav__logo}>
           Parichay
         </a>
         <div

@@ -2,10 +2,12 @@ import Head from "next/head";
 import useDarkMode̦ from '../../hooks/useDarkMode';
 import useKeyboardShortcut from '../../hooks/useKeyBoardShortCut';
 import { siteTitle } from '../../utils/info';
+import About from "./About";
 import Footer from "./Footer";
 import Home from "./Home";
 import Nav from "./Nav";
 import styles from "./root.module.css";
+import UnderConstruction from "./UnderConstruction/UnderConstruction";
 
 export default function Root() {
   useDarkMode̦()
@@ -27,6 +29,8 @@ export default function Root() {
       </Head>
       <Nav />
       <Home />
+      <About />
+      <UnderConstruction />
       <Footer />
     </div>
   );
