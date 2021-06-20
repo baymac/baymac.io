@@ -38,6 +38,6 @@
 
   .blogButton:hover::after,
   .blogButton:focus::after {
-    transform: scale(1.32, 2.1);
+    transform: scale(1.32, 2.2);
   }
 }
