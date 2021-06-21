@@ -4,36 +4,69 @@
 
 .about__container {
   gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .about__title {
 }
 
 .about__subtitle {
-  background: white;
+  background: var(--first-color);
   padding: 0.25rem 1rem;
   margin-bottom: 1rem;
-}
-
-.about__title,
-.about__subtitle {
-  grid-column: 1;
+  color: var(--default-bw);
 }
 
 .about__description {
+  color: var(--title-color);
 }
 
-.about__description,
-.about__image {
-  grid-column: 2;
-}
-
-.about__image {
-  grid-row: 1 / -1; /* Staring at the top and ending at the last row */
+.about__img {
+  box-shadow: var(--bs);
+  display: flex;
+  justify-content: center;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: max-content;
 }
 
 @media (min-width: 600px) {
   .about__container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas:
+      "title image"
+      "subtitle image"
+      "description image";
+    grid-column-gap: 2rem;
+  }
+
+  .about__title {
+    grid-area: title;
+    max-height: max-content;
+  }
+
+  .about__subtitle {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    position: relative;
+    left: -1rem;
+    width: calc(100% + 2rem); /* Stick out 2rem on both sides */
+    padding-left: 1rem; /* Content stays in sync */
+    padding-right: calc(200px + 3rem);
+    /* So that text doesn't cross image, grid gap and 2rem extra width */
+    display: flex;
+    align-items: center;
+    max-height: calc(max-content + 1rem);
+  }
+
+  .about__description {
+    /* grid-area: description; */
+  }
+
+  .about__img {
+    grid-area: image;
+    z-index: 1;
   }
 }

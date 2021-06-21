@@ -12,6 +12,7 @@ import rootStyles from "./root.module.css";
 import styles from "./nav.module.css";
 import cn from "classnames";
 import { useAppContext } from '../../context/AppContextProvider'
+import Link from 'next/link'
 
 
 const NavMenuItems = [
@@ -39,9 +40,9 @@ export default function Nav() {
   return (
     <header className={styles.header} id="header">
       <nav className={cn(styles.nav, rootStyles.container)}>
-        <a href="/" className={styles.nav__logo}>
-          Parichay
-        </a>
+        <Link href="/" >
+          <a className={styles.nav__logo}>Parichay</a>
+        </Link>
         <div
           className={cn(styles.nav__menu, {
             [styles.nav__show_menu]: navBarOpen,

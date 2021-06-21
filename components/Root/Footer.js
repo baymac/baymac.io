@@ -42,6 +42,7 @@ export default function Footer() {
             <a
               href="https://github.com/baymac"
               target="_blank"
+              rel="noreferrer"
               className={footerStyles.footer__social_icon}
             >
               <UilGithub />
@@ -49,6 +50,7 @@ export default function Footer() {
             <a
               href="https://linkedin.com/in/parichaybarpanda"
               target="_blank"
+              rel="noreferrer"
               className={footerStyles.footer__social_icon}
             >
               <UilLinkedin />
