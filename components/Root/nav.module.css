@@ -5,7 +5,7 @@
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--header-color);
-  box-shadow: 0 0px 2px var(--inverted-bw);
+  box-shadow: 0 0px 1px var(--inverted-bw);
 }
 
 .nav {
@@ -32,7 +32,7 @@
 .nav__toggle:hover,
 .nav__close:hover,
 .nav__link:hover {
-  color: var(--first-color);
+  color: var(--first-color-lighter);
 }
 
 .nav__toggle,
@@ -99,10 +99,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .header {
-    background-color: var(--footer-color);
-  }
-
   .nav__link {
     color: var(--nav-items-color);
     font-weight: var(--font-medium);
@@ -119,13 +115,13 @@
   }
 
   .nav__logo:hover {
-    color: var(--default-bw);
+    color: var(--logo-hover-color);
   }
 
   .nav__logo:hover::after {
     content: "";
     position: absolute;
-    background: var(--first-color);
+    background: var(--first-color-lighter);
     height: 2rem;
     width: 100%;
     z-index: -1;
