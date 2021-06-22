@@ -4,7 +4,7 @@
 
 /*==================== VARIABLES CSS ====================*/
 :root {
-  --header-height: 3rem;
+  --header-height: 3.5rem;
 
   /*========== Colors ==========*/
   /* Change favorite color */
@@ -88,6 +88,7 @@
     --h1-font-size: 2.25rem;
     --h2-font-size: 1.5rem;
     --h3-font-size: 1.25rem;
+    --h4-font-size: 1.12rem;
     --normal-font-size: 1rem;
     --small-font-size: 0.875rem;
     --smaller-font-size: 0.813rem;
@@ -104,12 +105,12 @@ body.dark_theme {
   --title-color: hsl(230, 8%, 95%);
   --text-color: hsl(230, 8%, 75%);
   --input-color: hsl(230, 29%, 16%);
-  --body-color: hsl(0, 0%, 12%);
+  --body-color: hsl(0, 0%, 16%);
   --default-bw: hsl(0, 0%, 0%);
   --scroll-bar-color: hsl(230, 12%, 48%);
   --scroll-thumb-color: hsl(230, 12%, 36%);
-  --footer-color: hsl(0, 0%, 0%);
-  --header-color: hsl(0, 0%, 5%);
+  --footer-color: hsl(0, 0%, 5%);
+  --header-color: hsl(0, 0%, 8%);
   --inverted-bw: hsl(0, 0%, 100%);
   --nav-items-color: hsl(0, 0%, 100%);
   --logo-hover-color: hsl(0, 0%, 100%);
