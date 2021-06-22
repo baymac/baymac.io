@@ -29,6 +29,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
+  cursor: pointer;
 }
 
 .footer__social_icon {
@@ -73,9 +74,9 @@
   }
 
   .footer__links {
-    flex-direction: row;
-    column-gap: 2rem;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: max-content max-content max-content;
+    gap: 3rem;
   }
 
   .footer__social {

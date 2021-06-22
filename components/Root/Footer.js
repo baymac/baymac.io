@@ -28,13 +28,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/blog">
-                <a className={footerStyles.footer__link}>Blog</a>
-              </Link>
+              <a
+                className={footerStyles.footer__link}>Buy me some crypto</a>
             </li>
             <li>
-              <Link href="/blog">
-                <a className={footerStyles.footer__link}>Blog</a>
+              <Link href="/subscribe">
+                <a className={footerStyles.footer__link}>Newsletter</a>
               </Link>
             </li>
           </ul>

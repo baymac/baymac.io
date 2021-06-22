@@ -13,11 +13,11 @@
   /* HSL color mode */
   /* Mostly used in navbar and main social links */
   /* Alternate to --first-color-lighter in dark mode */
-  --first-color: hsl(230, 70%, 60%);
+  --first-color: hsl(230, 70%, 60%); /*hsl(209, 80%, 70%); */
   /* Hover on close in nav and social in main */
   --first-color-alt: hsl(230, 57%, 53%);
-  /* Blog button */
-  --first-color-lighter: hsl(230, 92%, 85%);
+  /* Blog button, alt body color */
+  --first-color-lighter: hsl(230, 92%, 85%) /*hsl(205, 100%, 85%)*/;
   /* Footer hover */
   --first-color-lighter-alt: hsl(230, 92%, 85%);
   /* All nav elements, blog button */
@@ -98,10 +98,11 @@
 /*========== Variables Dark theme ==========*/
 
 body.dark_theme {
-  --first-color: hsl(230, 92%, 85%);
+  --first-color: /*hsl(230, 92%, 85%)*/ #d9e2ec;
   --first-color-second: hsl(230, 30%, 8%);
-  --first-color-alt: hsl(230, 57%, 75%);
-  --first-color-lighter: hsl(230, 70%, 60%);
+  --first-color-alt: /*hsl(230, 57%, 75%)*/ #9fb3c8;
+  --first-color-lighter: /*hsl(230, 70%, 60%)*/ #627d98;
+  --first-color-lighter-alt: /*hsl(230, 70%, 60%)*/ #9fb3c8;
   --title-color: hsl(230, 8%, 95%);
   --text-color: hsl(230, 8%, 75%);
   --input-color: hsl(230, 29%, 16%);

@@ -17,11 +17,6 @@ import Link from 'next/link'
 
 const NavMenuItems = [
   {
-    label: "Home",
-    icon: UilHome,
-    ref: "home",
-  },
-  {
     label: "About Me",
     icon: UilUser,
     ref: "aboutme",
@@ -50,12 +45,21 @@ export default function Nav() {
           id="nav-menu"
         >
           <ul className={cn(rootStyles.grid, styles.nav__list)}>
+            <li className="nav__item">
+              <Link href="/">
+                <a
+                  className={styles.nav__link}
+                >
+                  <UilHome className={styles.nav__icon} />
+                  Home
+                </a>
+              </Link>
+            </li>
             {NavMenuItems.map((NavMenuItem) => (
               <li className="nav__item" key={NavMenuItem.label}>
                 <a
                   href={`#${NavMenuItem.ref}`}
                   className={styles.nav__link}
-                  onClick={() => setNavBarOpen(false)}
                 >
                   {createElement(NavMenuItem.icon, {
                     className: styles.nav__icon,
