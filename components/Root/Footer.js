@@ -1,17 +1,24 @@
 import { UilCopy, UilGithub, UilLinkedin, UilCheckCircle } from "@iconscout/react-unicons";
 import cn from "classnames";
 import Link from "next/link";
-import { useState } from "react";
+import React, { createElement, useState } from "react";
 import Modal from '../Modal/Modal';
 import footerStyles from "./footer.module.css";
 import rootStyles from "./root.module.css";
 import useCopy from '../../hooks/useCopy'
+import Snackbar from '../Snackbar/Snackbar'
 
 export default function Footer() {
 
   const [showCryptoAddress, setShowCryptoAddress] = useState(false)
+  const [showSnackbar, setShowSnackbar] = useState(false)
 
   const [handleCopy, copied] = useCopy('bitcoin-address')
+
+  const handleCopyClick = () => {
+    handleCopy()
+    setShowSnackbar(true)
+  }
 
   return (
     <footer className={footerStyles.footer}>
@@ -65,7 +72,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <p className={footerStyles.footer__copy}>
+        <p className={footerStyles.footer__copy} onClick={() => setShowSnackbar(true)}>
           By Parichay. Under MIT license
         </p>
       </div>
@@ -74,11 +81,17 @@ export default function Footer() {
           <p className={footerStyles.footer__crypto_label}>Bitcoin Address</p>
           <div className={footerStyles.footer__crypto_address}>
             <div className={footerStyles.footer__crypto_address_text} id="bitcoin-address">bc1qvrl9t4d9gk438v4k3qfwdj2kqquzma2ses7tqw</div>
-            {!copied ? <UilCopy onClick={handleCopy} className={cn(footerStyles.footer__crypto_icon, footerStyles.footer__crypto_copy_icon)} /> :
+            {!copied ? <UilCopy onClick={handleCopyClick} className={cn(footerStyles.footer__crypto_icon, footerStyles.footer__crypto_copy_icon)} /> :
               <UilCheckCircle className={cn(footerStyles.footer__crypto_icon, footerStyles.footer__crypto_copied_icon)} />}
           </div>
         </div>
       </Modal>
+      {showSnackbar && createElement(Snackbar, {
+        message: "Copied!",
+        show: showSnackbar,
+        reset: setShowSnackbar,
+        duration: 1500
+      }, null)}
     </footer>
   );
 }
