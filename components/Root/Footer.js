@@ -1,14 +1,17 @@
-import rootStyles from "./root.module.css";
-import footerStyles from "./footer.module.css";
+import { UilCopy, UilGithub, UilLinkedin } from "@iconscout/react-unicons";
 import cn from "classnames";
 import Link from "next/link";
-import { UilGithub, UilLinkedin } from "@iconscout/react-unicons";
 import { useState } from "react";
-import Modal from '../Modal/Modal'
+import Modal from '../Modal/Modal';
+import footerStyles from "./footer.module.css";
+import rootStyles from "./root.module.css";
+import useCopy from '../../hooks/useCopy'
 
 export default function Footer() {
 
   const [showCryptoAddress, setShowCryptoAddress] = useState(false)
+
+  const [handleCopy] = useCopy('bitcoin-address')
 
   return (
     <footer className={footerStyles.footer}>
@@ -69,7 +72,8 @@ export default function Footer() {
       <Modal open={showCryptoAddress} handleClose={() => setShowCryptoAddress(false)}>
         <div className={footerStyles.footer__crypto}>
           <p className={footerStyles.footer__crypto_label}>Bitcoin Address</p>
-          <code className={footerStyles.footer__crypto_address}>bc1qvrl9t4d9gk438v4k3qfwdj2kqquzma2ses7tqw</code>
+          <code className={footerStyles.footer__crypto_address} id="bitcoin-address">bc1qvrl9t4d9gk438v4k3qfwdj2kqquzma2ses7tqw</code>
+          <button onClick={handleCopy}><UilCopy />Copy Link</button>
         </div>
       </Modal>
     </footer>
