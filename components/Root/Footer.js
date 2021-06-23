@@ -59,6 +59,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               className={footerStyles.footer__social_icon}
+              aria-label="github"
             >
               <UilGithub alt="github" />
             </a>
@@ -67,8 +68,9 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               className={footerStyles.footer__social_icon}
+              aria-label="linkedin"
             >
-              <UilLinkedin alt="linkedin" />
+              <UilLinkedin />
             </a>
           </div>
         </div>
