@@ -67,15 +67,37 @@
 }
 
 .footer__crypto_address {
-  display: inline-block;
   background-color: var(--first-color-lighter);
-  height: auto;
-  width: 100%;
-  padding: 1rem;
-  word-break: break-all;
   color: var(--inverted-bw);
+  display: grid;
+  grid-template-columns: 1fr 4rem;
+  grid-template-areas: "address copy";
+  grid-column-gap: 2rem;
+  max-height: max-content;
+  padding: 1rem;
   font-family: "Fira Code", monospace;
   font-weight: 400;
+}
+
+.footer__crypto_address_text {
+  grid-row: 1;
+  grid-column: 1 / -1;
+  word-wrap: break-word;
+  padding-right: 3rem;
+}
+
+.footer__crypto_icon {
+  grid-area: copy;
+  justify-self: right;
+}
+
+.footer__crypto_copy_icon {
+  grid-area: copy;
+  cursor: pointer;
+  justify-self: right;
+}
+
+.footer__crypto_copied_icon {
 }
 
 @media screen and (min-width: 351px) {
