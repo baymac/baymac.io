@@ -9,7 +9,7 @@ import useCopy from '../../hooks/useCopy'
 
 export default function Footer() {
 
-  const [showCryptoAddress, setShowCryptoAddress] = useState(true)
+  const [showCryptoAddress, setShowCryptoAddress] = useState(false)
 
   const [handleCopy, copied] = useCopy('bitcoin-address')
 
