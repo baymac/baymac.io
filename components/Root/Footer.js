@@ -60,7 +60,7 @@ export default function Footer() {
               rel="noreferrer"
               className={footerStyles.footer__social_icon}
             >
-              <UilGithub />
+              <UilGithub alt="github" />
             </a>
             <a
               href="https://linkedin.com/in/parichaybarpanda"
@@ -68,7 +68,7 @@ export default function Footer() {
               rel="noreferrer"
               className={footerStyles.footer__social_icon}
             >
-              <UilLinkedin />
+              <UilLinkedin alt="linkedin" />
             </a>
           </div>
         </div>
