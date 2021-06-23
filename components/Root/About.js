@@ -19,7 +19,7 @@ export default function About() {
             <div className={styles.about__img}>
                 <Image
                     priority
-                    src="/images/panda.jpeg"
+                    src="/images/profile.jpeg"
                     height={300}
                     width={200}
                     alt={"Parichay"}
