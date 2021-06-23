@@ -57,6 +57,25 @@
   color: #fff;
 }
 
+.footer__crypto {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.footer__crypto_label {
+  margin-bottom: 1rem;
+}
+
+.footer__crypto_address {
+  display: inline-block;
+  background-color: var(--first-color-lighter);
+  height: auto;
+  width: 100%;
+  padding: 1rem;
+  word-break: break-all;
+  color: var(--inverted-bw);
+}
+
 @media screen and (min-width: 351px) {
   .footer__container {
     padding: 0 var(--mb-1-5);

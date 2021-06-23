@@ -13,6 +13,8 @@ class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
+                    {/* Modal DOM */}
+                    <div id="modal-root"></div>
                 </body>
             </Html>
         )

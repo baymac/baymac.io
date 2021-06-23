@@ -43,6 +43,7 @@
   /* Color for logo, buttons, menu (only big screen) */
   --nav-items-color: hsl(0, 0%, 100%);
   --logo-hover-color: hsl(0, 0%, 12%);
+  --error-color: hsl(350, 100%, 56%);
 
   /*========== Font and typography ==========*/
   --body-font: "IBM Plex Sans", sans-serif;
@@ -115,6 +116,7 @@ body.dark_theme {
   --inverted-bw: hsl(0, 0%, 100%);
   --nav-items-color: hsl(0, 0%, 100%);
   --logo-hover-color: hsl(0, 0%, 100%);
+  --error-color: hsl(350, 79%, 59%);
 }
 
 /*========== Button Dark/Light ==========*/

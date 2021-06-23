@@ -1,0 +1,101 @@
+/* .modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+} */
+
+.modal__overlay {
+  position: fixed;
+  z-index: 1300;
+  inset: 0px;
+  /* overflow: scroll; */
+}
+
+.modal__backdrop {
+  opacity: 0.5;
+  transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  z-index: -1;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* .modal__content {
+  background: white;
+  width: 500px;
+  height: 600px;
+  border-radius: 1px;
+  padding: 15px;
+} */
+
+.modal__container {
+  opacity: 1;
+  transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  height: 100%;
+  outline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__content {
+  min-width: 300px;
+  max-width: 600px;
+  display: flex;
+  max-height: calc(100% - 64px);
+  flex-direction: column;
+  margin: 4rem;
+  position: relative;
+  overflow-y: auto;
+  box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%),
+    0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%);
+  border-radius: 4px;
+  color: var(--text-color);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: var(--body-color);
+  padding: 0 1.5rem 2rem;
+}
+
+/* .modal__content {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  border: 2px solid #000;
+  height: 200px;
+  padding: 20px 20px 0 20px;
+  overflow: scroll;  
+  position: absolute;
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
+  max-height: calc(100vh - 210px);
+  background-color: #fff;
+} */
+
+.modal__header {
+  display: block;
+  height: 2rem;
+  border-color: black;
+}
+
+.modal__close {
+  color: var(--error-color);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  z-index: 1;
+}

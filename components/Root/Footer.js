@@ -3,8 +3,13 @@ import footerStyles from "./footer.module.css";
 import cn from "classnames";
 import Link from "next/link";
 import { UilGithub, UilLinkedin } from "@iconscout/react-unicons";
+import { useState } from "react";
+import Modal from '../Modal/Modal'
 
 export default function Footer() {
+
+  const [showCryptoAddress, setShowCryptoAddress] = useState(false)
+
   return (
     <footer className={footerStyles.footer}>
       <div className={footerStyles.footer__bg}>
@@ -29,7 +34,8 @@ export default function Footer() {
             </li>
             <li>
               <a
-                className={footerStyles.footer__link}>Buy me some crypto</a>
+                onClick={() => setShowCryptoAddress(true)}
+                className={footerStyles.footer__link}>Buy me crypto</a>
             </li>
             <li>
               <Link href="/subscribe">
@@ -60,6 +66,12 @@ export default function Footer() {
           By Parichay. Under MIT license
         </p>
       </div>
+      <Modal open={showCryptoAddress} handleClose={() => setShowCryptoAddress(false)}>
+        <div className={footerStyles.footer__crypto}>
+          <p className={footerStyles.footer__crypto_label}>Bitcoin Address</p>
+          <code className={footerStyles.footer__crypto_address}>bc1qvrl9t4d9gk438v4k3qfwdj2kqquzma2ses7tqw</code>
+        </div>
+      </Modal>
     </footer>
   );
 }
