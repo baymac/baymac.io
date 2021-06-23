@@ -28,7 +28,7 @@ export default function Root() {
         <title>{siteTitle}</title>
       </Head>
       <Nav />
-      <Home />
+      {/* <Home /> */}
       <About />
       <UnderConstruction />
       <Footer />

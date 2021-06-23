@@ -7,6 +7,7 @@ import {
   UilApps,
   UilMoon,
   UilSun,
+  UilPen
 } from "@iconscout/react-unicons";
 import rootStyles from "./root.module.css";
 import styles from "./nav.module.css";
@@ -14,19 +15,6 @@ import cn from "classnames";
 import { useAppContext } from '../../context/AppContextProvider'
 import Link from 'next/link'
 
-
-const NavMenuItems = [
-  {
-    label: "About Me",
-    icon: UilUser,
-    ref: "aboutme",
-  },
-  {
-    label: "Contact",
-    icon: UilMessage,
-    ref: "contact",
-  },
-];
 
 export default function Nav() {
   const [navBarOpen, setNavBarOpen] = useState(false);
@@ -36,7 +24,7 @@ export default function Nav() {
     <header className={styles.header} id="header">
       <nav className={cn(styles.nav, rootStyles.container)}>
         <Link href="/" >
-          <a className={styles.nav__logo}>Parichay</a>
+          <a className={styles.nav__logo}>PB</a>
         </Link>
         <div
           className={cn(styles.nav__menu, {
@@ -54,20 +42,29 @@ export default function Nav() {
                   Home
                 </a>
               </Link>
+
             </li>
-            {NavMenuItems.map((NavMenuItem) => (
-              <li className="nav__item" key={NavMenuItem.label}>
+            <li>
+              <Link href="/about">
                 <a
-                  href={`#${NavMenuItem.ref}`}
                   className={styles.nav__link}
                 >
-                  {createElement(NavMenuItem.icon, {
-                    className: styles.nav__icon,
-                  })}
-                  {NavMenuItem.label}
+                  <UilMessage className={styles.nav__icon} />
+                  About
                 </a>
-              </li>
-            ))}
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog">
+                <a
+                  className={styles.nav__link}
+                >
+                  <UilPen className={styles.nav__icon} />
+                  Blog
+                </a>
+              </Link>
+            </li>
+
           </ul>
           <UilTimes
             className={styles.nav__close}

@@ -5,28 +5,31 @@
   gap: 0.75rem;
   border: 0;
   background: transparent;
-  color: var(--title-color);
+  color: var(--default-bw);
   font-size: var(--font-medium);
   position: relative;
   padding: 0.75rem;
 }
 
-.blogButtonFlex {
-  display: flex;
-  height: 4rem;
-  background-color: var(--first-color-lighter);
-  justify-content: center;
+@media screen and (max-width: 768px) {
+  .blogButtonFlex {
+    display: flex;
+    height: 4rem;
+    background-color: var(--first-color);
+    justify-content: center;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .blogButton {
     font-size: var(--h3-font-size);
+    color: var(--title-color);
   }
 
   .blogButton::after {
     content: "";
     position: absolute;
-    background: var(--first-color-lighter);
+    background: var(--first-color);
     height: 1rem;
     width: 75%;
     left: 0;
