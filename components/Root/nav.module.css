@@ -32,7 +32,7 @@
 .nav__toggle:hover,
 .nav__close:hover,
 .nav__link:hover {
-  color: var(--first-color-lighter);
+  color: var(--nav-items-hover-color);
 }
 
 .nav__toggle,
