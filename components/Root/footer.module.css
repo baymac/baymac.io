@@ -1,6 +1,7 @@
 .footer {
   margin-top: auto;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
+  border-top: 0.05rem solid var(--footer-border-color);
 }
 
 /* Controls padding of footer top and bottom */
@@ -11,9 +12,9 @@
 
 /* Controls padding of footer items */
 .footer__container {
-  row-gap: 3.5rem;
+  row-gap: 1.5rem;
   max-width: var(--big-screen-width);
-  margin: 0 auto;
+  margin: 0 auto 4rem;
   padding: 0 var(--mb-1);
 }
 
@@ -25,15 +26,21 @@
   font-size: var(--small-font-size);
 }
 
-.footer__links {
+.footer__links_1,
+.footer__links_2 {
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
   cursor: pointer;
+  font-size: var(--h4-font-size);
 }
 
 .footer__social_icon {
   font-size: 1.25rem;
+  padding-top: 1rem;
+}
+
+.footer__social_icon_gh {
   margin-right: var(--mb-1-5);
 }
 
@@ -54,7 +61,7 @@
 .footer__subtitle,
 .footer__link,
 .footer__social_icon {
-  color: #fff;
+  color: var(--inverted-bw);
 }
 
 .footer__crypto {
@@ -116,14 +123,19 @@
     padding: 0 6rem;
   }
 
-  .footer__links {
-    display: grid;
-    grid-template-columns: max-content max-content max-content;
-    gap: 3rem;
+  .footer__links_1,
+  .footer__links_2 {
+    cursor: pointer;
+    font-size: var(--h4-font-size);
+  }
+
+  .footer__links_2 {
+    justify-self: center;
   }
 
   .footer__social {
     justify-self: flex-end;
+    padding-top: 0;
   }
 
   .footer__copy {

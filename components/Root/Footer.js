@@ -30,27 +30,39 @@ export default function Footer() {
             rootStyles.grid
           )}
         >
-          <div>
-            <h1 className={footerStyles.footer__title}>Parichay</h1>
-            <span className={footerStyles.footer__subtitle}>
-              Software Engineer
-            </span>
-          </div>
-          <ul className={footerStyles.footer__links}>
+          <ul className={footerStyles.footer__links_1}>
+            <li>
+              <Link href="/">
+                <a className={footerStyles.footer__link}>Home</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/about">
+                <a className={footerStyles.footer__link}>About</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/uses">
+                <a className={footerStyles.footer__link}>Uses</a>
+              </Link>
+            </li>
+
+          </ul>
+          <ul className={footerStyles.footer__links_2}>
             <li>
               <Link href="/blog">
                 <a className={footerStyles.footer__link}>Blog</a>
               </Link>
             </li>
             <li>
-              <a
-                onClick={() => setShowCryptoAddress(true)}
-                className={footerStyles.footer__link}>Buy me crypto</a>
-            </li>
-            <li>
               <Link href="/subscribe">
                 <a className={footerStyles.footer__link}>Newsletter</a>
               </Link>
+            </li>
+            <li>
+              <a
+                onClick={() => setShowCryptoAddress(true)}
+                className={footerStyles.footer__link}>Buy Me Crypto</a>
             </li>
           </ul>
           <div className={footerStyles.footer__social}>
@@ -58,7 +70,7 @@ export default function Footer() {
               href="https://github.com/baymac"
               target="_blank"
               rel="noreferrer"
-              className={footerStyles.footer__social_icon}
+              className={cn(footerStyles.footer__social_icon, footerStyles.footer__social_icon_gh)}
               aria-label="github"
             >
               <UilGithub alt="github" />
@@ -74,9 +86,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <p className={footerStyles.footer__copy} onClick={() => setShowSnackbar(true)}>
-          By Parichay. Under MIT license
-        </p>
       </div>
       <Modal open={showCryptoAddress} handleClose={() => setShowCryptoAddress(false)}>
         <div className={footerStyles.footer__crypto}>
