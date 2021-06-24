@@ -116,25 +116,8 @@
     height: 2rem;
     justify-content: center;
     align-items: center;
-    /* padding: 0.5rem 0.8rem; */
-    /* box-shadow: 0 0px 1px #fff; */
     position: relative;
   }
-
-  /* .nav__logo:hover {
-    color: var(--logo-hover-color);
-  }
-
-  .nav__logo:hover::after {
-    content: "";
-    position: absolute;
-    background: var(--first-color-lighter);
-    height: 2rem;
-    width: 100%;
-    z-index: -1;
-    transition: transform 175ms cubic-bezier(0.91, 0, 0.55, 1.64);
-    transform-origin: bottom left;
-  } */
 
   .header {
     top: 0;
