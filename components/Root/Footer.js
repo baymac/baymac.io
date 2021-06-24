@@ -3,8 +3,8 @@ import cn from "classnames";
 import Link from "next/link";
 import React, { createElement, useState } from "react";
 import Modal from '../Modal/Modal';
-import footerStyles from "./footer.module.css";
 import rootStyles from "./root.module.css";
+import footerStyles from "./footer.module.css";
 import useCopy from '../../hooks/useCopy'
 import Snackbar from '../Snackbar/Snackbar'
 
@@ -25,9 +25,9 @@ export default function Footer() {
       <div className={footerStyles.footer__bg}>
         <div
           className={cn(
-            footerStyles.footer__container,
+            rootStyles.grid,
             rootStyles.container,
-            rootStyles.grid
+            footerStyles.footer__container,
           )}
         >
           <ul className={footerStyles.footer__links_1}>
@@ -46,7 +46,6 @@ export default function Footer() {
                 <a className={footerStyles.footer__link}>Uses</a>
               </Link>
             </li>
-
           </ul>
           <ul className={footerStyles.footer__links_2}>
             <li>

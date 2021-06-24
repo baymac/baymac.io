@@ -2,14 +2,11 @@ import Head from "next/head";
 import useDarkMode̦ from '../../hooks/useDarkMode';
 import useKeyboardShortcut from '../../hooks/useKeyBoardShortCut';
 import { siteTitle } from '../../utils/info';
-import About from "./About";
 import Footer from "./Footer";
-import Home from "./Home";
 import Nav from "./Nav";
 import styles from "./root.module.css";
-import UnderConstruction from "./UnderConstruction/UnderConstruction";
 
-export default function Root() {
+export default function Root({ children }) {
   useDarkMode̦()
 
   useKeyboardShortcut(['Shift', 'H'], () => setDarkMode, { overrideSystem: false })
@@ -28,9 +25,7 @@ export default function Root() {
         <title>{siteTitle}</title>
       </Head>
       <Nav />
-      {/* <Home /> */}
-      <About />
-      <UnderConstruction />
+      {children}
       <Footer />
     </div>
   );
