@@ -24,6 +24,7 @@ export default function About() {
                     width={200}
                     alt={"Parichay"}
                     layout="fixed"
+                    placeholder="blur"
                 />
             </div>
             <div className={styles.about__description}>
