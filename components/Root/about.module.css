@@ -14,7 +14,7 @@
 .about__subtitle {
   background: var(--first-color);
   padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   color: var(--default-bw);
 }
 

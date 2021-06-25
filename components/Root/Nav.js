@@ -1,7 +1,7 @@
 import { useState, createElement } from "react";
 import {
   UilHome,
-  UilUser,
+  UilArrowLeft,
   UilMessage,
   UilTimes,
   UilApps,
@@ -14,18 +14,24 @@ import styles from "./nav.module.css";
 import cn from "classnames";
 import { useAppContext } from '../../context/AppContextProvider'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 
 export default function Nav() {
   const [navBarOpen, setNavBarOpen] = useState(false);
   const { darkMode, setDarkMode } = useAppContext();
 
+  const router = useRouter()
+
   return (
     <header className={styles.header} id="header">
       <nav className={cn(styles.nav, rootStyles.container)}>
-        <Link href="/" >
+        {!router.pathname.startsWith('/posts') && <Link href="/" >
           <a className={styles.nav__logo}>PB</a>
-        </Link>
+        </Link>}
+        {router.pathname.startsWith('/posts') && <Link href={`/blog`}>
+          <a className={styles.nav__logo}><UilArrowLeft /></a>
+        </Link>}
         <div
           className={cn(styles.nav__menu, {
             [styles.nav__show_menu]: navBarOpen,

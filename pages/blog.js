@@ -1,14 +1,10 @@
-import Head from "next/head";
-import BlogLayout, { siteTitle } from "../components/Blog/BlogLayout";
-import Date from "../components/Blog/Date";
-import blogStyles from "../styles/blog.module.css";
+import cn from 'classnames';
 import Link from "next/link";
-import rootStyles from '../components/Root/root.module.css'
-import cn from 'classnames'
-
-import Root from '../components/Root/Root'
-
+import Date from "../components/Blog/Date";
+import Root from '../components/Root/Root';
+import rootStyles from '../components/Root/root.module.css';
 import { getSortedPostsData } from "../lib/posts";
+import blogStyles from "../styles/blog.module.css";
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData()
@@ -22,9 +18,6 @@ export async function getStaticProps() {
 export default function Blog({ allPostsData }) {
   return (
     <Root>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
       <section className={rootStyles.section}>
         <div
           className={cn(

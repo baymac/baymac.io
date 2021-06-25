@@ -1,9 +1,10 @@
 import { getAllPostIds, getPostData } from "../../lib/posts";
-import BlogLayout from "../../components/Blog/BlogLayout";
+import Root from "../../components/Root/Root";
 import Head from "next/head";
 import blogStyles from "../../styles/blog.module.css";
 import Date from "../../components/Blog/Date";
 import cn from 'classnames'
+import rootStyles from '../../components/Root/root.module.css'
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
@@ -24,17 +25,22 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
   return (
-    <BlogLayout>
-      <Head>
-        <title>{postData.title}</title>
-      </Head>
-      <article>
-        <h1 className={blogStyles.headingXl}>{postData.title}</h1>
-        <div className={cn(blogStyles.lightText, blogStyles.postDate)}>
-          <Date dateString={postData.date} />
+    <Root>
+      <article className={rootStyles.section}>
+        <div
+          className={cn(
+            rootStyles.container,
+            rootStyles.grid,
+            blogStyles.blog__container
+          )}
+        >
+          <h1 className={blogStyles.headingXl}>{postData.title}</h1>
+          <div className={cn(blogStyles.lightText, blogStyles.postDate)}>
+            <Date dateString={postData.date} />
+          </div>
+          <div className={blogStyles.lightText} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </div>
-        <div className={blogStyles.lightText} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
-    </BlogLayout>
+    </Root>
   )
 }

@@ -41,6 +41,12 @@
   cursor: pointer;
 }
 
+.nav__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .nav__link {
   display: flex;
   flex-direction: column;

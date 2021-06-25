@@ -15,10 +15,6 @@
 }
 
 .blog__heading {
-  line-height: 1.4;
-  margin: 1rem 0;
-  font-size: var(--h1-font-size);
-  color: var(--title-color);
 }
 
 .blog__section {
@@ -65,4 +61,10 @@
   gap: 2rem;
   max-width: var(--big-screen-width);
   margin: 4rem auto;
+}
+
+@media screen and (min-width: 600px) {
+  .blog__heading {
+    max-height: max-content;
+  }
 }
