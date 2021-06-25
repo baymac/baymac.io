@@ -14,7 +14,7 @@ export default function About() {
                 styles.about__container
             )}
         >
-            <h2 className={styles.about__title}>Hey, I am Parichay</h2>
+            <h1 className={styles.about__title}>Hey, I am Parichay</h1>
             <p className={styles.about__subtitle}>Software Engineer and open source enthusiast based out of Bengaluru, India</p>
             <div className={styles.about__img}>
                 <Image
