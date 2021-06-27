@@ -1,6 +1,5 @@
 import Head from "next/head";
 import useDarkMode̦ from '../../hooks/useDarkMode';
-import useKeyboardShortcut from '../../hooks/useKeyBoardShortCut';
 import { siteTitle } from '../../utils/info';
 import Footer from "./Footer";
 import Nav from "./Nav";
@@ -9,7 +8,6 @@ import styles from "./root.module.css";
 export default function Root({ children }) {
   useDarkMode̦()
 
-  useKeyboardShortcut(['Shift', 'H'], () => setDarkMode, { overrideSystem: false })
 
   return (
     <div className={styles.root}>
