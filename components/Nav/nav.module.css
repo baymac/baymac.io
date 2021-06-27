@@ -49,11 +49,6 @@
   align-items: center;
 }
 
-.nav__mobile_menu_wrapper {
-  position: fixed;
-  top: var(--header-height);
-}
-
 @media screen and (max-width: 767px) {
   .nav__btns {
     gap: 1rem;

@@ -8,11 +8,13 @@ import { createElement, useEffect } from "react";
 import { useAppContext } from "../../context/AppContextProvider";
 import rootStyles from "../../styles/root.module.css";
 import styles from "./nav.module.css";
-import NavBarLinks from './NavBarLinks';
+import NavBarLinks from './NavbarLinks.tsx';
+import { useMediaQuery } from 'react-responsive'
 
 
 export default function Nav() {
   const { navBarOpen, setNavBarOpen, darkMode, setDarkMode } = useAppContext();
+
 
   useEffect(() => {
     if (navBarOpen) {
@@ -71,12 +73,7 @@ export default function Nav() {
           </div>
         </nav>
       </header>
-      {
-        navBarOpen &&
-        <div className={styles.nav__mobile_menu_wrapper}>
-          <NavBarLinks />
-        </div>
-      }
+      {<NavBarLinks />}
     </>
   );
 }
