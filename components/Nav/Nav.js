@@ -9,7 +9,6 @@ import { useAppContext } from "../../context/AppContextProvider";
 import rootStyles from "../../styles/root.module.css";
 import styles from "./nav.module.css";
 import NavBarLinks from './NavbarLinks.tsx';
-import { useMediaQuery } from 'react-responsive'
 
 
 export default function Nav() {
@@ -25,8 +24,6 @@ export default function Nav() {
   }, [navBarOpen])
 
   const router = useRouter();
-
-  // console.log(navBarOpen)
 
   return (
     <>
