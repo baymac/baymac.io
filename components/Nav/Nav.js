@@ -1,21 +1,30 @@
 import {
-  UilApps, UilArrowLeft, UilMoon,
-  UilSun, UilMultiply
+  UilApps, UilArrowLeft, UilMoon, UilMultiply, UilSun
 } from "@iconscout/react-unicons";
 import cn from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { createElement, useState } from "react";
+import { createElement, useEffect } from "react";
 import { useAppContext } from "../../context/AppContextProvider";
 import rootStyles from "../../styles/root.module.css";
 import styles from "./nav.module.css";
-import NavBarLinks from './NavBarLinks'
+import NavBarLinks from './NavBarLinks';
+
 
 export default function Nav() {
-  const [navBarOpen, setNavBarOpen] = useState(false);
-  const { darkMode, setDarkMode } = useAppContext();
+  const { navBarOpen, setNavBarOpen, darkMode, setDarkMode } = useAppContext();
+
+  useEffect(() => {
+    if (navBarOpen) {
+      document.querySelector("body").classList.add('mobile-menu-visible')
+    } else {
+      document.querySelector("body").classList.remove('mobile-menu-visible')
+    }
+  }, [navBarOpen])
 
   const router = useRouter();
+
+  // console.log(navBarOpen)
 
   return (
     <>
@@ -33,8 +42,6 @@ export default function Nav() {
               </a>
             </Link>
           )}
-
-          <NavBarLinks />
           <div className={styles.nav__btns}>
             {createElement(
               darkMode ? UilSun : UilMoon,
@@ -64,9 +71,12 @@ export default function Nav() {
           </div>
         </nav>
       </header>
-      {navBarOpen && <div className={styles.nav__mobile_menu}>
-        <NavBarLinks />
-      </div>}
+      {
+        navBarOpen &&
+        <div className={styles.nav__mobile_menu_wrapper}>
+          <NavBarLinks />
+        </div>
+      }
     </>
   );
 }

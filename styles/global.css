@@ -207,6 +207,10 @@ img {
   background-color: var(--text-color-light);
 }
 
+.mobile-menu-visible {
+  overflow: hidden;
+}
+
 @media screen and (min-width: 768px) {
   body {
     margin: 0;

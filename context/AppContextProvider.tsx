@@ -9,6 +9,8 @@ export function useAppContext() {
 export interface IAppContextValues {
   darkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  navBarOpen: boolean;
+  setNavBarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function AppContextProvider({
@@ -18,9 +20,13 @@ export default function AppContextProvider({
 }) {
   const [darkMode, setDarkMode] = useState(false);
 
+  const [navBarOpen, setNavBarOpen] = useState(false);
+
   const value: IAppContextValues = {
     darkMode,
     setDarkMode,
+    navBarOpen,
+    setNavBarOpen,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

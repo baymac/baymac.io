@@ -1,32 +1,49 @@
 import { UilHome, UilMessage, UilPen } from "@iconscout/react-unicons";
 import cn from "classnames";
 import Link from "next/link";
-import rootStyles from "../../styles/root.module.css";
+import { useAppContext } from "../../context/AppContextProvider";
 import styles from "./navlink.module.css";
 
-export default function NavBarLinks({ navBarOpen }: { navBarOpen?: boolean }) {
+export default function NavBarLinks() {
+  // @ts-ignore
+  const { navBarOpen, setNavBarOpen } = useAppContext();
+
   return (
-    <div className={cn(styles.nav__menu)} id="nav-menu">
-      <ul className={cn(rootStyles.grid, styles.nav__list)}>
-        <li>
+    <div
+      className={cn(styles.nav__menu, {
+        [styles.nav__mobile_menu]: navBarOpen,
+      })}
+      id="nav-menu"
+    >
+      <ul className={cn(styles.nav__list)}>
+        <li className={styles.nav__item}>
           <Link href="/">
-            <a className={styles.nav__link}>
+            <a
+              className={styles.nav__link}
+              onClick={() => setNavBarOpen(false)}
+            >
               <UilHome className={styles.nav__icon} />
               Home
             </a>
           </Link>
         </li>
-        <li>
+        <li className={styles.nav__item}>
           <Link href="/about">
-            <a className={styles.nav__link}>
+            <a
+              className={styles.nav__link}
+              onClick={() => setNavBarOpen(false)}
+            >
               <UilMessage className={styles.nav__icon} />
               About
             </a>
           </Link>
         </li>
-        <li>
+        <li className={styles.nav__item}>
           <Link href="/blog">
-            <a className={styles.nav__link}>
+            <a
+              className={styles.nav__link}
+              onClick={() => setNavBarOpen(false)}
+            >
               <UilPen className={styles.nav__icon} />
               Blog
             </a>
