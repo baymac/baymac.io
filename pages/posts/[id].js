@@ -1,10 +1,9 @@
-import { getAllPostIds, getPostData } from "../../lib/posts";
-import Root from "../../components/Root/Root";
-import Head from "next/head";
-import blogStyles from "../../styles/blog.module.css";
+import cn from 'classnames';
 import Date from "../../components/Blog/Date";
-import cn from 'classnames'
-import rootStyles from '../../components/Root/root.module.css'
+import RootLayout from "../../layouts/RootLayout";
+import { getAllPostIds, getPostData } from "../../lib/posts";
+import blogStyles from "../../styles/blog.module.css";
+import rootStyles from "../../styles/root.module.css";
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
@@ -25,7 +24,7 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
   return (
-    <Root>
+    <RootLayout>
       <article className={rootStyles.section}>
         <div
           className={cn(
@@ -41,6 +40,6 @@ export default function Post({ postData }) {
           <div className={blogStyles.lightText} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         </div>
       </article>
-    </Root>
+    </RootLayout>
   )
 }

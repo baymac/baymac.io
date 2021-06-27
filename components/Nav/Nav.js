@@ -9,7 +9,7 @@ import {
   UilSun,
   UilPen,
 } from "@iconscout/react-unicons";
-import rootStyles from "./root.module.css";
+import rootStyles from "../../styles/root.module.css";
 import styles from "./nav.module.css";
 import cn from "classnames";
 import { useAppContext } from "../../context/AppContextProvider";

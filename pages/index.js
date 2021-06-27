@@ -1,10 +1,10 @@
-import Root from "../components/Root/Root";
-import About from '../components/Root/About'
-import UnderConstruction from '../components/Root/UnderConstruction/UnderConstruction'
+import RootLayout from "../layouts/RootLayout";
+import About from '../components/About/About'
+import UnderConstruction from '../components/UnderConstruction/UnderConstruction'
 
 export default function Home() {
-  return <Root>
+  return <RootLayout>
     <About />
     <UnderConstruction />
-  </Root>;
+  </RootLayout>;
 }

@@ -3,7 +3,7 @@ import cn from "classnames";
 import Link from "next/link";
 import React, { createElement, useState } from "react";
 import Modal from '../Modal/Modal';
-import rootStyles from "./root.module.css";
+import rootStyles from "../../styles/root.module.css";
 import footerStyles from "./footer.module.css";
 import useCopy from '../../hooks/useCopy'
 import Snackbar from '../Snackbar/Snackbar'

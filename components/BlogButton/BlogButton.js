@@ -1,8 +1,7 @@
 import { UilPen } from "@iconscout/react-unicons";
-import Link from "next/link";
-import { useMediaQuery } from "react-responsive";
-import styles from "./blogbutton.module.css";
 import cn from "classnames";
+import Link from "next/link";
+import styles from "./blogbutton.module.css";
 
 export default function BlogButton() {
     return (

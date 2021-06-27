@@ -1,7 +1,7 @@
 import {
     UilJackhammer
 } from "@iconscout/react-unicons";
-import rootStyles from "../root.module.css";
+import rootStyles from "../../styles/root.module.css";
 import styles from './underconstruction.module.css';
 import cn from "classnames";
 

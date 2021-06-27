@@ -1,8 +1,7 @@
-import rootStyles from "./root.module.css";
 import cn from "classnames";
 import Image from "next/image";
-import styles from './about.module.css'
-import BlogButton from './BlogButton/BlogButton'
+import rootStyles from "../../styles/root.module.css";
+import styles from './about.module.css';
 
 export default function About() {
 
