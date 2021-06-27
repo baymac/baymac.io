@@ -22,7 +22,7 @@
   display: none;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 600px) {
   .nav__list {
     padding: var(--mb-1) var(--mb-1-5);
     flex-direction: column;
@@ -53,7 +53,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .nav__menu_hidden {
     display: block;
   }
