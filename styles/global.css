@@ -5,7 +5,7 @@
 
 /*==================== VARIABLES CSS ====================*/
 :root {
-  --header-height: 3.5rem;
+  --header-height: 4rem;
 
   /*========== Colors ==========*/
   /* Change favorite color */
@@ -138,7 +138,6 @@ body.dark_theme {
 
 html {
   height: 100%;
-  scroll-behavior: smooth;
 }
 
 body {

@@ -1,20 +1,15 @@
-import { useState, createElement } from "react";
 import {
-  UilHome,
-  UilArrowLeft,
-  UilMessage,
-  UilTimes,
-  UilApps,
-  UilMoon,
-  UilSun,
-  UilPen,
+  UilApps, UilArrowLeft, UilMoon,
+  UilSun, UilMultiply
 } from "@iconscout/react-unicons";
-import rootStyles from "../../styles/root.module.css";
-import styles from "./nav.module.css";
 import cn from "classnames";
-import { useAppContext } from "../../context/AppContextProvider";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { createElement, useState } from "react";
+import { useAppContext } from "../../context/AppContextProvider";
+import rootStyles from "../../styles/root.module.css";
+import styles from "./nav.module.css";
+import NavBarLinks from './NavBarLinks'
 
 export default function Nav() {
   const [navBarOpen, setNavBarOpen] = useState(false);
@@ -22,74 +17,56 @@ export default function Nav() {
 
   const router = useRouter();
 
-  return (<div className={styles.header}>
-    <nav className={cn(styles.nav, rootStyles.container)}>
-      {!router.pathname.startsWith("/posts") && (
-        <Link href="/">
-          <a className={styles.nav__logo}>PB</a>
-        </Link>
-      )}
-      {router.pathname.startsWith("/posts") && (
-        <Link href={`/blog`}>
-          <a className={styles.nav__logo}>
-            <UilArrowLeft />
-          </a>
-        </Link>
-      )}
-      <div
-        className={cn(styles.nav__menu, {
-          [styles.nav__show_menu]: navBarOpen,
-        })}
-        id="nav-menu"
-      >
-        <ul className={cn(rootStyles.grid, styles.nav__list)}>
-          <li className="nav__item">
+  return (
+    <>
+      <header className={styles.header}>
+        <nav className={cn(styles.nav, rootStyles.container)}>
+          {!router.pathname.startsWith("/posts") && (
             <Link href="/">
-              <a className={styles.nav__link}>
-                <UilHome className={styles.nav__icon} />
-                Home
+              <a className={styles.nav__logo}>PB</a>
+            </Link>
+          )}
+          {router.pathname.startsWith("/posts") && (
+            <Link href={`/blog`}>
+              <a className={styles.nav__logo}>
+                <UilArrowLeft />
               </a>
             </Link>
-          </li>
-          <li>
-            <Link href="/about">
-              <a className={styles.nav__link}>
-                <UilMessage className={styles.nav__icon} />
-                About
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog">
-              <a className={styles.nav__link}>
-                <UilPen className={styles.nav__icon} />
-                Blog
-              </a>
-            </Link>
-          </li>
-        </ul>
-        <UilTimes
-          className={styles.nav__close}
-          onClick={() => setNavBarOpen(false)}
-        />
-      </div>
-      <div className={styles.nav__btns}>
-        {createElement(
-          darkMode ? UilSun : UilMoon,
-          {
-            className: cn(styles.nav__changeTheme),
-            id: "theme-button",
-            onClick: () => setDarkMode(!darkMode),
-          },
-          null
-        )}
-        <UilApps
-          className={styles.nav__toggle}
-          id="nav_toggle"
-          onClick={() => setNavBarOpen(true)}
-        />
-      </div>
-    </nav>
-  </div>
+          )}
+
+          <NavBarLinks />
+          <div className={styles.nav__btns}>
+            {createElement(
+              darkMode ? UilSun : UilMoon,
+              {
+                className: cn(styles.nav__changeTheme),
+                id: "theme-button",
+                onClick: () => setDarkMode(!darkMode),
+                width: 30,
+                height: 30
+              },
+              null
+            )}
+            {!navBarOpen && <UilApps
+              className={styles.nav__toggle}
+              id="nav_toggle"
+              onClick={() => setNavBarOpen(true)}
+              width={30}
+              height={30}
+            />}
+            {navBarOpen && <UilMultiply
+              className={styles.nav__toggle}
+              width={30}
+              height={30}
+              id="nav_toggle"
+              onClick={() => setNavBarOpen(false)}
+            />}
+          </div>
+        </nav>
+      </header>
+      {navBarOpen && <div className={styles.nav__mobile_menu}>
+        <NavBarLinks />
+      </div>}
+    </>
   );
 }

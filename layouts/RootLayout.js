@@ -3,8 +3,10 @@ import useDarkMode̦ from '../hooks/useDarkMode';
 import Footer from "../components/Footer/Footer";
 import Nav from "../components/Nav/Nav";
 import styles from "../styles/root.module.css";
+import { useAppContext } from '../context/AppContextProvider'
 
 export default function Root({ children }) {
+
   useDarkMode̦()
 
   return (
