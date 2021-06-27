@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--header-color);
@@ -63,7 +63,7 @@
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
-    bottom: -100%;
+    top: -100%;
     left: 0;
     width: 100%;
     background-color: var(--body-color);
@@ -100,7 +100,7 @@
   }
 
   .nav__show_menu {
-    bottom: 0;
+    top: 0;
   }
 }
 
