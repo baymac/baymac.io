@@ -15,8 +15,7 @@ import { useTheme } from 'next-themes';
 export default function Nav() {
   const { navBarOpen, setNavBarOpen } = useAppContext();
 
-  const { theme, setTheme } = useTheme()
-
+  const { resolvedTheme, setTheme } = useTheme()
 
   useEffect(() => {
     if (navBarOpen) {
@@ -47,11 +46,11 @@ export default function Nav() {
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
             {createElement(
-              theme === 'dark' ? UilSun : UilMoon,
+              resolvedTheme === 'dark' ? UilSun : UilMoon,
               {
                 className: cn(styles.nav__changeTheme),
                 id: "theme-button",
-                onClick: () => setTheme(theme === 'light' ? 'dark' : 'light'),
+                onClick: () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
                 width: 30,
                 height: 30
               },
