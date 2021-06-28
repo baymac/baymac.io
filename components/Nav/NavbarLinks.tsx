@@ -5,7 +5,6 @@ import { useAppContext } from "../../context/AppContextProvider";
 import styles from "./navlink.module.css";
 
 export default function NavBarLinks() {
-  // @ts-ignore
   const { setNavBarOpen } = useAppContext();
 
   return (

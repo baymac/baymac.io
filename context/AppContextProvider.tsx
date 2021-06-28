@@ -1,16 +1,17 @@
 import React, { useState, createContext, useContext, ReactNode } from "react";
 
-const AppContext = createContext({});
+export interface IAppContextValues {
+  navBarOpen: boolean;
+  setNavBarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AppContext = createContext({
+  setNavBarOpen: (_: boolean) => {},
+  navBarOpen: false,
+});
 
 export function useAppContext() {
   return useContext(AppContext);
-}
-
-export interface IAppContextValues {
-  darkMode: boolean;
-  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-  navBarOpen: boolean;
-  setNavBarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function AppContextProvider({
@@ -18,13 +19,9 @@ export default function AppContextProvider({
 }: {
   children: ReactNode;
 }) {
-  const [darkMode, setDarkMode] = useState(false);
-
   const [navBarOpen, setNavBarOpen] = useState(false);
 
   const value: IAppContextValues = {
-    darkMode,
-    setDarkMode,
     navBarOpen,
     setNavBarOpen,
   };

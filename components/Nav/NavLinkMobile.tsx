@@ -4,8 +4,7 @@ import { useAppContext } from "../../context/AppContextProvider";
 import cn from "classnames";
 
 export default function NavLinkMobile() {
-  // @ts-ignore
-  const { navBarOpen, setNavBarOpen } = useAppContext();
+  const { navBarOpen } = useAppContext();
 
   return (
     <div className={styles.nav__mobile_menu_wrapper}>
