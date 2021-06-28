@@ -4,7 +4,7 @@ import {
 import cn from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { createElement, useEffect } from "react";
+import { createElement, useEffect, useState } from "react";
 import { useAppContext } from "../../context/AppContextProvider";
 import rootStyles from "../../styles/root.module.css";
 import styles from "./nav.module.css";
@@ -15,7 +15,11 @@ import { useTheme } from 'next-themes';
 export default function Nav() {
   const { navBarOpen, setNavBarOpen } = useAppContext();
 
-  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  // After mounting, we have access to the theme
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (navBarOpen) {
@@ -45,7 +49,7 @@ export default function Nav() {
           )}
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
-            {createElement(
+            {mounted && createElement(
               resolvedTheme === 'dark' ? UilSun : UilMoon,
               {
                 className: cn(styles.nav__changeTheme),
