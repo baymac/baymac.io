@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { useClipboard } from "use-clipboard-copy";
 
-export default function useCopy(id) {
+export default function useCopy(id, timeout) {
   const clipboard = useClipboard({
-    copiedTimeout: 1500,
+    copiedTimeout: timeout ?? 1500,
   });
 
   const handleCopy = useCallback(() => {

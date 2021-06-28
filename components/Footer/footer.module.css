@@ -104,6 +104,7 @@
 }
 
 .footer__crypto_copied_icon {
+  cursor: no-drop;
 }
 
 @media screen and (min-width: 351px) {

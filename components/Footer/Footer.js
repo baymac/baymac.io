@@ -13,7 +13,7 @@ export default function Footer() {
   const [showCryptoAddress, setShowCryptoAddress] = useState(false)
   const [showSnackbar, setShowSnackbar] = useState(false)
 
-  const [handleCopy, copied] = useCopy('bitcoin-address')
+  const [handleCopy, copied] = useCopy('bitcoin-address', 5000)
 
   const handleCopyClick = () => {
     handleCopy()
