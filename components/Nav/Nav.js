@@ -8,8 +8,8 @@ import { createElement, useEffect } from "react";
 import { useAppContext } from "../../context/AppContextProvider";
 import rootStyles from "../../styles/root.module.css";
 import styles from "./nav.module.css";
-import NavBarLinks from './NavbarLinks.tsx';
-
+import NavLinkMobile from './NavLinkMobile.tsx';
+import NavLinkBigScreen from './NavLinkBigScreen.tsx';
 
 export default function Nav() {
   const { navBarOpen, setNavBarOpen, darkMode, setDarkMode } = useAppContext();
@@ -41,6 +41,7 @@ export default function Nav() {
               </a>
             </Link>
           )}
+          <NavLinkBigScreen />
           <div className={styles.nav__btns}>
             {createElement(
               darkMode ? UilSun : UilMoon,
@@ -70,7 +71,7 @@ export default function Nav() {
           </div>
         </nav>
       </header>
-      {<NavBarLinks />}
+      <NavLinkMobile />
     </>
   );
 }
