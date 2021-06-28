@@ -102,7 +102,7 @@
 
 /*========== Variables Dark theme ==========*/
 
-body.dark_theme {
+[data-theme="dark"] {
   --first-color: /*hsl(230, 92%, 85%)*/ hsl(212, 33%, 89%);
   --first-color-second: hsl(230, 30%, 8%);
   --first-color-alt: /*hsl(230, 57%, 75%)*/ hsl(211, 27%, 70%);

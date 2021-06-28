@@ -10,9 +10,12 @@ import rootStyles from "../../styles/root.module.css";
 import styles from "./nav.module.css";
 import NavLinkMobile from './NavLinkMobile.tsx';
 import NavLinkBigScreen from './NavLinkBigScreen.tsx';
+import { useTheme } from 'next-themes';
 
 export default function Nav() {
-  const { navBarOpen, setNavBarOpen, darkMode, setDarkMode } = useAppContext();
+  const { navBarOpen, setNavBarOpen } = useAppContext();
+
+  const { theme, setTheme } = useTheme()
 
 
   useEffect(() => {
@@ -44,11 +47,11 @@ export default function Nav() {
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
             {createElement(
-              darkMode ? UilSun : UilMoon,
+              theme === 'dark' ? UilSun : UilMoon,
               {
                 className: cn(styles.nav__changeTheme),
                 id: "theme-button",
-                onClick: () => setDarkMode(!darkMode),
+                onClick: () => setTheme(theme === 'light' ? 'dark' : 'light'),
                 width: 30,
                 height: 30
               },
