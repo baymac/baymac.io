@@ -207,7 +207,7 @@ img {
   background-color: var(--text-color-light);
 }
 
-.mobile-menu-visible {
+.prevent-scroll {
   overflow: hidden;
 }
 

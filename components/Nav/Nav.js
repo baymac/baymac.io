@@ -21,14 +21,6 @@ export default function Nav() {
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
-  useEffect(() => {
-    if (navBarOpen) {
-      document.querySelector("body").classList.add('mobile-menu-visible')
-    } else {
-      document.querySelector("body").classList.remove('mobile-menu-visible')
-    }
-  }, [navBarOpen])
-
   const router = useRouter();
 
   return (

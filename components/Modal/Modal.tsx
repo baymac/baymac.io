@@ -2,6 +2,7 @@ import React, { ReactChildren, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import styles from "./modal.module.css";
 import { UilTimesCircle } from "@iconscout/react-unicons";
+import usePreventScroll from "../../hooks/usePreventScroll";
 
 export interface IModalProps {
   open: boolean;
@@ -22,6 +23,8 @@ function Modal(props: IModalProps) {
     e.preventDefault();
     handleClose();
   };
+
+  usePreventScroll(open);
 
   const modalContent = open ? (
     <div className={styles.modal__overlay}>
