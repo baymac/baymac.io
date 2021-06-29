@@ -4,3 +4,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.message_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.code {
+  border-right: 1px solid var(--text-color);
+  margin: 0;
+  margin-right: 2rem;
+  padding-right: 2rem;
+  font-weight: 500;
+  vertical-align: top;
+}
