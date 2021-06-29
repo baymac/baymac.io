@@ -52,6 +52,13 @@ export default function Nav() {
               },
               null
             )}
+            {!mounted && createElement(
+              'div',
+              {
+                className: cn(styles.skeleton_loader)
+              },
+              null
+            )}
             {!navBarOpen && <UilApps
               className={styles.nav__toggle}
               id="nav_toggle"

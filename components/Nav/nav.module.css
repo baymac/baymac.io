@@ -49,6 +49,37 @@
   align-items: center;
 }
 
+.nav__changeTheme_loading {
+  background-color: var(--nav-items-hover-color);
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+}
+
+.skeleton_loader:empty {
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: linear-gradient(
+      to right,
+      hsl(0, 0%, 70%),
+      hsl(0, 0%, 100%) 50%,
+      hsl(0, 0%, 70%) 80%
+    ),
+    hsl(0, 0%, 60%);
+  background-repeat: repeat-y;
+  background-size: 10px 10px;
+  background-position: 0 0;
+  animation: shine 0.5s infinite;
+  border-radius: 3px;
+}
+
+@keyframes shine {
+  to {
+    background-position: 100% 0;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .nav__btns {
     gap: 1rem;
