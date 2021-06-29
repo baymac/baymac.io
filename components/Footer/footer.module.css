@@ -30,7 +30,6 @@
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
-  cursor: pointer;
   font-size: var(--h4-font-size);
 }
 
@@ -99,12 +98,7 @@
 
 .footer__crypto_copy_icon {
   grid-area: copy;
-  cursor: pointer;
   justify-self: right;
-}
-
-.footer__crypto_copied_icon {
-  cursor: no-drop;
 }
 
 @media screen and (min-width: 351px) {
@@ -127,6 +121,14 @@
   .footer__links_2 {
     cursor: pointer;
     font-size: var(--h4-font-size);
+  }
+
+  .footer__crypto_copy_icon {
+    cursor: pointer;
+  }
+
+  .footer__crypto_copied_icon {
+    cursor: no-drop;
   }
 
   .footer__links_2 {
