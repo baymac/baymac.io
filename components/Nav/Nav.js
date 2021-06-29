@@ -13,6 +13,7 @@ import NavLinkBigScreen from './NavLinkBigScreen.tsx';
 import { useTheme } from 'next-themes';
 
 export default function Nav() {
+
   const { navBarOpen, setNavBarOpen } = useAppContext();
 
   const [mounted, setMounted] = useState(false);

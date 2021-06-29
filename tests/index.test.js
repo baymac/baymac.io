@@ -4,12 +4,23 @@
 
 import React from 'react'
 import { render } from '@testing-library/react'
-import Home from '../pages/index'
+// import * as nextRouter from 'next/router';
 
-test('renders deploy link', () => {
-  const { getByText } = render(<Home />)
+// nextRouter.useRouter = jest.fn();
+// nextRouter.useRouter.mockImplementation(() => ({ pathname: '/' }));
+
+// jest.mock('next/router', () => ({
+//   useRouter: jest.fn().mockImplementation(() => ({
+//     pathname: '/',
+//   })),
+// }));
+
+import Nav from '../components/Nav/Nav'
+
+it('renders nav bar logo', () => {
+  const { getByText } = render(<Nav />)
   const linkElement = getByText(
-    /Hey, I am Parichay/
+    /PB/
   )
   expect(linkElement).toBeInTheDocument()
 })
