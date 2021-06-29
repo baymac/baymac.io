@@ -1,5 +1,9 @@
 import {
-  UilApps, UilArrowLeft, UilMoon, UilMultiply, UilSun
+  UilApps,
+  UilArrowLeft,
+  UilMoon,
+  UilMultiply,
+  UilSun,
 } from "@iconscout/react-unicons";
 import cn from "classnames";
 import Link from "next/link";
@@ -8,12 +12,11 @@ import { createElement, useEffect, useState } from "react";
 import { useAppContext } from "../../context/AppContextProvider";
 import rootStyles from "../../styles/root.module.css";
 import styles from "./nav.module.css";
-import NavLinkMobile from './NavLinkMobile.tsx';
-import NavLinkBigScreen from './NavLinkBigScreen.tsx';
-import { useTheme } from 'next-themes';
+import NavLinkMobile from "./NavLinkMobile";
+import NavLinkBigScreen from "./NavLinkBigScreen";
+import { useTheme } from "next-themes";
 
 export default function Nav() {
-
   const { navBarOpen, setNavBarOpen } = useAppContext();
 
   const [mounted, setMounted] = useState(false);
@@ -42,38 +45,45 @@ export default function Nav() {
           )}
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
-            {mounted && createElement(
-              resolvedTheme === 'dark' ? UilSun : UilMoon,
-              {
-                className: cn(styles.nav__changeTheme),
-                id: "theme-button",
-                onClick: () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
-                width: 30,
-                height: 30
-              },
-              null
+            {mounted &&
+              createElement(
+                resolvedTheme === "dark" ? UilSun : UilMoon,
+                {
+                  className: cn(styles.nav__changeTheme),
+                  id: "theme-button",
+                  onClick: () =>
+                    setTheme(resolvedTheme === "dark" ? "light" : "dark"),
+                  width: 30,
+                  height: 30,
+                },
+                null
+              )}
+            {!mounted &&
+              createElement(
+                "div",
+                {
+                  className: cn(styles.skeleton_loader),
+                },
+                null
+              )}
+            {!navBarOpen && (
+              <UilApps
+                className={styles.nav__toggle}
+                id="nav_toggle"
+                onClick={() => setNavBarOpen(true)}
+                width={30}
+                height={30}
+              />
             )}
-            {!mounted && createElement(
-              'div',
-              {
-                className: cn(styles.skeleton_loader)
-              },
-              null
+            {navBarOpen && (
+              <UilMultiply
+                className={styles.nav__toggle}
+                width={30}
+                height={30}
+                id="nav_toggle"
+                onClick={() => setNavBarOpen(false)}
+              />
             )}
-            {!navBarOpen && <UilApps
-              className={styles.nav__toggle}
-              id="nav_toggle"
-              onClick={() => setNavBarOpen(true)}
-              width={30}
-              height={30}
-            />}
-            {navBarOpen && <UilMultiply
-              className={styles.nav__toggle}
-              width={30}
-              height={30}
-              id="nav_toggle"
-              onClick={() => setNavBarOpen(false)}
-            />}
           </div>
         </nav>
       </header>
