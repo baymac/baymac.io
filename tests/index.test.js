@@ -4,16 +4,10 @@
 
 import React from 'react'
 import { render } from '@testing-library/react'
-// import * as nextRouter from 'next/router';
+import * as nextRouter from 'next/router';
 
-// nextRouter.useRouter = jest.fn();
-// nextRouter.useRouter.mockImplementation(() => ({ pathname: '/' }));
-
-// jest.mock('next/router', () => ({
-//   useRouter: jest.fn().mockImplementation(() => ({
-//     pathname: '/',
-//   })),
-// }));
+nextRouter.useRouter = jest.fn();
+nextRouter.useRouter.mockImplementation(() => ({ pathname: '/' }));
 
 import Nav from '../components/Nav/Nav'
 
