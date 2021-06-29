@@ -52,7 +52,6 @@
   text-align: center;
   color: var(--text-color-light);
   margin-top: var(--mb-3);
-  /* margin-bottom: var(--mb-3); */
 }
 
 .footer__title,
@@ -79,16 +78,17 @@
   grid-template-areas: "address copy";
   grid-column-gap: 2rem;
   max-height: max-content;
+  letter-spacing: 1px;
   padding: 1rem;
-  font-family: "Fira Code", monospace;
-  font-weight: 400;
+  font-family: "Roboto Mono", monospace;
+  font-weight: var(--font-medium);
 }
 
 .footer__crypto_address_text {
   grid-row: 1;
   grid-column: 1 / -1;
   word-wrap: break-word;
-  padding-right: 3rem;
+  padding-right: 2.5rem;
 }
 
 .footer__crypto_icon {
