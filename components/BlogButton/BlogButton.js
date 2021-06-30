@@ -1,15 +1,15 @@
-import { UilPen } from "@iconscout/react-unicons";
-import cn from "classnames";
-import Link from "next/link";
-import styles from "./blogbutton.module.css";
+import { UilPen } from '@iconscout/react-unicons';
+import cn from 'classnames';
+import Link from 'next/link';
+import styles from './blogbutton.module.css';
 
 export default function BlogButton() {
-    return (
-        <Link href="/blog">
-            <a className={cn(styles.blogButton, styles.blogButtonFlex)}>
-                Blog
-                <UilPen />
-            </a>
-        </Link>
-    );
+  return (
+    <Link href="/blog">
+      <a className={cn(styles.blogButton, styles.blogButtonFlex)}>
+        Blog
+        <UilPen />
+      </a>
+    </Link>
+  );
 }

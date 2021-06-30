@@ -1,8 +1,8 @@
-import cn from "classnames";
-import { useReset } from "../../hooks/useReset";
-import styles from "./snackbar.module.css";
+import cn from 'classnames';
+import { useReset } from '../../hooks/useReset';
+import styles from './snackbar.module.css';
 
-export type SnackbarVariants = "success" | "error" | "warning" | "info";
+export type SnackbarVariants = 'success' | 'error' | 'warning' | 'info';
 
 export interface ISnackbarProps {
   show: boolean;

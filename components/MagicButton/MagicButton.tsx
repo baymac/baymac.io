@@ -1,4 +1,4 @@
-import styles from "./magicbutton.module.css";
+import styles from './magicbutton.module.css';
 
 export default function MagicButton({ onClick, label }: any) {
   return (

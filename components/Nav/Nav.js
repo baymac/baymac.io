@@ -1,13 +1,17 @@
 import {
-  UilApps, UilArrowLeft, UilMoon, UilMultiply, UilSun
-} from "@iconscout/react-unicons";
-import cn from "classnames";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { createElement, useEffect, useState } from "react";
-import { useAppContext } from "../../context/AppContextProvider";
-import rootStyles from "../../styles/root.module.css";
-import styles from "./nav.module.css";
+  UilApps,
+  UilArrowLeft,
+  UilMoon,
+  UilMultiply,
+  UilSun
+} from '@iconscout/react-unicons';
+import cn from 'classnames';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { createElement, useEffect, useState } from 'react';
+import { useAppContext } from '../../context/AppContextProvider';
+import rootStyles from '../../styles/root.module.css';
+import styles from './nav.module.css';
 import NavLinkMobile from './NavLinkMobile.tsx';
 import NavLinkBigScreen from './NavLinkBigScreen.tsx';
 import { useTheme } from 'next-themes';
@@ -27,12 +31,12 @@ export default function Nav() {
     <>
       <header className={styles.header}>
         <nav className={cn(styles.nav, rootStyles.container)}>
-          {!router.pathname.startsWith("/posts") && (
+          {!router.pathname.startsWith('/posts') && (
             <Link href="/">
               <a className={styles.nav__logo}>PB</a>
             </Link>
           )}
-          {router.pathname.startsWith("/posts") && (
+          {router.pathname.startsWith('/posts') && (
             <Link href={`/blog`}>
               <a className={styles.nav__logo}>
                 <UilArrowLeft />
@@ -41,38 +45,45 @@ export default function Nav() {
           )}
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
-            {mounted && createElement(
-              resolvedTheme === 'dark' ? UilSun : UilMoon,
-              {
-                className: cn(styles.nav__changeTheme),
-                id: "theme-button",
-                onClick: () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
-                width: 30,
-                height: 30
-              },
-              null
+            {mounted &&
+              createElement(
+                resolvedTheme === 'dark' ? UilSun : UilMoon,
+                {
+                  className: cn(styles.nav__changeTheme),
+                  id: 'theme-button',
+                  onClick: () =>
+                    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
+                  width: 30,
+                  height: 30
+                },
+                null
+              )}
+            {!mounted &&
+              createElement(
+                'div',
+                {
+                  className: cn(styles.skeleton_loader)
+                },
+                null
+              )}
+            {!navBarOpen && (
+              <UilApps
+                className={styles.nav__toggle}
+                id="nav_toggle"
+                onClick={() => setNavBarOpen(true)}
+                width={30}
+                height={30}
+              />
             )}
-            {!mounted && createElement(
-              'div',
-              {
-                className: cn(styles.skeleton_loader)
-              },
-              null
+            {navBarOpen && (
+              <UilMultiply
+                className={styles.nav__toggle}
+                width={30}
+                height={30}
+                id="nav_toggle"
+                onClick={() => setNavBarOpen(false)}
+              />
             )}
-            {!navBarOpen && <UilApps
-              className={styles.nav__toggle}
-              id="nav_toggle"
-              onClick={() => setNavBarOpen(true)}
-              width={30}
-              height={30}
-            />}
-            {navBarOpen && <UilMultiply
-              className={styles.nav__toggle}
-              width={30}
-              height={30}
-              id="nav_toggle"
-              onClick={() => setNavBarOpen(false)}
-            />}
           </div>
         </nav>
       </header>

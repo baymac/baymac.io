@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 /* Orginally written in https://github.com/wsmd/use-clipboard-copy/blob/master/src/useTimedToggle.ts */
 

@@ -1,13 +1,13 @@
-import { useRouter } from "next/router";
-import MagicButton from "../components/MagicButton/MagicButton";
-import styles from "../styles/error.module.css";
+import { useRouter } from 'next/router';
+import MagicButton from '../components/MagicButton/MagicButton';
+import styles from '../styles/error.module.css';
 
 export default function FourOhFour() {
   const router = useRouter();
 
   const handleClick = (e) => {
     e.preventDefault();
-    router.push("/");
+    router.push('/');
   };
 
   return (
@@ -18,7 +18,7 @@ export default function FourOhFour() {
           <h3 className={styles.message}>This page could not be found.</h3>
         </div>
         <div className={styles.button_container}>
-          <MagicButton onClick={handleClick} label={"Go Back Home"} />
+          <MagicButton onClick={handleClick} label={'Go Back Home'} />
         </div>
       </div>
     </div>

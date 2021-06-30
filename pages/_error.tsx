@@ -1,4 +1,4 @@
-import styles from "../styles/error.module.css";
+import styles from '../styles/error.module.css';
 
 function Error({ statusCode }) {
   return (
@@ -6,7 +6,7 @@ function Error({ statusCode }) {
       <p>
         {statusCode
           ? `An error ${statusCode} occurred on server`
-          : "An error occurred on client"}
+          : 'An error occurred on client'}
       </p>
     </div>
   );

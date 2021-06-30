@@ -1,8 +1,8 @@
-import React, { ReactChildren, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import styles from "./modal.module.css";
-import { UilTimesCircle } from "@iconscout/react-unicons";
-import usePreventScroll from "../../hooks/usePreventScroll";
+import React, { ReactChildren, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import styles from './modal.module.css';
+import { UilTimesCircle } from '@iconscout/react-unicons';
+import usePreventScroll from '../../hooks/usePreventScroll';
 
 export interface IModalProps {
   open: boolean;
@@ -47,7 +47,7 @@ function Modal(props: IModalProps) {
   if (isBrowser) {
     return ReactDOM.createPortal(
       modalContent,
-      document.getElementById("modal-root")
+      document.getElementById('modal-root')
     );
   } else {
     return null;
