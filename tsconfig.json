@@ -19,7 +19,7 @@
     "**/*.ts",
     "**/*.tsx",
     "jest.config.js",
-    "tests/index.test.js",
+    "tests/nav.test.js",
     "jest.setup.js"
   ],
   "exclude": ["node_modules"]
