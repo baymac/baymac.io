@@ -17,6 +17,7 @@ export default function About() {
             <p className={styles.about__subtitle}>Software Engineer and open source enthusiast based out of Bengaluru, India</p>
             <div className={styles.about__img}>
                 <Image
+                    priority
                     src="/images/profile.jpeg"
                     height={300}
                     width={200}
