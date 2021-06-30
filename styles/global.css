@@ -30,9 +30,7 @@
 
   /*========== Colors ==========*/
   /* Change favorite color */
-  --hue-color: 230; /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
-
-  /* HSL color mode */
+  --hue-color: 230;
   /* Mostly used in navbar and main social links */
   /* Alternate to --first-color-lighter in dark mode */
   --first-color: hsl(230, 70%, 60%);
@@ -45,7 +43,7 @@
   /* All nav elements, blog button */
   --title-color: hsl(230, 0%, 0%);
   /* Blog Links Header */
-  --title-color-alt: hsl(230, 0%, 10%);
+  --title-color-alt: hsl(230, 57%, 48%);
   /* Home subtitle */
   --text-color: hsl(230, 8%, 45%);
   /* footer copy */
