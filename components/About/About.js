@@ -22,7 +22,8 @@ export default function About() {
                     width={200}
                     alt={"Parichay"}
                     layout="fixed"
-                    priority
+                    placeholder={"blur"}
+                    blurDataURL={"/images/profile-blur.png"}
                 />
             </div>
             <div className={styles.about__description}>
