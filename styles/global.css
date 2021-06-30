@@ -9,17 +9,9 @@
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 500 600;
   font-display: swap;
   src: url(/fonts/Inter-Medium.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(/fonts/Inter-SemiBold.woff2) format("woff2");
 }
 
 @font-face {
@@ -27,7 +19,7 @@
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(/fonts/Roboto-Light.ttf) format("truetype");
+  src: url(/fonts/Roboto-Light.woff2) format("woff2");
 }
 
 /*==================== GOOGLE FONTS ====================*/
@@ -52,6 +44,8 @@
   --first-color-lighter-alt: hsl(230, 20%, 30%);
   /* All nav elements, blog button */
   --title-color: hsl(230, 0%, 0%);
+  /* Blog Links Header */
+  --title-color-alt: hsl(230, 0%, 10%);
   /* Home subtitle */
   --text-color: hsl(230, 8%, 45%);
   /* footer copy */
@@ -137,10 +131,11 @@
   --first-color-alt: /*hsl(230, 57%, 75%)*/ hsl(211, 27%, 70%);
   --first-color-lighter: /*hsl(230, 70%, 60%)*/ hsl(210, 22%, 40%);
   --first-color-lighter-alt: /*hsl(230, 70%, 60%)*/ hsl(211, 27%, 90%);
-  --title-color: hsl(230, 8%, 95%);
-  --text-color: hsl(230, 8%, 75%);
+  --title-color: hsl(0, 0%, 95%);
+  --title-color-alt: hsl(217, 89%, 76%);
+  --text-color: hsl(213, 7%, 76%);
   --input-color: hsl(230, 29%, 16%);
-  --body-color: hsl(0, 0%, 16%);
+  --body-color: hsl(0, 0%, 13%);
   --default-bw: hsl(0, 0%, 0%);
   --scroll-bar-color: hsl(230, 12%, 48%);
   --scroll-thumb-color: hsl(230, 12%, 36%);

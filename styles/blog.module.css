@@ -45,11 +45,11 @@
 }
 
 .blog__postLink {
-  color: var(--title-color);
+  color: var(--title-color-alt);
 }
 
 .lightText {
-  color: var(--title-color);
+  color: var(--text-color);
 }
 
 .postDate {

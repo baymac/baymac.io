@@ -22,6 +22,7 @@ export default function About() {
                     width={200}
                     alt={"Parichay"}
                     layout="fixed"
+                    priority
                 />
             </div>
             <div className={styles.about__description}>
