@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext, ReactNode } from "react";
+import React, { useState, createContext, useContext, ReactNode } from 'react';
 
 export interface IAppContextValues {
   navBarOpen: boolean;
@@ -7,7 +7,7 @@ export interface IAppContextValues {
 
 const AppContext = createContext({
   setNavBarOpen: (_: boolean) => {},
-  navBarOpen: false,
+  navBarOpen: false
 });
 
 export function useAppContext() {
@@ -15,7 +15,7 @@ export function useAppContext() {
 }
 
 export default function AppContextProvider({
-  children,
+  children
 }: {
   children: ReactNode;
 }) {
@@ -23,7 +23,7 @@ export default function AppContextProvider({
 
   const value: IAppContextValues = {
     navBarOpen,
-    setNavBarOpen,
+    setNavBarOpen
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

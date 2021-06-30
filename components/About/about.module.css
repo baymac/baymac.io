@@ -37,9 +37,9 @@
   .about__container {
     grid-template-columns: 1fr 200px;
     grid-template-areas:
-      "title image"
-      "subtitle image"
-      "description image";
+      'title image'
+      'subtitle image'
+      'description image';
     grid-column-gap: 2rem;
   }
 

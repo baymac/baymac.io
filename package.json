@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky install",
+    "prettify": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "pre-commit": "yarn lint --fix && git add -A ."
   },
   "dependencies": {
     "@iconscout/react-unicons": "^1.1.6",
@@ -23,6 +27,11 @@
   "devDependencies": {
     "@types/node": "^15.12.4",
     "@types/react": "^17.0.11",
+    "eslint": "^7.29.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^6.0.0",
+    "prettier": "^2.3.2",
     "typescript": "^4.3.4"
   }
 }

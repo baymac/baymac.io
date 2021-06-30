@@ -1,8 +1,8 @@
-import styles from "./navlink.module.css";
-import NavbarLinks from "./NavbarLinks";
-import { useAppContext } from "../../context/AppContextProvider";
-import cn from "classnames";
-import usePreventScroll from "../../hooks/usePreventScroll";
+import styles from './navlink.module.css';
+import NavbarLinks from './NavbarLinks';
+import { useAppContext } from '../../context/AppContextProvider';
+import cn from 'classnames';
+import usePreventScroll from '../../hooks/usePreventScroll';
 
 export default function NavLinkMobile() {
   const { navBarOpen } = useAppContext();
@@ -14,7 +14,7 @@ export default function NavLinkMobile() {
       <div
         className={cn(styles.nav__menu, {
           [styles.nav__mobile_menu]: navBarOpen,
-          [styles.nav__menu_hidden]: !navBarOpen,
+          [styles.nav__menu_hidden]: !navBarOpen
         })}
       >
         <NavbarLinks />

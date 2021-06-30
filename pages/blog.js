@@ -1,18 +1,18 @@
 import cn from 'classnames';
-import Link from "next/link";
-import Date from "../components/Blog/Date";
+import Link from 'next/link';
+import Date from '../components/Blog/Date';
 import RootLayout from '../layouts/RootLayout';
-import { getSortedPostsData } from "../lib/posts";
-import blogStyles from "../styles/blog.module.css";
+import { getSortedPostsData } from '../lib/posts';
+import blogStyles from '../styles/blog.module.css';
 import rootStyles from '../styles/root.module.css';
 
 export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData,
-    },
-  }
+      allPostsData
+    }
+  };
 }
 
 export default function Blog({ allPostsData }) {
@@ -43,5 +43,5 @@ export default function Blog({ allPostsData }) {
         </div>
       </section>
     </RootLayout>
-  )
+  );
 }

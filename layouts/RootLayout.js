@@ -1,10 +1,9 @@
-import Head from "next/head";
-import Footer from "../components/Footer/Footer";
-import Nav from "../components/Nav/Nav";
-import styles from "../styles/root.module.css";
+import Head from 'next/head';
+import Footer from '../components/Footer/Footer';
+import Nav from '../components/Nav/Nav';
+import styles from '../styles/root.module.css';
 
 export default function Root({ children }) {
-
   return (
     <div className={styles.root}>
       <Head>

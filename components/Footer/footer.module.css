@@ -75,12 +75,12 @@
   color: var(--inverted-bw);
   display: grid;
   grid-template-columns: 1fr 4rem;
-  grid-template-areas: "address copy";
+  grid-template-areas: 'address copy';
   grid-column-gap: 2rem;
   max-height: max-content;
   letter-spacing: 1px;
   padding: 1rem;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   font-weight: var(--font-medium);
 }
 

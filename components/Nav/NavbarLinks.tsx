@@ -1,8 +1,8 @@
-import { UilHome, UilMessage, UilPen } from "@iconscout/react-unicons";
-import cn from "classnames";
-import Link from "next/link";
-import { useAppContext } from "../../context/AppContextProvider";
-import styles from "./navlink.module.css";
+import { UilHome, UilMessage, UilPen } from '@iconscout/react-unicons';
+import cn from 'classnames';
+import Link from 'next/link';
+import { useAppContext } from '../../context/AppContextProvider';
+import styles from './navlink.module.css';
 
 export default function NavBarLinks() {
   const { setNavBarOpen } = useAppContext();
