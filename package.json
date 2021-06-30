@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "pre-commit": "yarn lint --fix && git add -A .",
-    "prettify": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "prettify": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "pre-commit": "yarn lint --fix && yarn prettify && git add -A ."
   },
   "dependencies": {
     "@iconscout/react-unicons": "^1.1.6",
