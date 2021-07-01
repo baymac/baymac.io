@@ -73,6 +73,10 @@
     display: none;
   }
 
+  .hide_big_screen {
+    display: none;
+  }
+
   .nav__menu_bigscreen_wrapper {
     display: block;
     margin-left: auto;

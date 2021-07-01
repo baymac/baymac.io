@@ -38,7 +38,7 @@ export default function NavBarLinks() {
           </a>
         </Link>
       </li>
-      <li className={styles.nav__item}>
+      <li className={cn(styles.nav__item, styles.hide_big_screen)}>
         <Link href="/?buymecrypto=1" as="/buymecrypto" scroll={false}>
           <a className={styles.nav__link} onClick={() => setNavBarOpen(false)}>
             <UilBitcoinCircle className={styles.nav__icon} />
