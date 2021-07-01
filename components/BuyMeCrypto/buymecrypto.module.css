@@ -24,7 +24,7 @@
 .footer__crypto_address_text {
   grid-row: 1;
   grid-column: 1 / -1;
-  word-wrap: break-word;
+  word-break: break-all;
   padding-right: 2.3rem;
 }
 
