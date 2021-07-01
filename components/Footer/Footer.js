@@ -1,28 +1,19 @@
 import {
-  UilCopy,
   UilGithub,
-  UilLinkedin,
-  UilCheckCircle
+  UilLinkedin
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
-import React, { createElement, useState } from 'react';
-import Modal from '../Modal/Modal';
+import { useRouter } from 'next/router';
+import React from 'react';
 import rootStyles from '../../styles/root.module.css';
+import BuyMeCrypto from '../BuyMeCrypto/BuyMeCrypto';
+import Modal from '../Modal/Modal';
 import footerStyles from './footer.module.css';
-import useCopy from '../../hooks/useCopy';
-import Snackbar from '../Snackbar/Snackbar';
 
 export default function Footer() {
-  const [showCryptoAddress, setShowCryptoAddress] = useState(false);
-  const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const [handleCopy, copied] = useCopy('bitcoin-address', 5000);
-
-  const handleCopyClick = () => {
-    handleCopy();
-    setShowSnackbar(true);
-  };
+  const router = useRouter()
 
   return (
     <footer className={footerStyles.footer}>
@@ -63,12 +54,13 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <a
-                onClick={() => setShowCryptoAddress(true)}
-                className={footerStyles.footer__link}
-              >
-                Buy Me Crypto
-              </a>
+              <Link href="/?buymecrypto=1" as={"/buymecrypto"}>
+                <a
+                  className={footerStyles.footer__link}
+                >
+                  Buy Me Crypto
+                </a>
+              </Link>
             </li>
           </ul>
           <div className={footerStyles.footer__social}>
@@ -97,48 +89,13 @@ export default function Footer() {
         </div>
       </div>
       <Modal
-        open={showCryptoAddress}
-        handleClose={() => setShowCryptoAddress(false)}
+        open={!!router.query.buymecrypto}
+        handleClose={() => {
+          router.push("/")
+        }}
       >
-        <div className={footerStyles.footer__crypto}>
-          <p className={footerStyles.footer__crypto_label}>Bitcoin Address</p>
-          <div className={footerStyles.footer__crypto_address}>
-            <div
-              className={footerStyles.footer__crypto_address_text}
-              id="bitcoin-address"
-            >
-              bc1qvrl9t4d9gk438v4k3qfwdj2kqquzma2ses7tqw
-            </div>
-            {!copied ? (
-              <UilCopy
-                onClick={handleCopyClick}
-                className={cn(
-                  footerStyles.footer__crypto_icon,
-                  footerStyles.footer__crypto_copy_icon
-                )}
-              />
-            ) : (
-              <UilCheckCircle
-                className={cn(
-                  footerStyles.footer__crypto_icon,
-                  footerStyles.footer__crypto_copied_icon
-                )}
-              />
-            )}
-          </div>
-        </div>
+        <BuyMeCrypto />
       </Modal>
-      {showSnackbar &&
-        createElement(
-          Snackbar,
-          {
-            message: 'Copied!',
-            show: showSnackbar,
-            reset: setShowSnackbar,
-            duration: 1500
-          },
-          null
-        )}
     </footer>
   );
 }
