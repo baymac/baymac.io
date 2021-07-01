@@ -61,46 +61,6 @@
   color: var(--inverted-bw);
 }
 
-.footer__crypto {
-  flex: 0 0 auto;
-  margin: 0;
-}
-
-.footer__crypto_label {
-  margin-bottom: 1rem;
-}
-
-.footer__crypto_address {
-  background-color: var(--first-color-lighter);
-  color: var(--inverted-bw);
-  display: grid;
-  grid-template-columns: 1fr 4rem;
-  grid-template-areas: 'address copy';
-  grid-column-gap: 2rem;
-  max-height: max-content;
-  letter-spacing: 1px;
-  padding: 1rem;
-  font-family: 'Roboto Mono', monospace;
-  font-weight: var(--font-medium);
-}
-
-.footer__crypto_address_text {
-  grid-row: 1;
-  grid-column: 1 / -1;
-  word-wrap: break-word;
-  padding-right: 2.3rem;
-}
-
-.footer__crypto_icon {
-  grid-area: copy;
-  justify-self: right;
-}
-
-.footer__crypto_copy_icon {
-  grid-area: copy;
-  justify-self: right;
-}
-
 @media screen and (min-width: 351px) {
   .footer__container {
     padding: 0 var(--mb-1-5);
@@ -121,14 +81,6 @@
   .footer__links_2 {
     cursor: pointer;
     font-size: var(--h4-font-size);
-  }
-
-  .footer__crypto_copy_icon {
-    cursor: pointer;
-  }
-
-  .footer__crypto_copied_icon {
-    cursor: no-drop;
   }
 
   .footer__links_2 {
