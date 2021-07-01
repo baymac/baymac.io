@@ -54,7 +54,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/?buymecrypto=1" as={"/buymecrypto"}>
+              <Link href="/?buymecrypto=1" as={"/buymecrypto"} scroll={false}>
                 <a
                   className={footerStyles.footer__link}
                 >
@@ -91,7 +91,7 @@ export default function Footer() {
       <Modal
         open={!!router.query.buymecrypto}
         handleClose={() => {
-          router.push("/")
+          router.push("/", "/", { scroll: false })
         }}
       >
         <BuyMeCrypto />
