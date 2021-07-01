@@ -1,4 +1,9 @@
-import { UilHome, UilMessage, UilPen } from '@iconscout/react-unicons';
+import {
+  UilBitcoinCircle,
+  UilHome,
+  UilMessage,
+  UilPen
+} from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
 import { useAppContext } from '../../context/AppContextProvider';
@@ -30,6 +35,14 @@ export default function NavBarLinks() {
           <a className={styles.nav__link} onClick={() => setNavBarOpen(false)}>
             <UilPen className={styles.nav__icon} />
             Blog
+          </a>
+        </Link>
+      </li>
+      <li className={styles.nav__item}>
+        <Link href="/?buymecrypto=1" as="/buymecrypto" scroll={false}>
+          <a className={styles.nav__link} onClick={() => setNavBarOpen(false)}>
+            <UilBitcoinCircle className={styles.nav__icon} />
+            Buy Me Crypto
           </a>
         </Link>
       </li>

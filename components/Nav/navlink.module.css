@@ -26,9 +26,20 @@
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 350px) {
+  .nav__list {
+    padding: var(--mb-1) var(--mb-1);
+  }
+}
+
+@media screen and (min-width: 351px) {
   .nav__list {
     padding: var(--mb-1) var(--mb-1-5);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav__list {
     flex-direction: column;
   }
 
