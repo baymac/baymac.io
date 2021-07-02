@@ -19,6 +19,21 @@
   padding-bottom: var(--mb-1);
 }
 
+.nav__toggle,
+.nav__changeTheme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: 1px solid var(--header-color);
+  padding: 0.2rem 0.2rem;
+  border-radius: 0.3rem;
+}
+
+.nav__changeTheme:hover {
+  border: 1px solid var(--nav-items-hover-color);
+}
+
 .nav__logo,
 .nav__toggle,
 .nav__changeTheme {

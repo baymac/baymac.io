@@ -46,18 +46,20 @@ export default function Nav() {
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
             {mounted &&
-              createElement(
-                resolvedTheme === 'dark' ? UilSun : UilMoon,
-                {
-                  className: cn(styles.nav__changeTheme),
-                  id: 'theme-button',
-                  onClick: () =>
-                    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
-                  width: 30,
-                  height: 30
-                },
-                null
-              )}
+              createElement('button', {
+                className: cn(styles.nav__changeTheme),
+                onClick: () =>
+                  setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
+              },
+                createElement(
+                  resolvedTheme === 'dark' ? UilSun : UilMoon,
+                  {
+                    id: 'theme-button',
+                    width: 30,
+                    height: 30
+                  },
+                  null
+                ))}
             {!mounted &&
               createElement(
                 'div',
@@ -67,22 +69,23 @@ export default function Nav() {
                 null
               )}
             {!navBarOpen && (
-              <UilApps
-                className={styles.nav__toggle}
-                id="nav_toggle"
-                onClick={() => setNavBarOpen(true)}
-                width={30}
-                height={30}
-              />
+              <button onClick={() => setNavBarOpen(true)} className={styles.nav__toggle}>
+                <UilApps
+                  id="nav_toggle"
+                  width={30}
+                  height={30}
+                />
+              </button>
             )}
             {navBarOpen && (
-              <UilMultiply
-                className={styles.nav__toggle}
-                width={30}
-                height={30}
-                id="nav_toggle"
-                onClick={() => setNavBarOpen(false)}
-              />
+              <button className={styles.nav__toggle}
+                onClick={() => setNavBarOpen(false)}>
+                <UilMultiply
+                  width={30}
+                  height={30}
+                  id="nav_toggle"
+                />
+              </button>
             )}
           </div>
         </nav>
