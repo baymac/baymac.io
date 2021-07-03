@@ -35,7 +35,7 @@ export default function Nav() {
           {!router.pathname.startsWith('/posts') && (
             <Link href="/" passHref>
               <button className={styles.nav__logo_button}>
-                <a className={styles.nav__logo}>
+                <a className={styles.nav__logo} aria-label="logo">
                   <Logo />
                 </a>
               </button>
@@ -44,7 +44,7 @@ export default function Nav() {
           {router.pathname.startsWith('/posts') && (
             <Link href={`/blog`} passHref>
               <button className={styles.nav__logo_button}>
-                <a className={styles.nav__logo}>
+                <a className={styles.nav__logo} aria-label="back">
                   <UilArrowLeft />
                 </a>
               </button>
