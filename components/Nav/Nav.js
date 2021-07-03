@@ -34,19 +34,19 @@ export default function Nav() {
         <nav className={cn(styles.nav, rootStyles.container)}>
           {!router.pathname.startsWith('/posts') && (
             <Link href="/" passHref>
-              <button className={styles.nav__logo_button}>
-                <a className={styles.nav__logo} aria-label="logo">
+              <button className={styles.nav__logo_button} >
+                <div className={styles.nav__logo} aria-label="logo">
                   <Logo />
-                </a>
+                </div>
               </button>
             </Link>
           )}
           {router.pathname.startsWith('/posts') && (
             <Link href={`/blog`} passHref>
               <button className={styles.nav__logo_button}>
-                <a className={styles.nav__logo} aria-label="back">
+                <div className={styles.nav__logo} aria-label="back">
                   <UilArrowLeft />
-                </a>
+                </div>
               </button>
             </Link>
           )}
