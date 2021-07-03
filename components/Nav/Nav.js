@@ -57,7 +57,7 @@ export default function Nav() {
                 className: cn(styles.nav__changeTheme),
                 onClick: () =>
                   setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
-                ariaLabe: 'change-theme-button'
+                'aria-label': 'change-theme-button'
               },
                 createElement(
                   resolvedTheme === 'dark' ? UilSun : UilMoon,
