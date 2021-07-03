@@ -15,6 +15,7 @@ import styles from './nav.module.css';
 import NavLinkMobile from './NavLinkMobile.tsx';
 import NavLinkBigScreen from './NavLinkBigScreen.tsx';
 import { useTheme } from 'next-themes';
+import Logo from '../Logo/Logo';
 
 export default function Nav() {
   const { navBarOpen, setNavBarOpen } = useAppContext();
@@ -32,32 +33,41 @@ export default function Nav() {
       <header className={styles.header}>
         <nav className={cn(styles.nav, rootStyles.container)}>
           {!router.pathname.startsWith('/posts') && (
-            <Link href="/">
-              <a className={styles.nav__logo}>PB</a>
+            <Link href="/" passHref>
+              <button className={styles.nav__logo_button} aria-label="logo-button">
+                <div className={styles.nav__logo} >
+                  <Logo />
+                </div>
+              </button>
             </Link>
           )}
           {router.pathname.startsWith('/posts') && (
-            <Link href={`/blog`}>
-              <a className={styles.nav__logo}>
-                <UilArrowLeft />
-              </a>
+            <Link href={`/blog`} passHref>
+              <button className={styles.nav__logo_button} aria-label="back-button">
+                <div className={styles.nav__logo} >
+                  <UilArrowLeft />
+                </div>
+              </button>
             </Link>
           )}
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
             {mounted &&
-              createElement(
-                resolvedTheme === 'dark' ? UilSun : UilMoon,
-                {
-                  className: cn(styles.nav__changeTheme),
-                  id: 'theme-button',
-                  onClick: () =>
-                    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
-                  width: 30,
-                  height: 30
-                },
-                null
-              )}
+              createElement('button', {
+                className: cn(styles.nav__changeTheme),
+                onClick: () =>
+                  setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
+                'aria-label': 'change-theme-button'
+              },
+                createElement(
+                  resolvedTheme === 'dark' ? UilSun : UilMoon,
+                  {
+                    id: 'theme-button',
+                    width: 30,
+                    height: 30
+                  },
+                  null
+                ))}
             {!mounted &&
               createElement(
                 'div',
@@ -67,22 +77,24 @@ export default function Nav() {
                 null
               )}
             {!navBarOpen && (
-              <UilApps
-                className={styles.nav__toggle}
-                id="nav_toggle"
-                onClick={() => setNavBarOpen(true)}
-                width={30}
-                height={30}
-              />
+              <button onClick={() => setNavBarOpen(true)} className={styles.nav__toggle} aria-label="nav-open-button">
+                <UilApps
+                  id="nav_toggle"
+                  width={30}
+                  height={30}
+                />
+              </button>
             )}
             {navBarOpen && (
-              <UilMultiply
-                className={styles.nav__toggle}
-                width={30}
-                height={30}
-                id="nav_toggle"
+              <button className={styles.nav__toggle}
                 onClick={() => setNavBarOpen(false)}
-              />
+                aria-label="nav-close-button">
+                <UilMultiply
+                  width={30}
+                  height={30}
+                  id="nav_toggle"
+                />
+              </button>
             )}
           </div>
         </nav>
