@@ -34,8 +34,8 @@ export default function Nav() {
         <nav className={cn(styles.nav, rootStyles.container)}>
           {!router.pathname.startsWith('/posts') && (
             <Link href="/" passHref>
-              <button className={styles.nav__logo_button} >
-                <div className={styles.nav__logo} aria-label="logo">
+              <button className={styles.nav__logo_button} aria-label="logo-button">
+                <div className={styles.nav__logo} >
                   <Logo />
                 </div>
               </button>
@@ -43,8 +43,8 @@ export default function Nav() {
           )}
           {router.pathname.startsWith('/posts') && (
             <Link href={`/blog`} passHref>
-              <button className={styles.nav__logo_button}>
-                <div className={styles.nav__logo} aria-label="back">
+              <button className={styles.nav__logo_button} aria-label="back-button">
+                <div className={styles.nav__logo} >
                   <UilArrowLeft />
                 </div>
               </button>
@@ -57,6 +57,7 @@ export default function Nav() {
                 className: cn(styles.nav__changeTheme),
                 onClick: () =>
                   setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
+                ariaLabe: 'change-theme-button'
               },
                 createElement(
                   resolvedTheme === 'dark' ? UilSun : UilMoon,
@@ -76,7 +77,7 @@ export default function Nav() {
                 null
               )}
             {!navBarOpen && (
-              <button onClick={() => setNavBarOpen(true)} className={styles.nav__toggle}>
+              <button onClick={() => setNavBarOpen(true)} className={styles.nav__toggle} aria-label="nav-open-button">
                 <UilApps
                   id="nav_toggle"
                   width={30}
@@ -86,7 +87,8 @@ export default function Nav() {
             )}
             {navBarOpen && (
               <button className={styles.nav__toggle}
-                onClick={() => setNavBarOpen(false)}>
+                onClick={() => setNavBarOpen(false)}
+                aria-label="nav-close-button">
                 <UilMultiply
                   width={30}
                   height={30}
