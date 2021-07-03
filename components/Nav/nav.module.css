@@ -20,7 +20,8 @@
 }
 
 .nav__toggle,
-.nav__changeTheme {
+.nav__changeTheme,
+.nav__logo_button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +31,12 @@
   border-radius: 0.3rem;
 }
 
-.nav__changeTheme:hover {
+.nav__logo_button {
+  padding: 0;
+}
+
+.nav__changeTheme:hover,
+.nav__logo_button:hover {
   border: 1px solid var(--nav-items-hover-color);
 }
 
@@ -131,10 +137,13 @@
 
   .nav__logo {
     display: flex;
-    height: 2rem;
     justify-content: center;
     align-items: center;
     position: relative;
+  }
+
+  .nav__logo {
+    font-size: var(--h4-font-size);
   }
 
   .header {
@@ -154,5 +163,10 @@
 
   .nav__changeTheme {
     margin: 0;
+  }
+
+  .nav__logo_button {
+    padding: 0.4rem 0.4rem;
+    cursor: pointer;
   }
 }

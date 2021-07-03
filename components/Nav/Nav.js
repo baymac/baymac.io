@@ -15,6 +15,7 @@ import styles from './nav.module.css';
 import NavLinkMobile from './NavLinkMobile.tsx';
 import NavLinkBigScreen from './NavLinkBigScreen.tsx';
 import { useTheme } from 'next-themes';
+import Image from 'next/image';
 
 export default function Nav() {
   const { navBarOpen, setNavBarOpen } = useAppContext();
@@ -31,16 +32,29 @@ export default function Nav() {
     <>
       <header className={styles.header}>
         <nav className={cn(styles.nav, rootStyles.container)}>
+
           {!router.pathname.startsWith('/posts') && (
-            <Link href="/">
-              <a className={styles.nav__logo}>PB</a>
+            <Link href="/" passHref>
+              <button className={styles.nav__logo_button}>
+                <a className={styles.nav__logo}><Image
+                  src={'/PB.svg'}
+                  priority
+                  height={24}
+                  width={24}
+                  alt={'logo'}
+                  layout="fixed"
+                />
+                </a>
+              </button>
             </Link>
           )}
           {router.pathname.startsWith('/posts') && (
-            <Link href={`/blog`}>
-              <a className={styles.nav__logo}>
-                <UilArrowLeft />
-              </a>
+            <Link href={`/blog`} passHref>
+              <button className={styles.nav__logo_button}>
+                <a className={styles.nav__logo}>
+                  <UilArrowLeft />
+                </a>
+              </button>
             </Link>
           )}
           <NavLinkBigScreen />

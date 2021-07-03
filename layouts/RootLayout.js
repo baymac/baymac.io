@@ -7,7 +7,7 @@ export default function Root({ children }) {
   return (
     <div className={styles.root}>
       <Head>
-        <link rel="icon" href="logo.svg" />
+        <link rel="icon" href="PB.svg" />
         <meta
           name="description"
           content="Parichay's personal website using Next.js"
