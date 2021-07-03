@@ -5,7 +5,7 @@ import {
 import cn from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
+import { useEffect, useRef } from 'react';
 import rootStyles from '../../styles/root.module.css';
 import BuyMeCrypto from '../BuyMeCrypto/BuyMeCrypto';
 import Modal from '../Modal/Modal';
@@ -14,6 +14,18 @@ import footerStyles from './footer.module.css';
 export default function Footer() {
 
   const router = useRouter()
+
+  // Using this ref to redirect to the prevRoute in case of buymecrypto
+  const prevRoute = useRef(router.asPath === '/buymecrypto' || router.asPath.includes('?') ? '/' : router.asPath)
+
+  useEffect(() => {
+    // In case of ?buymecrypto=1, we are preventing prevRoute change and set it to / as the default value so that modal can be closed.
+    if (router.asPath !== '/buymecrypto' && !router.asPath.includes('?')) {
+      prevRoute.current = router.asPath
+    }
+  }, [router])
+
+  console.log(router)
 
   return (
     <footer className={footerStyles.footer}>
@@ -54,7 +66,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/?buymecrypto=1" as={"/buymecrypto"} scroll={false}>
+              <Link href={`${prevRoute.current}?buymecrypto=1`} as={"/buymecrypto"} scroll={false}>
                 <a
                   className={footerStyles.footer__link}
                 >
@@ -91,7 +103,7 @@ export default function Footer() {
       <Modal
         open={!!router.query.buymecrypto}
         handleClose={() => {
-          router.push("/", "/", { scroll: false })
+          router.push(prevRoute.current, prevRoute.current, { scroll: false })
         }}
       >
         <BuyMeCrypto />
