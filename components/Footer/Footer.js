@@ -11,6 +11,7 @@ import BuyMeCrypto from '../BuyMeCrypto/BuyMeCrypto';
 import Modal from '../Modal/Modal';
 import footerStyles from './footer.module.css';
 
+
 export default function Footer() {
 
   const router = useRouter()
@@ -24,8 +25,6 @@ export default function Footer() {
       prevRoute.current = router.asPath
     }
   }, [router])
-
-  console.log(router)
 
   return (
     <footer className={footerStyles.footer}>
