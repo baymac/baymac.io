@@ -37,7 +37,7 @@ export default function Nav() {
             <Link href="/" passHref>
               <button className={styles.nav__logo_button}>
                 <a className={styles.nav__logo}><Image
-                  src={'/PB.svg'}
+                  src={'/images/logo.svg'}
                   priority
                   height={24}
                   width={24}
