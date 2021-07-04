@@ -101,6 +101,10 @@
   }
 }
 
+.nav__logo_button {
+  padding: 0.4rem 0.4rem;
+}
+
 @media screen and (max-width: 600px) {
   .nav__btns {
     gap: 1rem;
@@ -166,7 +170,6 @@
   }
 
   .nav__logo_button {
-    padding: 0.4rem 0.4rem;
     cursor: pointer;
   }
 }
