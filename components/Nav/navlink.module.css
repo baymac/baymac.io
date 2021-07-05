@@ -35,6 +35,7 @@
 @media screen and (min-width: 351px) {
   .nav__list {
     padding: var(--mb-1) var(--mb-1-5);
+    padding-top: 0.25rem;
   }
 }
 
@@ -62,9 +63,12 @@
   }
 
   .nav__item {
-    padding-bottom: 2rem;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 4rem;
+    border-bottom: 0.1px solid grey;
   }
 }
 
@@ -96,5 +100,9 @@
 
   .nav__icon {
     display: none;
+  }
+
+  .nav__item {
+    cursor: pointer;
   }
 }

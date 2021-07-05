@@ -14,38 +14,41 @@ export default function NavBarLinks() {
 
   return (
     <ul className={cn(styles.nav__list)}>
-      <li className={styles.nav__item}>
-        <Link href="/">
-          <a className={styles.nav__link} onClick={() => setNavBarOpen(false)}>
+      <Link href="/" passHref>
+        <li className={styles.nav__item} onClick={() => setNavBarOpen(false)}>
+          <a className={styles.nav__link}>
             <UilHome className={styles.nav__icon} />
             Home
           </a>
-        </Link>
-      </li>
-      <li className={styles.nav__item}>
-        <Link href="/about">
-          <a className={styles.nav__link} onClick={() => setNavBarOpen(false)}>
+        </li>
+      </Link>
+      <Link href="/about" passHref>
+        <li className={styles.nav__item} onClick={() => setNavBarOpen(false)}>
+          <a className={styles.nav__link}>
             <UilMessage className={styles.nav__icon} />
             About
           </a>
-        </Link>
-      </li>
-      <li className={styles.nav__item}>
-        <Link href="/blog">
-          <a className={styles.nav__link} onClick={() => setNavBarOpen(false)}>
+        </li>
+      </Link>
+      <Link href="/blog" passHref>
+        <li className={styles.nav__item} onClick={() => setNavBarOpen(false)}>
+          <a className={styles.nav__link}>
             <UilPen className={styles.nav__icon} />
             Blog
           </a>
-        </Link>
-      </li>
-      <li className={cn(styles.nav__item, styles.hide_big_screen)}>
-        <Link href="/?buymecrypto=1" as="/buymecrypto" scroll={false}>
-          <a className={styles.nav__link} onClick={() => setNavBarOpen(false)}>
+        </li>
+      </Link>
+      <Link href="/?buymecrypto=1" as="/buymecrypto" scroll={false} passHref>
+        <li
+          className={cn(styles.nav__item, styles.hide_big_screen)}
+          onClick={() => setNavBarOpen(false)}
+        >
+          <a className={styles.nav__link}>
             <UilBitcoinCircle className={styles.nav__icon} />
             Buy Me Crypto
           </a>
-        </Link>
-      </li>
+        </li>
+      </Link>
     </ul>
   );
 }
