@@ -67,6 +67,8 @@
   --nav-items-hover-color: hsl(230, 90%, 92%);
   --error-color: hsl(350, 100%, 56%);
   --footer-border-color: hsl(0, 0%, 70%);
+  --nav-items-select-color: hsl(230, 70%, 90%);
+  --nav-items-divider-color: hsl(0, 0%, 60%);
 
   /*========== Font and typography ==========*/
   --body-font: 'Inter', sans-serif;
@@ -121,6 +123,12 @@
   }
 }
 
+@media screen and (min-width: 600px) {
+  :root {
+    --nav-items-select-color: hsl(230, 70%, 70%);
+  }
+}
+
 /*========== Variables Dark theme ==========*/
 
 [data-theme='dark'] {
@@ -144,6 +152,8 @@
   --nav-items-hover-color: hsl(210, 90%, 92%);
   --error-color: hsl(350, 79%, 59%);
   --footer-border-color: hsl(0, 0%, 40%);
+  --nav-items-select-color: hsl(0, 0%, 20%);
+  --nav-items-divider-color: hsl(0, 0%, 30%);
 }
 
 /*========== Button Dark/Light ==========*/
