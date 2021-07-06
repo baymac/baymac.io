@@ -6,10 +6,45 @@ import {
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
+import { createElement } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
 import useModalRouteRedirect from '../../hooks/useModalRouteRedirect';
 import useNavSelection from '../../hooks/useNavSelection';
 import styles from './navlink.module.css';
+
+export interface INavItem {
+  label: string;
+  path?: string;
+  selector: string;
+  icon: any;
+}
+
+const navItems: INavItem[] = [
+  {
+    label: 'Home',
+    icon: UilHome,
+    path: '/',
+    selector: 'home'
+  },
+  {
+    label: 'Blog',
+    path: '/blog',
+    icon: UilPen,
+    selector: 'blog'
+  },
+  {
+    label: 'About',
+    path: '/about',
+    icon: UilMessage,
+    selector: 'about'
+  }
+];
+
+const buyMeCryptoNavItem: INavItem = {
+  label: 'Buy Me Crypto',
+  icon: UilBitcoinCircle,
+  selector: 'buymecrypto'
+};
 
 export default function NavBarLinks() {
   const { setNavBarOpen } = useAppContext();
@@ -20,60 +55,50 @@ export default function NavBarLinks() {
 
   return (
     <>
-      <ul className={cn(styles.nav__list)}>
-        <Link href="/" passHref>
-          <li
-            className={cn(styles.nav__item, {
-              [styles.nav__item_selected]: selectedMenu === 'home'
-            })}
-            onClick={() => setNavBarOpen(false)}
-          >
-            <a className={styles.nav__link}>
-              <UilHome className={styles.nav__icon} />
-              Home
+      <div className={cn(styles.nav__list)}>
+        {navItems.map((navItem) => (
+          <Link href={`${navItem.path}`} key={navItem.label}>
+            <a
+              className={cn(styles.nav__item, {
+                [styles.nav__item_selected]:
+                  selectedMenu === `${navItem.selector}`
+              })}
+              onClick={() => setNavBarOpen(false)}
+            >
+              <span className={styles.nav__link}>
+                {createElement(
+                  navItem.icon,
+                  { className: styles.nav__icon },
+                  null
+                )}
+                {navItem.label}
+              </span>
             </a>
-          </li>
-        </Link>
-        <Link href="/about" passHref>
-          <li
-            className={cn(styles.nav__item, {
-              [styles.nav__item_selected]: selectedMenu === 'about'
-            })}
+          </Link>
+        ))}
+        <Link href={`${hrefRoute}`} as={asRoute} scroll={false}>
+          <a
             onClick={() => setNavBarOpen(false)}
+            className={cn(
+              styles.nav__item,
+              {
+                [styles.nav__item_selected]:
+                  selectedMenu === `${buyMeCryptoNavItem.label}`
+              },
+              styles.hide_big_screen
+            )}
           >
-            <a className={styles.nav__link}>
-              <UilMessage className={styles.nav__icon} />
-              About
-            </a>
-          </li>
+            <span className={styles.nav__link}>
+              {createElement(
+                buyMeCryptoNavItem.icon,
+                { className: styles.nav__icon },
+                null
+              )}
+              {buyMeCryptoNavItem.label}
+            </span>
+          </a>
         </Link>
-        <Link href="/blog" passHref>
-          <li
-            className={cn(styles.nav__item, {
-              [styles.nav__item_selected]: selectedMenu === 'blog'
-            })}
-            onClick={() => setNavBarOpen(false)}
-          >
-            <a className={styles.nav__link}>
-              <UilPen className={styles.nav__icon} />
-              Blog
-            </a>
-          </li>
-        </Link>
-        <Link href={`${hrefRoute}`} as={asRoute} scroll={false} passHref>
-          <li
-            className={cn(styles.nav__item, styles.hide_big_screen, {
-              [styles.nav__item_selected]: selectedMenu === 'buymecrypto'
-            })}
-            onClick={() => setNavBarOpen(false)}
-          >
-            <a className={styles.nav__link}>
-              <UilBitcoinCircle className={styles.nav__icon} />
-              Buy Me Crypto
-            </a>
-          </li>
-        </Link>
-      </ul>
+      </div>
     </>
   );
 }
