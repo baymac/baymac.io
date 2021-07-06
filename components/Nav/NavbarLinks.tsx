@@ -7,18 +7,16 @@ import {
 import cn from 'classnames';
 import Link from 'next/link';
 import { useAppContext } from '../../context/AppContextProvider';
-import useModalRoute from '../../hooks/useModalRoute';
+import useModalRouteRedirect from '../../hooks/useModalRouteRedirect';
 import useNavSelection from '../../hooks/useNavSelection';
-import BuyMeCrypto from '../BuyMeCrypto/BuyMeCrypto';
-import Modal from '../Modal/Modal';
 import styles from './navlink.module.css';
 
 export default function NavBarLinks() {
   const { setNavBarOpen } = useAppContext();
 
   const [selectedMenu] = useNavSelection();
-
-  const [prevRoute, isOpen, handleClose] = useModalRoute('/buymecrypto');
+  // eslint-disable-next-line no-unused-vars
+  const [_, hrefRoute, asRoute] = useModalRouteRedirect('buymecrypto');
 
   return (
     <>
@@ -62,12 +60,7 @@ export default function NavBarLinks() {
             </a>
           </li>
         </Link>
-        <Link
-          href={`${prevRoute}?buymecrypto=1`}
-          as="/buymecrypto"
-          scroll={false}
-          passHref
-        >
+        <Link href={`${hrefRoute}`} as={asRoute} scroll={false} passHref>
           <li
             className={cn(styles.nav__item, styles.hide_big_screen, {
               [styles.nav__item_selected]: selectedMenu === 'buymecrypto'
@@ -81,10 +74,6 @@ export default function NavBarLinks() {
           </li>
         </Link>
       </ul>
-      <Modal open={isOpen} handleClose={handleClose}>
-        {/*@ts-ignore*/}
-        <BuyMeCrypto />
-      </Modal>
     </>
   );
 }

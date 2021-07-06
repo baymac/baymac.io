@@ -1,14 +1,13 @@
 import { UilGithub, UilLinkedin } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
+import useModalRouteRedirect from '../../hooks/useModalRouteRedirect';
 import rootStyles from '../../styles/root.module.css';
-import BuyMeCrypto from '../BuyMeCrypto/BuyMeCrypto';
-import Modal from '../Modal/Modal';
 import footerStyles from './footer.module.css';
-import useModalRoute from '../../hooks/useModalRoute';
 
 export default function Footer() {
-  const [prevRoute, isOpen, handleClose] = useModalRoute('/buymecrypto');
+  // eslint-disable-next-line no-unused-vars
+  const [_, hrefRoute, asRoute] = useModalRouteRedirect('buymecrypto');
 
   return (
     <footer className={footerStyles.footer}>
@@ -49,11 +48,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link
-                href={`${prevRoute}?buymecrypto=1`}
-                as={'/buymecrypto'}
-                scroll={false}
-              >
+              <Link href={`${hrefRoute}`} as={asRoute} scroll={false}>
                 <a className={footerStyles.footer__link}>Buy Me Crypto</a>
               </Link>
             </li>
@@ -83,10 +78,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <Modal open={isOpen} handleClose={handleClose}>
-        {/*@ts-ignore*/}
-        <BuyMeCrypto />
-      </Modal>
     </footer>
   );
 }
