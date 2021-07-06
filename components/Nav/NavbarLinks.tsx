@@ -6,29 +6,14 @@ import {
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
+import useNavSelection from '../../hooks/useNavSelection';
 import styles from './navlink.module.css';
 
 export default function NavBarLinks() {
   const { setNavBarOpen } = useAppContext();
 
-  const router = useRouter();
-
-  const [selectedMenu, setSelectedMenu] = useState('home');
-
-  useEffect(() => {
-    if (router.asPath === '/') {
-      setSelectedMenu('home');
-    } else if (router.asPath === '/blog') {
-      setSelectedMenu('blog');
-    } else if (router.asPath === '/about') {
-      setSelectedMenu('about');
-    } else if (router.asPath === '/buymecrypto') {
-      setSelectedMenu('buymecrypto');
-    }
-  }, [router]);
+  const [selectedMenu] = useNavSelection();
 
   return (
     <ul className={cn(styles.nav__list)}>
