@@ -36,6 +36,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
           <div id="modal-root"></div>
+          <script async src="https://cdn.requestmetrics.com/agent/current/rm.js" data-rm-token="h7tm5jr:q8gi9kf"></script>
         </body>
       </Html>
     );
