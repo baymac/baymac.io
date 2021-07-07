@@ -29,3 +29,11 @@
   margin-top: 1rem;
   justify-self: center;
 }
+
+@media screen and (min-width: 410px) {
+  .center {
+    min-width: 400px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
