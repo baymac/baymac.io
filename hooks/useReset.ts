@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 /* Orginally written in https://github.com/wsmd/use-clipboard-copy/blob/master/src/useTimedToggle.ts */
 
@@ -14,7 +14,7 @@ export function useReset(show: boolean, reset: any, duration: number) {
         duration
       );
     }
-  }, [show]);
+  }, [duration, reset, show]);
 
   useEffect(() => () => clearTimeout(timeoutRef.current), []);
 }
