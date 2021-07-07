@@ -1,8 +1,8 @@
 import {
   UilBitcoinCircle,
   UilHome,
-  UilPen,
-  UilUser
+  UilPen
+  // UilUser
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
@@ -31,13 +31,13 @@ const navItems: INavItem[] = [
     path: '/blog',
     icon: UilPen,
     selector: 'blog'
-  },
-  {
-    label: 'About',
-    path: '/about',
-    icon: UilUser,
-    selector: 'about'
   }
+  // {
+  //   label: 'About',
+  //   path: '/about',
+  //   icon: UilUser,
+  //   selector: 'about'
+  // }
 ];
 
 const buyMeCryptoNavItem: INavItem = {
