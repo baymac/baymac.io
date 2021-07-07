@@ -1,8 +1,8 @@
 import {
   UilBitcoinCircle,
   UilHome,
-  UilMessage,
-  UilPen
+  UilPen,
+  UilUser
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
@@ -35,7 +35,7 @@ const navItems: INavItem[] = [
   {
     label: 'About',
     path: '/about',
-    icon: UilMessage,
+    icon: UilUser,
     selector: 'about'
   }
 ];
