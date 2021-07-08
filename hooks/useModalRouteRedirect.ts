@@ -1,26 +1,10 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-
-function getOccurence(str: string, chr: string) {
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (str.charAt(i) === chr) {
-      count++;
-    }
-  }
-  return count;
-}
-
-function pathContainsModalPathQuery(path: string, modalRoutePath: string) {
-  if (path.includes(`?${modalRoutePath}=1`)) {
-    return true;
-  }
-  return false;
-}
-
-function removeQueryParamFromPath(path: string) {
-  return path.substr(0, path.indexOf('?'));
-}
+import {
+  getOccurence,
+  pathContainsModalPathQuery,
+  removeQueryParamFromPath
+} from '../lib/utils';
 
 // This hook returns route values required for navigate a route modal
 export default function useModalRouteRedirect(

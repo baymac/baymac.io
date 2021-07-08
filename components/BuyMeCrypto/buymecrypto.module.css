@@ -5,6 +5,7 @@
 
 .footer__crypto_label {
   margin-bottom: 1rem;
+  color: var(--title-color);
 }
 
 .footer__crypto_address {

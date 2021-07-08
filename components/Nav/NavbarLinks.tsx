@@ -79,14 +79,10 @@ export default function NavBarLinks() {
         <Link href={`${hrefRoute}`} as={asRoute} scroll={false}>
           <a
             onClick={() => setNavBarOpen(false)}
-            className={cn(
-              styles.nav__item,
-              {
-                [styles.nav__item_selected]:
-                  selectedMenu === `${buyMeCryptoNavItem.label}`
-              },
-              styles.hide_big_screen
-            )}
+            className={cn(styles.nav__item, {
+              [styles.nav__item_selected]:
+                selectedMenu === `${buyMeCryptoNavItem.selector}`
+            })}
           >
             <span className={styles.nav__link}>
               {createElement(
