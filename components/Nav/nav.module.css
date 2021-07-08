@@ -27,8 +27,30 @@
   align-items: center;
   background: none;
   border: 1px solid var(--header-color);
-  padding: 0.2rem 0.2rem;
+  padding: 1px 1px;
   border-radius: 0.3rem;
+}
+
+.skeleton_loader_container {
+  padding: 2px;
+}
+
+.skeleton_loader:empty {
+  width: 30px;
+  height: 30px;
+  display: block;
+  background: linear-gradient(
+      to right,
+      hsl(0, 0%, 70%),
+      hsl(0, 0%, 100%) 50%,
+      hsl(0, 0%, 70%) 80%
+    ),
+    hsl(0, 0%, 60%);
+  background-repeat: repeat-y;
+  background-size: 10px 10px;
+  background-position: 0 0;
+  animation: shine 0.5s infinite;
+  border-radius: 3px;
 }
 
 .nav__logo_button {
@@ -77,24 +99,6 @@
   border-radius: 2px;
 }
 
-.skeleton_loader:empty {
-  width: 30px;
-  height: 30px;
-  display: block;
-  background: linear-gradient(
-      to right,
-      hsl(0, 0%, 70%),
-      hsl(0, 0%, 100%) 50%,
-      hsl(0, 0%, 70%) 80%
-    ),
-    hsl(0, 0%, 60%);
-  background-repeat: repeat-y;
-  background-size: 10px 10px;
-  background-position: 0 0;
-  animation: shine 0.5s infinite;
-  border-radius: 3px;
-}
-
 @keyframes shine {
   to {
     background-position: 100% 0;
@@ -135,7 +139,8 @@
 @media screen and (min-width: 600px) {
   .nav__logo,
   .nav__toggle,
-  .nav__changeTheme {
+  .nav__changeTheme,
+  .skeleton_loader:empty {
     font-size: var(--h4-font-size);
   }
 

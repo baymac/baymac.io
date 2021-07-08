@@ -69,13 +69,16 @@ export default function Nav() {
                   null
                 ))}
             {!mounted &&
-              createElement(
-                'div',
-                {
-                  className: cn(styles.skeleton_loader)
-                },
-                null
-              )}
+              <div className={styles.skeleton_loader_container}>
+                {createElement(
+                  'div',
+                  {
+                    className: cn(styles.skeleton_loader)
+                  },
+                  null
+                )}
+              </div>
+            }
             {!navBarOpen && (
               <button onClick={() => setNavBarOpen(true)} className={styles.nav__toggle} aria-label="nav-open-button">
                 <UilApps
