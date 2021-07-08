@@ -67,7 +67,7 @@
   --nav-items-hover-color: hsl(230, 90%, 92%);
   --error-color: hsl(350, 100%, 56%);
   --footer-border-color: hsl(0, 0%, 70%);
-  --nav-items-select-color: hsl(230, 70%, 90%);
+  --nav-items-select-color: var(--first-color-lighter);
   --nav-items-divider-color: hsl(0, 0%, 60%);
 
   /*========== Font and typography ==========*/
@@ -120,12 +120,6 @@
     --normal-font-size: 1rem;
     --small-font-size: 0.875rem;
     --smaller-font-size: 0.813rem;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  :root {
-    --nav-items-select-color: var(var(--first-color-lighter));
   }
 }
 
