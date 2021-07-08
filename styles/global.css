@@ -33,11 +33,11 @@
   --hue-color: 230;
   /* Mostly used in navbar and main social links */
   /* Alternate to --first-color-lighter in dark mode */
-  --first-color: hsl(230, 70%, 58%);
-  /* Hover on close in nav and social in main */
+  --first-color: hsl(230, 70%, 60%);
+  /* Hover on close in nav and magic button */
   --first-color-alt: hsl(230, 57%, 53%);
   /* Blog button, alt body color */
-  --first-color-lighter: /*hsl(230, 92%, 84%)*/ hsl(230, 70%, 82%);
+  --first-color-lighter: /*hsl(230, 92%, 84%)*/ hsl(230, 60%, 85%);
   /* Footer hover */
   --first-color-lighter-alt: hsl(230, 20%, 30%);
   /* All nav elements, blog button */
@@ -125,7 +125,7 @@
 
 @media screen and (min-width: 600px) {
   :root {
-    --nav-items-select-color: hsl(230, 70%, 60%);
+    --nav-items-select-color: var(var(--first-color-lighter));
   }
 }
 
