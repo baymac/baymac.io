@@ -112,4 +112,8 @@
   .nav__item_selected {
     border-radius: 0.3rem;
   }
+
+  .nav__item_selected > .nav__link {
+    color: var(--inverted-bw);
+  }
 }
