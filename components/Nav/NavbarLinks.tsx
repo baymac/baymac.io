@@ -64,6 +64,7 @@ export default function NavBarLinks() {
                   selectedMenu === `${navItem.selector}`,
               })}
               onClick={() => setNavBarOpen(false)}
+              tabIndex={0}
             >
               <span className={styles.nav__link}>
                 {createElement(
@@ -83,6 +84,7 @@ export default function NavBarLinks() {
               [styles.nav__item_selected]:
                 selectedMenu === `${buyMeCryptoNavItem.selector}`,
             })}
+            tabIndex={0}
           >
             <span className={styles.nav__link}>
               {createElement(
