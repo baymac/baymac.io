@@ -35,13 +35,26 @@
   position: relative; /* For Modal Close */
 }
 
-.modal__close {
+.modal__close_button {
   position: absolute;
   top: 5px;
   right: 5px;
-  color: var(--error-color);
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--border-color);
+  border: none;
   cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+}
+.modal__close_button:hover {
+  background-color: #333333;
+}
+
+.modal__close {
+  color: var(--error-color);
 }
 
 @media screen and (min-width: 500px) {
