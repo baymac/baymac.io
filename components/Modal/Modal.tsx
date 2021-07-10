@@ -29,15 +29,12 @@ function Modal(props: IModalProps) {
   const modalContent = open ? (
     <div className={styles.modal__overlay}>
       <div className={styles.modal__backdrop}></div>
-      <div></div>
       <div className={styles.modal__container}>
         <div className={styles.modal__content}>
-          <div className={styles.modal__header}>
-            <UilTimesCircle
-              onClick={(e) => handleCloseClick(e)}
-              className={styles.modal__close}
-            />
-          </div>
+          <UilTimesCircle
+            onClick={(e) => handleCloseClick(e)}
+            className={styles.modal__close}
+          />
           {children}
         </div>
       </div>
