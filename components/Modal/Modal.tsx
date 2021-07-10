@@ -1,4 +1,9 @@
-import React, { ReactChildren, useEffect, useState } from 'react';
+import React, {
+  ReactChildren,
+  useEffect,
+  useState,
+  KeyboardEvent,
+} from 'react';
 import ReactDOM from 'react-dom';
 import styles from './modal.module.css';
 import { UilTimesCircle } from '@iconscout/react-unicons';
@@ -26,12 +31,36 @@ function Modal(props: IModalProps) {
     handleClose();
   };
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    // The handler doesn't take event.defaultPrevented into account:
+    //
+    // event.preventDefault() is meant to stop default behaviors like
+    // clicking a checkbox to check it, hitting a button to submit a form,
+    // and hitting left arrow to move the cursor in a text input etc.
+    // Only special HTML elements have these default behaviors.
+    if (event.key !== 'Escape') {
+      return;
+    }
+
+    event.stopPropagation();
+
+    handleClose();
+  };
+
   usePreventScroll(open);
 
   const modalContent = open ? (
-    <div role="presentation" className={styles.modal__overlay}>
+    <div
+      role="presentation"
+      className={styles.modal__overlay}
+      onKeyDown={handleKeyDown}
+    >
       <div className={styles.modal__backdrop} aria-hidden="true"></div>
-      <FocusTrap>
+      <FocusTrap
+        focusTrapOptions={{
+          returnFocusOnDeactivate: false,
+        }}
+      >
         <div
           className={styles.modal__container}
           tabIndex={-1}

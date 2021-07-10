@@ -64,6 +64,7 @@ export default function NavBarLinks() {
                   selectedMenu === `${navItem.selector}`,
               })}
               onClick={() => setNavBarOpen(false)}
+              id={`${navItem.selector}`}
               tabIndex={0}
             >
               <span className={styles.nav__link}>
