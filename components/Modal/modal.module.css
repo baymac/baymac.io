@@ -50,7 +50,7 @@
   border-radius: 4px;
 }
 .modal__close_button:hover {
-  background-color: #333333;
+  background-color: var(--button-hover-color);
 }
 
 .modal__close {
