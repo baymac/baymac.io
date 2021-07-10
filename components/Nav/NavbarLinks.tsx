@@ -1,8 +1,8 @@
 import {
   UilBitcoinCircle,
   UilHome,
-  UilPen
-  // UilUser
+  UilPen,
+  // UilUser,
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
@@ -24,26 +24,26 @@ const navItems: INavItem[] = [
     label: 'Home',
     icon: UilHome,
     path: '/',
-    selector: 'home'
+    selector: 'home',
   },
-  {
-    label: 'Blog',
-    path: '/blog',
-    icon: UilPen,
-    selector: 'blog'
-  }
   // {
   //   label: 'About',
   //   path: '/about',
   //   icon: UilUser,
-  //   selector: 'about'
-  // }
+  //   selector: 'about',
+  // },
+  {
+    label: 'Blog',
+    path: '/blog',
+    icon: UilPen,
+    selector: 'blog',
+  },
 ];
 
 const buyMeCryptoNavItem: INavItem = {
   label: 'Buy Me Crypto',
   icon: UilBitcoinCircle,
-  selector: 'buymecrypto'
+  selector: 'buymecrypto',
 };
 
 export default function NavBarLinks() {
@@ -61,7 +61,7 @@ export default function NavBarLinks() {
             <a
               className={cn(styles.nav__item, {
                 [styles.nav__item_selected]:
-                  selectedMenu === `${navItem.selector}`
+                  selectedMenu === `${navItem.selector}`,
               })}
               onClick={() => setNavBarOpen(false)}
             >
@@ -81,7 +81,7 @@ export default function NavBarLinks() {
             onClick={() => setNavBarOpen(false)}
             className={cn(styles.nav__item, {
               [styles.nav__item_selected]:
-                selectedMenu === `${buyMeCryptoNavItem.selector}`
+                selectedMenu === `${buyMeCryptoNavItem.selector}`,
             })}
           >
             <span className={styles.nav__link}>
