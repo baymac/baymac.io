@@ -27,13 +27,22 @@ function Modal(props: IModalProps) {
   usePreventScroll(open);
 
   const modalContent = open ? (
-    <div className={styles.modal__overlay}>
-      <div className={styles.modal__backdrop}></div>
-      <div className={styles.modal__container}>
-        <div className={styles.modal__content}>
+    <div role="presentation" className={styles.modal__overlay}>
+      <div className={styles.modal__backdrop} aria-hidden="true"></div>
+      <div
+        className={styles.modal__container}
+        tabIndex={-1}
+        role="none presentation"
+      >
+        <div
+          className={styles.modal__content}
+          role="dialog"
+          aria-labelledby="simple-dialog-title"
+        >
           <UilTimesCircle
             onClick={(e) => handleCloseClick(e)}
             className={styles.modal__close}
+            tabIndex={0}
           />
           {children}
         </div>
