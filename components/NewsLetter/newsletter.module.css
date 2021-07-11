@@ -25,4 +25,5 @@
   background-color: var(--first-color);
   color: var(--default-bw);
   font-size: var(--h4-font-size);
+  cursor: pointer;
 }
