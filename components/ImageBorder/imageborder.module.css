@@ -1,0 +1,21 @@
+.box {
+  z-index: 0;
+  position: relative;
+}
+
+.box::before,
+.box::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(315deg, #00ccff, #0e1538, #d400d4);
+}
+
+.box::after {
+  filter: blur(10px);
+}
+
+.img_container {
+  position: relative;
+  z-index: 1;
+}
