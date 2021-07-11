@@ -1,3 +1,27 @@
 .header {
   color: var(--title-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--mb-1);
+}
+
+.input_box {
+  position: relative;
+  width: 100%;
+  margin-top: var(--mb-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input_box input {
+  width: 100%;
+  border: 1px solid var(--button-hover-color);
+  padding: 1rem;
+}
+
+.input_box input[type='submit'] {
+  background-color: var(--first-color);
+  color: var(--default-bw);
 }
