@@ -3,7 +3,7 @@ import {
   UilArrowLeft,
   UilMoon,
   UilMultiply,
-  UilSun
+  UilSun,
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
@@ -12,8 +12,8 @@ import { createElement, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
 import rootStyles from '../../styles/root.module.css';
 import styles from './nav.module.css';
-import NavLinkMobile from './NavLinkMobile.tsx';
-import NavLinkBigScreen from './NavLinkBigScreen.tsx';
+import NavLinkMobile from './NavLinkMobile';
+import NavLinkBigScreen from './NavLinkBigScreen';
 import { useTheme } from 'next-themes';
 import Logo from '../Logo/Logo';
 
@@ -34,8 +34,11 @@ export default function Nav() {
         <nav className={cn(styles.nav, rootStyles.container)}>
           {!router.pathname.startsWith('/posts') && (
             <Link href="/" passHref>
-              <button className={styles.nav__logo_button} aria-label="logo-button">
-                <div className={styles.nav__logo} >
+              <button
+                className={styles.nav__logo_button}
+                aria-label="logo-button"
+              >
+                <div className={styles.nav__logo}>
                   <Logo />
                 </div>
               </button>
@@ -43,8 +46,11 @@ export default function Nav() {
           )}
           {router.pathname.startsWith('/posts') && (
             <Link href={`/blog`} passHref>
-              <button className={styles.nav__logo_button} aria-label="back-button">
-                <div className={styles.nav__logo} >
+              <button
+                className={styles.nav__logo_button}
+                aria-label="back-button"
+              >
+                <div className={styles.nav__logo}>
                   <UilArrowLeft />
                 </div>
               </button>
@@ -53,50 +59,51 @@ export default function Nav() {
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
             {mounted &&
-              createElement('button', {
-                className: cn(styles.nav__changeTheme),
-                onClick: () =>
-                  setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
-                'aria-label': 'change-theme-button'
-              },
+              createElement(
+                'button',
+                {
+                  className: cn(styles.nav__changeTheme),
+                  onClick: () =>
+                    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
+                  'aria-label': 'change-theme-button',
+                },
                 createElement(
                   resolvedTheme === 'dark' ? UilSun : UilMoon,
                   {
                     id: 'theme-button',
                     width: 30,
-                    height: 30
+                    height: 30,
                   },
                   null
-                ))}
-            {!mounted &&
+                )
+              )}
+            {!mounted && (
               <div className={styles.skeleton_loader_container}>
                 {createElement(
                   'div',
                   {
-                    className: cn(styles.skeleton_loader)
+                    className: cn(styles.skeleton_loader),
                   },
                   null
                 )}
               </div>
-            }
+            )}
             {!navBarOpen && (
-              <button onClick={() => setNavBarOpen(true)} className={styles.nav__toggle} aria-label="nav-open-button">
-                <UilApps
-                  id="nav_toggle"
-                  width={30}
-                  height={30}
-                />
+              <button
+                onClick={() => setNavBarOpen(true)}
+                className={styles.nav__toggle}
+                aria-label="nav-open-button"
+              >
+                <UilApps id="nav_toggle" width={30} height={30} />
               </button>
             )}
             {navBarOpen && (
-              <button className={styles.nav__toggle}
+              <button
+                className={styles.nav__toggle}
                 onClick={() => setNavBarOpen(false)}
-                aria-label="nav-close-button">
-                <UilMultiply
-                  width={30}
-                  height={30}
-                  id="nav_toggle"
-                />
+                aria-label="nav-close-button"
+              >
+                <UilMultiply width={30} height={30} id="nav_toggle" />
               </button>
             )}
           </div>

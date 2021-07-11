@@ -1,7 +1,7 @@
 import { UilJackhammer } from '@iconscout/react-unicons';
+import cn from 'classnames';
 import rootStyles from '../../styles/root.module.css';
 import styles from './underconstruction.module.css';
-import cn from 'classnames';
 
 export default function UnderConstruction() {
   return (

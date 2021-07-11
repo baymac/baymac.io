@@ -8,7 +8,8 @@
   margin: 4rem auto;
 }
 
-.about__title {
+.about__img {
+  margin: 0 auto;
 }
 
 .about__subtitle {
@@ -20,17 +21,6 @@
 
 .about__description {
   color: var(--title-color);
-}
-
-.about__img {
-  box-shadow: var(--bs);
-  display: flex;
-  justify-content: center;
-  width: max-content;
-  margin-left: auto;
-  margin-right: auto;
-  max-height: 300px;
-  z-index: 0;
 }
 
 @media (min-width: 600px) {
@@ -60,10 +50,6 @@
     display: flex;
     align-items: center;
     max-height: calc(max-content + 1rem);
-  }
-
-  .about__description {
-    /* grid-area: description; */
   }
 
   .about__img {
