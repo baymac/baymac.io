@@ -1,15 +1,15 @@
+import { UilTimesCircle } from '@iconscout/react-unicons';
+import FocusTrap from 'focus-trap-react';
 import React, {
+  KeyboardEvent,
   ReactChildren,
   useEffect,
+  useRef,
   useState,
-  KeyboardEvent,
 } from 'react';
 import ReactDOM from 'react-dom';
-import styles from './modal.module.css';
-import { UilTimesCircle } from '@iconscout/react-unicons';
 import usePreventScroll from '../../hooks/usePreventScroll';
-// import * as focusTrap from 'focus-trap'; // ESM
-import FocusTrap from 'focus-trap-react';
+import styles from './modal.module.css';
 
 export interface IModalProps {
   open: boolean;
@@ -19,6 +19,7 @@ export interface IModalProps {
 
 function Modal(props: IModalProps) {
   const { open, handleClose, children } = props;
+  usePreventScroll(open);
 
   const [isBrowser, setIsBrowser] = useState(false);
 
@@ -47,7 +48,13 @@ function Modal(props: IModalProps) {
     handleClose();
   };
 
-  usePreventScroll(open);
+  const modalBgRef = useRef();
+
+  const handleBgClick = (e) => {
+    if (modalBgRef.current === e.target) {
+      handleCloseClick(e);
+    }
+  };
 
   const modalContent = open ? (
     <div
@@ -65,6 +72,9 @@ function Modal(props: IModalProps) {
           className={styles.modal__container}
           tabIndex={-1}
           role="none presentation"
+          ref={modalBgRef}
+          /* Works both for mouse click and touch events */
+          onMouseDown={handleBgClick}
         >
           {/* To prevent any content being focused on modal open */}
           <div tabIndex={0}></div>
