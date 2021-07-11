@@ -33,6 +33,7 @@
   color: var(--text-color);
   padding: var(--mb-2) var(--mb-1-5);
   position: relative; /* For Modal Close */
+  overflow-y: auto;
 }
 
 .modal__close_button {
