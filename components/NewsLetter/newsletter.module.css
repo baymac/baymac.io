@@ -13,6 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .input_box input {
@@ -26,4 +27,14 @@
   color: var(--default-bw);
   font-size: var(--h4-font-size);
   cursor: pointer;
+}
+
+.error_message {
+  margin-top: var(--mb-1);
+  color: var(--error-color);
+}
+
+.error_message::before {
+  display: inline;
+  content: '⚠ ';
 }

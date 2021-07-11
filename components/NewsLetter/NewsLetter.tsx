@@ -1,10 +1,27 @@
-import styles from './newsletter.module.css';
 import { UilFastMail } from '@iconscout/react-unicons';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import styles from './newsletter.module.css';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const SubscribeSchema = yup.object().shape({
+  firstName: yup.string().required(),
+  email: yup.string().email().required(),
+});
 
 export default function NewsLetter() {
-  const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(SubscribeSchema),
+  });
+
+  const onSubmit = (data) => {
+    // eslint-disable-next-line no-console
+    console.log(data);
+  };
 
   return (
     <>
@@ -13,29 +30,28 @@ export default function NewsLetter() {
           Subscribe to the newsletter&nbsp;
           <UilFastMail size={30} />
         </h3>
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
-            await fetch('/api/hello'); // demo
-          }}
-        >
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.input_box}>
             <input
+              name="firstName"
               type="text"
-              id="name-input"
               placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              {...register('firstName')}
             />
+            {errors.firstName && (
+              <p className={styles.error_message}>{errors.firstName.message}</p>
+            )}
           </div>
           <div className={styles.input_box}>
             <input
               type="email"
-              id="email-input"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name="email"
+              {...register('email')}
             />
+            {errors.email && (
+              <p className={styles.error_message}>{errors.email.message}</p>
+            )}
           </div>
           <div className={styles.input_box}>
             <input type="submit" value="Subscribe" />
