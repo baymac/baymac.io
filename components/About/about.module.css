@@ -23,6 +23,11 @@
   color: var(--title-color);
 }
 
+.about__img {
+  box-shadow: var(--bs);
+  max-height: 300px;
+}
+
 @media (min-width: 600px) {
   .about__container {
     grid-template-columns: 1fr 200px;

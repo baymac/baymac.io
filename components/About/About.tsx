@@ -2,7 +2,7 @@ import cn from 'classnames';
 import Image from 'next/image';
 import rootStyles from '../../styles/root.module.css';
 import styles from './about.module.css';
-import ImageBorder from '../ImageBorder/ImageBorder'
+// import ImageBorder from '../ImageBorder/ImageBorder';
 
 export default function About() {
   return (
@@ -23,18 +23,18 @@ export default function About() {
           India
         </p>
         <div className={styles.about__img}>
-          <ImageBorder maxHeight={300}>
-            <Image
-              priority
-              src="/images/profile.jpeg"
-              height={300}
-              width={200}
-              alt={'Parichay'}
-              layout="fixed"
-              placeholder={'blur'}
-              blurDataURL={'/images/profile-blur.png'}
-            />
-          </ImageBorder>
+          {/* <ImageBorder maxHeight={300}> */}
+          <Image
+            priority
+            src="/images/profile.jpeg"
+            height={300}
+            width={200}
+            alt={'Parichay'}
+            layout="fixed"
+            placeholder={'blur'}
+            blurDataURL={'/images/profile-blur.png'}
+          />
+          {/* </ImageBorder> */}
         </div>
 
         <div className={styles.about__description}>
