@@ -33,7 +33,7 @@ export default function NewsLetter() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.input_box}>
             <input
-              name="firstName"
+              name="First Name"
               type="text"
               placeholder="First Name"
               {...register('firstName')}
