@@ -36,6 +36,10 @@ export default function NewsLetter() {
           Subscribe to the newsletter&nbsp;&nbsp;
           <UilFastMail size={30} />
         </h3>
+        <p className={styles.description}>
+          I will share about cool things I&apos;m working on, favourite articles
+          I&apos;ve read and new articles I publish.
+        </p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.input_box}>
             <input
