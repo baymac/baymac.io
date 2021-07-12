@@ -5,8 +5,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const SubscribeSchema = yup.object().shape({
-  firstName: yup.string().required(),
-  email: yup.string().email().required(),
+  firstName: yup
+    .string()
+    .required('First Name is required')
+    .matches(
+      /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+$/,
+      'First Name can only contain characters.'
+    ),
+  email: yup.string().email().required('Email is required'),
 });
 
 export default function NewsLetter() {
@@ -27,7 +33,7 @@ export default function NewsLetter() {
     <>
       <div>
         <h3 className={styles.header}>
-          Subscribe to the newsletter&nbsp;
+          Subscribe to the newsletter&nbsp;&nbsp;
           <UilFastMail size={30} />
         </h3>
         <form onSubmit={handleSubmit(onSubmit)}>
