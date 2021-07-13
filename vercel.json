@@ -1,9 +1,0 @@
-{
-    "build": {
-      "env": {
-        "FIREBASE_API_KEY": "@firebase-api-key",
-        "FIREBASE_AUTH_DOMAIN": "@firebase-auth-domain",
-        "FIREBASE_PROJECT_ID": "@firebase-project-id"
-      }
-    }
-  }
