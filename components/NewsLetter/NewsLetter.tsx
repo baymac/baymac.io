@@ -1,9 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UilFastMail } from '@iconscout/react-unicons';
-import { useState } from 'react';
+import { createElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import addSubscriber from '../../lib/addSubscribe';
+import Snackbar from '../Snackbar/Snackbar';
 import styles from './newsletter.module.css';
 
 const SubscribeSchema = yup.object().shape({
@@ -22,20 +23,37 @@ export default function NewsLetter() {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(SubscribeSchema),
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = (data) => {
-    addSubscriber(data);
-    setSubmitted(true);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+
+  const [showSnackbar, setShowSnackbar] = useState(false);
+
+  const onSubmit = async (data) => {
+    const res = await addSubscriber(data);
+    if (!res.error) {
+      setSubmitted(true);
+    }
+    setSnackbarMessage(res.message);
+    setShowSnackbar(true);
   };
 
   return (
     <>
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        onClick={() => {
+          if (submitted) {
+            setSubmitted(false);
+            reset();
+          }
+        }}
+      >
         {!submitted && (
           <div>
             <h3 className={styles.header}>
@@ -79,9 +97,23 @@ export default function NewsLetter() {
           </div>
         )}
         {submitted && (
-          <h3 className={styles.header}>Thank you for subscribing 🥰</h3>
+          <h3 className={styles.thanks_message}>
+            Thank you for subscribing 🥰
+          </h3>
         )}
       </div>
+      {showSnackbar &&
+        createElement(
+          Snackbar,
+          {
+            message: snackbarMessage,
+            show: showSnackbar,
+            // @ts-ignore
+            reset: setShowSnackbar,
+            duration: 1500,
+          },
+          null
+        )}
     </>
   );
 }

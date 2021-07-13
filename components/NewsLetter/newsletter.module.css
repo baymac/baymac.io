@@ -1,7 +1,10 @@
-.header {
+.header .thanks_message {
   color: var(--title-color);
-  /* margin-top: var(--mb-1); */
   text-align: center;
+}
+
+.thanks_message {
+  cursor: pointer;
 }
 
 .description {
