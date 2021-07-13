@@ -83,13 +83,15 @@ function Modal(props: IModalProps) {
             role="dialog"
             id="modal-content"
           >
-            <button
-              onClick={(e) => handleCloseClick(e)}
-              tabIndex={0}
-              className={styles.modal__close_button}
-            >
-              <UilTimesCircle className={styles.modal__close} />
-            </button>
+            <div className={styles.modal__content_header}>
+              <button
+                onClick={(e) => handleCloseClick(e)}
+                tabIndex={0}
+                className={styles.modal__close_button}
+              >
+                <UilTimesCircle className={styles.modal__close} />
+              </button>
+            </div>
             {children}
           </div>
         </div>

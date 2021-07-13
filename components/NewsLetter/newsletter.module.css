@@ -1,9 +1,7 @@
 .header {
   color: var(--title-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: var(--mb-1);
+  /* margin-top: var(--mb-1); */
+  text-align: center;
 }
 
 .description {
@@ -46,4 +44,26 @@
 .error_message::before {
   display: inline;
   content: '⚠ ';
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+  .add_new_line {
+    display: none;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .email_icon {
+    margin-left: var(--mb-0-5);
+  }
 }
