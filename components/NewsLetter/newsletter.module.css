@@ -1,0 +1,72 @@
+.header .thanks_message {
+  color: var(--title-color);
+  text-align: center;
+}
+
+.thanks_message {
+  cursor: pointer;
+}
+
+.description {
+  color: var(--text-color);
+  margin: var(--mb-0-5) var(--mb-1);
+  text-align: center;
+  display: inline-block;
+  max-width: 300px;
+}
+
+.input_box {
+  position: relative;
+  width: 100%;
+  margin-top: var(--mb-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input_box input {
+  max-width: 300px;
+  width: 100%;
+  border: 1px solid var(--button-hover-color);
+  padding: 1rem;
+}
+
+.input_box input[type='submit'] {
+  background-color: var(--first-color);
+  color: var(--default-bw);
+  font-size: var(--h4-font-size);
+  cursor: pointer;
+}
+
+.error_message {
+  margin-top: var(--mb-1);
+  color: var(--error-color);
+}
+
+.error_message::before {
+  display: inline;
+  content: '⚠ ';
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+  .add_new_line {
+    display: none;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .email_icon {
+    margin-left: var(--mb-0-5);
+  }
+}

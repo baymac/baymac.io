@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { pathContainsModalPathQuery } from '../lib/utils';
+import { pathContainsModalPathQuery } from '../lib/modalPathUtils';
 
 export default function useNavSelection() {
   const [selectedMenu, setSelectedMenu] = useState('home');

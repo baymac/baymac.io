@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import {
   getOccurence,
   pathContainsModalPathQuery,
-  removeQueryParamFromPath
-} from '../lib/utils';
+  removeQueryParamFromPath,
+} from '../lib/modalPathUtils';
 
 // This hook returns route values required for navigate a route modal
 export default function useModalRouteRedirect(
