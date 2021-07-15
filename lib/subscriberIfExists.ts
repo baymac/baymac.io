@@ -1,6 +1,6 @@
 import firebase from '../firebase/clientApp';
 
-export default function doesSubscriberExists(email: string): Promise<boolean> {
+export default function subscriberIfExists(email: string): Promise<any> {
   const db = firebase.firestore();
   return db
     .collection('subscribers')
@@ -8,8 +8,8 @@ export default function doesSubscriberExists(email: string): Promise<boolean> {
     .get()
     .then((querySnapshot) => {
       if (querySnapshot.docs.length === 0) {
-        return false;
+        return {};
       }
-      return true;
+      return querySnapshot.docs[0].data();
     });
 }
