@@ -4,7 +4,7 @@ import verifySubscriber from '../../lib/verifySubscriber';
 
 export default async function verifyEmail(req, res) {
   if (!req.query.t) {
-    res.status(401).json({ status: 'failure' });
+    return res.status(401).json({ status: 'failure' });
   }
   const token = req.query.t;
   const decoded = jwt.verify(token, process.env.NEXT_EMAIL_KEY, {
