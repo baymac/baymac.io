@@ -1,8 +1,13 @@
 import jwt from 'jsonwebtoken';
+import { rateLimiterMiddleWare } from '../../lib/rateLimiter';
 import { JWT_AUDIENCE, JWT_ISSUER } from '../../lib/sendVerificationMail';
 import verifySubscriber from '../../lib/verifySubscriber';
 
 export default async function verifyEmail(req, res) {
+  const rateLimitRes = await rateLimiterMiddleWare(req, res);
+  if (rateLimitRes.error) {
+    return res.status(429).json({ error: true, message: rateLimitRes.message });
+  }
   if (!req.query.t) {
     return res.status(401).json({ status: 'failure' });
   }

@@ -1,4 +1,5 @@
 import firebase from '../firebase/clientApp';
+import { IGenericAPIResponse } from './apiTypes';
 import sendVerificationMail from './sendVerificationMail';
 import subscriberIfExists from './subscriberIfExists';
 
@@ -7,14 +8,11 @@ export type AddSubscriber = {
   email: string;
 };
 
-export interface IAddSubscriberResponse {
-  error: boolean;
-  message: string;
-}
+export interface IAddSubscriberResponse extends IGenericAPIResponse {}
 
 export default async function addSubscriber({
-  firstName,
   email,
+  firstName,
 }: AddSubscriber): Promise<IAddSubscriberResponse> {
   const db = firebase.firestore();
   try {
