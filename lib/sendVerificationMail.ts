@@ -14,7 +14,7 @@ function getJwtToken(email: string) {
     exp: Math.floor((+Date.now() + VERIFICATION_VALIDITY) / 1000),
   };
   const idToken = crypto.randomBytes(16).toString('hex');
-  return jwt.sign(payload, process.env.NEXT_EMAIL_KEY, {
+  return jwt.sign(payload, process.env.EMAIL_KEY, {
     algorithm: 'HS512',
     issuer: JWT_ISSUER,
     audience: JWT_AUDIENCE,

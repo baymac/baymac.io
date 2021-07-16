@@ -12,7 +12,7 @@ export default async function verifyEmail(req, res) {
     return res.status(401).json({ status: 'failure' });
   }
   const token = req.query.t;
-  const decoded = jwt.verify(token, process.env.NEXT_EMAIL_KEY, {
+  const decoded = jwt.verify(token, process.env.EMAIL_KEY, {
     algorithms: ['HS512'],
     audience: JWT_AUDIENCE,
     issuer: JWT_ISSUER,
