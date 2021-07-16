@@ -3,6 +3,7 @@ import Image from 'next/image';
 import rootStyles from '../../styles/root.module.css';
 import styles from './about.module.css';
 // import ImageBorder from '../ImageBorder/ImageBorder';
+import profileImage from '/public/images/profile.jpeg';
 
 export default function About() {
   return (
@@ -26,13 +27,12 @@ export default function About() {
           {/* <ImageBorder maxHeight={300}> */}
           <Image
             priority
-            src="/images/profile.jpeg"
+            src={profileImage}
             height={300}
             width={200}
             alt={'Parichay'}
             layout="fixed"
             placeholder={'blur'}
-            blurDataURL={'/images/profile-blur.png'}
           />
           {/* </ImageBorder> */}
         </div>
