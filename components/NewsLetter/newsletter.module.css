@@ -47,7 +47,7 @@
 }
 
 .input_box input[type='submit'] {
-  background-color: var(--first-color);
+  background-color: var(--button-color);
   color: var(--default-bw);
   font-size: var(--h4-font-size);
   cursor: pointer;
@@ -83,6 +83,14 @@
   text-align-last: start !important;
 }
 
+.go_back {
+  margin-bottom: var(--mb-1);
+}
+
+.button_disable input[type='submit'] {
+  background-color: var(--button-color-disabled);
+}
+
 @media screen and (min-width: 600px) {
   .add_new_line {
     display: none;
@@ -90,6 +98,10 @@
 
   .header {
     flex-direction: row;
+  }
+
+  .button_disable input[type='submit'] {
+    cursor: no-drop;
   }
 
   .email_icon {

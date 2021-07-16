@@ -3,7 +3,10 @@ import { UilFastMail } from '@iconscout/react-unicons';
 import { createElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import useMutation from '../../hooks/useMutation';
+import { IGenericAPIResponse } from '../../lib/apiUtils';
 import Snackbar from '../Snackbar/Snackbar';
+import cn from 'classnames';
 import styles from './newsletter.module.css';
 
 const SubscribeSchema = yup.object().shape({
@@ -22,7 +25,7 @@ export default function NewsLetter() {
     handleSubmit,
     register,
     formState: { errors },
-    // reset,
+    reset,
     getValues,
   } = useForm({
     resolver: yupResolver(SubscribeSchema),
@@ -34,26 +37,25 @@ export default function NewsLetter() {
 
   const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const onSubmit = async (data) => {
-    const res = await fetch('/api/addSubscriber', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    }).then((resp) => resp.json());
-    if (!res.error) {
-      setSubmitted(true);
+  const { loading, mutate } = useMutation<IGenericAPIResponse>(
+    '/api/addSubscriber',
+    (res) => {
+      if (!res.error) {
+        setSubmitted(true);
+      }
+      setSnackbarMessage(res.message);
+      setShowSnackbar(true);
     }
-    setSnackbarMessage(res.message);
-    setShowSnackbar(true);
+  );
+
+  const onSubmit = (data) => {
+    mutate(data);
   };
 
-  // const handleReset = () => {
-  //   setSubmitted(false);
-  //   reset();
-  // };
+  const handleReset = () => {
+    setSubmitted(false);
+    reset();
+  };
 
   return (
     <>
@@ -94,14 +96,30 @@ export default function NewsLetter() {
                   <p className={styles.error_message}>{errors.email.message}</p>
                 )}
               </div>
-              <div className={styles.input_box}>
-                <input type="submit" value="Subscribe" />
+              <div
+                className={cn(styles.input_box, {
+                  [styles.button_disable]: loading,
+                })}
+              >
+                <input
+                  type="submit"
+                  disabled={loading}
+                  value={loading ? 'loading' : 'Subscribe'}
+                />
               </div>
             </form>
           </div>
         )}
         {submitted && (
           <>
+            <p
+              onClick={() => {
+                handleReset();
+              }}
+              className={cn(styles.go_back, styles.clickable)}
+            >
+              &#8592; Go Back
+            </p>
             <h3 className={styles.thanks_message}>Check your email 📧</h3>
             <br></br>
             <p className={styles.email_failure_description}>
@@ -132,7 +150,7 @@ export default function NewsLetter() {
             show: showSnackbar,
             // @ts-ignore
             reset: setShowSnackbar,
-            duration: 1500,
+            duration: 5000,
           },
           null
         )}

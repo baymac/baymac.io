@@ -1,5 +1,5 @@
 import firebase from '../firebase/clientApp';
-import { IGenericAPIResponse } from './apiTypes';
+import { IGenericAPIResponse } from './apiUtils';
 import sendVerificationMail from './sendVerificationMail';
 import subscriberIfExists from './subscriberIfExists';
 
