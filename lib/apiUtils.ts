@@ -16,3 +16,10 @@ export const fetcher = <P, Q>(
     },
     ...(data && { body: JSON.stringify(data) }),
   }).then((r) => r.json());
+
+export const sleep = (duration: number) =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ error: false, message: `Slept for ${duration}` });
+    }, duration);
+  });

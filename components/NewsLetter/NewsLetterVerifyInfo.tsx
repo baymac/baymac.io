@@ -1,14 +1,36 @@
 import styles from './newsletter.module.css';
 import cn from 'classnames';
+import useMutation from '../../hooks/useMutation';
+import {
+  IResendVerificationRequest,
+  IResendVerificationResponse,
+} from '../../lib/subscription/resendVerification';
+import { Dispatch, SetStateAction } from 'react';
+import LinkButton from '../LinkButton/LinkButton';
 
 interface INewsLetterVerifyInfoProps {
   handleReset: () => void;
   email: string;
+  // eslint-disable-next-line no-unused-vars
+  setSnackbarMessage: Dispatch<SetStateAction<string>>;
+  setShowSnackbar: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function NewsLetterVerifyInfo(
   props: INewsLetterVerifyInfoProps
 ) {
+  const { loading, mutate } = useMutation<
+    IResendVerificationRequest,
+    IResendVerificationResponse
+  >('/api/resendVerificationEmail', (res) => {
+    props.setSnackbarMessage(res.message);
+    props.setShowSnackbar(true);
+  });
+
+  const handleResendEmail = () => {
+    mutate({ email: props.email });
+  };
+
   return (
     <>
       <p
@@ -36,6 +58,11 @@ export default function NewsLetterVerifyInfo(
         <li>The email address you entered had a typo.</li>
         <li>Sometimes email doesn&apos;t get delivered. Try Resending.</li>
       </ul>
+      {props.email && (
+        <LinkButton onClick={handleResendEmail} disabled={loading}>
+          Resend Verification Email
+        </LinkButton>
+      )}
     </>
   );
 }

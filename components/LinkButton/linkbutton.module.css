@@ -1,0 +1,25 @@
+.link_button {
+  position: relative;
+  border: 0;
+  cursor: pointer;
+  margin: var(--mb-1) 0 0;
+  outline: 0;
+  padding: 0;
+  border-radius: 0;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  font-size: var(--body-font-size);
+}
+
+.link_button:hover {
+  text-decoration: underline;
+}
+
+.link_button:disabled {
+  text-decoration: none;
+  cursor: no-drop;
+}

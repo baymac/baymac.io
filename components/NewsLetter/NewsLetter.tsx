@@ -117,6 +117,8 @@ export default function NewsLetter() {
           <NewsLetterVerifyInfo
             email={getValues().email}
             handleReset={handleReset}
+            setSnackbarMessage={setSnackbarMessage}
+            setShowSnackbar={setShowSnackbar}
           />
         )}
       </div>

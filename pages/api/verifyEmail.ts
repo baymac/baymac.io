@@ -5,8 +5,12 @@ import {
   JWT_ISSUER,
 } from '../../lib/subscription/sendVerificationMail';
 import verifySubscriber from '../../lib/subscription/verifySubscriber';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function verifyEmail(req, res) {
+export default async function verifyEmail(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const rateLimitRes = await rateLimiterMiddleWare(req, res);
   if (rateLimitRes.error) {
     return res.status(429).json({ error: true, message: rateLimitRes.message });

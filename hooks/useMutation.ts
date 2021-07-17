@@ -4,7 +4,7 @@ import { fetcher } from '../lib/apiUtils';
 export default function useMutation<P, Q>(
   url: string,
   // eslint-disable-next-line no-unused-vars
-  callback: (resp: Q) => void
+  callback?: (resp: Q) => void
 ) {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState({});
@@ -15,7 +15,9 @@ export default function useMutation<P, Q>(
       return fetcher<P, Q>(url, req).then((resp) => {
         setResponse(resp);
         setLoading(false);
-        callback(resp);
+        if (callback) {
+          callback(resp);
+        }
         return resp;
       });
     },

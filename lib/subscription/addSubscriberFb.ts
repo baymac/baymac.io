@@ -60,7 +60,7 @@ export default async function addSubscriber({
     }
   } catch (error) {
     return {
-      error: false,
+      error: true,
       message: 'Some error occurred: ' + error.message,
     };
   }
