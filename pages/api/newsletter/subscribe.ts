@@ -1,8 +1,8 @@
-import addSubscriberFb from '../../lib/subscription/addSubscriberFb';
-import { rateLimiterMiddleWare } from '../../lib/rateLimiter';
+import addSubscriber from '../../../lib/subscription/addSubscriber';
+import { rateLimiterMiddleWare } from '../../../lib/rateLimiter';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function addSubscriber(
+export default async function subscribe(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -11,7 +11,7 @@ export default async function addSubscriber(
     return res.status(429).json({ error: true, message: rateLimitRes.message });
   }
   const { email, firstName } = req.body;
-  const result = await addSubscriberFb({
+  const result = await addSubscriber({
     email,
     firstName,
   });

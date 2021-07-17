@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { rateLimiterMiddleWare } from '../../lib/rateLimiter';
-import resendVerification from '../../lib/subscription/resendVerification';
+import { rateLimiterMiddleWare } from '../../../lib/rateLimiter';
+import resendVerificationEmail from '../../../lib/subscription/resendVerificationEmail';
 
-export default async function resendVerificationEmail(
+export default async function resend(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -11,7 +11,7 @@ export default async function resendVerificationEmail(
     return res.status(429).json({ error: true, message: rateLimitRes.message });
   }
   const { email } = req.body;
-  const result = await resendVerification({ email });
+  const result = await resendVerificationEmail({ email });
   if (result.error) {
     return res.status(200).json({ error: true, message: result.message });
   }

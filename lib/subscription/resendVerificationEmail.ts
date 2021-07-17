@@ -8,7 +8,7 @@ export interface IResendVerificationRequest {
 
 export interface IResendVerificationResponse extends IGenericAPIResponse {}
 
-export default async function resendVerification({
+export default async function resendVerificationEmail({
   email,
 }: IResendVerificationRequest): Promise<IResendVerificationResponse> {
   try {

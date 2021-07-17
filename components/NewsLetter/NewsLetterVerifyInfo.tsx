@@ -4,8 +4,9 @@ import useMutation from '../../hooks/useMutation';
 import {
   IResendVerificationRequest,
   IResendVerificationResponse,
-} from '../../lib/subscription/resendVerification';
+} from '../../lib/subscription/resendVerificationEmail';
 import { Dispatch, SetStateAction } from 'react';
+import constants from '../../lib/constants';
 import LinkButton from '../LinkButton/LinkButton';
 
 interface INewsLetterVerifyInfoProps {
@@ -22,7 +23,7 @@ export default function NewsLetterVerifyInfo(
   const { loading, mutate } = useMutation<
     IResendVerificationRequest,
     IResendVerificationResponse
-  >('/api/resendVerificationEmail', (res) => {
+  >(constants.newsletterVerifyApiRoute, (res) => {
     props.setSnackbarMessage(res.message);
     props.setShowSnackbar(true);
   });

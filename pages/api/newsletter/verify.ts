@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken';
-import { rateLimiterMiddleWare } from '../../lib/rateLimiter';
+import { rateLimiterMiddleWare } from '../../../lib/rateLimiter';
 import {
   JWT_AUDIENCE,
   JWT_ISSUER,
-} from '../../lib/subscription/sendVerificationMail';
-import verifySubscriber from '../../lib/subscription/verifySubscriber';
+} from '../../../lib/subscription/sendVerificationMail';
+import verifySubscriber from '../../../lib/subscription/verifySubscriber';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function verifyEmail(
+export default async function verify(
   req: NextApiRequest,
   res: NextApiResponse
 ) {

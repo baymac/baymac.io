@@ -10,9 +10,10 @@ import styles from './newsletter.module.css';
 import {
   IAddSubscriberRequest,
   IAddSubscriberResponse,
-} from '../../lib/subscription/addSubscriberFb';
+} from '../../lib/subscription/addSubscriber';
 import ButtonLoading from '../ButtonLoading/ButtonLoading';
 import NewsLetterVerifyInfo from './NewsLetterVerifyInfo';
+import constants from '../../lib/constants';
 
 const SubscribeSchema = yup.object().shape({
   firstName: yup
@@ -45,7 +46,7 @@ export default function NewsLetter() {
   const { mutate, loading } = useMutation<
     IAddSubscriberRequest,
     IAddSubscriberResponse
-  >('/api/addSubscriber', (res) => {
+  >(constants.newsletterSubscribeApiRoute, (res) => {
     if (!res.error) {
       setFormSuccess(true);
     }

@@ -3,6 +3,7 @@ import path from 'path';
 import mailerClient from './mailerClient';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
+import constants from '../../lib/constants';
 
 export const JWT_ISSUER = 'baymac.io';
 export const JWT_AUDIENCE = 'baymac.io';
@@ -25,7 +26,7 @@ function getJwtToken(email: string) {
 
 const emailConfirmationPath = path.join(
   process.cwd(),
-  '/public/emailTemplates/emailconfirmation.html'
+  constants.verifyEmailTemplatePath
 );
 
 function getEmailConfirmationHtml(verifyLink: string, firstName: string) {
@@ -42,7 +43,9 @@ export default function sendVerificationMail(email: string, firstName: string) {
   const token = getJwtToken(email);
   const verifyLink = `${
     process.env.NODE_ENV === 'development' ? 'http' : 'https'
-  }://${process.env.NEXT_PUBLIC_URL}/api/verifyEmail?t=${token}`;
+  }://${process.env.NEXT_PUBLIC_URL}${
+    constants.newsletterVerifyApiRoute
+  }?t=${token}`;
   const mailOptions = {
     from: 'hi@baymac.io',
     to: email,
