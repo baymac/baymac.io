@@ -34,8 +34,7 @@ export default async function addSubscriber({
           sendVerificationMail(email, firstName);
           return {
             error: false,
-            message:
-              'You are subscribed, kindly verify your email to start receiving newsletters.',
+            message: 'Please check your email to confirm your subscription.',
           };
         })
         .catch((error) => {
@@ -51,7 +50,7 @@ export default async function addSubscriber({
         sendVerificationMail(email, firstName);
         return {
           error: false,
-          message: 'Subscriber already exists, verification mail sent.',
+          message: 'Subscriber already exists, verification mail resent.',
         };
       }
       return {
