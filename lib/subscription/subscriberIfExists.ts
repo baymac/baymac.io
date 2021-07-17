@@ -1,4 +1,4 @@
-import firebase from '../firebase/clientApp';
+import firebase from '../../firebase/clientApp';
 
 export default function subscriberIfExists(email: string): Promise<any> {
   const db = firebase.firestore();

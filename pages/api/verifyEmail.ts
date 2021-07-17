@@ -1,7 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { rateLimiterMiddleWare } from '../../lib/rateLimiter';
-import { JWT_AUDIENCE, JWT_ISSUER } from '../../lib/sendVerificationMail';
-import verifySubscriber from '../../lib/verifySubscriber';
+import {
+  JWT_AUDIENCE,
+  JWT_ISSUER,
+} from '../../lib/subscription/sendVerificationMail';
+import verifySubscriber from '../../lib/subscription/verifySubscriber';
 
 export default async function verifyEmail(req, res) {
   const rateLimitRes = await rateLimiterMiddleWare(req, res);

@@ -1,4 +1,4 @@
-import addSubscriberFb from '../../lib/addSubscriberFb';
+import addSubscriberFb from '../../lib/subscription/addSubscriberFb';
 import { rateLimiterMiddleWare } from '../../lib/rateLimiter';
 
 export default async function addSubscriber(req, res) {

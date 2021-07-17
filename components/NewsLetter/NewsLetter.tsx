@@ -10,7 +10,7 @@ import styles from './newsletter.module.css';
 import {
   IAddSubscriberRequest,
   IAddSubscriberResponse,
-} from '../../lib/addSubscriberFb';
+} from '../../lib/subscription/addSubscriberFb';
 import ButtonLoading from '../ButtonLoading/ButtonLoading';
 import NewsLetterVerifyInfo from './NewsLetterVerifyInfo';
 

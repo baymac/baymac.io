@@ -1,4 +1,4 @@
-import firebase from '../firebase/clientApp';
+import firebase from '../../firebase/clientApp';
 import subscriberIfExists from './subscriberIfExists';
 
 // First verify the JWT token then run this function
