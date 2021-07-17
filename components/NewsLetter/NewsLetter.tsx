@@ -4,10 +4,14 @@ import { createElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import useMutation from '../../hooks/useMutation';
-import { IGenericAPIResponse } from '../../lib/apiUtils';
 import Snackbar from '../Snackbar/Snackbar';
 import cn from 'classnames';
 import styles from './newsletter.module.css';
+import {
+  IAddSubscriberRequest,
+  IAddSubscriberResponse,
+} from '../../lib/addSubscriberFb';
+import ButtonLoading from '../ButtonLoading/ButtonLoading';
 
 const SubscribeSchema = yup.object().shape({
   firstName: yup
@@ -27,40 +31,40 @@ export default function NewsLetter() {
     formState: { errors },
     reset,
     getValues,
-  } = useForm({
+  } = useForm<IAddSubscriberRequest>({
     resolver: yupResolver(SubscribeSchema),
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false);
 
   const [snackbarMessage, setSnackbarMessage] = useState('');
 
   const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const { loading, mutate } = useMutation<IGenericAPIResponse>(
-    '/api/addSubscriber',
-    (res) => {
-      if (!res.error) {
-        setSubmitted(true);
-      }
-      setSnackbarMessage(res.message);
-      setShowSnackbar(true);
+  const { mutate, loading } = useMutation<
+    IAddSubscriberRequest,
+    IAddSubscriberResponse
+  >('/api/addSubscriber', (res) => {
+    if (!res.error) {
+      setFormSuccess(true);
     }
-  );
+    setSnackbarMessage(res.message);
+    setShowSnackbar(true);
+  });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: IAddSubscriberRequest) => {
     mutate(data);
   };
 
   const handleReset = () => {
-    setSubmitted(false);
+    setFormSuccess(false);
     reset();
   };
 
   return (
     <>
       <div className={styles.container}>
-        {!submitted && (
+        {!formSuccess && (
           <div>
             <h3 className={styles.header}>
               Subscribe to the newsletter
@@ -101,16 +105,14 @@ export default function NewsLetter() {
                   [styles.button_disable]: loading,
                 })}
               >
-                <input
-                  type="submit"
-                  disabled={loading}
-                  value={loading ? 'loading' : 'Subscribe'}
-                />
+                <button type="submit" disabled={loading}>
+                  {loading ? <ButtonLoading /> : 'Subscribe'}
+                </button>
               </div>
             </form>
           </div>
         )}
-        {submitted && (
+        {formSuccess && (
           <>
             <p
               onClick={() => {

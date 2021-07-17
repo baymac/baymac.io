@@ -3,11 +3,11 @@ export interface IGenericAPIResponse {
   message: string;
 }
 
-export const fetcher = (
+export const fetcher = <P, Q>(
   url: string,
-  data?: Object,
+  data?: P,
   method: 'POST' | 'GET' = 'POST'
-) =>
+): Promise<Q> =>
   fetch(url, {
     method: method,
     headers: {
