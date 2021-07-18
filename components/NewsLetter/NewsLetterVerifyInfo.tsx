@@ -23,7 +23,7 @@ export default function NewsLetterVerifyInfo(
   const { loading, mutate } = useMutation<
     IResendVerificationRequest,
     IResendVerificationResponse
-  >(constants.newsletterVerifyApiRoute, (res) => {
+  >(constants.newsletterResendApiRoute, (res) => {
     props.setSnackbarMessage(res.message);
     props.setShowSnackbar(true);
   });

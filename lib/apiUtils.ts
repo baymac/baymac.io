@@ -3,6 +3,15 @@ export interface IGenericAPIResponse {
   message: string;
 }
 
+export interface ISubscriber {
+  firstName: string;
+  id?: string;
+  email: string;
+  createdAt: number;
+  updatedAt: number;
+  verified: boolean;
+}
+
 export const fetcher = <P, Q>(
   url: string,
   data?: P,

@@ -19,7 +19,11 @@ export default async function resendVerificationEmail({
       Object.keys(existingSubscriber).length !== 0 &&
       !existingSubscriber.verified
     ) {
-      sendVerificationMail(email, existingSubscriber.firstName);
+      sendVerificationMail(
+        existingSubscriber.id,
+        email,
+        existingSubscriber.firstName
+      );
       return {
         error: false,
         message: 'Verification mail resent.',
