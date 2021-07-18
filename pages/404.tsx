@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import MagicButton from '../components/MagicButton/MagicButton';
-import styles from '../styles/error.module.css';
+import styles from '../styles/pageStyles/error.module.css';
 
 export default function FourOhFour() {
   const router = useRouter();

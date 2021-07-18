@@ -3,6 +3,8 @@ const constants = {
   newsletterResendApiRoute: '/api/newsletter/resend',
   newsletterVerifyApiRoute: '/api/newsletter/verify',
   newsletterUnsubscribeApiRoute: '/api/newsletter/unsubscribe',
+  newsletterUpdateApiRoute: '/api/newsletter/update',
+  newsletterUpdateServerSideRoute: '/subscription/update',
   verifyEmailTemplatePath: '/public/emailTemplates/emailconfirmation.html',
 };
 

@@ -32,7 +32,8 @@ const emailConfirmationPath = path.join(
 function getEmailConfirmationHtml(
   unsubscribeLink: string,
   verifyLink: string,
-  firstName: string
+  firstName: string,
+  updateProfileLink: string
 ) {
   let html = fs
     .readFileSync(emailConfirmationPath)
@@ -40,7 +41,9 @@ function getEmailConfirmationHtml(
     .replace('{{FIRST_NAME}}', firstName)
     .replace('{{VERIFY_LINK}}', verifyLink)
     .replace('{{VERIFY_LINK}}', verifyLink)
-    .replace('{{UNSUBSCRIBE_LINK}}', unsubscribeLink);
+    .replace('{{UNSUBSCRIBE_LINK}}', unsubscribeLink)
+    .replace('{{UNSUBSCRIBE_LINK}}', unsubscribeLink)
+    .replace('{{UPDATE_PROFILE_LINK}}', updateProfileLink);
   return html;
 }
 
@@ -60,11 +63,21 @@ export default function sendVerificationMail(
   }://${process.env.NEXT_PUBLIC_URL}${
     constants.newsletterUnsubscribeApiRoute
   }?u=${userId}`;
+  const updateProfileLink = `${
+    process.env.NODE_ENV === 'development' ? 'http' : 'https'
+  }://${process.env.NEXT_PUBLIC_URL}${
+    constants.newsletterUpdateServerSideRoute
+  }?u=${userId}`;
   const mailOptions = {
     from: 'hi@baymac.io',
     to: email,
     subject: 'Only one more step, verify your email address',
-    html: getEmailConfirmationHtml(unsubscribeLink, verifyLink, firstName),
+    html: getEmailConfirmationHtml(
+      unsubscribeLink,
+      verifyLink,
+      firstName,
+      updateProfileLink
+    ),
   };
   mailerClient.sendMail(mailOptions, (err, info) => {
     if (err) {

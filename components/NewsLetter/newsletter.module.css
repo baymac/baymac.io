@@ -51,9 +51,6 @@
   width: 100%;
   border: 1px solid var(--button-hover-color);
   padding: 1rem;
-}
-
-.input_box button {
   background-color: var(--button-color);
   color: var(--default-bw);
   font-size: var(--h4-font-size);
