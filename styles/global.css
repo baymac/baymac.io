@@ -70,6 +70,8 @@
   --nav-items-select-color: var(--first-color-lighter);
   --nav-items-divider-color: hsl(0, 0%, 60%);
   --button-hover-color: hsl(0, 0%, 90%);
+  --button-color: var(--first-color);
+  --button-color-disabled: hsl(230, 70%, 90%);
 
   /*========== Font and typography ==========*/
   --body-font: 'Inter', sans-serif;
@@ -150,6 +152,8 @@
   --nav-items-select-color: hsl(0, 0%, 20%);
   --nav-items-divider-color: hsl(0, 0%, 30%);
   --button-hover-color: hsl(0, 0%, 20%);
+  --button-color: var(--first-color);
+  --button-color-disabled: hsl(0, 0%, 60%);
 }
 
 /*========== Button Dark/Light ==========*/

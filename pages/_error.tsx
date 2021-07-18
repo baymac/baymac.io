@@ -1,4 +1,4 @@
-import styles from '../styles/error.module.css';
+import styles from '../styles/pageStyles/error.module.css';
 
 function Error({ statusCode }) {
   return (

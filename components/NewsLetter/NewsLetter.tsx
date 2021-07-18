@@ -3,9 +3,17 @@ import { UilFastMail } from '@iconscout/react-unicons';
 import { createElement, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import addSubscriber from '../../lib/addSubscribe';
+import useMutation from '../../hooks/useMutation';
 import Snackbar from '../Snackbar/Snackbar';
+import cn from 'classnames';
 import styles from './newsletter.module.css';
+import {
+  IAddSubscriberRequest,
+  IAddSubscriberResponse,
+} from '../../lib/subscription/addSubscriber';
+import ButtonLoading from '../ButtonLoading/ButtonLoading';
+import NewsLetterVerifyInfo from './NewsLetterVerifyInfo';
+import constants from '../../lib/constants';
 
 const SubscribeSchema = yup.object().shape({
   firstName: yup
@@ -13,7 +21,7 @@ const SubscribeSchema = yup.object().shape({
     .required('First Name is required')
     .matches(
       /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+$/,
-      'First Name can only contain characters.'
+      'First Name can only contain characters without space'
     ),
   email: yup.string().email().required('Email is required'),
 });
@@ -24,37 +32,41 @@ export default function NewsLetter() {
     register,
     formState: { errors },
     reset,
-  } = useForm({
+    getValues,
+  } = useForm<IAddSubscriberRequest>({
     resolver: yupResolver(SubscribeSchema),
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false);
 
   const [snackbarMessage, setSnackbarMessage] = useState('');
 
   const [showSnackbar, setShowSnackbar] = useState(false);
 
-  const onSubmit = async (data) => {
-    const res = await addSubscriber(data);
+  const { mutate, loading } = useMutation<
+    IAddSubscriberRequest,
+    IAddSubscriberResponse
+  >(constants.newsletterSubscribeApiRoute, (res) => {
     if (!res.error) {
-      setSubmitted(true);
+      setFormSuccess(true);
     }
     setSnackbarMessage(res.message);
     setShowSnackbar(true);
+  });
+
+  const onSubmit = (data: IAddSubscriberRequest) => {
+    mutate(data);
+  };
+
+  const handleReset = () => {
+    setFormSuccess(false);
+    reset();
   };
 
   return (
     <>
-      <div
-        className={styles.container}
-        onClick={() => {
-          if (submitted) {
-            setSubmitted(false);
-            reset();
-          }
-        }}
-      >
-        {!submitted && (
+      <div className={styles.container}>
+        {!formSuccess && (
           <div>
             <h3 className={styles.header}>
               Subscribe to the newsletter
@@ -90,16 +102,25 @@ export default function NewsLetter() {
                   <p className={styles.error_message}>{errors.email.message}</p>
                 )}
               </div>
-              <div className={styles.input_box}>
-                <input type="submit" value="Subscribe" />
+              <div
+                className={cn(styles.input_box, {
+                  [styles.button_disable]: loading,
+                })}
+              >
+                <button type="submit" disabled={loading}>
+                  {loading ? <ButtonLoading /> : 'Subscribe'}
+                </button>
               </div>
             </form>
           </div>
         )}
-        {submitted && (
-          <h3 className={styles.thanks_message}>
-            Thank you for subscribing 🥰
-          </h3>
+        {formSuccess && (
+          <NewsLetterVerifyInfo
+            email={getValues().email}
+            handleReset={handleReset}
+            setSnackbarMessage={setSnackbarMessage}
+            setShowSnackbar={setShowSnackbar}
+          />
         )}
       </div>
       {showSnackbar &&
@@ -110,7 +131,7 @@ export default function NewsLetter() {
             show: showSnackbar,
             // @ts-ignore
             reset: setShowSnackbar,
-            duration: 1500,
+            duration: 5000,
           },
           null
         )}

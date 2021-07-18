@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import styles from '../styles/buymecryptopage.module.css';
+import styles from '../styles/pageStyles/buymecryptopage.module.css';
 
 export default function BuyMeCryptoPage() {
   const router = useRouter();

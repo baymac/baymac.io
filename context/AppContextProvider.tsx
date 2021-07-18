@@ -6,8 +6,9 @@ export interface IAppContextValues {
 }
 
 const AppContext = createContext({
-  setNavBarOpen: (_: boolean) => {},
-  navBarOpen: false
+  // eslint-disable-next-line no-unused-vars
+  setNavBarOpen: (open: boolean) => {},
+  navBarOpen: false,
 });
 
 export function useAppContext() {
@@ -15,7 +16,7 @@ export function useAppContext() {
 }
 
 export default function AppContextProvider({
-  children
+  children,
 }: {
   children: ReactNode;
 }) {
@@ -23,7 +24,7 @@ export default function AppContextProvider({
 
   const value: IAppContextValues = {
     navBarOpen,
-    setNavBarOpen
+    setNavBarOpen,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -1,7 +1,8 @@
+import { ReactChildren } from 'react';
 import styles from './imageborder.module.css';
 
 export interface IImageBorderProps {
-  children: JSX.Element;
+  children: ReactChildren;
   maxHeight: number;
 }
 
