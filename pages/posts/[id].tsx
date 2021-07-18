@@ -2,7 +2,7 @@ import cn from 'classnames';
 import Date from '../../components/Blog/Date';
 import RootLayout from '../../layouts/RootLayout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
-import blogStyles from '../../styles/blog.module.css';
+import blogStyles from '../../styles/pageStyles/blog.module.css';
 import rootStyles from '../../styles/root.module.css';
 
 export async function getStaticProps({ params }) {
