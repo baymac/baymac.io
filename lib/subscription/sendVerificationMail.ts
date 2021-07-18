@@ -1,9 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import mailerClient from './mailerClient';
 import crypto from 'crypto';
+import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import constants from '../../lib/constants';
+import mailerClient from './mailerClient';
 
 export const JWT_ISSUER = 'baymac.io';
 export const JWT_AUDIENCE = 'baymac.io';
@@ -24,11 +23,7 @@ function getJwtToken(email: string) {
   });
 }
 
-const emailConfirmationPath = path.join(
-  process.cwd(),
-  constants.verifyEmailTemplatePath
-);
-
+const emailConfirmationPath = constants.verifyEmailTemplatePath;
 function getEmailConfirmationHtml(
   unsubscribeLink: string,
   verifyLink: string,
