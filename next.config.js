@@ -11,7 +11,7 @@ module.exports = {
         if (!dev) {
             config.plugins.push(
                 new CopyPlugin({
-                    patterns: [{ from: "public/emailTemplates", to: "/emailTemplates" }],
+                    patterns: [{ from: "public/emailTemplates", to: "emailTemplates" }],
                 })
             )
         }
