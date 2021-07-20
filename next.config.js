@@ -1,7 +1,8 @@
 const CopyPlugin = require("copy-webpack-plugin")
 
 module.exports = {
-    target: "serverless",
+    target: "server",
+    webpack5: true,
     webpack: function (config, { dev, isServer }) {
         // Fixes npm packages that depend on `fs` module
         if (!isServer) {
@@ -11,7 +12,7 @@ module.exports = {
         if (!dev) {
             config.plugins.push(
                 new CopyPlugin({
-                    patterns: [{ from: "public/emailTemplates", to: "emailTemplates" }],
+                    patterns: [{ from: "public/emailTemplates", to: "emailTemplates/" }],
                 })
             )
         }
