@@ -34,7 +34,7 @@ const emailConfirmationPath = () => {
   return path.join(basePath, constants.verifyEmailTemplatePath);
 };
 
-async function getEmailConfirmationHtml(
+function getEmailConfirmationHtml(
   unsubscribeLink: string,
   verifyLink: string,
   firstName: string,
