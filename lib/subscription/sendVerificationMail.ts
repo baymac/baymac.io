@@ -3,6 +3,7 @@ import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import constants from '../../lib/constants';
 import mailerClient from './mailerClient';
+import path from 'path';
 
 export const JWT_ISSUER = 'baymac.io';
 export const JWT_AUDIENCE = 'baymac.io';
@@ -23,7 +24,15 @@ function getJwtToken(email: string) {
   });
 }
 
-const emailConfirmationPath = '/var/task' + constants.verifyEmailTemplatePath;
+const emailConfirmationPath = () => {
+  let basePath = process.cwd();
+  if (process.env.NODE_ENV === 'production') {
+    basePath = path.join(process.cwd(), '.next/server/chunks');
+  } else {
+    basePath += '/public';
+  }
+  return path.join(basePath, constants.verifyEmailTemplatePath);
+};
 
 function getEmailConfirmationHtml(
   unsubscribeLink: string,
@@ -32,7 +41,7 @@ function getEmailConfirmationHtml(
   updateProfileLink: string
 ) {
   let html = fs
-    .readFileSync(emailConfirmationPath)
+    .readFileSync(emailConfirmationPath())
     .toString()
     .replace('{{FIRST_NAME}}', firstName)
     .replace('{{VERIFY_LINK}}', verifyLink)

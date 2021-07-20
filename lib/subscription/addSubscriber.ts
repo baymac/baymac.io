@@ -19,7 +19,7 @@ export default async function addSubscriber({
     // Get existing subscriber
     const existingSubscriber = await subscriberIfExists(email);
     // If exisiting subscriber does not exist
-    if (Object.keys(existingSubscriber).length === 0) {
+    if (!existingSubscriber) {
       // Add subscriber and then send verification email
       const result = await db
         .collection('subscribers')
