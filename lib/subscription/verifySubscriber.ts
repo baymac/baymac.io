@@ -8,10 +8,7 @@ export default async function verifySubscriber(email: string) {
     // Get existing subscriber
     const existingSubscriber = await subscriberIfExists(email);
     // If existing subscriber exists and it is not verified
-    if (
-      Object.keys(existingSubscriber).length > 0 &&
-      !existingSubscriber.verified
-    ) {
+    if (existingSubscriber && !existingSubscriber.verified) {
       // update verified to true
       const result = await db
         .collection('subscribers')
