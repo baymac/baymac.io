@@ -3,8 +3,9 @@ import path from 'path';
 import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
+import constants from './constants';
 
-const postsDirectory = path.join(process.cwd(), 'data/posts');
+const postsDirectory = path.join(process.cwd(), constants.postsPath);
 
 export function getSortedPostsData() {
   // Get file names under /posts
@@ -23,11 +24,12 @@ export function getSortedPostsData() {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data
+      ...matterResult.data,
     };
   });
   // Sort posts by date
   return allPostsData.sort((a, b) => {
+    // @ts-ignore
     if (a.date < b.date) {
       return 1;
     } else {
@@ -42,8 +44,8 @@ export function getAllPostIds() {
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, '')
-      }
+        id: fileName.replace(/\.md$/, ''),
+      },
     };
   });
 }
@@ -64,6 +66,6 @@ export async function getPostData(id) {
   return {
     id,
     contentHtml,
-    ...matterResult.data
+    ...matterResult.data,
   };
 }

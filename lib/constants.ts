@@ -6,6 +6,7 @@ const constants = {
   newsletterUpdateApiRoute: '/api/newsletter/update',
   newsletterUpdateServerSideRoute: '/subscription/update',
   verifyEmailTemplatePath: '/emailTemplates/emailconfirmation.html',
+  postsPath: 'content/posts',
 };
 
 export default constants;
