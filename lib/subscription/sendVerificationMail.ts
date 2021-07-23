@@ -74,7 +74,7 @@ export default function sendVerificationMail(
     constants.newsletterUpdateServerSideRoute
   }?u=${userId}`;
   const mailOptions = {
-    from: 'hi@baymac.io',
+    from: process.env.EMAIL_USER,
     to: email,
     subject: 'Only one more step, verify your email address',
     html: getEmailConfirmationHtml(
