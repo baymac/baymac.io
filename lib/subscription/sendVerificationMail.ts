@@ -1,10 +1,10 @@
 import crypto from 'crypto';
-import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import constants from '../../lib/constants';
 import mailerClient from './mailerClient';
 import path from 'path';
 import { IGenericAPIResponse } from '../apiUtils';
+import pug from 'pug';
 
 export const JWT_ISSUER = 'baymac.io';
 export const JWT_AUDIENCE = 'baymac.io';
@@ -41,15 +41,13 @@ function getEmailConfirmationHtml(
   firstName: string,
   updateProfileLink: string
 ) {
-  let html = fs
-    .readFileSync(emailConfirmationPath())
-    .toString()
-    .replace('{{FIRST_NAME}}', firstName)
-    .replace('{{VERIFY_LINK}}', verifyLink)
-    .replace('{{VERIFY_LINK}}', verifyLink)
-    .replace('{{UNSUBSCRIBE_LINK}}', unsubscribeLink)
-    .replace('{{UNSUBSCRIBE_LINK}}', unsubscribeLink)
-    .replace('{{UPDATE_PROFILE_LINK}}', updateProfileLink);
+  const compiledFunction = pug.compileFile(emailConfirmationPath());
+  const html = compiledFunction({
+    FIRST_NAME: firstName,
+    VERIFY_LINK: verifyLink,
+    UNSUBSCRIBE_LINK: unsubscribeLink,
+    UPDATE_PROFILE_LINK: updateProfileLink,
+  });
   return html;
 }
 
