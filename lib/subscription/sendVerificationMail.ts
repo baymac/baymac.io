@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import constants from '../../lib/constants';
 import mailerClient from './mailerClient';
 import path from 'path';
+import { IGenericAPIResponse } from '../apiUtils';
 
 export const JWT_ISSUER = 'baymac.io';
 export const JWT_AUDIENCE = 'baymac.io';
@@ -52,11 +53,11 @@ function getEmailConfirmationHtml(
   return html;
 }
 
-export default function sendVerificationMail(
+export default async function sendVerificationMail(
   userId: string,
   email: string,
   firstName: string
-) {
+): Promise<IGenericAPIResponse> {
   const token = getJwtToken(email);
   const verifyLink = `${
     process.env.NODE_ENV === 'development' ? 'http' : 'https'
@@ -84,12 +85,16 @@ export default function sendVerificationMail(
       updateProfileLink
     ),
   };
-  mailerClient.sendMail(mailOptions, (err, info) => {
-    if (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
-    }
-    // eslint-disable-next-line no-console
-    console.log(info);
-  });
+  try {
+    const result = await mailerClient.sendMail(mailOptions);
+    return {
+      error: false,
+      message: result.response,
+    };
+  } catch (err) {
+    return {
+      error: true,
+      message: err.response,
+    };
+  }
 }

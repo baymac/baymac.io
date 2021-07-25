@@ -19,14 +19,14 @@ export default async function resendVerificationEmail({
       Object.keys(existingSubscriber).length !== 0 &&
       !existingSubscriber.verified
     ) {
-      sendVerificationMail(
+      const { error, message } = await sendVerificationMail(
         existingSubscriber.id,
         email,
         existingSubscriber.firstName
       );
       return {
-        error: false,
-        message: 'Verification mail resent.',
+        error,
+        message: !error ? 'Verification mail resent' : message,
       };
     } else {
       if (existingSubscriber.verified) {
