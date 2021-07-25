@@ -1,9 +1,10 @@
 import crypto from 'crypto';
-import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import constants from '../../lib/constants';
 import mailerClient from './mailerClient';
 import path from 'path';
+import { IGenericAPIResponse } from '../apiUtils';
+import pug from 'pug';
 
 export const JWT_ISSUER = 'baymac.io';
 export const JWT_AUDIENCE = 'baymac.io';
@@ -40,23 +41,21 @@ function getEmailConfirmationHtml(
   firstName: string,
   updateProfileLink: string
 ) {
-  let html = fs
-    .readFileSync(emailConfirmationPath())
-    .toString()
-    .replace('{{FIRST_NAME}}', firstName)
-    .replace('{{VERIFY_LINK}}', verifyLink)
-    .replace('{{VERIFY_LINK}}', verifyLink)
-    .replace('{{UNSUBSCRIBE_LINK}}', unsubscribeLink)
-    .replace('{{UNSUBSCRIBE_LINK}}', unsubscribeLink)
-    .replace('{{UPDATE_PROFILE_LINK}}', updateProfileLink);
+  const compiledFunction = pug.compileFile(emailConfirmationPath());
+  const html = compiledFunction({
+    FIRST_NAME: firstName,
+    VERIFY_LINK: verifyLink,
+    UNSUBSCRIBE_LINK: unsubscribeLink,
+    UPDATE_PROFILE_LINK: updateProfileLink,
+  });
   return html;
 }
 
-export default function sendVerificationMail(
+export default async function sendVerificationMail(
   userId: string,
   email: string,
   firstName: string
-) {
+): Promise<IGenericAPIResponse> {
   const token = getJwtToken(email);
   const verifyLink = `${
     process.env.NODE_ENV === 'development' ? 'http' : 'https'
@@ -74,7 +73,7 @@ export default function sendVerificationMail(
     constants.newsletterUpdateServerSideRoute
   }?u=${userId}`;
   const mailOptions = {
-    from: 'hi@baymac.io',
+    from: process.env.EMAIL_USER,
     to: email,
     subject: 'Only one more step, verify your email address',
     html: getEmailConfirmationHtml(
@@ -84,12 +83,16 @@ export default function sendVerificationMail(
       updateProfileLink
     ),
   };
-  mailerClient.sendMail(mailOptions, (err, info) => {
-    if (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
-    }
-    // eslint-disable-next-line no-console
-    console.log(info);
-  });
+  try {
+    const result = await mailerClient.sendMail(mailOptions);
+    return {
+      error: false,
+      message: result.response,
+    };
+  } catch (err) {
+    return {
+      error: true,
+      message: err.response,
+    };
+  }
 }
