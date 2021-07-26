@@ -95,9 +95,17 @@ export default function sendVerificationMail(
   //     message: err.response,
   //   };
   // }
-  mailerClient.sendMail(mailOptions);
+  mailerClient.sendMail(mailOptions, (error) => {
+    if (error) {
+      // eslint-disable-next-line no-console
+      console.log('Error occurred');
+      // eslint-disable-next-line no-console
+      console.log(error.message);
+    }
+    mailerClient.close();
+  });
   return {
     error: false,
-    message: 'Sent mail',
+    message: 'Mail sent.',
   };
 }
