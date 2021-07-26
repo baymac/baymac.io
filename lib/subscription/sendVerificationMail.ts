@@ -51,11 +51,11 @@ function getEmailConfirmationHtml(
   return html;
 }
 
-export default async function sendVerificationMail(
+export default function sendVerificationMail(
   userId: string,
   email: string,
   firstName: string
-): Promise<IGenericAPIResponse> {
+): IGenericAPIResponse {
   const token = getJwtToken(email);
   const verifyLink = `${
     process.env.NODE_ENV === 'development' ? 'http' : 'https'
@@ -83,16 +83,21 @@ export default async function sendVerificationMail(
       updateProfileLink
     ),
   };
-  try {
-    const result = await mailerClient.sendMail(mailOptions);
-    return {
-      error: false,
-      message: result.response,
-    };
-  } catch (err) {
-    return {
-      error: true,
-      message: err.response,
-    };
-  }
+  // try {
+  //   const result = await mailerClient.sendMail(mailOptions);
+  //   return {
+  //     error: false,
+  //     message: result.response,
+  //   };
+  // } catch (err) {
+  //   return {
+  //     error: true,
+  //     message: err.response,
+  //   };
+  // }
+  mailerClient.sendMail(mailOptions);
+  return {
+    error: false,
+    message: 'Sent mail',
+  };
 }
