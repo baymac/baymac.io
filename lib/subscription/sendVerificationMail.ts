@@ -5,6 +5,7 @@ import mailerClient from './mailerClient';
 import path from 'path';
 import { IGenericAPIResponse } from '../apiUtils';
 import pug from 'pug';
+import * as Sentry from '@sentry/nextjs';
 
 export const JWT_ISSUER = 'baymac.io';
 export const JWT_AUDIENCE = 'baymac.io';
@@ -97,10 +98,7 @@ export default function sendVerificationMail(
   // }
   mailerClient.sendMail(mailOptions, (error) => {
     if (error) {
-      // eslint-disable-next-line no-console
-      console.log('Error occurred');
-      // eslint-disable-next-line no-console
-      console.log(error.message);
+      Sentry.captureException(error);
     }
     mailerClient.close();
   });
