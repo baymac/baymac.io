@@ -14,6 +14,7 @@
   "dependencies": {
     "@hookform/resolvers": "^2.6.0",
     "@iconscout/react-unicons": "^1.1.6",
+    "@sentry/nextjs": "^6.10.0",
     "async-ratelimiter": "^1.2.8",
     "classnames": "^2.2.6",
     "date-fns": "^2.22.1",
