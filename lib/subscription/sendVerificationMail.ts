@@ -86,6 +86,7 @@ export default async function sendVerificationMail(
   };
   try {
     const result = await mailerClient.sendMail(mailOptions);
+    Sentry.captureMessage(`Mail sent to ${email}:${result.toString()}`);
     return {
       error: false,
       message: result.response,
