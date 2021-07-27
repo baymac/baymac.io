@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Parichay Barpanda]]></title>
+        <description><![CDATA[Parichay Barpanda]]></description>
+        <link>https://baymac.io</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Tue, 27 Jul 2021 16:56:49 GMT</lastBuildDate>
+        <atom:link href="https://baymac.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Two Forms of Pre-rendering]]></title>
+            <link>https://baymac.io/blog/pre-rendering</link>
+            <guid isPermaLink="true">https://baymac.io/blog/pre-rendering</guid>
+            <pubDate>Wed, 01 Jan 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[When to Use Static Generation v.s. Server-side Rendering]]></title>
+            <link>https://baymac.io/blog/ssg-ssr</link>
+            <guid isPermaLink="true">https://baymac.io/blog/ssg-ssr</guid>
+            <pubDate>Thu, 02 Jan 2020 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

@@ -15,6 +15,10 @@ const moduleExports = {
         if (!isServer) {
             config.resolve.fallback.fs = false
         }
+        if (isServer) {
+            // require('./scripts/generate-sitemap');
+            require('./scripts/generateRss');
+        }
         // copy files you're interested in
         if (!dev) {
             config.plugins.push(
