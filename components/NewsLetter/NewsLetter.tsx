@@ -26,6 +26,13 @@ const SubscribeSchema = yup.object().shape({
   email: yup.string().email().required('Email is required'),
 });
 
+function isErrorTimeOut(err): boolean {
+  if (err.error?.code === '504') {
+    return true;
+  }
+  return false;
+}
+
 export default function NewsLetter() {
   const {
     handleSubmit,
@@ -47,10 +54,15 @@ export default function NewsLetter() {
     IAddSubscriberRequest,
     IAddSubscriberResponse
   >(constants.newsletterSubscribeApiRoute, (res) => {
-    if (!res.error) {
+    if (!res.error && !isErrorTimeOut(res.error)) {
       setFormSuccess(true);
     }
-    setSnackbarMessage(res.message);
+    // A hack to circumvent around function timeout as only 10s allowed for hobbyists, we will just assume that email is delivered if function times out.
+    setSnackbarMessage(
+      !isErrorTimeOut(res.error)
+        ? res.message
+        : 'Please check your email to confirm your subscription.'
+    );
     setShowSnackbar(true);
   });
 
