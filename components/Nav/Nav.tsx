@@ -71,8 +71,8 @@ export default function Nav() {
                   resolvedTheme === 'dark' ? UilSun : UilMoon,
                   {
                     id: 'theme-button',
-                    width: 30,
-                    height: 30,
+                    width: 28,
+                    height: 28,
                   },
                   null
                 )

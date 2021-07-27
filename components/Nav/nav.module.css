@@ -31,10 +31,6 @@
   border-radius: 0.3rem;
 }
 
-.skeleton_loader_container {
-  padding: 2px;
-}
-
 .skeleton_loader:empty {
   width: 30px;
   height: 30px;
@@ -106,7 +102,12 @@
 }
 
 .nav__logo_button {
-  padding: 0.4rem 0.4rem;
+  padding: 5px;
+}
+
+.nav__changeTheme,
+.skeleton_loader_container {
+  padding: 3px;
 }
 
 @media screen and (max-width: 600px) {
