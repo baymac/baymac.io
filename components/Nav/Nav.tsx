@@ -94,7 +94,7 @@ export default function Nav() {
                 className={styles.nav__toggle}
                 aria-label="nav-open-button"
               >
-                <UilApps id="nav_toggle" width={30} height={30} />
+                <UilApps id="nav_toggle" width={28} height={28} />
               </button>
             )}
             {navBarOpen && (
@@ -103,7 +103,7 @@ export default function Nav() {
                 onClick={() => setNavBarOpen(false)}
                 aria-label="nav-close-button"
               >
-                <UilMultiply width={30} height={30} id="nav_toggle" />
+                <UilMultiply width={28} height={28} id="nav_toggle" />
               </button>
             )}
           </div>
