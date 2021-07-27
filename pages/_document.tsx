@@ -31,6 +31,11 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+          />
+          <link rel="apple-touch-startup-image" href="/images/logo.svg" />
         </Head>
         <body>
           <Main />
