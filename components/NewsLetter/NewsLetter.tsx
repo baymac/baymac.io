@@ -14,6 +14,7 @@ import {
 import ButtonLoading from '../ButtonLoading/ButtonLoading';
 import NewsLetterVerifyInfo from './NewsLetterVerifyInfo';
 import constants from '../../lib/constants';
+import * as Sentry from '@sentry/nextjs';
 
 const SubscribeSchema = yup.object().shape({
   firstName: yup
@@ -28,6 +29,7 @@ const SubscribeSchema = yup.object().shape({
 
 function isErrorTimeOut(err): boolean {
   if (err.error?.code === '504') {
+    Sentry.captureException(err);
     return true;
   }
   return false;
@@ -54,7 +56,7 @@ export default function NewsLetter() {
     IAddSubscriberRequest,
     IAddSubscriberResponse
   >(constants.newsletterSubscribeApiRoute, (res) => {
-    if (!res.error && !isErrorTimeOut(res.error)) {
+    if (!res.error || !isErrorTimeOut(res.error)) {
       setFormSuccess(true);
     }
     // A hack to circumvent around function timeout as only 10s allowed for hobbyists, we will just assume that email is delivered if function times out.
