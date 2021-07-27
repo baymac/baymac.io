@@ -2,6 +2,7 @@ import firebase from '../../firebase/clientApp';
 import { IGenericAPIResponse } from '../apiUtils';
 import sendVerificationMail from './sendVerificationMail';
 import subscriberIfExists from './subscriberIfExists';
+import * as Sentry from '@sentry/nextjs';
 
 export interface IAddSubscriberRequest {
   firstName: string;
@@ -31,6 +32,9 @@ export default async function addSubscriber({
           updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
         })
         .then(async (docRef) => {
+          Sentry.captureMessage(
+            'Subscriber added, sending verification email..'
+          );
           const { error, message } = await sendVerificationMail(
             docRef.id,
             email,
@@ -44,6 +48,7 @@ export default async function addSubscriber({
           };
         })
         .catch((error) => {
+          Sentry.captureException(error);
           return {
             error: true,
             message: 'Subscriber could not be added. ' + error.message,
@@ -53,6 +58,9 @@ export default async function addSubscriber({
     } else {
       // If subscriber exists but not verified send verification email
       if (!existingSubscriber.verified) {
+        Sentry.captureMessage(
+          'Subscriber already exists, resending verification email..'
+        );
         const { error, message } = await sendVerificationMail(
           existingSubscriber.id,
           email,
@@ -65,12 +73,16 @@ export default async function addSubscriber({
             : message,
         };
       }
+      Sentry.captureMessage(
+        'Subscriber already exists, skipping verification email'
+      );
       return {
         error: true,
         message: 'Subscriber already exists.',
       };
     }
   } catch (error) {
+    Sentry.captureException(error);
     return {
       error: true,
       message: 'Some error occurred: ' + error.message,
