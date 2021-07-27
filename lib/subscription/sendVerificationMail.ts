@@ -52,11 +52,11 @@ function getEmailConfirmationHtml(
   return html;
 }
 
-export default function sendVerificationMail(
+export default async function sendVerificationMail(
   userId: string,
   email: string,
   firstName: string
-): IGenericAPIResponse {
+): Promise<IGenericAPIResponse> {
   const token = getJwtToken(email);
   const verifyLink = `${
     process.env.NODE_ENV === 'development' ? 'http' : 'https'
@@ -84,26 +84,17 @@ export default function sendVerificationMail(
       updateProfileLink
     ),
   };
-  // try {
-  //   const result = await mailerClient.sendMail(mailOptions);
-  //   return {
-  //     error: false,
-  //     message: result.response,
-  //   };
-  // } catch (err) {
-  //   return {
-  //     error: true,
-  //     message: err.response,
-  //   };
-  // }
-  mailerClient.sendMail(mailOptions, (error) => {
-    if (error) {
-      Sentry.captureException(error);
-    }
-    mailerClient.close();
-  });
-  return {
-    error: false,
-    message: 'Mail sent.',
-  };
+  try {
+    const result = await mailerClient.sendMail(mailOptions);
+    return {
+      error: false,
+      message: result.response,
+    };
+  } catch (err) {
+    Sentry.captureException(err);
+    return {
+      error: true,
+      message: err.response,
+    };
+  }
 }

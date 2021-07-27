@@ -19,7 +19,7 @@ export default async function resendVerificationEmail({
       Object.keys(existingSubscriber).length !== 0 &&
       !existingSubscriber.verified
     ) {
-      const { error, message } = sendVerificationMail(
+      const { error, message } = await sendVerificationMail(
         existingSubscriber.id,
         email,
         existingSubscriber.firstName

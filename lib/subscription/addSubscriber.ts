@@ -30,8 +30,8 @@ export default async function addSubscriber({
           verified: false,
           updatedAt: firebase.firestore.Timestamp.fromDate(new Date()),
         })
-        .then((docRef) => {
-          const { error, message } = sendVerificationMail(
+        .then(async (docRef) => {
+          const { error, message } = await sendVerificationMail(
             docRef.id,
             email,
             firstName
@@ -53,7 +53,7 @@ export default async function addSubscriber({
     } else {
       // If subscriber exists but not verified send verification email
       if (!existingSubscriber.verified) {
-        const { error, message } = sendVerificationMail(
+        const { error, message } = await sendVerificationMail(
           existingSubscriber.id,
           email,
           firstName
