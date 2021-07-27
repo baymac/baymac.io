@@ -12,14 +12,22 @@ export default function useMutation<P, Q>(
   const mutate = useCallback(
     (req: P) => {
       setLoading(true);
-      return fetcher<P, Q>(url, req).then((resp) => {
-        setResponse(resp);
-        setLoading(false);
-        if (callback) {
-          callback(resp);
-        }
-        return resp;
-      });
+      return fetcher<P, Q>(url, req)
+        .then((resp) => {
+          setResponse(resp);
+          setLoading(false);
+          if (callback) {
+            callback(resp);
+          }
+          return resp;
+        })
+        .catch((err) => {
+          setResponse(err);
+          setLoading(false);
+          if (callback) {
+            callback(err);
+          }
+        });
     },
     [callback, url]
   );
