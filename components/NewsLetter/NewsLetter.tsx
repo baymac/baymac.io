@@ -27,7 +27,7 @@ const SubscribeSchema = yup.object().shape({
 });
 
 function isErrorTimeOut(err): boolean {
-  if (err.code === '504') {
+  if (err?.code === '504') {
     return true;
   }
   return false;
