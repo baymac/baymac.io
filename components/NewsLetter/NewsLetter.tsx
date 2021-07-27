@@ -54,7 +54,7 @@ export default function NewsLetter() {
     IAddSubscriberRequest,
     IAddSubscriberResponse
   >(constants.newsletterSubscribeApiRoute, (res) => {
-    if (!res.error || !isErrorTimeOut(res.error)) {
+    if (!res.error || isErrorTimeOut(res.error)) {
       setFormSuccess(true);
     }
     // A hack to circumvent around function timeout as only 10s allowed for hobbyists, we will just assume that email is delivered if function times out.
