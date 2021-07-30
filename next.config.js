@@ -8,6 +8,10 @@ const CopyPlugin = require("copy-webpack-plugin")
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const moduleExports = {
+    future: {
+        strictPostcssConfiguration: true
+    },
+    reactStrictMode: true,
     target: "server",
     webpack5: true,
     async headers() {
@@ -35,6 +39,15 @@ const moduleExports = {
                     patterns: [{ from: "public/emailTemplates", to: "emailTemplates/" }],
                 })
             )
+        }
+
+        // Replace React with Preact only in client production build (Inspired by leerob.io)
+        if (!dev && !isServer) {
+            Object.assign(config.resolve.alias, {
+                react: 'preact/compat',
+                'react-dom/test-utils': 'preact/test-utils',
+                'react-dom': 'preact/compat'
+            });
         }
 
         return config
