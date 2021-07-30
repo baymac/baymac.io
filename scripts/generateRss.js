@@ -3,7 +3,7 @@ const path = require('path');
 const RSS = require('rss');
 const matter = require('gray-matter');
 
-async function generateRss() {
+(async function generateRss() {
   const feed = new RSS({
     title: 'Parichay Barpanda',
     site_url: 'https://baymac.io',
@@ -34,6 +34,4 @@ async function generateRss() {
   )
 
   await fs.writeFile('./public/feed.xml', feed.xml({ indent: true }));
-}
-
-generateRss();
+})();
