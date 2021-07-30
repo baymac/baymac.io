@@ -16,6 +16,7 @@ const moduleExports = {
             config.resolve.fallback.fs = false
         }
         if (isServer) {
+            // Both scripts inspired from leerob.io
             require('./scripts/generateSitemap');
             require('./scripts/generateRss');
         }
