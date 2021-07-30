@@ -42,13 +42,13 @@ const moduleExports = {
 };
 
 // Inspired from securityheaders.com and leerob.io
+// Inspired from securityheaders.com and leerob.io
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline';
-  child-src 'none;
   style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
-  media-src 'none';
+  media-src none;
   connect-src *;
   font-src 'self';
 `;
