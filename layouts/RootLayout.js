@@ -17,11 +17,6 @@ export default function Root({ children }) {
   return (
     <div className={styles.root}>
       <Head>
-        <link rel="icon" href="/images/logo.svg" />
-        <meta
-          name="description"
-          content="Parichay's personal website using Next.js"
-        />
         <title>Parichay</title>
       </Head>
       <Nav />
