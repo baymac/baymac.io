@@ -43,7 +43,7 @@ class MyDocument extends Document {
             content="black-translucent"
           />
           {/* Icons */}
-          <link rel="icon" href="/images/logo.svg" />
+          <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
           <link
             href="/favicons/favicon-32x32.png"
             rel="icon"
@@ -58,7 +58,7 @@ class MyDocument extends Document {
           />
           {/* favicon fallback for browsers that don't support svg */}
           <link rel="alternate icon" href="/favicons/favicon.ico" />
-          <link rel="apple-touch-icon" href="/favicons/apple-icon-180.png" />
+          <link rel="apple-touch-icon" href="/favicons/apple-icon-icon.png" />
           <link rel="apple-touch-startup-image" href="/images/logo.svg" />
           {/* safari pinned icon */}
           <link rel="mask-icon" href="/images/logo.svg" color="#ff0000" />
