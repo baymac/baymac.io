@@ -1,7 +1,12 @@
 {
-  "name": "parichay-blog",
+  "name": "baymac.io",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Parichay Barpanda",
+    "email": "me@baymac.io",
+    "url": "https://baymac.io"
+  },
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
