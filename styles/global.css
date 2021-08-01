@@ -135,10 +135,10 @@
   --first-color-lighter: /*hsl(230, 70%, 60%)*/ hsl(210, 22%, 40%);
   --first-color-lighter-alt: /*hsl(230, 70%, 60%)*/ hsl(211, 27%, 90%);
   --title-color: hsl(0, 0%, 95%);
-  --title-color-alt: hsl(217, 89%, 76%);
+  --title-color-alt: hsl(217, 89%, 80%); /* blog title links */
   --text-color: hsl(213, 7%, 76%);
   --input-color: hsl(230, 29%, 16%);
-  --body-color: hsl(0, 0%, 13%);
+  --body-color: /*hsl(0, 0%, 13%);*/ hsl(200, 5%, 12%);
   --default-bw: hsl(0, 0%, 0%);
   --scroll-bar-color: hsl(230, 12%, 48%);
   --scroll-thumb-color: hsl(230, 12%, 36%);
