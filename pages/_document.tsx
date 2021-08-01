@@ -19,7 +19,7 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <link
-            rel="prefetch"
+            rel="preload"
             href="/fonts/Inter-Medium.woff2"
             as="font"
             type="font/woff2"
