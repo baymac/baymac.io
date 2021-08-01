@@ -13,20 +13,20 @@ class MyDocument extends Document {
           {/* Fonts */}
           <link
             rel="preload"
-            href="/fonts/Inter-Medium.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
             href="/fonts/Inter-Regular.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
           />
           <link
-            rel="preload"
+            rel="prefetch"
+            href="/fonts/Inter-Medium.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="prefetch"
             href="/fonts/Roboto-Light.woff2"
             as="font"
             type="font/woff2"
