@@ -1,0 +1,5 @@
+.container {
+  gap: 2rem;
+  max-width: var(--big-screen-width);
+  margin: 4rem auto;
+}
