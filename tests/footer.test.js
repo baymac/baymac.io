@@ -13,6 +13,9 @@ import Footer from '../components/Footer/Footer'
 
 describe('Footer', () => {
     it('Should render home link', () => {
+        const modalRoot = document.createElement('div');
+        modalRoot.setAttribute('id', 'modal-root')
+        document.body.appendChild(modalRoot)
         render(<Footer />)
         const linkElement = screen.getByText(
             /Home/
