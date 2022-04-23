@@ -52,7 +52,7 @@ export default function BuyMeCrypto() {
             show: showSnackbar,
             // @ts-ignore
             reset: setShowSnackbar,
-            duration: 1500
+            duration: 1500,
           },
           null
         )}

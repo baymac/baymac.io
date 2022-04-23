@@ -14,7 +14,7 @@ export default function NavLinkMobile() {
       <div
         className={cn(styles.nav__menu, {
           [styles.nav__mobile_menu]: navBarOpen,
-          [styles.nav__menu_hidden]: !navBarOpen
+          [styles.nav__menu_hidden]: !navBarOpen,
         })}
       >
         <NavbarLinks />
