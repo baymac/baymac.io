@@ -14,7 +14,6 @@ const matter = require('gray-matter');
 
   const fileNames = await fs.readdir(postsDirectory);
 
-
   await Promise.all(
     fileNames.map(async (fileName) => {
       // Read markdown file as string
@@ -31,7 +30,7 @@ const matter = require('gray-matter');
         date: frontmatter.data.date,
       });
     })
-  )
+  );
 
   await fs.writeFile('./public/feed.xml', feed.xml({ indent: true }));
 })();
