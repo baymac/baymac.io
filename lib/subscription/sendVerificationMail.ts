@@ -29,7 +29,7 @@ function getJwtToken(email: string) {
 const emailConfirmationPath = () => {
   let basePath = process.cwd();
   if (process.env.NODE_ENV === 'production') {
-    basePath = path.join(process.cwd(), '.next/server/chunks');
+    basePath = path.join(process.cwd(), '.next');
   } else {
     basePath += '/public';
   }
