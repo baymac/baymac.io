@@ -35,3 +35,6 @@ sentry.properties
 
 /public/sitemap.xml
 /public/feed.xml
+
+# Sentry
+.sentryclirc
