@@ -34,11 +34,11 @@ export default function Footer() {
                 <a className={footerStyles.footer__link}>Blog</a>
               </Link>
             </li>
-            {/* <li>
-              <Link href="/about">
-                <a className={footerStyles.footer__link}>About</a>
+            <li>
+              <Link href="/feedback">
+                <a className={footerStyles.footer__link}>Feedback</a>
               </Link>
-            </li> */}
+            </li>
           </ul>
           <ul className={footerStyles.footer__links_2}>
             {/* <li>
