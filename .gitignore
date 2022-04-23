@@ -31,7 +31,6 @@ yarn-error.log*
 
 /.vscode/
 
-sentry.properties
 
 /public/sitemap.xml
 /public/feed.xml
