@@ -51,7 +51,7 @@ const ContentSecurityPolicy = `
   media-src none;
   connect-src *;
   font-src 'self';
-  frame-src https://interface-git-feat-iframe-minswap.vercel.app;
+  frame-src *.vercel.app;
 `;
 
 const securityHeaders = [
