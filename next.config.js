@@ -51,6 +51,7 @@ const ContentSecurityPolicy = `
   media-src none;
   connect-src *;
   font-src 'self';
+  frame-src https://interface-git-feat-iframe-minswap.vercel.app;
 `;
 
 const securityHeaders = [
@@ -63,11 +64,6 @@ const securityHeaders = [
   {
     key: 'Referrer-Policy',
     value: 'origin-when-cross-origin',
-  },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
-  {
-    key: 'X-Frame-Options',
-    value: 'DENY',
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
   {
