@@ -7,7 +7,7 @@ import BuyMeCrypto from '../components/BuyMeCrypto/BuyMeCrypto';
 import useModalRoute from '../hooks/useModalRoute';
 import NewsLetter from '../components/NewsLetter/NewsLetter';
 
-export default function Root({ children }) {
+export default function Root({ children, head = null, description = null }) {
   const [isOpenBuyMeCrypto, handleCloseBuyMeCrypto] =
     useModalRoute('buymecrypto');
 
@@ -16,7 +16,11 @@ export default function Root({ children }) {
   return (
     <div className={styles.root}>
       <Head>
-        <title>Parichay</title>
+        <title>{head ?? 'Parichay'}</title>
+        <meta
+          name="description"
+          content={description ?? "Parichay's personal website"}
+        />
       </Head>
       <Nav />
       {children}

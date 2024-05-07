@@ -24,8 +24,8 @@ export async function getStaticPaths() {
 
 export default function Post({ postData }) {
   return (
-    <RootLayout>
-      <article className={rootStyles.section}>
+    <RootLayout head={postData.title} description={postData.id}>
+      <article className={cn(rootStyles.section, blogStyles.blog__article)}>
         <div
           className={cn(
             rootStyles.container,
@@ -33,12 +33,26 @@ export default function Post({ postData }) {
             blogStyles.blog__container
           )}
         >
-          <h1 className={blogStyles.headingXl}>{postData.title}</h1>
-          <div className={cn(blogStyles.lightText, blogStyles.postDate)}>
+          <h1
+            className={cn(
+              blogStyles.headingXl,
+              blogStyles.blog__headingColor,
+              blogStyles.blog__headingFont
+            )}
+          >
+            {postData.title}
+          </h1>
+          <p
+            className={cn(
+              blogStyles.blog__SlugColor,
+              blogStyles.blog__SlugFont,
+              blogStyles.blog__slugContainer
+            )}
+          >
             <Date dateString={postData.date} />
-          </div>
+          </p>
           <div
-            className={blogStyles.lightText}
+            className={cn(blogStyles.blog__contentFont)}
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
           />
         </div>
