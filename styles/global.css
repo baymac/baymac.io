@@ -25,6 +25,15 @@
   unicode-range: U+000-5FF;
 }
 
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url(/fonts/AtkinsonHyperlegible-Regular.woff2) format('woff2');
+  unicode-range: U+000-5FF;
+}
+
 /*==================== GOOGLE FONTS ====================*/
 
 /*==================== VARIABLES CSS ====================*/
@@ -44,13 +53,13 @@
   /* Footer hover */
   --first-color-lighter-alt: hsl(230, 20%, 30%);
   /* All nav elements, blog button */
-  --title-color: hsl(230, 0%, 0%);
+  --title-color: hsl(210, 29%, 14%)
   /* Blog Links Header */
   --title-color-alt: hsl(230, 57%, 48%);
   /* Home subtitle */
-  --text-color: hsl(230, 8%, 45%);
+  --text-color: hsla(209, 30%, 14%, 0.81);
   /* footer copy */
-  --text-color-light: hsl(230, 8%, 65%);
+  --text-color-light: hsl(210, 9%, 55%);
   /* Unused */
   --input-color: hsl(230, 70%, 96%);
   /* Body, nav menu (mobile), header bg */
@@ -79,11 +88,13 @@
   /*========== Font and typography ==========*/
   --body-font: 'Inter', sans-serif;
 
+  --blog-font: 'Atkinson Hyperlegible', sans-serif;
+
   --big-screen-width: 1000px;
 
   /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
   --big-font-size: 2.5rem;
-  --h1-font-size: 2.25rem;
+  --h1-font-size: 2;
   --h2-font-size: 2rem;
   --h3-font-size: 1.125rem;
   --normal-font-size: 0.938rem;
@@ -91,6 +102,8 @@
   --smaller-font-size: 0.75rem;
 
   /*========== Font weight ==========*/
+  --font-regular: 300;
+  --font-regularXl: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
 
@@ -139,7 +152,7 @@
   --first-color-lighter-alt: /*hsl(230, 70%, 60%)*/ hsl(211, 27%, 90%);
   --title-color: hsl(0, 0%, 95%);
   --title-color-alt: hsl(217, 89%, 80%); /* blog title links */
-  --text-color: hsl(45, 9%, 83%);
+  --text-color: 	hsl(210, 19%, 94%);
   --input-color: hsl(230, 29%, 16%);
   --body-color: /*hsl(0, 0%, 13%);*/ hsl(200, 5%, 12%);
   --default-bw: hsl(0, 0%, 0%);
@@ -202,6 +215,8 @@ h4 {
 
 h1 {
   font-size: var(--h1-font-size);
+  font-style: bold;
+  line-height: 3rem;
 }
 
 h2 {

@@ -32,11 +32,23 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
-          {/* Meta */}
-          <meta
-            name="description"
-            content="Parichay's personal website using Next.js"
+          <link
+            rel="prefetch"
+            href="/fonts/Atkinson-Hyperlegible-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
           />
+          <link
+            rel="prefetch"
+            href="/fonts/Atkinson-Hyperlegible-Bold.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+
+          {/* Meta */}
+          <meta name="description" content="Parichay's personal website" />
           <meta name="apple-mobile-web-app-capable" content="yes"></meta>
           <meta
             name="apple-mobile-web-app-status-bar-style"
