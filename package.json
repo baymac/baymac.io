@@ -14,7 +14,8 @@
     "lint": "next lint",
     "prepare": "husky install",
     "prettify": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
-    "pre-commit": "yarn lint --fix && git add -A ."
+    "pre-commit": "yarn lint --fix && git add -A .",
+    "update-content": "./scripts/update_content.sh"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
