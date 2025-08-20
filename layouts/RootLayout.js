@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { Metadata } from 'next';
 import Footer from '../components/Footer/Footer';
 import Nav from '../components/Nav/Nav';
 import styles from '../styles/root.module.css';
@@ -12,13 +12,6 @@ export default function Root({ children, head = null, description = null }) {
 
   return (
     <div className={styles.root}>
-      <Head>
-        <title>{head ?? 'Parichay'}</title>
-        <meta
-          name="description"
-          content={description ?? "Parichay's personal website"}
-        />
-      </Head>
       <Nav />
       {children}
       <Footer />

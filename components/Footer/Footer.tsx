@@ -1,13 +1,12 @@
+'use client';
+
 import { UilGithub, UilLinkedin } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
-import useModalRouteRedirect from '../../hooks/useModalRouteRedirect';
 import rootStyles from '../../styles/root.module.css';
 import footerStyles from './footer.module.css';
 
 export default function Footer() {
-  // eslint-disable-next-line no-unused-vars
-  const [_, hrefRoute, asRoute] = useModalRouteRedirect('buymecrypto');
 
   return (
     <footer className={footerStyles.footer}>
@@ -21,13 +20,13 @@ export default function Footer() {
         >
           <ul className={footerStyles.footer__links_1}>
             <li>
-              <Link href="/">
-                <a className={footerStyles.footer__link}>Home</a>
+              <Link href="/" className={footerStyles.footer__link}>
+                Home
               </Link>
             </li>
             <li>
-              <Link href="/blog">
-                <a className={footerStyles.footer__link}>Blog</a>
+              <Link href="/blog" className={footerStyles.footer__link}>
+                Blog
               </Link>
             </li>
             {/* <li>
@@ -43,8 +42,8 @@ export default function Footer() {
               </Link>
             </li>  */}
             <li>
-              <Link href={`${hrefRoute}`} as={asRoute} scroll={false}>
-                <a className={footerStyles.footer__link}>Buy Me Crypto</a>
+              <Link href="/buymecrypto" className={footerStyles.footer__link}>
+                Buy Me Crypto
               </Link>
             </li>
           </ul>
@@ -59,7 +58,7 @@ export default function Footer() {
               )}
               aria-label="github"
             >
-              <UilGithub alt="github" />
+              <UilGithub />
             </a>
             <a
               href="https://linkedin.com/in/parichaybarpanda"

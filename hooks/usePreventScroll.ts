@@ -4,10 +4,10 @@ export default function usePreventScroll(dep: boolean) {
   useEffect(() => {
     const body = document.querySelector('body');
     const nextBody = document.getElementById('__next');
-    if (dep) {
+    if (dep && body && nextBody) {
       body.classList.add('prevent-scroll');
       nextBody.setAttribute('aria-hidden', 'true');
-    } else {
+    } else if (body && nextBody) {
       body.classList.remove('prevent-scroll');
       nextBody.removeAttribute('aria-hidden');
     }

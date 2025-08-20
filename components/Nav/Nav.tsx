@@ -1,3 +1,5 @@
+'use client';
+
 import {
   UilApps,
   UilArrowLeft,
@@ -7,7 +9,7 @@ import {
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { createElement, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
 import rootStyles from '../../styles/root.module.css';
@@ -26,13 +28,13 @@ export default function Nav() {
   // After mounting, we have access to the theme
   useEffect(() => setMounted(true), []);
 
-  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <>
       <header className={styles.header}>
         <nav className={cn(styles.nav, rootStyles.container)}>
-          {!router.pathname.startsWith('/posts') && (
+          {pathname && !pathname.startsWith('/posts') && (
             <Link href="/" passHref>
               <button
                 className={styles.nav__logo_button}
@@ -44,7 +46,7 @@ export default function Nav() {
               </button>
             </Link>
           )}
-          {router.pathname.startsWith('/posts') && (
+          {pathname && pathname.startsWith('/posts') && (
             <Link href={`/blog`} passHref>
               <button
                 className={styles.nav__logo_button}

@@ -7,8 +7,11 @@ export default function useCopy(id: string, timeout: number) {
   });
 
   const handleCopy = useCallback(() => {
-    const copiedValue = document.getElementById(id).innerText;
-    clipboard.copy(copiedValue);
+    const element = document.getElementById(id);
+    if (element) {
+      const copiedValue = element.innerText;
+      clipboard.copy(copiedValue);
+    }
   }, [clipboard, id]);
 
   return [handleCopy, clipboard.copied];

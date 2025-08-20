@@ -1,8 +1,8 @@
 import styles from './linkbutton.module.css';
-import { ReactChildren } from 'react';
+import { ReactNode } from 'react';
 
 export interface ILinkButtonProps {
-  children: ReactChildren | string;
+  children: ReactNode | string;
   onClick: () => void;
   disabled?: boolean;
 }

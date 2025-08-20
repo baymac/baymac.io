@@ -235,8 +235,6 @@
   color: var(--text-color);
 }
 
-.blog__slugContainer {}
-
 .blog__container {
   gap: 2rem;
   width: 100%;

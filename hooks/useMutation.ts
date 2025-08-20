@@ -7,7 +7,7 @@ export default function useMutation<P, Q>(
   callback?: (resp: Q) => void
 ) {
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState({});
+  const [response, setResponse] = useState<Q | {}>({});
 
   const mutate = useCallback(
     (req: P) => {

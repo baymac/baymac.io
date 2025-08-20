@@ -1,17 +1,16 @@
 const fs = require('fs');
 
-const globby = require('globby');
-const prettier = require('prettier');
-
 (async () => {
+  const { globby } = await import('globby');
+  const prettier = await import('prettier');
+
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
-    'pages/*.tsx',
+    'app/**/page.tsx',
     'content/**/*.md',
     '!content/*.md',
-    '!pages/_*.tsx',
-    '!pages/api',
-    '!pages/404.tsx',
+    '!app/layout.tsx',
+    '!app/not-found.tsx',
   ]);
 
   const sitemap = `
@@ -20,11 +19,11 @@ const prettier = require('prettier');
             ${pages
               .map((page) => {
                 const path = page
-                  .replace('pages', '')
+                  .replace('app', '')
                   .replace('content', '')
-                  .replace('.tsx', '')
+                  .replace('/page.tsx', '')
                   .replace('.md', '');
-                const route = path === '/index' ? '' : path;
+                const route = path === '' ? '' : path;
                 return `
                         <url>
                             <loc>${`https://baymac.io${route}`}</loc>
@@ -35,7 +34,7 @@ const prettier = require('prettier');
         </urlset>
     `;
 
-  const formatted = prettier.format(sitemap, {
+  const formatted = await prettier.format(sitemap, {
     ...prettierConfig,
     parser: 'html',
   });

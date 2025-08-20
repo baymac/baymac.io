@@ -20,8 +20,7 @@ export default function About() {
       >
         <h1 className={styles.about__title}>Hey, I am Parichay</h1>
         <p className={styles.about__subtitle}>
-          Software Engineer and open source enthusiast based out of Bengaluru,
-          India
+          Software Engineer based out of nowhere
         </p>
         <div className={styles.about__img}>
           {/* <ImageBorder maxHeight={300}> */}
@@ -39,10 +38,8 @@ export default function About() {
 
         <div className={styles.about__description}>
           <p>
-            I work as a Product Engineer at Udaan. I love open source. I spend
-            my time building UIs and experimenting with new languages and tools
-            to see how they solve different problems in different ways. When not
-            developing, I am often playing football or petting my cat (Bitcoin).
+            I love data and crypto. I am trying to build something that users are going to genuinely love and use.
+            I am forever trying to be consistent and deal with my ADHD problems.
           </p>
         </div>
       </div>

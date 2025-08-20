@@ -1,4 +1,4 @@
-import { UilJackhammer } from '@iconscout/react-unicons';
+import { UilApps } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import rootStyles from '../../styles/root.module.css';
 import styles from './underconstruction.module.css';
@@ -13,11 +13,11 @@ export default function UnderConstruction() {
           styles.underConstructionContainer
         )}
       >
-        <UilJackhammer className={styles.underConstructionIcon} />
+        <UilApps className={styles.underConstructionIcon} />
         <h2 className={styles.underConstructionText}>
           This website is under construction so a few features might not work
         </h2>
-        <UilJackhammer className={styles.underConstructionIcon} />
+        <UilApps className={styles.underConstructionIcon} />
       </div>
     </section>
   );

@@ -7,9 +7,17 @@ import rehypeStringify from 'rehype-stringify';
 import rehypeHighlight from 'rehype-highlight';
 import constants from './constants';
 
+interface PostData {
+  id: string;
+  date: string;
+  title: string;
+  tags?: string;
+  'ai-gen'?: boolean;
+}
+
 const postsDirectory = path.join(process.cwd(), constants.postsPath);
 
-export function getSortedPostsData() {
+export function getSortedPostsData(): PostData[] {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -27,11 +35,10 @@ export function getSortedPostsData() {
     return {
       id,
       ...matterResult.data,
-    };
+    } as PostData;
   });
   // Sort posts by date
   return allPostsData.sort((a, b) => {
-    // @ts-ignore
     if (a.date < b.date) {
       return 1;
     } else {
@@ -52,7 +59,7 @@ export function getAllPostIds() {
   });
 }
 
-export async function getPostData(id) {
+export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -72,5 +79,5 @@ export async function getPostData(id) {
     id,
     contentHtml,
     ...matterResult.data,
-  };
+  } as PostData & { contentHtml: string };
 }

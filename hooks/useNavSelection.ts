@@ -1,29 +1,28 @@
-import { useRouter } from 'next/router';
+'use client';
+
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { pathContainsModalPathQuery } from '../lib/modalPathUtils';
 
 export default function useNavSelection() {
   const [selectedMenu, setSelectedMenu] = useState('home');
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (router.asPath === '/') {
+    if (!pathname) return;
+
+    if (pathname === '/') {
       setSelectedMenu('home');
     } else if (
-      router.asPath === '/blog' ||
-      (router.asPath.startsWith('/posts') &&
-        !pathContainsModalPathQuery(router.asPath, 'buymecrypto'))
+      pathname === '/blog' ||
+      pathname.startsWith('/posts')
     ) {
       setSelectedMenu('blog');
-    } else if (router.asPath === '/about') {
+    } else if (pathname === '/about') {
       setSelectedMenu('about');
-    } else if (
-      router.asPath === '/buymecrypto' ||
-      pathContainsModalPathQuery(router.asPath, 'buymecrypto')
-    ) {
+    } else if (pathname === '/buymecrypto') {
       setSelectedMenu('buymecrypto');
     }
-  }, [router]);
+  }, [pathname]);
 
   return [selectedMenu];
 }

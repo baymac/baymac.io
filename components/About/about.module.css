@@ -5,7 +5,7 @@
 .about__container {
   gap: 2rem;
   max-width: var(--big-screen-width);
-  margin: 4rem auto;
+  margin: 2rem auto;
 }
 
 .about__img {
@@ -36,6 +36,7 @@
       'subtitle image'
       'description image';
     grid-column-gap: 2rem;
+    margin-top: 4rem;
   }
 
   .about__title {
@@ -48,8 +49,10 @@
     grid-column: 1 / -1;
     position: relative;
     left: -1rem;
-    width: calc(100% + 2rem); /* Stick out 2rem on both sides */
-    padding-left: 1rem; /* Content stays in sync */
+    width: calc(100% + 2rem);
+    /* Stick out 2rem on both sides */
+    padding-left: 1rem;
+    /* Content stays in sync */
     padding-right: calc(200px + 3rem);
     /* So that text doesn't cross image, grid gap and 2rem extra width */
     display: flex;

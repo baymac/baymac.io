@@ -2,8 +2,6 @@
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 
 const moduleExports = {
-  target: 'server',
-  webpack5: true,
   async headers() {
     return [
       {
@@ -15,7 +13,10 @@ const moduleExports = {
   webpack: function (config, { isServer }) {
     // Fixes npm packages that depend on `fs` module
     if (!isServer) {
-      config.resolve.fallback.fs = false;
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
     }
     if (isServer) {
       // Both scripts inspired from leerob.io

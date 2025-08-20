@@ -1,20 +1,22 @@
-import { UilTimesCircle } from '@iconscout/react-unicons';
+'use client';
+
+import { UilMultiply } from '@iconscout/react-unicons';
 import FocusTrap from 'focus-trap-react';
 import React, {
   KeyboardEvent,
-  ReactChildren,
+  ReactNode,
   useEffect,
   useRef,
   useState,
 } from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import usePreventScroll from '../../hooks/usePreventScroll';
 import styles from './modal.module.css';
 
 export interface IModalProps {
   open: boolean;
   handleClose: () => void;
-  children: ReactChildren;
+  children: ReactNode;
 }
 
 function Modal(props: IModalProps) {
@@ -27,7 +29,7 @@ function Modal(props: IModalProps) {
     setIsBrowser(true);
   }, []);
 
-  const handleCloseClick = (e) => {
+  const handleCloseClick = (e: React.MouseEvent) => {
     e.preventDefault();
     handleClose();
   };
@@ -48,9 +50,9 @@ function Modal(props: IModalProps) {
     handleClose();
   };
 
-  const modalBgRef = useRef();
+  const modalBgRef = useRef<HTMLDivElement>(null);
 
-  const handleBgClick = (e) => {
+  const handleBgClick = (e: React.MouseEvent) => {
     if (modalBgRef.current === e.target) {
       handleCloseClick(e);
     }
@@ -89,7 +91,7 @@ function Modal(props: IModalProps) {
                 tabIndex={0}
                 className={styles.modal__close_button}
               >
-                <UilTimesCircle className={styles.modal__close} />
+                <UilMultiply className={styles.modal__close} />
               </button>
             </div>
             {children}
@@ -100,13 +102,12 @@ function Modal(props: IModalProps) {
   ) : null;
 
   if (isBrowser) {
-    return ReactDOM.createPortal(
-      modalContent,
-      document.getElementById('modal-root')
-    );
-  } else {
-    return null;
+    const modalRoot = document.getElementById('modal-root');
+    if (modalRoot) {
+      return createPortal(modalContent, modalRoot);
+    }
   }
+  return null;
 }
 
 export default Modal;

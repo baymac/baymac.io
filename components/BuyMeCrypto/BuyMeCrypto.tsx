@@ -1,3 +1,5 @@
+'use client';
+
 import { UilCheckCircle, UilCopy } from '@iconscout/react-unicons';
 import { createElement, useState } from 'react';
 import useCopy from '../../hooks/useCopy';

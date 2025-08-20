@@ -1,27 +1,17 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import useModalRouteRedirect from './useModalRouteRedirect';
+'use client';
 
-export default function useModalRoute(
-  modalRoutePath: string
-): [boolean, () => void] {
-  const router = useRouter();
+import { useState } from 'react';
 
-  const [redirectRoute] = useModalRouteRedirect(modalRoutePath);
-
+export default function useModalRoute(): [boolean, () => void, () => void] {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handleClose = () => {
-    router.push(redirectRoute, redirectRoute, { scroll: false });
+  const handleOpen = () => {
+    setIsOpen(true);
   };
 
-  useEffect(() => {
-    if (!!router.query[`${modalRoutePath}`]) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(false);
-    }
-  }, [modalRoutePath, router]);
+  const handleClose = () => {
+    setIsOpen(false);
+  };
 
-  return [isOpen, handleClose];
+  return [isOpen, handleOpen, handleClose];
 }
