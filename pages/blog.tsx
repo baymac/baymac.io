@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import Link from 'next/link';
 import Date from '../components/Blog/Date';
+import AiBadge from '../components/Blog/AiBadge';
 import RootLayout from '../layouts/RootLayout';
 import { getSortedPostsData } from '../lib/posts';
 import blogStyles from '../styles/pageStyles/blog.module.css';
@@ -21,15 +22,20 @@ export default function Blog({ allPostsData }) {
       <section className={rootStyles.section}>
         <div
           className={cn(
+            blogStyles.blog__container,
             rootStyles.container,
             rootStyles.grid,
-            blogStyles.blog__container
           )}
         >
           <h2 className={blogStyles.blog__heading}>Blog</h2>
           <ul className={blogStyles.blog__list}>
-            {allPostsData.map(({ id, date, title }) => (
-              <li className={blogStyles.blog__listItem} key={id}>
+            {allPostsData.map(({ id, date, title, 'ai-gen': aiGen }) => (
+              <li
+                className={cn(
+                  blogStyles.blog__listItem,
+                )}
+                key={id}
+              >
                 <Link href={`/posts/${id}`}>
                   <a className={blogStyles.blog__postLink}>{title}</a>
                 </Link>
@@ -37,6 +43,9 @@ export default function Blog({ allPostsData }) {
                 <small className={blogStyles.lightText}>
                   <Date dateString={date} />
                 </small>
+                {aiGen && (
+                  <AiBadge />
+                )}
               </li>
             ))}
           </ul>

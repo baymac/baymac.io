@@ -41,6 +41,172 @@
   font-weight: var(--font-regularXl);
   font-size: 1.22rem;
   line-height: 2rem;
+  color: var(--text-color);
+}
+
+/* Headings: revert to original look */
+.blog__contentFont h1,
+.blog__contentFont h2,
+.blog__contentFont h3,
+.blog__contentFont h4,
+.blog__contentFont h5,
+.blog__contentFont h6 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  border: none;
+  padding: 0;
+}
+
+.blog__contentFont h1 {
+  font-size: 2rem;
+}
+
+.blog__contentFont h2 {
+  font-size: 1.75rem;
+}
+
+.blog__contentFont h3 {
+  font-size: 1.5rem;
+}
+
+.blog__contentFont h4 {
+  font-size: 1.25rem;
+}
+
+.blog__contentFont h5 {
+  font-size: 1.1rem;
+}
+
+.blog__contentFont h6 {
+  font-size: 1rem;
+}
+
+.blog__contentFont p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+.blog__contentFont ul,
+.blog__contentFont ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.blog__contentFont li {
+  margin-bottom: 0.3rem;
+  line-height: 1.5;
+}
+
+.blog__contentFont ul li {
+  list-style-type: disc;
+}
+
+.blog__contentFont ol li {
+  list-style-type: decimal;
+}
+
+.blog__contentFont blockquote {
+  border-left: 4px solid var(--first-color);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--text-color-light);
+  background-color: var(--first-color-lighter);
+  border-radius: 0.25rem;
+}
+
+.blog__contentFont code {
+  background-color: var(--first-color-lighter);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95em;
+  color: var(--title-color);
+}
+
+.blog__contentFont pre {
+  background-color: var(--first-color-lighter);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--footer-border-color);
+}
+
+.blog__contentFont pre code {
+  background-color: transparent;
+  padding: 0;
+  color: var(--text-color);
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+/* Syntax highlighting (rehype-highlight) */
+.blog__contentFont pre code.hljs {
+  background: none;
+  color: inherit;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95em;
+}
+
+.blog__contentFont a {
+  color: var(--title-color-alt);
+  text-decoration: underline;
+  text-decoration-color: var(--first-color-lighter);
+  text-underline-offset: 0.2em;
+  transition: color 0.3s ease;
+}
+
+.blog__contentFont a:hover {
+  color: var(--first-color);
+  text-decoration-color: var(--first-color);
+}
+
+.blog__contentFont strong {
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+}
+
+.blog__contentFont em {
+  font-style: italic;
+}
+
+.blog__contentFont hr {
+  border: none;
+  border-top: 2px solid var(--first-color-lighter);
+  margin: 2rem 0;
+}
+
+.blog__contentFont table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  display: block;
+}
+
+.blog__contentFont th,
+.blog__contentFont td {
+  border: 1px solid var(--footer-border-color);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.blog__contentFont th {
+  background-color: var(--first-color-lighter);
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+}
+
+.blog__contentFont img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--bs);
 }
 
 .borderCircle {
@@ -69,11 +235,11 @@
   color: var(--text-color);
 }
 
-.blog__slugContainer {
-}
+.blog__slugContainer {}
 
 .blog__container {
   gap: 2rem;
+  width: 100%;
   max-width: var(--big-screen-width);
   margin: 4rem auto;
 }
@@ -81,5 +247,49 @@
 @media screen and (min-width: 600px) {
   .blog__heading {
     max-height: max-content;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+  .blog__container {
+    margin: 2rem auto;
+    padding: 0 1rem;
+    overflow-x: hidden;
+  }
+
+  .blog__contentFont {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .blog__contentFont h1 {
+    font-size: 1.75rem;
+  }
+
+  .blog__contentFont h2 {
+    font-size: 1.5rem;
+  }
+
+  .blog__contentFont h3 {
+    font-size: 1.25rem;
+  }
+
+  .blog__contentFont ul,
+  .blog__contentFont ol {
+    padding-left: 1.5rem;
+  }
+
+  .blog__contentFont pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .blog__contentFont code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 }

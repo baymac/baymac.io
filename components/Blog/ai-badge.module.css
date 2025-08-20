@@ -1,0 +1,28 @@
+/*========== AI Generated Content Badge ==========*/
+.aiBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--ai-color-lighter);
+  color: var(--ai-color-dark);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.625rem;
+  font-weight: var(--font-medium);
+  border: 1px solid var(--ai-color-light);
+  margin-left: 0.75rem;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.aiBadgeIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+  fill: currentColor;
+}
+
+.aiBadgeText {
+  font-family: var(--body-font);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

@@ -49,13 +49,15 @@
   /* Hover on close in nav and magic button */
   --first-color-alt: hsl(230, 57%, 53%);
   /* Blog button, alt body color */
-  --first-color-lighter: /*hsl(230, 92%, 84%)*/ hsl(230, 60%, 88%);
+  --first-color-lighter:
+    /*hsl(230, 92%, 84%)*/
+    hsl(230, 60%, 88%);
   /* Footer hover */
   --first-color-lighter-alt: hsl(230, 20%, 30%);
   /* All nav elements, blog button */
   --title-color: hsl(210, 29%, 14%)
-  /* Blog Links Header */
-  --title-color-alt: hsl(230, 57%, 48%);
+    /* Blog Links Header */
+    --title-color-alt: hsl(230, 57%, 48%);
   /* Home subtitle */
   --text-color: hsla(209, 30%, 14%, 0.81);
   /* footer copy */
@@ -84,6 +86,12 @@
   --button-hover-color: hsl(0, 0%, 90%);
   --button-color: var(--first-color);
   --button-color-disabled: hsl(230, 70%, 90%);
+
+  /*========== AI Generated Content Colors ==========*/
+  --ai-color: hsl(25, 95%, 53%);
+  --ai-color-light: hsl(25, 95%, 88%);
+  --ai-color-lighter: hsl(25, 95%, 95%);
+  --ai-color-dark: hsl(25, 95%, 40%);
 
   /*========== Font and typography ==========*/
   --body-font: 'Inter', sans-serif;
@@ -145,16 +153,27 @@
 /*========== Variables Dark theme ==========*/
 
 [data-theme='dark'] {
-  --first-color: /*hsl(230, 92%, 85%)*/ hsl(212, 33%, 89%);
+  --first-color:
+    /*hsl(230, 92%, 85%)*/
+    hsl(212, 33%, 89%);
   --first-color-second: hsl(230, 30%, 8%);
-  --first-color-alt: /*hsl(230, 57%, 75%)*/ hsl(211, 27%, 70%);
-  --first-color-lighter: /*hsl(230, 70%, 60%)*/ hsl(210, 22%, 40%);
-  --first-color-lighter-alt: /*hsl(230, 70%, 60%)*/ hsl(211, 27%, 90%);
+  --first-color-alt:
+    /*hsl(230, 57%, 75%)*/
+    hsl(211, 27%, 70%);
+  --first-color-lighter:
+    /*hsl(230, 70%, 60%)*/
+    hsl(210, 22%, 40%);
+  --first-color-lighter-alt:
+    /*hsl(230, 70%, 60%)*/
+    hsl(211, 27%, 90%);
   --title-color: hsl(0, 0%, 95%);
-  --title-color-alt: hsl(217, 89%, 80%); /* blog title links */
-  --text-color: 	hsl(210, 19%, 94%);
+  --title-color-alt: hsl(217, 89%, 80%);
+  /* blog title links */
+  --text-color: hsl(210, 19%, 94%);
   --input-color: hsl(230, 29%, 16%);
-  --body-color: /*hsl(0, 0%, 13%);*/ hsl(200, 5%, 12%);
+  --body-color:
+    /*hsl(0, 0%, 13%);*/
+    hsl(200, 5%, 12%);
   --default-bw: hsl(0, 0%, 0%);
   --scroll-bar-color: hsl(230, 12%, 48%);
   --scroll-thumb-color: hsl(230, 12%, 36%);
@@ -170,6 +189,12 @@
   --button-hover-color: hsl(0, 0%, 20%);
   --button-color: var(--first-color);
   --button-color-disabled: hsl(0, 0%, 60%);
+
+  /*========== AI Generated Content Colors Dark Theme ==========*/
+  --ai-color: hsl(25, 85%, 60%);
+  --ai-color-light: hsl(25, 85%, 25%);
+  --ai-color-lighter: hsl(25, 85%, 15%);
+  --ai-color-dark: hsl(25, 85%, 70%);
 }
 
 /*========== Button Dark/Light ==========*/
@@ -179,7 +204,8 @@
 *,
 *::after,
 *::before {
-  box-sizing: border-box; /* Calculate padding within the width instead of adding on to total width */
+  box-sizing: border-box;
+  /* Calculate padding within the width instead of adding on to total width */
   padding: 0;
   margin: 0;
 }
@@ -196,6 +222,7 @@ body {
   color: var(--text-color);
   min-height: 100%;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 h1,
@@ -271,14 +298,10 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--title-color);
-  -webkit-box-shadow: 0 0 0px 1000px -internal-light-dark(
-      rgb(255, 255, 255),
-      rgb(59, 59, 59)
-    ) inset;
-  box-shadow: 0 0 0px 1000px -internal-light-dark(
-      rgb(255, 255, 255),
-      rgb(59, 59, 59)
-    ) inset;
+  -webkit-box-shadow: 0 0 0px 1000px -internal-light-dark(rgb(255, 255, 255),
+      rgb(59, 59, 59)) inset;
+  box-shadow: 0 0 0px 1000px -internal-light-dark(rgb(255, 255, 255),
+      rgb(59, 59, 59)) inset;
   transition: background-color 5000s ease-in-out 0s;
 }
 

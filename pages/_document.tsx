@@ -34,20 +34,21 @@ class MyDocument extends Document {
           />
           <link
             rel="prefetch"
-            href="/fonts/Atkinson-Hyperlegible-Regular.woff2"
+            href="/fonts/AtkinsonHyperlegible-Regular.ttf"
             as="font"
-            type="font/woff2"
+            type="font/ttf"
             crossOrigin="anonymous"
           />
           <link
             rel="prefetch"
-            href="/fonts/Atkinson-Hyperlegible-Bold.woff2"
+            href="/fonts/AtkinsonHyperlegible-Bold.ttf"
             as="font"
-            type="font/woff2"
+            type="font/ttf"
             crossOrigin="anonymous"
           />
 
           {/* Meta */}
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta name="description" content="Parichay's personal website" />
           <meta name="apple-mobile-web-app-capable" content="yes"></meta>
           <meta

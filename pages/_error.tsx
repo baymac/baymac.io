@@ -1,14 +1,11 @@
 import NextErrorComponent from 'next/error';
 import styles from '../styles/pageStyles/error.module.css';
 
-import * as Sentry from '@sentry/nextjs';
-
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
   if (!hasGetInitialPropsRun && err) {
     // getInitialProps is not called in case of
     // https://github.com/vercel/next.js/issues/8592. As a workaround, we pass
     // err via _app.js so it can be captured
-    Sentry.captureException(err);
     // Flushing is not required in this case as it only happens on the client
   }
 
@@ -26,13 +23,13 @@ const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
 MyError.getInitialProps = async (context) => {
   const errorInitialProps = await NextErrorComponent.getInitialProps(context);
 
-  const { res, err, asPath } = context;
+  const { res, err } = context;
 
   // Workaround for https://github.com/vercel/next.js/issues/8592, mark when
   // getInitialProps has run
   (errorInitialProps as any).hasGetInitialPropsRun = true;
 
-  // Returning early because we don't want to log 404 errors to Sentry.
+  // Returning early because we don't want to log 404 errors.
   if (res?.statusCode === 404) {
     return errorInitialProps;
   }
@@ -51,22 +48,15 @@ MyError.getInitialProps = async (context) => {
   //    Boundaries: https://reactjs.org/docs/error-boundaries.html
 
   if (err) {
-    Sentry.captureException(err);
-
-    // Flushing before returning is necessary if deploying to Vercel, see
-    // https://vercel.com/docs/platform/limits#streaming-responses
-    await Sentry.flush(2000);
-
+    // Error handling without Sentry
+    // Error logged for debugging purposes
     return errorInitialProps;
   }
 
   // If this point is reached, getInitialProps was called without any
   // information about what the error might be. This is unexpected and may
-  // indicate a bug introduced in Next.js, so record it in Sentry
-  Sentry.captureException(
-    new Error(`_error.js getInitialProps missing data at path: ${asPath}`)
-  );
-  await Sentry.flush(2000);
+  // indicate a bug introduced in Next.js
+  // Path logging removed for production
 
   return errorInitialProps;
 };

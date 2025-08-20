@@ -5,13 +5,10 @@ import styles from '../styles/root.module.css';
 import Modal from '../components/Modal/Modal';
 import BuyMeCrypto from '../components/BuyMeCrypto/BuyMeCrypto';
 import useModalRoute from '../hooks/useModalRoute';
-import NewsLetter from '../components/NewsLetter/NewsLetter';
 
 export default function Root({ children, head = null, description = null }) {
   const [isOpenBuyMeCrypto, handleCloseBuyMeCrypto] =
     useModalRoute('buymecrypto');
-
-  const [isOpenNewsLetter, handleCloseNewsLetter] = useModalRoute('newsletter');
 
   return (
     <div className={styles.root}>
@@ -27,9 +24,6 @@ export default function Root({ children, head = null, description = null }) {
       <Footer />
       <Modal open={isOpenBuyMeCrypto} handleClose={handleCloseBuyMeCrypto}>
         <BuyMeCrypto />
-      </Modal>
-      <Modal open={isOpenNewsLetter} handleClose={handleCloseNewsLetter}>
-        <NewsLetter />
       </Modal>
     </div>
   );

@@ -9,10 +9,6 @@ export default function Footer() {
   // eslint-disable-next-line no-unused-vars
   const [_, hrefRoute, asRoute] = useModalRouteRedirect('buymecrypto');
 
-  // eslint-disable-next-line no-unused-vars
-  const [redirectRoute, hrefRouteNewsLetter, asRouteNewsLetter] =
-    useModalRouteRedirect('newsletter');
-
   return (
     <footer className={footerStyles.footer}>
       <div className={footerStyles.footer__bg}>
@@ -46,15 +42,6 @@ export default function Footer() {
                 <a className={footerStyles.footer__link}>Uses</a>
               </Link>
             </li>  */}
-            <li>
-              <Link
-                href={`${hrefRouteNewsLetter}`}
-                as={asRouteNewsLetter}
-                scroll={false}
-              >
-                <a className={footerStyles.footer__link}>Newsletter</a>
-              </Link>
-            </li>
             <li>
               <Link href={`${hrefRoute}`} as={asRoute} scroll={false}>
                 <a className={footerStyles.footer__link}>Buy Me Crypto</a>

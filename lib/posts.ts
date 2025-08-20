@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import remark from 'remark';
-import html from 'remark-html';
+import { remark } from 'remark';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypeHighlight from 'rehype-highlight';
 import constants from './constants';
 
 const postsDirectory = path.join(process.cwd(), constants.postsPath);
@@ -49,6 +51,7 @@ export function getAllPostIds() {
     };
   });
 }
+
 export async function getPostData(id) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -56,9 +59,11 @@ export async function getPostData(id) {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
-  // Use remark to convert markdown into HTML string
+  // Use remark/rehype to convert markdown into HTML string with syntax highlighting
   const processedContent = await remark()
-    .use(html)
+    .use(remarkRehype)
+    .use(rehypeHighlight)
+    .use(rehypeStringify)
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 

@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import { fetcher } from '../lib/apiUtils';
-import * as Sentry from '@sentry/nextjs';
 
 export default function useMutation<P, Q>(
   url: string,
@@ -16,7 +15,7 @@ export default function useMutation<P, Q>(
       return fetcher<P, Q>(url, req)
         .then((resp) => {
           // debug only
-          Sentry.captureMessage(JSON.stringify(resp));
+          console.log('Response:', JSON.stringify(resp));
           setResponse(resp);
           setLoading(false);
           if (callback) {
@@ -25,7 +24,7 @@ export default function useMutation<P, Q>(
           return resp;
         })
         .catch((err) => {
-          Sentry.captureException(err);
+          console.error('Error in mutation:', err);
           setResponse(err);
           setLoading(false);
           if (callback) {

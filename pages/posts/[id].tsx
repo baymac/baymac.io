@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import Date from '../../components/Blog/Date';
+import AiBadge from '../../components/Blog/AiBadge';
 import RootLayout from '../../layouts/RootLayout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import blogStyles from '../../styles/pageStyles/blog.module.css';
@@ -42,7 +43,7 @@ export default function Post({ postData }) {
           >
             {postData.title}
           </h1>
-          <p
+          <div
             className={cn(
               blogStyles.blog__SlugColor,
               blogStyles.blog__SlugFont,
@@ -50,7 +51,8 @@ export default function Post({ postData }) {
             )}
           >
             <Date dateString={postData.date} />
-          </p>
+            {postData['ai-gen'] && <AiBadge />}
+          </div>
           <div
             className={cn(blogStyles.blog__contentFont)}
             dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
