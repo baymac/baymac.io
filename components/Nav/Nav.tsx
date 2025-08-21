@@ -60,7 +60,7 @@ export default function Nav() {
           )}
           <NavLinkBigScreen />
           <div className={styles.nav__btns}>
-            {mounted &&
+            {mounted ? (
               createElement(
                 'button',
                 {
@@ -78,8 +78,8 @@ export default function Nav() {
                   },
                   null
                 )
-              )}
-            {!mounted && (
+              )
+            ) : (
               <div className={styles.skeleton_loader_container}>
                 {createElement(
                   'div',
@@ -101,17 +101,17 @@ export default function Nav() {
             )}
             {navBarOpen && (
               <button
-                className={styles.nav__toggle}
                 onClick={() => setNavBarOpen(false)}
+                className={styles.nav__toggle}
                 aria-label="nav-close-button"
               >
-                <UilMultiply width={28} height={28} id="nav_toggle" />
+                <UilMultiply id="nav_close" width={28} height={28} />
               </button>
             )}
           </div>
         </nav>
+        <NavLinkMobile />
       </header>
-      <NavLinkMobile />
     </>
   );
 }

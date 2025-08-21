@@ -1,11 +1,11 @@
 {
-  "name": "baymac.io",
+  "name": "baymac.lol",
   "version": "0.1.0",
   "private": true,
   "author": {
     "name": "Parichay Barpanda",
-    "email": "me@baymac.io",
-    "url": "https://baymac.io"
+    "email": "me@baymac.lol",
+    "url": "https://baymac.lol"
   },
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",

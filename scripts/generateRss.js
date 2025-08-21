@@ -6,8 +6,8 @@ const matter = require('gray-matter');
 (async function generateRss() {
   const feed = new RSS({
     title: 'Parichay Barpanda',
-    site_url: 'https://baymac.io',
-    feed_url: 'https://baymac.io/feed.xml',
+    site_url: 'https://baymac.lol',
+    feed_url: 'https://baymac.lol/feed.xml',
   });
 
   const postsDirectory = path.join(process.cwd(), 'content/posts');
@@ -26,7 +26,7 @@ const matter = require('gray-matter');
       // Combine the data with the id
       feed.item({
         title: frontmatter.data.title,
-        url: 'https://baymac.io/blog/' + fileName.replace(/\.md?/, ''),
+        url: 'https://baymac.lol/blog/' + fileName.replace(/\.md?/, ''),
         date: frontmatter.data.date,
       });
     })

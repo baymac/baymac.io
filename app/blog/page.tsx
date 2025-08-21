@@ -9,10 +9,10 @@ import rootStyles from '../../styles/root.module.css';
 
 export const metadata: Metadata = {
   title: 'Blog - Parichay',
-  description: 'Technical blog posts about web development, security, and software engineering',
+  description: 'Technical blog posts about web development, security and software engineering',
   openGraph: {
     title: 'Blog - Parichay',
-    description: 'Technical blog posts about web development, security, and software engineering',
+    description: 'Technical blog posts about web development, security and software engineering',
   },
 };
 

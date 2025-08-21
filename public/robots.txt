@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://baymac.io/sitemap.xml
+Sitemap: https://baymac.lol/sitemap.xml

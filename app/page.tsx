@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import About from '../components/About/About';
-import UnderConstruction from '../components/UnderConstruction/UnderConstruction';
+import Skills from '../components/Skills/Skills';
+import Timeline from '../components/Timeline/Timeline';
+import Projects from '../components/Projects/Projects';
 
 export const metadata: Metadata = {
   title: 'Parichay',
@@ -12,7 +14,9 @@ export default function HomePage() {
   return (
     <>
       <About />
-      <UnderConstruction />
+      <Skills />
+      <Timeline />
+      <Projects />
     </>
   );
 }

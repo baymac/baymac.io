@@ -26,7 +26,7 @@ const fs = require('fs');
                 const route = path === '' ? '' : path;
                 return `
                         <url>
-                            <loc>${`https://baymac.io${route}`}</loc>
+                            <loc>${`https://baymac.lol${route}`}</loc>
                         </url>
                     `;
               })
