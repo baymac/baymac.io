@@ -62,7 +62,7 @@ const experiences: Experience[] = [
 export default function Timeline() {
   return (
     <section className={cn(rootStyles.section, styles.timeline__section)} id="experience">
-      <div className={cn(rootStyles.container, styles.timeline__container)}>
+      <div className={cn(rootStyles.container, rootStyles.grid, styles.timeline__container)}>
         <h2 className={styles.timeline__title}>Work Experience</h2>
         <p className={styles.timeline__subtitle}>
           My journey from intern to blockchain engineer

@@ -39,7 +39,7 @@ export default function About() {
         <div className={styles.about__description}>
           <p>
             I love data and crypto. I am trying to build something that users are going to genuinely love and use.
-            I am forever trying to be consistent and deal with my ADHD problems.
+            I am trying to be fit (not healthy) and fix my ADHD. This section is a flex of grid.
           </p>
         </div>
       </div>

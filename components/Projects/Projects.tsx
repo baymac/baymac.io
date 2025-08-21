@@ -52,13 +52,38 @@ const projects: Project[] = [
     title: 'Buy Me Crypto',
     description: 'A Solana-based platform enabling creators and fans to support each other through crypto',
     link: 'https://github.com/baymac/buy-me-crypto'
-  }
+  },
+  {
+    title: 'Wallet Connect Cardano',
+    description: 'A dApp library that supports Cardano for compatible wallets. Received $5k grant from dcSpark.',
+    link: 'https://x.com/dcspark_io/status/1688489778042351616'
+  },
+  {
+    title: 'Publish Docs to Drive',
+    description: 'An AppScript that publishes Google Docs to Google Drive as PDF.',
+    link: 'https://github.com/baymac/fun-hacks/tree/master/Apps%20Script/Publish%20Over%20Drive%20-%20Docs'
+  },
+  {
+    title: 'Publish Form to Database',
+    description: 'An AppScript that publishes Google Form responses to Firebase.',
+    link: 'https://github.com/baymac/fun-hacks/blob/master/Apps%20Script/Firebase%20Response/form.gs'
+  },
+  {
+    title: 'Phone Alarm Bot',
+    description: 'An Android bot to call a phone number at a given time. Useful for waking up someone who has early morning flight.',
+    link: 'https://github.com/baymac/fun-hacks/blob/master/Python/Android%20call%20bot/callBot.py'
+  },
+  {
+    title: 'Command Keeper',
+    description: 'A gnome shell extension to store commands and copy to clipboard when needed.',
+    link: 'https://github.com/baymac/command-keeper'
+  },
 ];
 
 export default function Projects() {
   return (
     <section className={cn(rootStyles.section, styles.projects__section)} id="projects">
-      <div className={cn(rootStyles.container, styles.projects__container)}>
+      <div className={cn(rootStyles.container, rootStyles.grid, styles.projects__container)}>
         <h2 className={styles.projects__title}>Projects</h2>
         <p className={styles.projects__subtitle}>
           A collection of my work across web dev, blockchain and open source

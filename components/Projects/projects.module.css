@@ -9,7 +9,9 @@
 }
 
 .projects__container {
-  text-align: center;
+  gap: 1rem;
+  max-width: var(--big-screen-width);
+  margin: 2rem auto;
 }
 
 .projects__title {
@@ -21,11 +23,8 @@
 
 .projects__subtitle {
   font-size: var(--normal-font-size);
-  color: var(--text-color-light);
-  margin-bottom: 3rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  color: var(--text-color-light-second);
+  margin-bottom: 1rem;
 }
 
 .projects__grid {
@@ -37,7 +36,7 @@
 }
 
 .project__card {
-  background-color: var(--input-color);
+  background-color: var(--first-color-lighter);
   border: 1px solid var(--footer-border-color);
   border-radius: 12px;
   padding: 1.5rem;

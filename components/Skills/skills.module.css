@@ -25,9 +25,6 @@
   font-size: var(--normal-font-size);
   color: var(--text-color-light);
   margin-bottom: 1rem;
-  /* max-width: 600px;
-  margin-left: auto;
-  margin-right: auto; */
 }
 
 .skills__content {
@@ -60,7 +57,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem;
-  background-color: var(--input-color);
+  background-color: var(--first-color-lighter);
   border-radius: 8px;
   border: 1px solid var(--footer-border-color);
   height: 48px;
