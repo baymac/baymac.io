@@ -55,7 +55,7 @@ export default function Skills() {
 
   return (
     <section className={cn(rootStyles.section, styles.skills__section)} id="skills">
-      <div className={cn(rootStyles.container, styles.skills__container)}>
+      <div className={cn(rootStyles.container, rootStyles.grid, styles.skills__container)}>
         <h2 className={styles.skills__title}>Skills & Technologies</h2>
         <p className={styles.skills__subtitle}>
           My tech stack organized by proficiency level
