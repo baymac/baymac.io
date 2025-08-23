@@ -1,6 +1,6 @@
 'use client';
 
-import { UilGithub, UilLinkedin } from '@iconscout/react-unicons';
+import { UilGithub, UilLinkedin, UilTwitter } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
 import rootStyles from '../../styles/root.module.css';
@@ -28,18 +28,8 @@ export default function Footer() {
                 Blog
               </Link>
             </li>
-            {/* <li>
-              <Link href="/about">
-                <a className={footerStyles.footer__link}>About</a>
-              </Link>
-            </li> */}
           </ul>
           <ul className={footerStyles.footer__links_2}>
-            {/* <li>
-              <Link href="/uses">
-                <a className={footerStyles.footer__link}>Uses</a>
-              </Link>
-            </li>  */}
             <li>
               <Link href="/buymecrypto" className={footerStyles.footer__link}>
                 Buy Me Crypto
@@ -58,6 +48,18 @@ export default function Footer() {
               aria-label="github"
             >
               <UilGithub />
+            </a>
+            <a
+              href="https://x.com/parichayayy"
+              target="_blank"
+              rel="noreferrer"
+              className={cn(
+                footerStyles.footer__social_icon,
+                footerStyles.footer__social_icon_gh
+              )}
+              aria-label="x"
+            >
+              <UilTwitter />
             </a>
             <a
               href="https://linkedin.com/in/parichaybarpanda"
