@@ -1,18 +1,20 @@
-import { Metadata } from 'next';
 import cn from 'classnames';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import Date from '../../components/Blog/Date';
 import AiBadge from '../../components/Blog/AiBadge';
+import BlogDate from '../../components/Blog/Date';
 import { getSortedPostsData } from '../../lib/posts';
 import blogStyles from '../../styles/pageStyles/blog.module.css';
 import rootStyles from '../../styles/root.module.css';
 
 export const metadata: Metadata = {
   title: 'Blog - Parichay',
-  description: 'Technical blog posts about web development, security and software engineering',
+  description:
+    'Technical blog posts about web development, security and software engineering',
   openGraph: {
     title: 'Blog - Parichay',
-    description: 'Technical blog posts about web development, security and software engineering',
+    description:
+      'Technical blog posts about web development, security and software engineering',
   },
 };
 
@@ -43,10 +45,8 @@ export default function BlogPage() {
               </Link>
               <br />
               <small className={blogStyles.lightText}>
-                <Date dateString={date} />
-                {aiGen && (
-                  <AiBadge />
-                )}
+                <BlogDate dateString={date} />
+                {aiGen && <AiBadge />}
               </small>
             </li>
           ))}

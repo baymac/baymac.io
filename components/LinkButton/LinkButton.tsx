@@ -1,5 +1,5 @@
+import type { ReactNode } from 'react';
 import styles from './linkbutton.module.css';
-import { ReactNode } from 'react';
 
 export interface ILinkButtonProps {
   children: ReactNode | string;
@@ -13,6 +13,7 @@ export default function LinkButton(props: ILinkButtonProps) {
       className={styles.link_button}
       onClick={props.onClick}
       disabled={props.disabled}
+      type="button"
     >
       {props.children}
     </button>

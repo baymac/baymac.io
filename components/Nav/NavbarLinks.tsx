@@ -17,7 +17,7 @@ export interface INavItem {
   label: string;
   path?: string;
   selector: string;
-  icon: any;
+  icon: React.ElementType;
 }
 
 const navItems: INavItem[] = [
@@ -27,25 +27,19 @@ const navItems: INavItem[] = [
     path: '/',
     selector: 'home',
   },
-  // {
-  //   label: 'About',
-  //   path: '/about',
-  //   icon: UilUser,
-  //   selector: 'about',
-  // },
   {
     label: 'Blog',
     path: '/blog',
     icon: UilPen,
     selector: 'blog',
   },
+  {
+    label: 'Buy Me Crypto',
+    path: '/buymecrypto',
+    icon: UilBitcoinCircle,
+    selector: 'buymecrypto',
+  },
 ];
-
-const buyMeCryptoNavItem: INavItem = {
-  label: 'Buy Me Crypto',
-  icon: UilBitcoinCircle,
-  selector: 'buymecrypto',
-};
 
 export default function NavBarLinks() {
   const { setNavBarOpen } = useAppContext();
@@ -76,24 +70,6 @@ export default function NavBarLinks() {
             </span>
           </Link>
         ))}
-        <Link
-          href="/buymecrypto"
-          onClick={() => setNavBarOpen(false)}
-          className={cn(styles.nav__item, {
-            [styles.nav__item_selected]:
-              selectedMenu === `${buyMeCryptoNavItem.selector}`,
-          })}
-          tabIndex={0}
-        >
-          <span className={styles.nav__link}>
-            {createElement(
-              buyMeCryptoNavItem.icon,
-              { className: styles.nav__icon },
-              null
-            )}
-            {buyMeCryptoNavItem.label}
-          </span>
-        </Link>
       </div>
     </>
   );

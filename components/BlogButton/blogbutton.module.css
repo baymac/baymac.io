@@ -27,7 +27,7 @@
   }
 
   .blogButton::after {
-    content: '';
+    content: "";
     position: absolute;
     background: var(--first-color);
     height: 1rem;

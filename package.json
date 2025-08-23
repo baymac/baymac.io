@@ -11,10 +11,9 @@
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky install",
-    "prettify": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
-    "pre-commit": "yarn lint --fix && git add -A .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write --unsafe .",
+    "format": "biome format --write .",
     "update-content": "./scripts/update_content.sh"
   },
   "dependencies": {
@@ -37,15 +36,11 @@
     "use-clipboard-copy": "^0.2.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@types/node": "^24.3.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
-    "eslint": "^9.33.0",
-    "eslint-config-next": "^15.5.0",
-    "eslint-config-prettier": "^10.1.8",
     "globby": "^14.1.0",
-    "husky": "^9.1.7",
-    "prettier": "^3.6.2",
     "rss": "^1.2.2",
     "typescript": "^5.9.2"
   }

@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import Image from 'next/image';
-import rootStyles from '../../styles/root.module.css';
-import styles from './about.module.css';
-// import ImageBorder from '../ImageBorder/ImageBorder';
 import profileImage from '/public/images/profile.jpeg';
+import rootStyles from '../../styles/root.module.css';
+import ImageBorder from '../ImageBorder/ImageBorder';
+import styles from './about.module.css';
 
 export default function About() {
   return (
@@ -23,23 +23,24 @@ export default function About() {
           Software Engineer based out of nowhere
         </p>
         <div className={styles.about__img}>
-          {/* <ImageBorder maxHeight={300}> */}
-          <Image
-            priority
-            src={profileImage}
-            height={300}
-            width={200}
-            alt={'Parichay'}
-            layout="fixed"
-            placeholder={'blur'}
-          />
-          {/* </ImageBorder> */}
+          <ImageBorder maxHeight={300}>
+            <Image
+              priority
+              src={profileImage}
+              height={300}
+              width={200}
+              alt={'Parichay'}
+              layout="fixed"
+              placeholder={'blur'}
+            />
+          </ImageBorder>
         </div>
 
         <div className={styles.about__description}>
           <p>
-            I love data and crypto. I am trying to build something that users are going to genuinely love and use.
-            I am trying to be fit (not healthy) and fix my ADHD. This section is a flex of grid.
+            I love data and crypto. I am trying to build something that users
+            find helpful and gives them a lot of dopamine. I am trying to be fit
+            (not healthy) and fix my ADHD. This section is a flex of grid.
           </p>
         </div>
       </div>

@@ -2,9 +2,10 @@
 
 import { UilMultiply } from '@iconscout/react-unicons';
 import FocusTrap from 'focus-trap-react';
-import React, {
-  KeyboardEvent,
-  ReactNode,
+import type React from 'react';
+import {
+  type KeyboardEvent,
+  type ReactNode,
   useEffect,
   useRef,
   useState,
@@ -64,7 +65,7 @@ function Modal(props: IModalProps) {
       className={styles.modal__overlay}
       onKeyDown={handleKeyDown}
     >
-      <div className={styles.modal__backdrop} aria-hidden="true"></div>
+      <div className={styles.modal__backdrop} aria-hidden="true" />
       <FocusTrap
         focusTrapOptions={{
           returnFocusOnDeactivate: false,
@@ -73,23 +74,23 @@ function Modal(props: IModalProps) {
         <div
           className={styles.modal__container}
           tabIndex={-1}
-          role="none presentation"
           ref={modalBgRef}
           /* Works both for mouse click and touch events */
           onMouseDown={handleBgClick}
         >
           {/* To prevent any content being focused on modal open */}
-          <div tabIndex={0}></div>
+          <div />
           <div
             className={styles.modal__content}
-            role="dialog"
             id="modal-content"
+            tabIndex={-1}
           >
             <div className={styles.modal__content_header}>
               <button
                 onClick={(e) => handleCloseClick(e)}
                 tabIndex={0}
                 className={styles.modal__close_button}
+                type="button"
               >
                 <UilMultiply className={styles.modal__close} />
               </button>

@@ -12,11 +12,11 @@ export default function useNavSelection() {
 
     if (pathname === '/') {
       return 'home';
-    } else if (pathname === '/blog' || pathname.startsWith('/posts')) {
+    }
+    if (pathname === '/blog' || pathname.startsWith('/posts')) {
       return 'blog';
-    } else if (pathname === '/about') {
-      return 'about';
-    } else if (pathname === '/buymecrypto') {
+    }
+    if (pathname === '/buymecrypto') {
       return 'buymecrypto';
     }
 
@@ -30,10 +30,7 @@ export default function useNavSelection() {
 
     if (pathname === '/') {
       setSelectedMenu('home');
-    } else if (
-      pathname === '/blog' ||
-      pathname.startsWith('/posts')
-    ) {
+    } else if (pathname === '/blog' || pathname.startsWith('/posts')) {
       setSelectedMenu('blog');
     } else if (pathname === '/about') {
       setSelectedMenu('about');

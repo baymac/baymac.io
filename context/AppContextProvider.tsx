@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, createContext, useContext, ReactNode } from 'react';
+import type React from 'react';
+import { type ReactNode, createContext, useContext, useState } from 'react';
 
 export interface IAppContextValues {
   navBarOpen: boolean;

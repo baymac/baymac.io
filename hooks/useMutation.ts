@@ -1,39 +1,34 @@
-import { useState, useCallback } from 'react';
-import { fetcher } from '../lib/apiUtils';
+import { useCallback, useState } from 'react';
 
-export default function useMutation<P, Q>(
-  url: string,
-  // eslint-disable-next-line no-unused-vars
-  callback?: (resp: Q) => void
+export function useMutation<TData, TVariables>(
+  mutationFn: (data: TVariables) => Promise<TData>,
+  options?: {
+    onSuccess?: (data: TData) => void;
+    onError?: (error: Error) => void;
+  }
 ) {
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState<Q | {}>({});
+  const [response, setResponse] = useState<TData | null>(null);
 
   const mutate = useCallback(
-    (req: P) => {
-      setLoading(true);
-      return fetcher<P, Q>(url, req)
-        .then((resp) => {
-          // debug only
-          console.log('Response:', JSON.stringify(resp));
-          setResponse(resp);
-          setLoading(false);
-          if (callback) {
-            callback(resp);
-          }
-          return resp;
-        })
-        .catch((err) => {
-          console.error('Error in mutation:', err);
-          setResponse(err);
-          setLoading(false);
-          if (callback) {
-            callback(err);
-          }
-        });
+    async (data: TVariables) => {
+      try {
+        setLoading(true);
+        const result = await mutationFn(data);
+        setResponse(result);
+        options?.onSuccess?.(result);
+        return result;
+      } catch (error) {
+        const errorObj =
+          error instanceof Error ? error : new Error(String(error));
+        options?.onError?.(errorObj);
+        throw errorObj;
+      } finally {
+        setLoading(false);
+      }
     },
-    [callback, url]
+    [mutationFn, options]
   );
 
-  return { response, loading, mutate };
+  return { mutate, loading, response };
 }

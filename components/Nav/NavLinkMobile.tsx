@@ -1,8 +1,8 @@
-import styles from './navlink.module.css';
-import NavbarLinks from './NavbarLinks';
-import { useAppContext } from '../../context/AppContextProvider';
 import cn from 'classnames';
+import { useAppContext } from '../../context/AppContextProvider';
 import usePreventScroll from '../../hooks/usePreventScroll';
+import NavbarLinks from './NavbarLinks';
+import styles from './navlink.module.css';
 
 export default function NavLinkMobile() {
   const { navBarOpen } = useAppContext();

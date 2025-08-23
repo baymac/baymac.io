@@ -1,5 +1,5 @@
-const { promises: fs } = require('fs');
-const path = require('path');
+const { promises: fs } = require('node:fs');
+const path = require('node:path');
 const RSS = require('rss');
 const matter = require('gray-matter');
 
@@ -26,7 +26,7 @@ const matter = require('gray-matter');
       // Combine the data with the id
       feed.item({
         title: frontmatter.data.title,
-        url: 'https://baymac.lol/blog/' + fileName.replace(/\.md?/, ''),
+        url: `https://baymac.lol/blog/${fileName.replace(/\.md?/, '')}`,
         date: frontmatter.data.date,
       });
     })

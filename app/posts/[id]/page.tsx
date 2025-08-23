@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import cn from 'classnames';
-import Date from '../../../components/Blog/Date';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import AiBadge from '../../../components/Blog/AiBadge';
+import BlogDate from '../../../components/Blog/Date';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
 import blogStyles from '../../../styles/pageStyles/blog.module.css';
 import rootStyles from '../../../styles/root.module.css';
@@ -29,7 +29,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   try {
     const { id } = await params;
     const postData = await getPostData(id);
@@ -85,16 +87,14 @@ export default async function PostPage({ params }: PageProps) {
           {postData.title}
         </h1>
         <div
-          className={cn(
-            blogStyles.blog__SlugColor,
-            blogStyles.blog__SlugFont,
-          )}
+          className={cn(blogStyles.blog__SlugColor, blogStyles.blog__SlugFont)}
         >
-          <Date dateString={postData.date} />
+          <BlogDate dateString={postData.date} />
           {postData['ai-gen'] && <AiBadge />}
         </div>
         <div
           className={cn(blogStyles.blog__contentFont)}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </div>

@@ -1,11 +1,11 @@
 'use client';
 
 import { UilCheckCircle, UilCopy } from '@iconscout/react-unicons';
+import cn from 'classnames';
 import { createElement, useState } from 'react';
 import useCopy from '../../hooks/useCopy';
 import Snackbar from '../Snackbar/Snackbar';
 import styles from './buymecrypto.module.css';
-import cn from 'classnames';
 
 export default function BuyMeCrypto() {
   const [handleCopy, copied] = useCopy('bitcoin-address', 5000);

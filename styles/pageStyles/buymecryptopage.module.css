@@ -7,7 +7,7 @@
 }
 
 .redirecting:after {
-  content: ' .';
+  content: " .";
   animation: dots 1s steps(5, end) infinite;
   --dots-distance-2: 0.5rem;
   --dots-distance-3: calc(var(--dots-distance-2) * 2);

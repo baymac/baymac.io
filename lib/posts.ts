@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import matter from 'gray-matter';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeStringify from 'rehype-stringify';
 import { remark } from 'remark';
 import remarkRehype from 'remark-rehype';
-import rehypeStringify from 'rehype-stringify';
-import rehypeHighlight from 'rehype-highlight';
 import constants from './constants';
 
 interface PostData {
@@ -41,9 +41,8 @@ export function getSortedPostsData(): PostData[] {
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
-    } else {
-      return -1;
     }
+    return -1;
   });
 }
 

@@ -1,20 +1,29 @@
 import { useEffect, useRef } from 'react';
 
-/* Orginally written in https://github.com/wsmd/use-clipboard-copy/blob/master/src/useTimedToggle.ts */
+/* Originally written in https://github.com/wsmd/use-clipboard-copy/blob/master/src/useTimedToggle.ts */
 
-export function useReset(show: boolean, reset: any, duration: number) {
+export function useReset(show: boolean, reset: () => void, duration: number) {
   const timeoutRef = useRef<number | undefined>(undefined);
   const initialValueRef = useRef<boolean>(false);
 
   useEffect(() => {
-    if (show) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = window.setTimeout(
-        () => reset(initialValueRef.current),
-        duration
-      );
+    if (show && !initialValueRef.current) {
+      initialValueRef.current = true;
     }
-  }, [duration, reset, show]);
 
-  useEffect(() => () => clearTimeout(timeoutRef.current), []);
+    if (show && initialValueRef.current) {
+      timeoutRef.current = window.setTimeout(() => {
+        reset();
+        initialValueRef.current = false;
+      }, duration);
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [show, reset, duration]);
+
+  return initialValueRef.current;
 }

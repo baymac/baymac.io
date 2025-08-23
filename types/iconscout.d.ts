@@ -1,5 +1,5 @@
 declare module '@iconscout/react-unicons' {
-  import { FC, SVGProps } from 'react';
+  import type { FC, SVGProps } from 'react';
 
   export interface IconProps extends SVGProps<SVGSVGElement> {
     size?: string | number;

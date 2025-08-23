@@ -5,10 +5,15 @@
 
 .box::before,
 .box::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: -4px;
-  background: linear-gradient(315deg, #00ccff, #0e1538, #d400d4);
+  background: linear-gradient(
+    135deg,
+    var(--first-color),
+    var(--ai-color),
+    var(--title-color-alt)
+  );
 }
 
 .box::after {

@@ -8,16 +8,16 @@ import {
   UilSun,
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { createElement, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
 import rootStyles from '../../styles/root.module.css';
-import styles from './nav.module.css';
-import NavLinkMobile from './NavLinkMobile';
-import NavLinkBigScreen from './NavLinkBigScreen';
-import { useTheme } from 'next-themes';
 import Logo from '../Logo/Logo';
+import NavLinkBigScreen from './NavLinkBigScreen';
+import NavLinkMobile from './NavLinkMobile';
+import styles from './nav.module.css';
 
 export default function Nav() {
   const { navBarOpen, setNavBarOpen } = useAppContext();
@@ -39,6 +39,7 @@ export default function Nav() {
               <button
                 className={styles.nav__logo_button}
                 aria-label="logo-button"
+                type="button"
               >
                 <div className={styles.nav__logo}>
                   <Logo />
@@ -46,11 +47,12 @@ export default function Nav() {
               </button>
             </Link>
           )}
-          {pathname && pathname.startsWith('/posts') && (
-            <Link href={`/blog`} passHref>
+          {pathname?.startsWith('/posts') && (
+            <Link href={'/blog'} passHref>
               <button
                 className={styles.nav__logo_button}
                 aria-label="back-button"
+                type="button"
               >
                 <div className={styles.nav__logo}>
                   <UilArrowLeft />
@@ -68,6 +70,7 @@ export default function Nav() {
                   onClick: () =>
                     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
                   'aria-label': 'change-theme-button',
+                  type: 'button',
                 },
                 createElement(
                   resolvedTheme === 'dark' ? UilSun : UilMoon,
@@ -95,6 +98,7 @@ export default function Nav() {
                 onClick={() => setNavBarOpen(true)}
                 className={styles.nav__toggle}
                 aria-label="nav-open-button"
+                type="button"
               >
                 <UilApps id="nav_toggle" width={28} height={28} />
               </button>
@@ -104,6 +108,7 @@ export default function Nav() {
                 onClick={() => setNavBarOpen(false)}
                 className={styles.nav__toggle}
                 aria-label="nav-close-button"
+                type="button"
               >
                 <UilMultiply id="nav_close" width={28} height={28} />
               </button>
