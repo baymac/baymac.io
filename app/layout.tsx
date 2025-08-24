@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
-import ClientModal from '../components/ClientModal';
 import Footer from '../components/Footer/Footer';
 import Nav from '../components/Nav/Nav';
 import AppContextProvider from '../context/AppContextProvider';
@@ -149,7 +148,6 @@ export default function RootLayout({
               <Nav />
               {children}
               <Footer />
-              <ClientModal />
             </div>
             <div id="modal-root" />
           </AppContextProvider>
