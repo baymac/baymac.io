@@ -1,7 +1,7 @@
 import styles from './magicbutton.module.css';
 
 interface MagicButtonProps {
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   label: string;
 }
 
