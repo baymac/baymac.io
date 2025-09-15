@@ -4,7 +4,6 @@ import {
   UilBitcoinCircle,
   UilHome,
   UilPen,
-  // UilUser,
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
