@@ -14,14 +14,15 @@ const projects = [
   {
     id: 'ace-base',
     title: 'Ace Base',
-    description: 'A fast and responsive website for a tennis academy',
+    description:
+      'A fast and responsive website for a tennis academy. POV not a designer',
     link: 'https://acebasetennis.in/',
   },
   {
     id: 'fail-tell',
     title: 'Fail Tell',
     description:
-      'Led infrastructure development, talent acquisition and product strategy for a mental health platform',
+      'Helped with infrastructure and product development and talent acquisition for a mental wellness platform',
   },
   {
     id: 'material-ui-cron',
@@ -33,13 +34,13 @@ const projects = [
     id: 'biryanify',
     title: 'Biryanify',
     description:
-      'Managed operations, marketing and Shopify development for a cloud kitchen startup',
+      'Managed operations, marketing and web and app development for a cloud kitchen startup',
   },
   {
     id: 'upload-pdf-to-drive',
     title: 'Upload PDF to Drive',
     description:
-      'A github action that uploads PDFs to Google Drive. Useful for LaTeX builds.',
+      'A GitHub action that uploads PDFs to Google Drive. Useful for LaTeX builds.',
     link: 'https://github.com/baymac/upload-pdf-to-drive',
   },
   {
@@ -95,7 +96,7 @@ const projects = [
     id: 'phone-alarm-bot',
     title: 'Phone Alarm Bot',
     description:
-      'A SL4A script to call a phone number at a given time. Useful for waking up someone who has early morning flight.',
+      'A SL4A script to call a phone number at a specified time. Useful for waking up someone who has early morning flight.',
     link: 'https://github.com/baymac/fun-hacks/blob/master/Python/Android%20call%20bot/callBot.py',
   },
   {
