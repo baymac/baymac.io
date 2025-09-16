@@ -146,7 +146,7 @@ export default function Skills() {
       >
         <h2 className={styles.skills__title}>Skills & Technologies</h2>
         <p className={styles.skills__subtitle}>
-          My tech stack organized by proficiency level
+          My tech stack by proficiency level
         </p>
 
         <div className={styles.skills__content}>
