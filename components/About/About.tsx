@@ -38,8 +38,9 @@ export default function About() {
 
         <div className={styles.about__description}>
           <p>
-            I love data and crypto. When not working, I am usually working on my
-            side projects. This section is a flex of grid.
+            I love working with data and cryptography. When not working, I am
+            touching grass, learn djing, trading crypto, playing ps5 or
+            football. This section is a flex of grid.
           </p>
         </div>
       </div>
