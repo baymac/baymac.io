@@ -20,7 +20,7 @@ export default function About() {
       >
         <h1 className={styles.about__title}>Hey, I am Parichay</h1>
         <p className={styles.about__subtitle}>
-          Software Engineer based out of nowhere
+          Software Engineer based out of nowhere (digital nomad)
         </p>
         <div className={styles.about__img}>
           <ImageBorder maxHeight={300}>
@@ -38,9 +38,8 @@ export default function About() {
 
         <div className={styles.about__description}>
           <p>
-            I love data and crypto. I am trying to build something that users
-            find helpful and gives them a lot of dopamine. I am trying to be fit
-            (not healthy) and fix my ADHD. This section is a flex of grid.
+            I love data and crypto. When not working, I am usually working on my
+            side projects. This section is a flex of grid.
           </p>
         </div>
       </div>
