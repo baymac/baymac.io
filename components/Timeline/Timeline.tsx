@@ -74,7 +74,7 @@ export default function Timeline() {
       >
         <h2 className={styles.timeline__title}>Work Experience</h2>
         <p className={styles.timeline__subtitle}>
-          My journey from intern to blockchain engineer
+          My journey from intern to blockchain engineer (reverse chronological)
         </p>
 
         <div className={styles.timeline__content}>
