@@ -112,7 +112,11 @@ export default function Skills() {
     title,
     skills,
     className,
-  }: { title: string; skills: Skill[]; className: string }) => (
+  }: {
+    title: string;
+    skills: Skill[];
+    className: string;
+  }) => (
     <div className={styles.skillCategory}>
       <h3 className={styles.categoryTitle}>{title}</h3>
       <div className={cn(styles.skillsGrid, className)}>

@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  UilBitcoinCircle,
-  UilHome,
-  UilPen,
-} from '@iconscout/react-unicons';
+import { UilBitcoinCircle, UilHome, UilPen } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
 import { createElement } from 'react';
@@ -46,30 +42,23 @@ export default function NavBarLinks() {
   const [selectedMenu] = useNavSelection();
 
   return (
-    <>
-      <div className={cn(styles.nav__list)}>
-        {navItems.map((navItem) => (
-          <Link
-            href={`${navItem.path}`}
-            key={navItem.label}
-            className={cn(styles.nav__item, {
-              [styles.nav__item_selected]:
-                selectedMenu === `${navItem.selector}`,
-            })}
-            onClick={() => setNavBarOpen(false)}
-            tabIndex={0}
-          >
-            <span className={styles.nav__link} id={`${navItem.selector}`}>
-              {createElement(
-                navItem.icon,
-                { className: styles.nav__icon },
-                null
-              )}
-              {navItem.label}
-            </span>
-          </Link>
-        ))}
-      </div>
-    </>
+    <div className={cn(styles.nav__list)}>
+      {navItems.map((navItem) => (
+        <Link
+          href={`${navItem.path}`}
+          key={navItem.label}
+          className={cn(styles.nav__item, {
+            [styles.nav__item_selected]: selectedMenu === `${navItem.selector}`,
+          })}
+          onClick={() => setNavBarOpen(false)}
+          tabIndex={0}
+        >
+          <span className={styles.nav__link} id={`${navItem.selector}`}>
+            {createElement(navItem.icon, { className: styles.nav__icon }, null)}
+            {navItem.label}
+          </span>
+        </Link>
+      ))}
+    </div>
   );
 }

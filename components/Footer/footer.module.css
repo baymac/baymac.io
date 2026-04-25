@@ -12,7 +12,7 @@
 /* Controls padding of footer items */
 .footer__container {
   row-gap: 1.5rem;
-  max-width: var(--big-screen-width) !important;
+  max-width: var(--big-screen-width);
   margin: 0 auto;
   padding: 0 var(--mb-1);
 }

@@ -12,7 +12,7 @@ export default function BuyMeCrypto() {
   const [showSnackbar, setShowSnackbar] = useState(false);
 
   const handleCopyClick = () => {
-    //@ts-ignore
+    //@ts-expect-error
     handleCopy();
     setShowSnackbar(true);
   };
@@ -52,7 +52,7 @@ export default function BuyMeCrypto() {
           {
             message: 'Copied!',
             show: showSnackbar,
-            // @ts-ignore
+            // @ts-expect-error
             reset: setShowSnackbar,
             duration: 1500,
           },
