@@ -15,7 +15,10 @@ interface PostData {
   'ai-gen'?: boolean;
 }
 
-const postsDirectory = path.join(process.cwd(), constants.postsPath);
+const postsDirectory = path.join(
+  /*turbopackIgnore: true*/ process.cwd(),
+  constants.postsPath
+);
 
 export function getSortedPostsData(): PostData[] {
   // Get file names under /posts

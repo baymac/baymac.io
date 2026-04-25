@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import React from 'react';
 import styles from './ai-badge.module.css';
 
 interface IAiBadgeProps {

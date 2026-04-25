@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
   "linter": {
     "enabled": true,
     "rules": {
@@ -20,14 +20,15 @@
     }
   },
   "files": {
-    "ignore": [
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "dist/**",
-      "build/**",
-      "*.min.js",
-      "*.min.css"
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/.next",
+      "!**/out",
+      "!**/dist",
+      "!**/build",
+      "!**/*.min.js",
+      "!**/*.min.css"
     ]
   }
 }

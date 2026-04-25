@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { type ReactNode, createContext, useContext, useState } from 'react';
+import { createContext, type ReactNode, useContext, useState } from 'react';
 
 export interface IAppContextValues {
   navBarOpen: boolean;
@@ -10,7 +10,7 @@ export interface IAppContextValues {
 
 const AppContext = createContext({
   // eslint-disable-next-line no-unused-vars
-  setNavBarOpen: (open: boolean) => {},
+  setNavBarOpen: (_open: boolean) => {},
   navBarOpen: false,
 });
 

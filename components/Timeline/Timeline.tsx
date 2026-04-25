@@ -2,15 +2,14 @@ import cn from 'classnames';
 import rootStyles from '../../styles/root.module.css';
 import styles from './timeline.module.css';
 
-interface Experience {
+const experiences: {
+  id: string;
   title: string;
   company: string;
   period: string;
   location: string;
   description: string[];
-}
-
-const experiences = [
+}[] = [
   {
     id: 'minswap',
     title: 'Blockchain Engineer',
@@ -104,9 +103,9 @@ export default function Timeline() {
                 </div>
 
                 <div className={styles.timeline__description}>
-                  {experience.description.map((desc, descIndex) => (
+                  {experience.description.map((desc) => (
                     <p
-                      key={`${experience.id}-desc-${descIndex}`}
+                      key={`${experience.id}-desc-${desc}`}
                       className={styles.timeline__descItem}
                     >
                       {desc}

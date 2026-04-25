@@ -8,9 +8,9 @@ import {
   UilSun,
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTheme } from 'next-themes';
 import { createElement, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
 import rootStyles from '../../styles/root.module.css';
@@ -31,92 +31,90 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <>
-      <header className={styles.header}>
-        <nav className={cn(styles.nav, rootStyles.container)}>
-          {pathname && !pathname.startsWith('/posts') && (
-            <Link href="/" passHref>
-              <button
-                className={styles.nav__logo_button}
-                aria-label="logo-button"
-                type="button"
-              >
-                <div className={styles.nav__logo}>
-                  <Logo />
-                </div>
-              </button>
-            </Link>
-          )}
-          {pathname?.startsWith('/posts') && (
-            <Link href={'/blog'} passHref>
-              <button
-                className={styles.nav__logo_button}
-                aria-label="back-button"
-                type="button"
-              >
-                <div className={styles.nav__logo}>
-                  <UilArrowLeft />
-                </div>
-              </button>
-            </Link>
-          )}
-          <NavLinkBigScreen />
-          <div className={styles.nav__btns}>
-            {mounted ? (
-              createElement(
-                'button',
-                {
-                  className: cn(styles.nav__changeTheme),
-                  onClick: () =>
-                    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
-                  'aria-label': 'change-theme-button',
-                  type: 'button',
-                },
-                createElement(
-                  resolvedTheme === 'dark' ? UilSun : UilMoon,
-                  {
-                    id: 'theme-button',
-                    width: 28,
-                    height: 28,
-                  },
-                  null
-                )
-              )
-            ) : (
-              <div className={styles.skeleton_loader_container}>
-                {createElement(
-                  'div',
-                  {
-                    className: cn(styles.skeleton_loader),
-                  },
-                  null
-                )}
+    <header className={styles.header}>
+      <nav className={cn(styles.nav, rootStyles.container)}>
+        {pathname && !pathname.startsWith('/posts') && (
+          <Link href="/" passHref>
+            <button
+              className={styles.nav__logo_button}
+              aria-label="logo-button"
+              type="button"
+            >
+              <div className={styles.nav__logo}>
+                <Logo />
               </div>
-            )}
-            {!navBarOpen && (
-              <button
-                onClick={() => setNavBarOpen(true)}
-                className={styles.nav__toggle}
-                aria-label="nav-open-button"
-                type="button"
-              >
-                <UilApps id="nav_toggle" width={28} height={28} />
-              </button>
-            )}
-            {navBarOpen && (
-              <button
-                onClick={() => setNavBarOpen(false)}
-                className={styles.nav__toggle}
-                aria-label="nav-close-button"
-                type="button"
-              >
-                <UilMultiply id="nav_close" width={28} height={28} />
-              </button>
-            )}
-          </div>
-        </nav>
-        <NavLinkMobile />
-      </header>
-    </>
+            </button>
+          </Link>
+        )}
+        {pathname?.startsWith('/posts') && (
+          <Link href={'/blog'} passHref>
+            <button
+              className={styles.nav__logo_button}
+              aria-label="back-button"
+              type="button"
+            >
+              <div className={styles.nav__logo}>
+                <UilArrowLeft />
+              </div>
+            </button>
+          </Link>
+        )}
+        <NavLinkBigScreen />
+        <div className={styles.nav__btns}>
+          {mounted ? (
+            createElement(
+              'button',
+              {
+                className: cn(styles.nav__changeTheme),
+                onClick: () =>
+                  setTheme(resolvedTheme === 'dark' ? 'light' : 'dark'),
+                'aria-label': 'change-theme-button',
+                type: 'button',
+              },
+              createElement(
+                resolvedTheme === 'dark' ? UilSun : UilMoon,
+                {
+                  id: 'theme-button',
+                  width: 28,
+                  height: 28,
+                },
+                null
+              )
+            )
+          ) : (
+            <div className={styles.skeleton_loader_container}>
+              {createElement(
+                'div',
+                {
+                  className: cn(styles.skeleton_loader),
+                },
+                null
+              )}
+            </div>
+          )}
+          {!navBarOpen && (
+            <button
+              onClick={() => setNavBarOpen(true)}
+              className={styles.nav__toggle}
+              aria-label="nav-open-button"
+              type="button"
+            >
+              <UilApps id="nav_toggle" width={28} height={28} />
+            </button>
+          )}
+          {navBarOpen && (
+            <button
+              onClick={() => setNavBarOpen(false)}
+              className={styles.nav__toggle}
+              aria-label="nav-close-button"
+              type="button"
+            >
+              <UilMultiply id="nav_close" width={28} height={28} />
+            </button>
+          )}
+        </div>
+      </nav>
+      <NavLinkMobile />
+    </header>
   );
 }

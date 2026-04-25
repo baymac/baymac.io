@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import Image from 'next/image';
-import profileImage from '/public/images/profile.jpeg';
+import profileImage from '../../public/images/profile.jpeg';
 import rootStyles from '../../styles/root.module.css';
 import ImageBorder from '../ImageBorder/ImageBorder';
 import styles from './about.module.css';
@@ -30,7 +30,6 @@ export default function About() {
               height={300}
               width={200}
               alt={'Parichay'}
-              layout="fixed"
               placeholder={'blur'}
             />
           </ImageBorder>

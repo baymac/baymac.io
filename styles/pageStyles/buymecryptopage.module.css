@@ -16,27 +16,32 @@
 @keyframes dots {
   0% {
     color: var(--body-color);
-    text-shadow: var(--dots-distance-2) 0 0 var(--body-color),
+    text-shadow:
+      var(--dots-distance-2) 0 0 var(--body-color),
       var(--dots-distance-3) 0 0 var(--body-color);
   }
   20% {
     color: var(--text-color-light);
-    text-shadow: var(--dots-distance-2) 0 0 var(--body-color),
+    text-shadow:
+      var(--dots-distance-2) 0 0 var(--body-color),
       var(--dots-distance-3) 0 0 var(--body-color);
   }
   40% {
     color: var(--text-color);
-    text-shadow: var(--dots-distance-2) 0 0 var(--text-color-light),
+    text-shadow:
+      var(--dots-distance-2) 0 0 var(--text-color-light),
       var(--dots-distance-3) 0 0 var(--body-color);
   }
   60% {
     color: var(--text-color-light);
-    text-shadow: var(--dots-distance-2) 0 0 var(--text-color),
+    text-shadow:
+      var(--dots-distance-2) 0 0 var(--text-color),
       var(--dots-distance-3) 0 0 var(--text-color-light);
   }
   80%,
   100% {
-    text-shadow: var(--dots-distance-2) 0 0 var(--text-color-light),
+    text-shadow:
+      var(--dots-distance-2) 0 0 var(--text-color-light),
       var(--dots-distance-3) 0 0 var(--text-color);
   }
 }

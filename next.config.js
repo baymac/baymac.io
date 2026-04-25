@@ -2,6 +2,7 @@
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 
 const moduleExports = {
+  turbopack: {},
   async headers() {
     return [
       {
@@ -9,22 +10,6 @@ const moduleExports = {
         headers: securityHeaders,
       },
     ];
-  },
-  webpack: (config, { isServer }) => {
-    // Fixes npm packages that depend on `fs` module
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-      };
-    }
-    if (isServer) {
-      // Both scripts inspired from leerob.io
-      require('./scripts/generateSitemap');
-      require('./scripts/generateRss');
-    }
-
-    return config;
   },
 };
 

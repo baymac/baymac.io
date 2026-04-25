@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import BuyMeCrypto from '../components/BuyMeCrypto/BuyMeCrypto';
 import Footer from '../components/Footer/Footer';
 import Modal from '../components/Modal/Modal';

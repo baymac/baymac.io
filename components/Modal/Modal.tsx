@@ -1,7 +1,7 @@
 'use client';
 
 import { UilMultiply } from '@iconscout/react-unicons';
-import FocusTrap from 'focus-trap-react';
+import { FocusTrap } from 'focus-trap-react';
 import type React from 'react';
 import {
   type KeyboardEvent,
@@ -60,17 +60,15 @@ function Modal(props: IModalProps) {
   };
 
   const modalContent = open ? (
-    <div
-      role="presentation"
-      className={styles.modal__overlay}
-      onKeyDown={handleKeyDown}
-    >
+    // biome-ignore lint/a11y/noStaticElementInteractions: modal overlay captures keyboard events for accessibility
+    <div className={styles.modal__overlay} onKeyDown={handleKeyDown}>
       <div className={styles.modal__backdrop} aria-hidden="true" />
       <FocusTrap
         focusTrapOptions={{
           returnFocusOnDeactivate: false,
         }}
       >
+        {/* biome-ignore lint/a11y/noStaticElementInteractions: click-outside handler for modal dismiss */}
         <div
           className={styles.modal__container}
           tabIndex={-1}
