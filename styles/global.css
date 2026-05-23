@@ -313,3 +313,102 @@ select:-webkit-autofill:focus {
     margin: 0;
   }
 }
+
+/*========== Syntax highlighting (highlight.js — GitHub) ==========*/
+
+.hljs-comment,
+.hljs-quote {
+  color: #6e7781;
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-doctag,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type {
+  color: #cf222e;
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-meta .hljs-string {
+  color: #0a3069;
+}
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-attr,
+.hljs-attribute {
+  color: #0550ae;
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.function_,
+.hljs-name,
+.hljs-section {
+  color: #6639ba;
+}
+.hljs-built_in,
+.hljs-symbol {
+  color: #953800;
+}
+.hljs-deletion {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+.hljs-addition {
+  color: #116329;
+  background-color: #dafbe1;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
+}
+
+[data-theme="dark"] .hljs-comment,
+[data-theme="dark"] .hljs-quote {
+  color: #8b949e;
+}
+[data-theme="dark"] .hljs-keyword,
+[data-theme="dark"] .hljs-selector-tag,
+[data-theme="dark"] .hljs-doctag,
+[data-theme="dark"] .hljs-meta .hljs-keyword,
+[data-theme="dark"] .hljs-template-tag,
+[data-theme="dark"] .hljs-template-variable,
+[data-theme="dark"] .hljs-type {
+  color: #ff7b72;
+}
+[data-theme="dark"] .hljs-string,
+[data-theme="dark"] .hljs-regexp,
+[data-theme="dark"] .hljs-meta .hljs-string {
+  color: #a5d6ff;
+}
+[data-theme="dark"] .hljs-number,
+[data-theme="dark"] .hljs-literal,
+[data-theme="dark"] .hljs-variable,
+[data-theme="dark"] .hljs-attr,
+[data-theme="dark"] .hljs-attribute {
+  color: #79c0ff;
+}
+[data-theme="dark"] .hljs-title,
+[data-theme="dark"] .hljs-title.class_,
+[data-theme="dark"] .hljs-title.function_,
+[data-theme="dark"] .hljs-name,
+[data-theme="dark"] .hljs-section {
+  color: #d2a8ff;
+}
+[data-theme="dark"] .hljs-built_in,
+[data-theme="dark"] .hljs-symbol {
+  color: #ffa657;
+}
+[data-theme="dark"] .hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
+[data-theme="dark"] .hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
+}
