@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
 import { remark } from 'remark';
+import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
 import constants from './constants';
 
@@ -70,6 +71,7 @@ export async function getPostData(id: string) {
 
   // Use remark/rehype to convert markdown into HTML string with syntax highlighting
   const processedContent = await remark()
+    .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeHighlight)
     .use(rehypeStringify)
