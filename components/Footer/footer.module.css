@@ -61,6 +61,53 @@
   color: var(--inverted-bw);
 }
 
+/* "now playing" composition (Pass 7.C): Mixcloud iframe + social row + sign-off */
+.footer__now_playing {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--mb-1-5);
+  max-width: var(--big-screen-width);
+  margin: 0 auto;
+  padding: 0 var(--mb-1);
+}
+
+.footer__now_playing_label {
+  font-family: var(--font-hand-stack, inherit);
+  font-size: var(--h3-font-size);
+  color: var(--inverted-bw);
+}
+
+.footer__mixcloud {
+  width: 100%;
+  line-height: 0;
+}
+
+.footer__mixcloud :global(iframe) {
+  display: block;
+  width: 100%;
+  border: 0;
+  max-width: 100%;
+}
+
+.footer__now_playing_meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer__signoff_wrap {
+  max-width: var(--big-screen-width);
+  margin: 0 auto;
+  padding: 0 var(--mb-1);
+}
+
+.footer__signoff {
+  font-size: var(--smaller-font-size);
+  text-align: center;
+  color: var(--text-color-light);
+  margin-top: var(--mb-2);
+}
+
 @media screen and (min-width: 351px) {
   .footer__container {
     padding: 0 var(--mb-1-5);
@@ -75,6 +122,11 @@
   .footer__container {
     grid-template-columns: repeat(3, 1fr);
     padding: 0 6rem;
+  }
+
+  .footer__now_playing {
+    padding: 0 6rem;
+    row-gap: var(--mb-2);
   }
 
   .footer__links_1,
