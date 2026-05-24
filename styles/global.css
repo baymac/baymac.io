@@ -1,40 +1,7 @@
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/Inter-Regular.woff2) format("woff2");
-  unicode-range: U+000-5FF;
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500 600;
-  font-display: swap;
-  src: url(/fonts/Inter-Medium.woff2) format("woff2");
-  unicode-range: U+000-5FF;
-}
-
-@font-face {
-  font-family: "Roboto Mono";
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url(/fonts/Roboto-Light.woff2) format("woff2");
-  unicode-range: U+000-5FF;
-}
-
-@font-face {
-  font-family: "Atkinson Hyperlegible";
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url(/fonts/AtkinsonHyperlegible-Regular.woff2) format("woff2");
-  unicode-range: U+000-5FF;
-}
-
-/*==================== GOOGLE FONTS ====================*/
+/*==================== FONTS ====================*/
+/* Fonts are loaded via `next/font/google` in app/layout.tsx and exposed as
+   CSS variables (--font-sans, --font-mono, --font-hand, --font-blog) which
+   the font-stack tokens below pick up automatically. */
 
 /*==================== VARIABLES CSS ====================*/
 :root {

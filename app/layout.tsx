@@ -1,10 +1,38 @@
 import type { Metadata } from 'next';
+import {
+  Atkinson_Hyperlegible,
+  Caveat,
+  Inter,
+  JetBrains_Mono,
+} from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import Footer from '../components/Footer/Footer';
 import Nav from '../components/Nav/Nav';
 import AppContextProvider from '../context/AppContextProvider';
 import styles from '../styles/root.module.css';
 import '../styles/global.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
+const hand = Caveat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-hand',
+});
+const blog = Atkinson_Hyperlegible({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-blog',
+});
 
 export const metadata: Metadata = {
   title: 'Parichay',
@@ -140,7 +168,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${mono.variable} ${hand.variable} ${blog.variable}`}
+    >
       <body>
         <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem>
           <AppContextProvider>
