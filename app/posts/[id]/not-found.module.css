@@ -1,0 +1,57 @@
+.section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-7) var(--space-5);
+}
+
+.container {
+  max-width: 500px;
+  text-align: center;
+}
+
+.postit {
+  display: inline-block;
+  padding: var(--space-5) var(--space-6);
+  margin-bottom: var(--space-5);
+}
+
+.heading {
+  font-family: var(--font-hand-stack);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin: 0;
+  color: var(--postit-ink);
+}
+
+.copy {
+  font-family: var(--font-sans-stack);
+  font-size: var(--text-body);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.links {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.link {
+  font-family: var(--font-mono-stack);
+  color: var(--first-color);
+  text-decoration: underline;
+  padding: var(--space-2) var(--space-4);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link:hover {
+  opacity: 0.85;
+}
