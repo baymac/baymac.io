@@ -174,12 +174,17 @@ export default function RootLayout({
       className={`${inter.variable} ${mono.variable} ${hand.variable} ${blog.variable}`}
     >
       <body>
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem>
           <AppContextProvider>
-            <div className={styles.root}>
-              <Nav />
-              {children}
-              <Footer />
+            <div id="app-root">
+              <div className={styles.root}>
+                <Nav />
+                <main id="main-content">{children}</main>
+                <Footer />
+              </div>
             </div>
             <div id="modal-root" />
           </AppContextProvider>

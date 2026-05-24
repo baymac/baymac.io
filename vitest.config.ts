@@ -20,6 +20,12 @@ export default defineConfig({
           name: 'node',
           environment: 'node',
           include: ['tests/unit/scripts/**/*.test.ts'],
+          exclude: [
+            'tests/unit/components/**',
+            'tests/unit/hooks/**',
+            'tests/unit/lib/**',
+            'tests/unit/app/**',
+          ],
         },
       },
       {
@@ -27,7 +33,11 @@ export default defineConfig({
         test: {
           name: 'dom',
           environment: 'happy-dom',
-          include: ['tests/unit/{components,hooks,lib}/**/*.test.{ts,tsx}'],
+          include: [
+            'tests/unit/{components,hooks,lib,app}/**/*.test.{ts,tsx}',
+            'tests/unit/*.test.{ts,tsx}',
+          ],
+          exclude: ['tests/unit/scripts/**'],
         },
       },
     ],
