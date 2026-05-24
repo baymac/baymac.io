@@ -11,17 +11,17 @@ vi.mock('next/image', () => ({
 import Projects from '../../../components/Projects/Projects';
 
 describe('Projects', () => {
-  it('renders exactly 3 featured cards', () => {
+  it('marks exactly 3 cards as featured with ★', () => {
     const html = renderToStaticMarkup(<Projects />);
-    const starMatches = html.match(/aria-hidden="true">★</g) ?? [];
+    const starMatches = html.match(/aria-label="featured project">★/g) ?? [];
     expect(starMatches.length).toBe(3);
   });
 
-  it('renders the remaining 13 projects in the secondary grid', () => {
+  it('renders all projects in a single uniform grid (no two-tier split)', () => {
     const html = renderToStaticMarkup(<Projects />);
-    // 16 projects total, 3 featured, 13 secondary
-    const secondaryMatches = html.match(/secondaryCard/g) ?? [];
-    expect(secondaryMatches.length).toBe(13);
+    const cards = html.match(/data-wobble="true"/g) ?? [];
+    // 14 projects total in the data set, all rendered as same-size cards.
+    expect(cards.length).toBe(14);
   });
 
   it('renders prize annotation on featured cards', () => {
@@ -30,10 +30,8 @@ describe('Projects', () => {
     expect(html).toContain('+$5k');
   });
 
-  it('renders prize context (hackathon / grant name) on featured cards', () => {
+  it('renders the section annotation "(★ = won money)"', () => {
     const html = renderToStaticMarkup(<Projects />);
-    expect(html).toContain('SUI Bangkok Hacker House');
-    expect(html).toContain('Solana Building Out Loud');
-    expect(html).toContain('dcSpark grant');
+    expect(html).toContain('= won money');
   });
 });

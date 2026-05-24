@@ -1,0 +1,197 @@
+/* "Lined paper" route card per design F10. Mirrors the prototype's
+   BuyMeCryptoModal but rendered as page content (not an overlay). */
+
+.paper {
+  position: relative;
+  max-width: 540px;
+  margin: var(--space-7) auto;
+  background: var(--modal-paper);
+  color: var(--postit-ink);
+  transform: rotate(-0.6deg);
+  box-shadow: var(--shadow-modal);
+  /* Notebook ruling — repeating horizontal lines */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 26px,
+    var(--modal-paper-line) 26px,
+    var(--modal-paper-line) 27px
+  );
+}
+
+/* Red margin line (left rule like a real notebook). */
+.marginLine {
+  position: absolute;
+  left: 38px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--modal-margin-line);
+}
+
+.body {
+  padding: var(--space-6) var(--space-6) var(--space-5) calc(38px + var(--space-3));
+  position: relative;
+}
+
+.heading {
+  font-family: var(--font-hand-stack);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--first-color);
+  margin: 0;
+}
+
+.subheading {
+  font-family: var(--font-hand-stack);
+  font-size: 1.375rem;
+  margin: var(--space-1) 0 0;
+  color: var(--postit-ink);
+}
+
+.intro {
+  font-family: var(--font-mono-stack);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  margin: var(--space-4) 0 0;
+  opacity: 0.85;
+}
+
+/*==================== Coin tabs ====================*/
+
+.coinTabs {
+  display: flex;
+  gap: var(--space-2);
+  margin: var(--space-5) 0 var(--space-3);
+  flex-wrap: wrap;
+}
+
+.coinTab {
+  background: transparent;
+  color: var(--postit-ink);
+  border: 1.5px solid var(--postit-ink);
+  padding: 8px 14px;
+  font-family: var(--font-mono-stack);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: var(--radius-sketchy);
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.coinTabActive {
+  background: var(--postit-ink);
+  color: var(--modal-paper);
+}
+
+/*==================== Address ====================*/
+
+.addressRow {
+  margin-top: var(--space-3);
+}
+
+.coinMeta {
+  font-family: var(--font-mono-stack);
+  font-size: 0.625rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: var(--space-2);
+}
+
+.addressBox {
+  display: flex;
+  align-items: stretch;
+  border: 1.5px solid var(--postit-ink);
+  background: #fff;
+  border-radius: var(--radius-crisp);
+  overflow: hidden;
+}
+
+.address {
+  flex: 1;
+  padding: 12px 14px;
+  font-family: var(--font-mono-stack);
+  font-size: 0.6875rem;
+  color: var(--postit-ink);
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.copyBtn {
+  background: var(--postit-ink);
+  color: var(--modal-paper);
+  border: none;
+  padding: 0 16px;
+  cursor: pointer;
+  font-family: var(--font-mono-stack);
+  font-size: 0.625rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 96px;
+  justify-content: center;
+}
+
+.copyBtnCopied {
+  background: #5a8f3a;
+}
+
+.copyIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.caption {
+  font-family: var(--font-mono-stack);
+  font-size: 0.6875rem;
+  margin: var(--space-2) 0 0;
+  opacity: 0.65;
+  color: var(--postit-ink);
+}
+
+/*==================== Signature row ====================*/
+
+.signatureRow {
+  margin-top: var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.disclaimer {
+  font-family: var(--font-mono-stack);
+  font-size: 0.625rem;
+  opacity: 0.5;
+  margin: 0;
+  max-width: 60%;
+  color: var(--postit-ink);
+}
+
+.signature {
+  font-family: var(--font-hand-stack);
+  font-size: 1.75rem;
+  color: var(--first-color);
+  transform: rotate(-4deg);
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 2.25rem;
+  }
+  .signatureRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .disclaimer {
+    max-width: 100%;
+  }
+}

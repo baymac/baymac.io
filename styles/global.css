@@ -172,6 +172,19 @@
   --shadow-card-strong: 2px 4px 0 var(--first-color);
   --shadow-modal: 0 30px 80px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
   /* --shadow-polaroid is defined above with the polaroid block */
+
+  /*========== Page container (matches Nav max-width + edges) ========== */
+  /* Aligns logo-edge ↔ theme-button-edge with section content so all
+     pages share the same rhythm (per F9). Identical to --big-screen-width
+     but named explicitly for section-level consumption. */
+  --page-max-width: 1000px;
+
+  /*========== Section background alternation (F7 + F19) ========== */
+  /* Two-color rhythm. Sections set --section-bg to one of these two. */
+  --section-alt-bg: hsl(230, 35%, 97%); /* barely-tinted lavender */
+
+  /*========== Card surface (used by Projects + Timeline) ========== */
+  --card-bg: #fff;
 }
 
 /* Font size for large devices */
@@ -263,6 +276,12 @@
 
   --shadow-card: 2px 6px 14px rgba(0, 0, 0, 0.35);
   --shadow-modal: 0 30px 80px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  /*========== Dark theme: section alt bg + card bg ========== */
+  /* One step lighter than --body-color (hsl(200,5%,12%)) so the alt
+     section reads as a distinct band on the dark page. */
+  --section-alt-bg: hsl(200, 8%, 17%);
+  --card-bg: hsl(200, 7%, 14%);
 }
 
 /*========== Button Dark/Light ==========*/
@@ -280,6 +299,9 @@
 
 html {
   height: 100%;
+  /* Sticky header takes ~4rem (var(--header-height)) — reserve that so
+     in-page anchor scrolls (#blog, #experience) don't land under it. */
+  scroll-padding-top: calc(var(--header-height) + var(--space-3));
 }
 
 body {

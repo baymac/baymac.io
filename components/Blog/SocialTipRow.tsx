@@ -1,18 +1,14 @@
-import CryptoTipButton from './CryptoTipButton';
 import styles from './social-tip-row.module.css';
 
 /**
- * Tiny inline row at the bottom of a post: RSS, X follow, tip button.
- * Server Component wrapper + client `<CryptoTipButton>` leaf (per CQ 2A).
+ * Tiny inline row at the bottom of a post: RSS, X follow.
+ * The crypto tip button (F8) is removed; visitors hit /buymecrypto via
+ * nav/footer if they want to tip.
  */
 export default function SocialTipRow() {
   return (
     <div className={styles.row}>
-      <a
-        href="/feed.xml"
-        className={styles.link}
-        rel="noopener noreferrer"
-      >
+      <a href="/feed.xml" className={styles.link} rel="noopener noreferrer">
         rss
       </a>
       <span className={styles.dot} aria-hidden="true">
@@ -26,10 +22,6 @@ export default function SocialTipRow() {
       >
         follow on x
       </a>
-      <span className={styles.dot} aria-hidden="true">
-        ·
-      </span>
-      <CryptoTipButton />
     </div>
   );
 }

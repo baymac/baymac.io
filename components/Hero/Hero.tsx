@@ -37,7 +37,11 @@ export default function Hero() {
     <div className={styles.polaroidFrame} data-wobble>
       <Tape
         rotate={-12}
-        style={{ position: 'absolute', left: '40%', top: -8, zIndex: 3 }}
+        style={{ position: 'absolute', left: 20, top: -10, zIndex: 3 }}
+      />
+      <Tape
+        rotate={10}
+        style={{ position: 'absolute', right: 20, top: -10, zIndex: 3 }}
       />
       <HeroPolaroid src={CAT_SRC} alt={CAT_ALT} />
     </div>
@@ -45,17 +49,13 @@ export default function Hero() {
 
   const name = <h1 className={styles.name}>hey, i&apos;m parichay</h1>;
 
-  const signal = (
-    <p className={styles.signal}>
-      software engineer. writes about cardano, dj-ing, and leaving home.
-    </p>
-  );
+  const signal = <p className={styles.signal}>software engineer . dj</p>;
 
   const bio = (
     <p className={styles.bio}>
-      software engineer based out of nowhere (digital nomad). i love working
-      with data + cryptography. when i&apos;m not working — i&apos;m touching
-      grass, learning to dj, trading crypto, playing ps5 or football.
+      i love working with data + cryptography. when i&apos;m not working —
+      i&apos;m touching grass, learning to dj, trading crypto, playing ps5 or
+      football.
     </p>
   );
 
@@ -71,7 +71,14 @@ export default function Hero() {
     <Postit color={2} rotate={-4} className={styles.postitDj}>
       dj sets →
       <br />
-      <u>mixcloud.com/jake_fk</u>
+      <a
+        href="https://www.mixcloud.com/jake_fk/"
+        target="_blank"
+        rel="noreferrer"
+        className={styles.postitLink}
+      >
+        mixcloud.com/jake_fk
+      </a>
     </Postit>
   );
 

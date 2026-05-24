@@ -4,53 +4,6 @@ import Link from 'next/link';
 import rootStyles from '../../styles/root.module.css';
 import footerStyles from './footer.module.css';
 
-// Mixcloud user handle. Placeholder per plan T17 — owner can swap to their real
-// handle. Matches the prototype's `mixcloud.com/jake_fk` postit reference.
-const MIXCLOUD_USER_URL = 'https://www.mixcloud.com/jake_fk/';
-const MIXCLOUD_OEMBED_URL = `https://www.mixcloud.com/oembed/?url=${encodeURIComponent(
-  MIXCLOUD_USER_URL
-)}&format=json`;
-
-interface MixcloudOEmbed {
-  html?: string;
-  title?: string;
-  author_name?: string;
-}
-
-async function fetchMixcloudEmbed(): Promise<MixcloudOEmbed | null> {
-  try {
-    const res = await fetch(MIXCLOUD_OEMBED_URL, {
-      next: { revalidate: 86400 },
-    });
-    if (!res.ok) return null;
-    const data = (await res.json()) as MixcloudOEmbed;
-    if (!data?.html) return null;
-    return data;
-  } catch {
-    return null;
-  }
-}
-
-/**
- * Patch the oEmbed iframe markup so it:
- *  - lazy-loads (Perf 4B), and
- *  - has an accessible `title` (axe-core flags any iframe without one as a
- *    serious WCAG 4.1.2 violation; Mixcloud's oEmbed doesn't include it).
- */
-function patchIframe(html: string, title: string): string {
-  let out = html;
-  if (!/<iframe[^>]*\sloading=/.test(out)) {
-    out = out.replace(/<iframe\b/i, '<iframe loading="lazy"');
-  }
-  if (!/<iframe[^>]*\stitle=/.test(out)) {
-    out = out.replace(
-      /<iframe\b/i,
-      `<iframe title="${title.replace(/"/g, '&quot;')}"`
-    );
-  }
-  return out;
-}
-
 function SocialIcons() {
   return (
     <div className={footerStyles.footer__social}>
@@ -100,82 +53,46 @@ function SignOff() {
   );
 }
 
-function FallbackFooter() {
-  return (
-    <div
-      className={cn(
-        rootStyles.grid,
-        rootStyles.container,
-        footerStyles.footer__container
-      )}
-    >
-      <ul className={footerStyles.footer__links_1}>
-        <li>
-          <Link href="/" className={footerStyles.footer__link}>
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link href="/blog" className={footerStyles.footer__link}>
-            Blog
-          </Link>
-        </li>
-      </ul>
-      <ul className={footerStyles.footer__links_2}>
-        <li>
-          <Link href="/buymecrypto" className={footerStyles.footer__link}>
-            Buy Me Crypto
-          </Link>
-        </li>
-      </ul>
-      <SocialIcons />
-    </div>
-  );
-}
-
-export default async function Footer() {
-  const embed = await fetchMixcloudEmbed();
-  const iframeTitle = embed?.title
-    ? `Latest DJ mix: ${embed.title}`
-    : 'Latest DJ mix from Mixcloud';
-  const embedHtml = embed?.html ? patchIframe(embed.html, iframeTitle) : null;
-
+export default function Footer() {
   return (
     <footer className={footerStyles.footer}>
       <div className={footerStyles.footer__bg}>
-        {embedHtml ? (
-          <div
-            className={cn(
-              rootStyles.container,
-              footerStyles.footer__now_playing
-            )}
-          >
-            <div className={footerStyles.footer__now_playing_label}>
-              now playing
-            </div>
-            <div
-              className={footerStyles.footer__mixcloud}
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: Mixcloud oEmbed returns trusted iframe markup; revalidated server-side.
-              dangerouslySetInnerHTML={{ __html: embedHtml }}
-            />
-            <div className={footerStyles.footer__now_playing_meta}>
-              <SocialIcons />
-            </div>
-            <SignOff />
-          </div>
-        ) : (
-          <>
-            <FallbackFooter />
-            <div
-              className={cn(
-                rootStyles.container,
-                footerStyles.footer__signoff_wrap
-              )}
-            >
-              <SignOff />
-            </div>
-          </>
-        )}
+        <div
+          className={cn(
+            rootStyles.grid,
+            rootStyles.container,
+            footerStyles.footer__container
+          )}
+        >
+          <ul className={footerStyles.footer__links_1}>
+            <li>
+              <Link href="/" className={footerStyles.footer__link}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/blog" className={footerStyles.footer__link}>
+                Blog
+              </Link>
+            </li>
+          </ul>
+          <ul className={footerStyles.footer__links_2}>
+            <li>
+              <Link href="/buymecrypto" className={footerStyles.footer__link}>
+                Buy Me Crypto
+              </Link>
+            </li>
+          </ul>
+          <SocialIcons />
+        </div>
+        <div
+          className={cn(
+            rootStyles.container,
+            footerStyles.footer__signoff_wrap
+          )}
+        >
+          <SignOff />
+        </div>
       </div>
     </footer>
   );

@@ -9,26 +9,14 @@ test.describe('/blog', () => {
     await expect(page.getByRole('heading', { level: 1 })).toContainText(
       'the blog'
     );
-    // Heading annotation
     await expect(page.getByText('(things i wrote down)')).toBeVisible();
-    // Filter row with at least "all"
-    await expect(page.getByRole('tab', { name: /all/i })).toBeVisible();
+    // F13: tag filter is removed. Just verify the grid renders cards.
+    await expect(page.locator('article').first()).toBeVisible();
   });
 
-  test('clicking a tag filter narrows the list', async ({ page }) => {
+  test('does NOT render a tag filter (per F13)', async ({ page }) => {
     await page.goto('/blog');
-    // Pick any non-"all" tab if available
-    const tabs = page.getByRole('tab');
-    const tabCount = await tabs.count();
-    if (tabCount > 1) {
-      const firstTagTab = tabs.nth(1);
-      const beforeCards = await page.locator('article').count();
-      await firstTagTab.click();
-      // Wait for transition; cards re-render
-      await page.waitForLoadState('networkidle');
-      const afterCards = await page.locator('article').count();
-      expect(afterCards).toBeLessThanOrEqual(beforeCards);
-    }
+    await expect(page.getByRole('tab')).toHaveCount(0);
   });
 
   test('clicking a post navigates to /posts/[id]', async ({ page }) => {

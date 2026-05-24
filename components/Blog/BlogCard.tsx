@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import Link from 'next/link';
+import Tape from '../Common/Tape';
 import AiBadge from './AiBadge';
 import BlogDate from './Date';
 import styles from './blog-card.module.css';
@@ -17,8 +18,9 @@ export interface IBlogCardProps {
 }
 
 /**
- * Sticky-note blog list card. Pairs with the postit color ramp tokens defined
- * in styles/global.css. Wobble filter via `data-wobble` per DESIGN.md.
+ * Sticky-note blog list card. Two washi-tape strips at the top corners
+ * (per design F15). Pairs with the postit color ramp tokens defined in
+ * styles/global.css. Wobble filter via `data-wobble` per DESIGN.md.
  */
 export default function BlogCard({
   id,
@@ -35,30 +37,40 @@ export default function BlogCard({
       className={styles.cardLink}
       style={{ transform: `rotate(${rotate}deg)` }}
     >
-      <article
-        className={cn(styles.card, styles[`color${color}`])}
-        data-wobble
-      >
-        <div className={styles.meta}>
-          <span className={styles.date}>
-            <BlogDate dateString={date} />
-          </span>
-          {tags.length > 0 && (
-            <span className={styles.tags}>
-              {tags.map((t) => (
-                <span key={t} className={styles.tag}>
-                  #{t}
-                </span>
-              ))}
+      <div className={styles.cardOuter}>
+        <Tape
+          rotate={-8 + rotate * 2}
+          style={{ left: 30, top: -10, width: 56 }}
+        />
+        <Tape
+          rotate={6 - rotate * 2}
+          style={{ right: 40, top: -10, width: 44 }}
+        />
+        <article
+          className={cn(styles.card, styles[`color${color}`])}
+          data-wobble
+        >
+          <div className={styles.meta}>
+            <span className={styles.date}>
+              <BlogDate dateString={date} />
             </span>
-          )}
-        </div>
-        <h3 className={styles.title}>{title}</h3>
-        <div className={styles.footer}>
-          <span className={styles.readIt}>read it →</span>
-          {aiGen && <AiBadge className={styles.aiBadge} />}
-        </div>
-      </article>
+            {tags.length > 0 && (
+              <span className={styles.tags}>
+                {tags.map((t) => (
+                  <span key={t} className={styles.tag}>
+                    #{t}
+                  </span>
+                ))}
+              </span>
+            )}
+          </div>
+          <h3 className={styles.title}>{title}</h3>
+          <div className={styles.footer}>
+            <span className={styles.readIt}>read it →</span>
+            {aiGen && <AiBadge className={styles.aiBadge} />}
+          </div>
+        </article>
+      </div>
     </Link>
   );
 }

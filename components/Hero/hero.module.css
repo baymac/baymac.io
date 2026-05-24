@@ -1,7 +1,10 @@
 .hero {
   max-width: 1000px;
   margin: 0 auto;
-  padding: var(--space-7) var(--space-5);
+  /* Top padding clears the sticky header so the polaroid + handwritten name
+     never get partially covered on cold load. */
+  padding: calc(var(--header-height) + var(--space-5)) var(--space-5)
+    var(--space-7);
   position: relative;
 }
 
@@ -78,6 +81,16 @@
   opacity: 0.85;
   margin-top: var(--space-4);
   color: var(--text-color);
+}
+
+.postitLink {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.postitLink:hover {
+  color: var(--first-color);
 }
 
 /*==================== Desktop scrapbook ====================*/

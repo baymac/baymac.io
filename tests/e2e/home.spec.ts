@@ -16,9 +16,7 @@ test.describe('/ (home)', () => {
     const polaroids = page.locator(
       'img[alt*="red tabby cat wearing DJ headphones"]'
     );
-    const sentences = page.locator(
-      'p', { hasText: 'writes about cardano' }
-    );
+    const sentences = page.locator('p', { hasText: 'software engineer . dj' });
 
     // Both compositions exist in DOM (one is hidden via @media).
     await expect(headings).toHaveCount(2);
@@ -33,14 +31,20 @@ test.describe('/ (home)', () => {
     expect(visibilities.some((v) => v)).toBe(true);
   });
 
-  test('renders Projects featured + secondary tiers', async ({ page }) => {
+  test('renders Projects uniform grid with 3 starred featured', async ({
+    page,
+  }) => {
     await page.goto('/');
-    // Featured stars on the 3 hackathon wins
-    const stars = page.locator('text=★');
-    await expect(stars).toHaveCount(3);
-    await expect(page.getByText('Noodles.fi')).toBeVisible();
-    await expect(page.getByText('Cred Jack')).toBeVisible();
-    await expect(page.getByText('Wallet Connect Cardano')).toBeVisible();
+    // F4 + F18: single tier, same-size cards. 3 cards carry the ★ marker
+    // (the "(★ = won money)" annotation in the heading also contains a ★,
+    // so total ★ occurrences on the page is 4).
+    const featuredStars = page.locator('[aria-label="featured project"]');
+    await expect(featuredStars).toHaveCount(3);
+    await expect(page.getByText('Noodles.fi').first()).toBeVisible();
+    await expect(page.getByText('Cred Jack').first()).toBeVisible();
+    await expect(
+      page.getByText('Wallet Connect Cardano').first()
+    ).toBeVisible();
   });
 
   test('renders Timeline section', async ({ page }) => {

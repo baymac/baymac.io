@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
-import BlogListClient, {
-  type IBlogListPost,
-} from '../../components/Blog/BlogListClient';
+import BlogCard from '../../components/Blog/BlogCard';
 import { getSortedPostsData } from '../../lib/posts';
 import styles from './blog-page.module.css';
 
@@ -16,8 +14,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Normalize the raw frontmatter tags string ("tag1, tag2") into a string array
-// so the client filter doesn't have to split per render.
 function parseTags(raw: string | undefined): string[] {
   if (!raw) return [];
   return raw
@@ -26,8 +22,10 @@ function parseTags(raw: string | undefined): string[] {
     .filter(Boolean);
 }
 
+const POSTIT_COLORS = [1, 2, 3, 4, 5] as const;
+
 export default function BlogPage() {
-  const posts: IBlogListPost[] = getSortedPostsData().map((p) => ({
+  const posts = getSortedPostsData().map((p) => ({
     id: p.id,
     title: p.title,
     date: p.date,
@@ -61,8 +59,28 @@ export default function BlogPage() {
             .
           </p>
         ) : (
-          <BlogListClient posts={posts} />
+          <div className={styles.grid}>
+            {posts.map((post, i) => (
+              <BlogCard
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                date={post.date}
+                tags={post.tags}
+                aiGen={post.aiGen}
+                color={POSTIT_COLORS[i % POSTIT_COLORS.length]}
+                rotate={((i % 4) - 1.5) * 0.6}
+              />
+            ))}
+          </div>
         )}
+
+        <p className={styles.rss}>
+          rss?{' '}
+          <a href="/feed.xml" className={styles.rssLink}>
+            /feed.xml
+          </a>
+        </p>
       </div>
     </section>
   );

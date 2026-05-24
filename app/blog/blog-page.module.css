@@ -1,10 +1,11 @@
 .section {
-  padding: var(--space-7) 0;
+  /* Top padding clears the sticky header (matches Hero top spacing). */
+  padding: calc(var(--header-height) + var(--space-5)) 0 var(--space-7);
 }
 
 .container {
   width: 100%;
-  max-width: var(--big-screen-width);
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 0 var(--space-5);
 }
@@ -15,12 +16,10 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-5);
 }
 
-/* Per design Pass 1.E: blog list heading is smaller than the home hero so
-   cross-page hierarchy is unambiguous. Home hero is --text-hero (44 → 64px);
-   this is --text-section (32 → 44px). */
+/* Cross-page heading hierarchy: smaller than the home hero. */
 .heading {
   font-family: var(--font-hand-stack);
   font-size: var(--text-section);
@@ -45,6 +44,19 @@
   color: var(--text-color);
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media screen and (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+}
+
 .emptyZero {
   margin-top: var(--space-7);
   text-align: center;
@@ -59,11 +71,22 @@
   text-decoration: underline;
 }
 
+.rss {
+  margin-top: var(--space-7);
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-micro);
+  opacity: 0.6;
+  color: var(--text-color);
+}
+
+.rssLink {
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 768px) {
   .container {
     padding: 0 var(--space-4);
-  }
-  .section {
-    padding: var(--space-5) 0;
   }
 }
