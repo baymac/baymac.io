@@ -129,6 +129,9 @@
 }
 
 .blog__contentFont pre {
+  /* Light theme: paper-tint background (matches the original look).
+     Dark theme: override to a darker bg so the hljs syntax-highlight colors
+     (which target near-black code surfaces) pass AA contrast. */
   background-color: var(--first-color-lighter);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -136,6 +139,19 @@
   margin: 1.5rem 0;
   border: 1px solid var(--footer-border-color);
   max-width: 100%;
+}
+
+[data-theme="dark"] .blog__contentFont pre {
+  /* GitHub Dark code surface — what the hljs dark-theme colors in
+     styles/global.css were designed against. Existing #79c0ff / #ff7b72 /
+     etc. now pass 4.5:1 here. */
+  background-color: #0d1117;
+  border-color: #30363d;
+}
+
+[data-theme="dark"] .blog__contentFont pre code,
+[data-theme="dark"] .blog__contentFont pre code.hljs {
+  color: #c9d1d9;
 }
 
 .blog__contentFont pre code {

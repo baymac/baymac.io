@@ -204,7 +204,10 @@
   --title-color-alt: hsl(217, 89%, 80%);
   /* blog title links */
   --text-color: hsl(210, 19%, 94%);
-  --text-color-light-second: hsla(223, 25%, 86%, 0.837);
+  /* Bumped from hsla(223, 25%, 86%, 0.837) which composited to ~#bdc4d3 and
+     failed AA contrast (3.39:1) on featured-card / timeline-card slate-blue
+     backgrounds. Now resolves to ~#eff1f5 → ~5.2:1 on hsl(210, 22%, 40%). */
+  --text-color-light-second: hsl(223, 25%, 95%);
 
   --input-color: hsl(230, 29%, 16%);
   /*hsl(0, 0%, 13%);*/

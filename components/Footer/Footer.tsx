@@ -32,12 +32,23 @@ async function fetchMixcloudEmbed(): Promise<MixcloudOEmbed | null> {
 }
 
 /**
- * Add `loading="lazy"` to the iframe in the oEmbed HTML (Perf 4B). Mixcloud's
- * oEmbed doesn't include the attribute by default, so we patch it in.
+ * Patch the oEmbed iframe markup so it:
+ *  - lazy-loads (Perf 4B), and
+ *  - has an accessible `title` (axe-core flags any iframe without one as a
+ *    serious WCAG 4.1.2 violation; Mixcloud's oEmbed doesn't include it).
  */
-function withLazyIframe(html: string): string {
-  if (/<iframe[^>]*\sloading=/.test(html)) return html;
-  return html.replace(/<iframe\b/i, '<iframe loading="lazy"');
+function patchIframe(html: string, title: string): string {
+  let out = html;
+  if (!/<iframe[^>]*\sloading=/.test(out)) {
+    out = out.replace(/<iframe\b/i, '<iframe loading="lazy"');
+  }
+  if (!/<iframe[^>]*\stitle=/.test(out)) {
+    out = out.replace(
+      /<iframe\b/i,
+      `<iframe title="${title.replace(/"/g, '&quot;')}"`
+    );
+  }
+  return out;
 }
 
 function SocialIcons() {
@@ -124,7 +135,10 @@ function FallbackFooter() {
 
 export default async function Footer() {
   const embed = await fetchMixcloudEmbed();
-  const embedHtml = embed?.html ? withLazyIframe(embed.html) : null;
+  const iframeTitle = embed?.title
+    ? `Latest DJ mix: ${embed.title}`
+    : 'Latest DJ mix from Mixcloud';
+  const embedHtml = embed?.html ? patchIframe(embed.html, iframeTitle) : null;
 
   return (
     <footer className={footerStyles.footer}>

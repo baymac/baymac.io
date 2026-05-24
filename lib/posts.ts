@@ -76,7 +76,14 @@ export async function getPostData(id: string) {
     .use(rehypeHighlight)
     .use(rehypeStringify)
     .process(matterResult.content);
-  const contentHtml = processedContent.toString();
+  // Add tabindex="0" to every scrollable region so keyboard users can scroll
+  // long code blocks + wide tables (axe-core flags both `<pre>` and `<table>`
+  // with `overflow-x: auto` as serious WCAG 2.1.1 / 2.1.3 violations when
+  // they lack focusable content). Cheap post-process beats a rehype plugin.
+  const contentHtml = processedContent
+    .toString()
+    .replace(/<pre>/g, '<pre tabindex="0">')
+    .replace(/<table>/g, '<table tabindex="0">');
 
   // Combine the data with the id and contentHtml
   return {

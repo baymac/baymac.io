@@ -19,6 +19,11 @@ export default function BuyMeCryptoPage() {
           blogStyles.blog__container
         )}
       >
+        <h1>Buy Me Crypto</h1>
+        <p>
+          If something here helped you, tipping is welcome. No fee, no platform
+          — just an address.
+        </p>
         <BuyMeCrypto />
       </div>
     </section>

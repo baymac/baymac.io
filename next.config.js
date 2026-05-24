@@ -23,7 +23,7 @@ const ContentSecurityPolicy = `
   media-src none;
   connect-src *;
   font-src 'self';
-  frame-src https://www.mixcloud.com https://player-widget.mixcloud.com;
+  frame-src https://www.mixcloud.com https://player-widget.mixcloud.com https://follow-widget.mixcloud.com;
 `;
 
 const securityHeaders = [
