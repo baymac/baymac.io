@@ -1,0 +1,14 @@
+[
+  {
+    "name": "First Load JS (all routes)",
+    "path": ".next/static/chunks/**/*.js",
+    "limit": "120 KB",
+    "gzip": true
+  },
+  {
+    "name": "First Load CSS",
+    "path": ".next/static/css/**/*.css",
+    "limit": "30 KB",
+    "gzip": true
+  }
+]
