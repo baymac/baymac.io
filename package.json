@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
-    "build": "node scripts/generateSitemap.js && node scripts/generateRss.js && next build",
+    "build": "node scripts/validateWallets.js && node scripts/generateSitemap.js && node scripts/generateRss.js && next build",
     "start": "next start",
     "lint": "biome check .",
     "lint:fix": "biome check --write --unsafe .",
