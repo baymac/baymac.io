@@ -1,0 +1,40 @@
+.wrapper {
+  margin: var(--space-7) auto var(--space-6);
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.link:hover {
+  transform: translateY(-2px) rotate(0deg);
+}
+
+.postit {
+  width: 320px;
+  padding: var(--space-5);
+  font-family: var(--font-hand-stack);
+}
+
+.label {
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-meta);
+  opacity: 0.75;
+  margin-bottom: var(--space-2);
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-family: var(--font-hand-stack);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}

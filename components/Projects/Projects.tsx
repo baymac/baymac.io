@@ -4,13 +4,47 @@ import rootStyles from '../../styles/root.module.css';
 import styles from './projects.module.css';
 
 interface Project {
+  id: string;
   title: string;
   description: string;
   link?: string;
   github?: string;
+  featured?: boolean;
+  prize?: string;
+  context?: string;
 }
 
-const projects = [
+const projects: Project[] = [
+  {
+    id: 'noodles-fi',
+    title: 'Noodles.fi',
+    description:
+      'An analytics platform for SUI DeFi. Built for SUI Bangkok Hacker House hackathon. Won 1st place.',
+    link: 'https://github.com/sui-foundation/sui-demo-day-bangkok/blob/main/demo-projects/noodles.fi.md',
+    featured: true,
+    prize: '$3k',
+    context: 'SUI Bangkok Hacker House — 1st place',
+  },
+  {
+    id: 'cred-jack',
+    title: 'Cred Jack',
+    description:
+      'A gamified token rewards system using CRED app. Built for Solana Building Out Loud hackathon. Won 1st place.',
+    link: 'https://github.com/baymac/cred-jack',
+    featured: true,
+    prize: '$5k',
+    context: 'Solana Building Out Loud — 1st place',
+  },
+  {
+    id: 'wallet-connect-cardano',
+    title: 'Wallet Connect Cardano',
+    description:
+      'A dApp library that supports Cardano for compatible wallets.',
+    link: 'https://x.com/dcspark_io/status/1688489778042351616',
+    featured: true,
+    prize: '$5k',
+    context: 'dcSpark grant',
+  },
   {
     id: 'ace-base',
     title: 'Ace Base',
@@ -51,32 +85,11 @@ const projects = [
     link: 'https://github.com/minswap/eslint-plugin',
   },
   {
-    id: 'noodles-fi',
-    title: 'Noodles.fi',
-    description:
-      'An analytics platform for SUI DeFi. Built for SUI Bangkok Hacker House hackathon. Won 1st place ($3k).',
-    link: 'https://github.com/sui-foundation/sui-demo-day-bangkok/blob/main/demo-projects/noodles.fi.md',
-  },
-  {
-    id: 'cred-jack',
-    title: 'Cred Jack',
-    description:
-      'A gamified token rewards system using CRED app. Built for Solana Building Out Loud hackathon. Won 1st place ($5k).',
-    link: 'https://github.com/baymac/cred-jack',
-  },
-  {
     id: 'buy-me-crypto',
     title: 'Buy Me Crypto',
     description:
       'A crypto platform enabling creators and fans to support each other. Submission for Solana Ignition.',
     link: 'https://github.com/baymac/buy-me-crypto',
-  },
-  {
-    id: 'wallet-connect-cardano',
-    title: 'Wallet Connect Cardano',
-    description:
-      'A dApp library that supports Cardano for compatible wallets. Received $5k grant from dcSpark.',
-    link: 'https://x.com/dcspark_io/status/1688489778042351616',
   },
   {
     id: 'publish-docs-to-drive',
@@ -123,49 +136,98 @@ const projects = [
 ];
 
 export default function Projects() {
+  const featured = projects.filter((p) => p.featured);
+  const secondary = projects.filter((p) => !p.featured);
+
   return (
     <section
       className={cn(rootStyles.section, styles.projects__section)}
       id="projects"
     >
-      <div
-        className={cn(
-          rootStyles.container,
-          rootStyles.grid,
-          styles.projects__container
-        )}
-      >
-        <h2 className={styles.projects__title}>Projects</h2>
+      <div className={cn(rootStyles.container, styles.projects__container)}>
+        <h2 className={styles.projects__title}>things i&apos;ve built</h2>
         <p className={styles.projects__subtitle}>
-          A collection of my work across web dev, blockchain and open source
+          a collection of work across web dev, blockchain and open source
         </p>
 
-        <div className={styles.projects__grid}>
-          {projects.map((project) => (
-            <div key={project.id} className={styles.project__card}>
-              <div className={styles.project__header}>
-                <h3 className={styles.project__title}>{project.title}</h3>
+        {/* Featured tier */}
+        <div className={styles.featuredGrid}>
+          {featured.map((project) => (
+            <article
+              key={project.id}
+              className={styles.featuredCard}
+              data-wobble
+            >
+              <div className={styles.featuredHeader}>
+                <span className={styles.star} aria-hidden="true">
+                  ★
+                </span>
+                <h3 className={styles.featuredTitle}>{project.title}</h3>
                 {project.link && (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.project__link}
+                    aria-label={`${project.title} link`}
                   >
                     <Image
                       src="/images/link.svg"
-                      alt="Link"
+                      alt=""
                       width={24}
                       height={24}
                     />
                   </a>
                 )}
               </div>
-
-              <p className={styles.project__description}>
+              {project.prize && (
+                <div className={styles.featuredPrize}>
+                  <span className={styles.prizeAmount}>+{project.prize}</span>
+                  {project.context && (
+                    <span className={styles.prizeContext}>
+                      {project.context}
+                    </span>
+                  )}
+                </div>
+              )}
+              <p className={styles.featuredDescription}>
                 {project.description}
               </p>
-            </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Secondary grid */}
+        <div className={styles.secondaryGrid}>
+          {secondary.map((project) => (
+            <article
+              key={project.id}
+              className={styles.secondaryCard}
+              data-wobble
+            >
+              <div className={styles.project__header}>
+                <h3 className={styles.secondaryTitle}>{project.title}</h3>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.project__link}
+                    aria-label={`${project.title} link`}
+                  >
+                    <Image
+                      src="/images/link.svg"
+                      alt=""
+                      width={20}
+                      height={20}
+                    />
+                  </a>
+                )}
+              </div>
+              <p className={styles.secondaryDescription}>
+                {project.description}
+              </p>
+            </article>
           ))}
         </div>
       </div>
