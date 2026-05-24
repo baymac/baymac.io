@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import AiBadge from '../../../components/Blog/AiBadge';
 import BlogDate from '../../../components/Blog/Date';
+import NextPostCard from '../../../components/Blog/NextPostCard';
+import SocialTipRow from '../../../components/Blog/SocialTipRow';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
 import blogStyles from '../../../styles/pageStyles/blog.module.css';
 import rootStyles from '../../../styles/root.module.css';
@@ -60,9 +62,11 @@ export async function generateMetadata({
 
 export default async function PostPage({ params }: PageProps) {
   let postData: PostData;
+  let resolvedId: string;
 
   try {
     const { id } = await params;
+    resolvedId = id;
     postData = await getPostData(id);
   } catch {
     notFound();
@@ -94,9 +98,11 @@ export default async function PostPage({ params }: PageProps) {
         </div>
         <div
           className={cn(blogStyles.blog__contentFont)}
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted markdown content compiled at build time
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
+        <NextPostCard currentPostId={resolvedId} />
+        <SocialTipRow />
       </div>
     </article>
   );
