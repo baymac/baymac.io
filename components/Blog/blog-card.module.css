@@ -1,0 +1,74 @@
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.cardLink:hover {
+  transform: rotate(0deg) translateY(-2px) !important;
+}
+
+.card {
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  color: var(--postit-ink);
+  box-shadow: var(--shadow-card);
+  border: 2px solid var(--postit-ink);
+  position: relative;
+}
+
+.color1 { background: var(--postit-1); }
+.color2 { background: var(--postit-2); }
+.color3 { background: var(--postit-3); }
+.color4 { background: var(--postit-4); }
+.color5 { background: var(--postit-5); }
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-micro);
+  opacity: 0.75;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tags {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tag {
+  background: rgba(26, 24, 21, 0.08);
+  padding: 1px 6px;
+  border-radius: var(--radius-crisp);
+}
+
+.title {
+  font-family: var(--font-hand-stack);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 var(--space-3);
+  color: var(--postit-ink);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-3);
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-meta);
+}
+
+.readIt {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+
+.aiBadge {
+  /* AiBadge component has its own styling; this is just for layout */
+}
