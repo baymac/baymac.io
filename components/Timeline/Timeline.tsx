@@ -83,10 +83,13 @@ export default function Timeline() {
               }}
             >
               <Tape
+                rotate={CARD_ROTATIONS[index % CARD_ROTATIONS.length] * -2}
                 style={{
                   left: '50%',
-                  top: -8,
-                  marginLeft: -30,
+                  top: -10,
+                  marginLeft: -38,
+                  width: 76,
+                  height: 22,
                   zIndex: 2,
                 }}
               />

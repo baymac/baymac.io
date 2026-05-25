@@ -41,12 +41,12 @@ export default function BlogCard({
         {/* Two tape strips floating ABOVE the card with a visible gap
             (disconnected sticker per design B4). */}
         <Tape
-          rotate={-8 + rotate * 2}
-          style={{ left: 30, top: 0, width: 56, height: 16 }}
+          rotate={-10 + rotate * 2}
+          style={{ left: 36, top: 0, width: 72, height: 20 }}
         />
         <Tape
-          rotate={6 - rotate * 2}
-          style={{ right: 40, top: 0, width: 44, height: 16 }}
+          rotate={8 - rotate * 2}
+          style={{ right: 48, top: 0, width: 60, height: 20 }}
         />
         <article
           className={cn(styles.card, styles[`color${color}`])}
