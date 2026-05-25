@@ -15,7 +15,12 @@
 }
 
 .cardLink:hover {
-  transform: rotate(0deg) translateY(-2px);
+  /* !important is required because BlogCard.tsx sets the per-card tilt via
+     an inline `style={{ transform: rotate(...) }}` — inline styles beat
+     normal CSS rules, including :hover, so without !important the hover
+     transform would never apply and the card would not lift on hover. */
+  /* biome-ignore lint/complexity/noImportantStyles: overrides inline transform */
+  transform: rotate(0deg) translateY(-2px) !important;
   z-index: 5;
 }
 

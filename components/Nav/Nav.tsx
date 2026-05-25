@@ -10,9 +10,9 @@ import {
 import cn from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useTheme } from 'next-themes';
 import { createElement, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
+import { useTheme } from '../../context/ThemeProvider';
 import rootStyles from '../../styles/root.module.css';
 import Logo from '../Logo/Logo';
 import NavLinkBigScreen from './NavLinkBigScreen';
