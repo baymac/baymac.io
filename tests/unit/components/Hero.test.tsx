@@ -24,7 +24,7 @@ describe('Hero', () => {
   it('renders the polaroid alt text with full descriptive copy', () => {
     const html = renderToStaticMarkup(<Hero />);
     expect(html).toContain(
-      "Parichay&#x27;s avatar — a red tabby cat wearing DJ headphones"
+      'Parichay&#x27;s avatar — a red tabby cat wearing DJ headphones'
     );
   });
 

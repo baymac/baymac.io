@@ -7,8 +7,18 @@
   display: inline-block;
 }
 
-.color1 { background: var(--postit-1); }
-.color2 { background: var(--postit-2); }
-.color3 { background: var(--postit-3); }
-.color4 { background: var(--postit-4); }
-.color5 { background: var(--postit-5); }
+.color1 {
+  background: var(--postit-1);
+}
+.color2 {
+  background: var(--postit-2);
+}
+.color3 {
+  background: var(--postit-3);
+}
+.color4 {
+  background: var(--postit-4);
+}
+.color5 {
+  background: var(--postit-5);
+}

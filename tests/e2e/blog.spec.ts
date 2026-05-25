@@ -9,7 +9,9 @@ test.describe('/blog', () => {
     await expect(page.getByRole('heading', { level: 1 })).toContainText(
       'the blog'
     );
-    await expect(page.getByText('(things i wrote down)')).toBeVisible();
+    await expect(
+      page.getByText('(blogs = memories, but searchable)')
+    ).toBeVisible();
     // F13: tag filter is removed. Just verify the grid renders cards.
     await expect(page.locator('article').first()).toBeVisible();
   });

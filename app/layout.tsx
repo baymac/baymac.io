@@ -164,8 +164,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html
@@ -186,6 +188,7 @@ export default function RootLayout({
                 <Footer />
               </div>
             </div>
+            {modal}
             <div id="modal-root" />
           </AppContextProvider>
         </ThemeProvider>

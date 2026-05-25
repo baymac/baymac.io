@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { renderHook } from '../../helpers/renderHook';
 import usePreventScroll from '../../../hooks/usePreventScroll';
+import { renderHook } from '../../helpers/renderHook';
 
 describe('usePreventScroll', () => {
   beforeEach(() => {

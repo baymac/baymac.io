@@ -1,9 +1,0 @@
-.section {
-  /* Clear sticky header + center the lined-paper card with breathing room. */
-  padding: calc(var(--header-height) + var(--space-8)) var(--page-padding-x)
-    var(--space-8);
-  min-height: calc(100vh - var(--header-height));
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}

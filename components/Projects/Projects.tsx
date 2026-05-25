@@ -32,6 +32,8 @@ interface Project {
 
 // Featured = won money or major grant. Star + accent border only — same
 // card size + section as every other project (per design feedback F4 + F18).
+// Order: paid projects first (most recent / biggest impact first), then
+// unpaid sorted by relevance (active + substantive at the top).
 const projects: Project[] = [
   {
     id: 'noodles-fi',
@@ -58,16 +60,38 @@ const projects: Project[] = [
     prize: '$5k',
   },
   {
+    id: 'gitlab-branch-source-plugin',
+    title: 'GitLab Branch Source',
+    description: 'Jenkins multibranch for GitLab. GSoC.',
+    link: 'https://github.com/jenkinsci/gitlab-branch-source-plugin',
+    featured: true,
+    prize: '$3k',
+  },
+  {
+    id: 'ace-base',
+    title: 'Ace Base',
+    description: 'Tennis academy site. POV not a designer.',
+    link: 'https://acebasetennis.in/',
+    featured: true,
+    prize: '$100',
+  },
+  {
+    id: 'dj',
+    title: 'DJ',
+    description: 'Enrich tracks from Beatport + many other sources.',
+    link: 'https://github.com/baymac/dj',
+  },
+  {
+    id: 'self-notes',
+    title: 'Self Notes',
+    description: 'Local RAG over Notion. Ollama-powered.',
+    link: 'https://github.com/baymac/self-notes',
+  },
+  {
     id: 'buy-me-crypto',
     title: 'Buy Me Crypto',
     description: 'Creator tipping on Solana. Solana Ignition.',
     link: 'https://github.com/baymac/buy-me-crypto',
-  },
-  {
-    id: 'material-ui-cron',
-    title: 'Material UI Cron',
-    description: 'Intuitive cron expression builder.',
-    link: 'https://github.com/baymac/material-ui-cron',
   },
   {
     id: 'eslint-plugin',
@@ -76,10 +100,28 @@ const projects: Project[] = [
     link: 'https://github.com/minswap/eslint-plugin',
   },
   {
-    id: 'ace-base',
-    title: 'Ace Base',
-    description: 'Tennis academy site. POV not a designer.',
-    link: 'https://acebasetennis.in/',
+    id: 'material-ui-cron',
+    title: 'Material UI Cron',
+    description: 'Intuitive cron expression builder.',
+    link: 'https://github.com/baymac/material-ui-cron',
+  },
+  {
+    id: 'yt-sum',
+    title: 'YT Sum',
+    description: 'Chrome ext: summarize YouTube videos.',
+    link: 'https://github.com/baymac/yt-sum',
+  },
+  {
+    id: 'x-article-pdf',
+    title: 'X Article PDF',
+    description: 'Save X (Twitter) articles as PDFs.',
+    link: 'https://github.com/baymac/x-article-pdf',
+  },
+  {
+    id: 'quick-vpn',
+    title: 'Quick VPN',
+    description: 'One-shot VPN connect script.',
+    link: 'https://github.com/baymac/quick-vpn',
   },
   {
     id: 'fail-tell',
@@ -132,14 +174,17 @@ export default function Projects() {
       <div className={cn(rootStyles.container, styles.projects__container)}>
         <h2 className={styles.projects__title}>
           things i&apos;ve built{' '}
-          <span className={styles.projects__annot}>(★ = won money)</span>
+          <span className={styles.projects__annot}>(★ = got paid)</span>
         </h2>
 
         <div className={styles.grid}>
           {projects.map((project) => (
             <article
               key={project.id}
-              className={cn(styles.card, project.featured && styles.cardFeatured)}
+              className={cn(
+                styles.card,
+                project.featured && styles.cardFeatured
+              )}
               data-wobble
             >
               <div className={styles.cornerIcons}>
@@ -173,10 +218,7 @@ export default function Projects() {
                   {project.title}
                 </h3>
               </div>
-              <p
-                className={styles.cardDescription}
-                title={project.description}
-              >
+              <p className={styles.cardDescription} title={project.description}>
                 {project.description}
               </p>
             </article>

@@ -12,9 +12,7 @@ import styles from './not-found.module.css';
 export default function PostNotFound() {
   const posts = getSortedPostsData();
   const randomPost =
-    posts.length > 0
-      ? posts[Math.floor(Math.random() * posts.length)]
-      : null;
+    posts.length > 0 ? posts[Math.floor(Math.random() * posts.length)] : null;
 
   return (
     <section className={styles.section}>

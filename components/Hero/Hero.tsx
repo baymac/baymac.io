@@ -5,9 +5,9 @@ import Tape from '../Common/Tape';
 import HeroPolaroid from './HeroPolaroid';
 import styles from './hero.module.css';
 
-const CAT_SRC = '/images/parichay-cat.jpg';
-const CAT_ALT =
-  "Parichay's avatar — a red tabby cat wearing DJ headphones";
+const CAT_SRC_DARK = '/images/parichay-cat.jpg';
+const CAT_SRC_LIGHT = '/images/parichay-cat-white.jpg';
+const CAT_ALT = "Parichay's avatar — a red tabby cat wearing DJ headphones";
 
 interface CurrentCityShape {
   city?: string;
@@ -51,7 +51,11 @@ export default function Hero() {
           zIndex: 3,
         }}
       />
-      <HeroPolaroid src={CAT_SRC} alt={CAT_ALT} />
+      <HeroPolaroid
+        srcLight={CAT_SRC_LIGHT}
+        srcDark={CAT_SRC_DARK}
+        alt={CAT_ALT}
+      />
     </div>
   );
 

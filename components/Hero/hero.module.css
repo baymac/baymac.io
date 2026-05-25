@@ -32,6 +32,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Hairline frame around the photo well. In dark mode the dark-bg cat
+     already has visual edges against the dark polaroid paper; in light mode
+     the white-bg cat blends into the white paper, so without this stroke
+     the photo window has no defined boundary. */
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='dark'] .polaroidWindow {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .polaroidImage {
@@ -39,6 +48,29 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Theme-aware image swap: render both <Image> elements (SSR safe — avoids
+   the hydration flicker that useTheme() would cause), then let the active
+   data-theme attribute show the right one. The dark variant stacks on top
+   of the light via absolute positioning so the polaroid window doesn't
+   collapse to zero height when one is display:none. */
+.polaroidImageLight,
+.polaroidImageDark {
+  position: absolute;
+  inset: 0;
+}
+
+.polaroidImageDark {
+  opacity: 0;
+}
+
+[data-theme='dark'] .polaroidImageLight {
+  opacity: 0;
+}
+
+[data-theme='dark'] .polaroidImageDark {
+  opacity: 1;
 }
 
 .polaroidFallback {

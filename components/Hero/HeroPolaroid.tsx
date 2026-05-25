@@ -5,7 +5,8 @@ import { useState } from 'react';
 import styles from './hero.module.css';
 
 export interface IHeroPolaroidProps {
-  src: string;
+  srcLight: string;
+  srcDark: string;
   alt: string;
   /** Polaroid window size — drives <Image> width/height. */
   size?: number;
@@ -15,10 +16,13 @@ export interface IHeroPolaroidProps {
 
 /**
  * Client leaf that renders the polaroid image and swaps to a styled initial
- * if `next/image` reports onError. Everything else in Hero stays server-side.
+ * if `next/image` reports onError. Renders both light and dark variants;
+ * CSS [data-theme] selectors in hero.module.css show the right one — keeps
+ * the swap SSR-safe (no hydration flicker via useTheme).
  */
 export default function HeroPolaroid({
-  src,
+  srcLight,
+  srcDark,
   alt,
   size = 280,
   initial = 'P',
@@ -35,16 +39,28 @@ export default function HeroPolaroid({
           {initial}
         </div>
       ) : (
-        <Image
-          src={src}
-          alt={alt}
-          width={size}
-          height={size + 40}
-          priority
-          placeholder="empty"
-          className={styles.polaroidImage}
-          onError={() => setErrored(true)}
-        />
+        <>
+          <Image
+            src={srcLight}
+            alt={alt}
+            width={size}
+            height={size + 40}
+            priority
+            placeholder="empty"
+            className={`${styles.polaroidImage} ${styles.polaroidImageLight}`}
+            onError={() => setErrored(true)}
+          />
+          <Image
+            src={srcDark}
+            alt=""
+            aria-hidden="true"
+            width={size}
+            height={size + 40}
+            placeholder="empty"
+            className={`${styles.polaroidImage} ${styles.polaroidImageDark}`}
+            onError={() => setErrored(true)}
+          />
+        </>
       )}
     </div>
   );

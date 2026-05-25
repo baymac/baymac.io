@@ -40,10 +40,7 @@ function CopyableAddress({ wallet, onError }: CopyableAddressProps) {
       return;
     }
     // Detect "copy didn't actually happen" by checking clipboard API access.
-    if (
-      typeof navigator !== 'undefined' &&
-      (!navigator.clipboard || !navigator.clipboard.writeText)
-    ) {
+    if (typeof navigator !== 'undefined' && !navigator.clipboard?.writeText) {
       onError();
     }
   };

@@ -22,8 +22,7 @@ export default function NextPostCard({ currentPostId }: INextPostCardProps) {
   const currentIndex = posts.findIndex((p) => p.id === currentPostId);
   if (currentIndex === -1) return null;
 
-  const nextIndex =
-    currentIndex < posts.length - 1 ? currentIndex + 1 : 0; // wrap to most recent
+  const nextIndex = currentIndex < posts.length - 1 ? currentIndex + 1 : 0; // wrap to most recent
   const nextPost = posts[nextIndex];
 
   return (

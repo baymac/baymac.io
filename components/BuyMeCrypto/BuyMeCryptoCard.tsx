@@ -26,10 +26,7 @@ function CopyableAddress({ addressId, onCopyError }: CopyableProps) {
       onCopyError();
       return;
     }
-    if (
-      typeof navigator !== 'undefined' &&
-      (!navigator.clipboard || !navigator.clipboard.writeText)
-    ) {
+    if (typeof navigator !== 'undefined' && !navigator.clipboard?.writeText) {
       onCopyError();
     }
   };
@@ -73,8 +70,8 @@ export default function BuyMeCryptoCard({ wallets }: BuyMeCryptoCardProps) {
           </h1>
           <p className={styles.intro}>
             no wallets configured — drop one into{' '}
-            <code>content/wallets.json</code> and regenerate the checksum
-            with <code>node scripts/walletsChecksum.js</code>.
+            <code>content/wallets.json</code> and regenerate the checksum with{' '}
+            <code>node scripts/walletsChecksum.js</code>.
           </p>
         </div>
       </div>
@@ -103,7 +100,16 @@ export default function BuyMeCryptoCard({ wallets }: BuyMeCryptoCardProps) {
             buy me crypto
           </h1>
           <p className={styles.subheading}>
-            (or just say hi — that&apos;s free)
+            (or just{' '}
+            <a
+              href="https://x.com/parichayayy"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.sayHiLink}
+            >
+              say hi
+            </a>{' '}
+            — that&apos;s free)
           </p>
 
           <p className={styles.intro}>

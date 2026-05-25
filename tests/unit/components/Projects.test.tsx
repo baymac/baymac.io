@@ -11,18 +11,18 @@ vi.mock('next/image', () => ({
 import Projects from '../../../components/Projects/Projects';
 
 describe('Projects', () => {
-  it('marks exactly 3 cards as featured with ★', () => {
+  it('marks all paid projects as featured with ★', () => {
     const html = renderToStaticMarkup(<Projects />);
     // Star is now an absolute element at top-right (B3) — match the
     // aria-label attribute, not the inline string position.
     const starMatches = html.match(/aria-label="featured project"/g) ?? [];
-    expect(starMatches.length).toBe(3);
+    expect(starMatches.length).toBe(5);
   });
 
   it('renders all projects in a single uniform grid (no two-tier split)', () => {
     const html = renderToStaticMarkup(<Projects />);
     const cards = html.match(/data-wobble="true"/g) ?? [];
-    expect(cards.length).toBe(14);
+    expect(cards.length).toBe(20);
   });
 
   it('does NOT render the +$prize line on featured cards (B3)', () => {
@@ -38,8 +38,8 @@ describe('Projects', () => {
     expect(html).toContain('Featured — $5k');
   });
 
-  it('renders the section annotation "(★ = won money)"', () => {
+  it('renders the section annotation "(★ = got paid)"', () => {
     const html = renderToStaticMarkup(<Projects />);
-    expect(html).toContain('= won money');
+    expect(html).toContain('= got paid');
   });
 });

@@ -15,7 +15,7 @@
 }
 
 .cardLink:hover {
-  transform: rotate(0deg) translateY(-2px) !important;
+  transform: rotate(0deg) translateY(-2px);
   z-index: 5;
 }
 
@@ -43,11 +43,21 @@
   overflow-wrap: break-word;
 }
 
-.color1 { background: var(--postit-1); }
-.color2 { background: var(--postit-2); }
-.color3 { background: var(--postit-3); }
-.color4 { background: var(--postit-4); }
-.color5 { background: var(--postit-5); }
+.color1 {
+  background: var(--postit-1);
+}
+.color2 {
+  background: var(--postit-2);
+}
+.color3 {
+  background: var(--postit-3);
+}
+.color4 {
+  background: var(--postit-4);
+}
+.color5 {
+  background: var(--postit-5);
+}
 
 .meta {
   display: flex;
@@ -107,6 +117,30 @@
   padding-bottom: 1px;
 }
 
-.aiBadge {
-  /* AiBadge component has its own styling; this is just for layout */
+/* Positioning override scoped under .cardOuter for higher specificity than
+   ai-badge.module.css's base `.aiBadge` rule. Without the parent selector,
+   CSS module load order after client-side navigation can flip and let the
+   base rule's `position: relative` win — which dropped the badge into normal
+   flow at the top-left of the card after back navigation. */
+.cardOuter .aiBadge {
+  /* Pin to bottom-right of the card; matches the card's bottom padding
+     (--space-4) so its gap from the bottom edge equals the "read it →"
+     baseline gap on the left. z-index above the card surface. */
+  position: absolute;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  margin-left: 0;
+  z-index: 3;
+}
+
+/* Dark-mode override scoped to the blog card: the badge sits on a warm
+   light postit, so we want the same translucent feel as light mode rather
+   than the opaque slate pill the base style uses for the dark body bg on
+   the single post page. Selector includes .cardOuter for specificity so it
+   wins over the base [data-theme='dark'] .aiBadge regardless of CSS load
+   order. */
+[data-theme='dark'] .cardOuter .aiBadge {
+  background: hsla(212, 33%, 60%, 0.18);
+  color: hsl(212, 33%, 22%);
+  border-color: hsla(212, 33%, 30%, 0.32);
 }

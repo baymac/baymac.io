@@ -1,5 +1,4 @@
-import { act } from 'react';
-import { createElement, type FC } from 'react';
+import { act, createElement, type FC } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 
 interface RenderHookResult<T> {

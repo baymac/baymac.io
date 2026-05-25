@@ -37,6 +37,8 @@ test.describe('/posts/[id]', () => {
     const response = await page.goto('/posts/totally-bogus-slug');
     expect(response?.status()).toBe(404);
     // Should be the custom post-404, not the root not-found
-    await expect(page.getByText(/composted|browse all posts/i).first()).toBeVisible();
+    await expect(
+      page.getByText(/composted|browse all posts/i).first()
+    ).toBeVisible();
   });
 });

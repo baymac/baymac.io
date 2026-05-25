@@ -28,7 +28,13 @@ export default defineConfig({
   projects: [
     { name: 'mobile', use: { ...devices['iPhone 14'] } },
     { name: 'tablet', use: { ...devices['iPad (gen 7)'] } },
-    { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 900 } } },
+    {
+      name: 'desktop',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1280, height: 900 },
+      },
+    },
   ],
 
   webServer: {

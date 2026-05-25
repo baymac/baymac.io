@@ -254,10 +254,14 @@
 }
 
 .blog__container {
+  /* Match the standard page container used by /blog and other pages so the
+     post body width lines up with the rest of the site. Tokens come from
+     global.css. */
   gap: 2rem;
   width: 100%;
-  max-width: var(--big-screen-width);
+  max-width: var(--page-max-width);
   margin: 4rem auto;
+  padding: 0 var(--page-padding-x);
 }
 
 @media screen and (min-width: 600px) {
@@ -270,7 +274,6 @@
 @media screen and (max-width: 768px) {
   .blog__container {
     margin: 2rem auto;
-    padding: 0 1rem;
     overflow-x: hidden;
   }
 

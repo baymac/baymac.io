@@ -40,3 +40,6 @@ yarn-error.log*
 .gstack/
 test-results/
 playwright-report/
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo

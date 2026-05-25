@@ -13,33 +13,25 @@ import NextPostCard from '../../../components/Blog/NextPostCard';
 
 describe('NextPostCard', () => {
   it('links to the chronologically-next (older) post', () => {
-    const html = renderToStaticMarkup(
-      <NextPostCard currentPostId="newest" />
-    );
+    const html = renderToStaticMarkup(<NextPostCard currentPostId="newest" />);
     expect(html).toContain('/posts/middle');
     expect(html).toContain('Middle Post');
   });
 
   it('wraps around to the most recent when at the oldest post', () => {
-    const html = renderToStaticMarkup(
-      <NextPostCard currentPostId="oldest" />
-    );
+    const html = renderToStaticMarkup(<NextPostCard currentPostId="oldest" />);
     expect(html).toContain('/posts/newest');
     expect(html).toContain('Newest Post');
   });
 
   it('renders the "turn the page" label', () => {
-    const html = renderToStaticMarkup(
-      <NextPostCard currentPostId="middle" />
-    );
+    const html = renderToStaticMarkup(<NextPostCard currentPostId="middle" />);
     expect(html).toContain('turn the page');
     expect(html).toContain('Oldest Post');
   });
 
   it('returns null when the current post is not found', () => {
-    const html = renderToStaticMarkup(
-      <NextPostCard currentPostId="missing" />
-    );
+    const html = renderToStaticMarkup(<NextPostCard currentPostId="missing" />);
     expect(html).toBe('');
   });
 });

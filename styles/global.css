@@ -127,8 +127,7 @@
   --polaroid-gradient-top: #f7f4ee;
   --polaroid-gradient-bottom: #ece6da;
   --polaroid-shadow:
-    4px 8px 18px rgba(0, 0, 0, 0.28),
-    0 0 0 1px rgba(0, 0, 0, 0.05);
+    4px 8px 18px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.05);
 
   /*========== Tape (washi-tape decoration on cards) ==========*/
   /* D1: Paler greenish-khaki wash with a visible dashed border so it reads
@@ -147,10 +146,14 @@
   --radius-pill: 999px;
 
   /*========== Type stack (consumed via next/font/google variables in T-fonts) ==========*/
-  --font-sans-stack: var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono-stack: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
+  --font-sans-stack:
+    var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono-stack:
+    var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
   --font-hand-stack: var(--font-hand), "Caveat", "Kalam", cursive;
-  --font-blog-stack: var(--font-blog), "Atkinson Hyperlegible", "Inter", sans-serif;
+  --font-blog-stack:
+    var(--font-blog), "Atkinson Hyperlegible", "Inter", sans-serif;
 
   /*========== Type scale ==========*/
   --text-hero: clamp(2.75rem, 5vw, 4rem); /* 44px → 64px hero */
@@ -162,14 +165,14 @@
 
   /*========== Spacing scale (named 1–9) ==========*/
   --space-1: 0.25rem; /* 4px */
-  --space-2: 0.5rem;  /* 8px */
+  --space-2: 0.5rem; /* 8px */
   --space-3: 0.75rem; /* 12px */
-  --space-4: 1rem;    /* 16px */
-  --space-5: 1.5rem;  /* 24px */
-  --space-6: 2rem;    /* 32px */
-  --space-7: 3rem;    /* 48px */
-  --space-8: 4rem;    /* 64px */
-  --space-9: 6rem;    /* 96px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.5rem; /* 24px */
+  --space-6: 2rem; /* 32px */
+  --space-7: 3rem; /* 48px */
+  --space-8: 4rem; /* 64px */
+  --space-9: 6rem; /* 96px */
 
   /*========== Shadows (per-surface) ==========*/
   --shadow-card: 2px 6px 14px rgba(0, 0, 0, 0.15);
@@ -268,19 +271,24 @@
      direction). Slightly desaturated to read on dark.
      See DESIGN.md → "Palette" section for rationale. */
 
-  --postit-1: #f4e89a;
-  --postit-2: #b8d6b0;
-  --postit-3: #e8b8a0;
-  --postit-4: #c0d4e8;
-  --postit-5: #e4c6d8;
-  --postit-ink: #2a1e08; /* warm dark ink, still readable on light postits */
+  /* Dark-mode postits: same hue + chroma as light mode, but dimmed via OKLCH
+     so they don't blast against the dark page bg. OKLCH is perceptually
+     uniform, so dropping L by ~0.2 hits the same "muted" feel across all
+     five colors without shifting their character (a hex/HSL knockdown would
+     desaturate unevenly). The warm postit-ink still passes contrast on
+     L≈0.72 surfaces. */
+  --postit-1: oklch(0.74 0.115 100); /* dimmed yellow */
+  --postit-2: oklch(0.7 0.06 138); /* dimmed mint */
+  --postit-3: oklch(0.68 0.075 47); /* dimmed coral */
+  --postit-4: oklch(0.7 0.05 252); /* dimmed powder blue */
+  --postit-5: oklch(0.7 0.05 350); /* dimmed dusty pink */
+  --postit-ink: #2a1e08; /* warm dark ink, still readable on dimmed postits */
 
   --polaroid-paper: hsl(200, 8%, 18%);
   --polaroid-gradient-top: hsl(200, 8%, 22%);
   --polaroid-gradient-bottom: hsl(200, 8%, 14%);
   --polaroid-shadow:
-    4px 8px 18px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+    4px 8px 18px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
 
   /* D1: Dark mode — paler/warmer washi so it stays visible against the
      dark page bg. Border dashes lighter to read on dark. */
@@ -291,7 +299,7 @@
      same metaphor as the postits. Keep the paper cream so the dark ink
      and notebook ruling stay readable in dark mode. */
   --modal-paper: hsl(42, 35%, 90%);
-  --modal-paper-line: rgba(120, 100, 80, 0.30);
+  --modal-paper-line: rgba(120, 100, 80, 0.3);
   --modal-margin-line: rgba(190, 80, 80, 0.55);
 
   --shadow-card: 2px 6px 14px rgba(0, 0, 0, 0.35);
@@ -435,18 +443,18 @@ img {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
   [data-wobble] {
-    filter: none !important;
+    filter: none;
   }
 }
 .motion-essential {
-  animation-duration: revert !important;
-  transition-duration: revert !important;
+  animation-duration: revert;
+  transition-duration: revert;
 }
 
 input:-webkit-autofill,

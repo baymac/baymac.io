@@ -32,7 +32,8 @@
 }
 
 .body {
-  padding: var(--space-6) var(--space-6) var(--space-5) calc(38px + var(--space-3));
+  padding: var(--space-6) var(--space-6) var(--space-5)
+    calc(38px + var(--space-3));
   position: relative;
 }
 
@@ -55,6 +56,19 @@
   color: var(--postit-ink);
 }
 
+.sayHiLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: hsl(230, 70%, 50%);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.sayHiLink:hover {
+  color: hsl(230, 70%, 50%);
+}
+
 .intro {
   font-family: var(--font-mono-stack);
   font-size: 0.75rem;
@@ -73,9 +87,11 @@
 }
 
 .coinTab {
+  /* Cream paper card stays neutral in both themes — hardcode the dark
+     slate so the chips don't pick up theme-dependent tokens (C10/B4). */
   background: transparent;
-  color: var(--postit-ink);
-  border: 1.5px solid var(--postit-ink);
+  color: hsl(210, 29%, 14%);
+  border: 1.5px solid hsl(210, 29%, 14%);
   padding: 8px 14px;
   font-family: var(--font-mono-stack);
   font-size: 0.6875rem;
@@ -88,8 +104,8 @@
 }
 
 .coinTabActive {
-  background: var(--postit-ink);
-  color: var(--modal-paper);
+  background: hsl(210, 29%, 14%);
+  color: #fff;
 }
 
 /*==================== Address ====================*/
@@ -110,7 +126,7 @@
 .addressBox {
   display: flex;
   align-items: stretch;
-  border: 1.5px solid var(--postit-ink);
+  border: 1.5px solid hsl(210, 29%, 14%);
   background: #fff;
   border-radius: var(--radius-crisp);
   overflow: hidden;
@@ -118,19 +134,30 @@
 
 .address {
   flex: 1;
-  padding: 12px 14px;
+  min-width: 0;
+  padding: 10px 12px;
   font-family: var(--font-mono-stack);
-  font-size: 0.6875rem;
-  color: var(--postit-ink);
+  /* Sized so SUI (0x + 64 hex = 66 chars) fits on one line at the 520px
+     desktop card width. Mobile still wraps (acceptable). */
+  font-size: 0.5625rem;
+  letter-spacing: 0;
+  color: hsl(210, 29%, 14%);
   word-break: break-all;
   line-height: 1.4;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.address::-webkit-scrollbar {
+  display: none;
 }
 
 .copyBtn {
-  background: var(--postit-ink);
-  color: var(--modal-paper);
+  background: hsl(210, 29%, 14%);
+  color: #fff;
   border: none;
-  padding: 0 16px;
+  padding: 0 12px;
   cursor: pointer;
   font-family: var(--font-mono-stack);
   font-size: 0.625rem;
@@ -139,7 +166,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-width: 96px;
+  flex: 0 0 auto;
   justify-content: center;
 }
 

@@ -1,30 +1,37 @@
 /*========== AI Generated Content Badge ==========*/
+/* Subtle by design: the badge is metadata, not decoration. Different
+   palettes per theme — light mode uses a cool blue tint, dark mode
+   shifts to a warm sand tint that reads as "stamped on the postit"
+   alongside the warm postit ink. Tooltip stays in the same family. */
+
+/* ---------- Light mode (cool blue) ---------- */
 .aiBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
-  background: var(--ai-color-lighter);
-  color: var(--ai-color-dark);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.75rem;
-  font-size: 0.625rem;
-  font-weight: var(--font-medium);
-  border: 1px solid var(--ai-color-light);
+  gap: 0.2rem;
+  background: hsla(220, 45%, 55%, 0.1);
+  color: hsl(220, 35%, 32%);
+  padding: 0.1rem 0.35rem;
+  border-radius: 999px;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border: 1px solid hsla(220, 35%, 40%, 0.2);
   margin-left: 0.75rem;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   cursor: default;
   position: relative;
 }
 
 .aiBadge::after {
-  content: 'written with AI assistance';
+  content: "written with AI assistance";
   position: absolute;
   bottom: calc(100% + 0.375rem);
   /* Right-anchored so the tooltip extends LEFT (over the card) instead
      of straddling into the next card on the right (C4). */
   right: 0;
-  background: var(--ai-color-dark);
-  color: var(--ai-color-lighter);
+  background: hsla(220, 40%, 35%, 0.92);
+  color: hsl(220, 25%, 96%);
   padding: 0.25rem 0.5rem;
   border-radius: 0.375rem;
   font-size: 0.625rem;
@@ -36,18 +43,36 @@
   z-index: var(--z-tooltip);
 }
 
+/* ---------- Dark mode (slate-blue, matches --first-color family) ---------- */
+/* Base style targets the post page where the badge sits on the dark body bg:
+   translucent slate tint with light text so it mirrors the light-mode
+   translucent feel. The blog card overrides this for its warm postit
+   surface (see blog-card.module.css). */
+[data-theme='dark'] .aiBadge {
+  background: hsla(212, 33%, 70%, 0.12);
+  color: hsl(212, 33%, 92%);
+  border-color: hsla(212, 33%, 70%, 0.28);
+}
+
+[data-theme='dark'] .aiBadge::after {
+  background: hsla(212, 25%, 22%, 0.94);
+  color: hsl(212, 33%, 92%);
+}
+
 .aiBadge:hover::after {
   opacity: 1;
 }
 
 .aiBadgeIcon {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 0.7rem;
+  height: 0.7rem;
   fill: currentColor;
 }
 
 .aiBadgeText {
-  font-family: var(--body-font);
+  /* Match the mono stack used by the blog card's other metadata (date,
+     tags, "read it →") so the badge reads as part of the same family. */
+  font-family: var(--font-mono-stack);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }

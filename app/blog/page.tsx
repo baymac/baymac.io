@@ -38,8 +38,10 @@ export default function BlogPage() {
       <div className={styles.container}>
         <header className={styles.headerRow}>
           <h1 className={styles.heading}>
-            the blog{' '}
-            <span className={styles.headingAnnot}>(things i wrote down)</span>
+            things i wrote{' '}
+            <span className={styles.headingAnnot}>
+              (blogs = searchable memories)
+            </span>
           </h1>
           <p className={styles.headerMeta}>
             {posts.length} posts · sorted by date ↓

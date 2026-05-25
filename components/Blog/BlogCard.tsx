@@ -2,8 +2,8 @@ import cn from 'classnames';
 import Link from 'next/link';
 import Tape from '../Common/Tape';
 import AiBadge from './AiBadge';
-import BlogDate from './Date';
 import styles from './blog-card.module.css';
+import BlogDate from './Date';
 
 export interface IBlogCardProps {
   id: string;
@@ -54,13 +54,14 @@ export default function BlogCard({
           className={cn(styles.card, styles[`color${color}`])}
           data-wobble
         >
+          {aiGen && <AiBadge className={styles.aiBadge} />}
           <div className={styles.meta}>
             <span className={styles.date}>
               <BlogDate dateString={date} />
             </span>
             {tags.length > 0 && (
               <span className={styles.tags}>
-                {tags.map((t) => (
+                {tags.slice(0, 3).map((t) => (
                   <span key={t} className={styles.tag}>
                     #{t}
                   </span>
@@ -71,7 +72,6 @@ export default function BlogCard({
           <h3 className={styles.title}>{title}</h3>
           <div className={styles.footer}>
             <span className={styles.readIt}>read it →</span>
-            {aiGen && <AiBadge className={styles.aiBadge} />}
           </div>
         </article>
       </div>

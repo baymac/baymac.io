@@ -25,12 +25,12 @@ describe('BlogCard', () => {
 
   it('omits ai badge when aiGen is false/missing', () => {
     const html = renderToStaticMarkup(<BlogCard {...base} />);
-    expect(html).not.toContain('AI Badge');
+    expect(html).not.toContain('AI assisted');
   });
 
   it('renders ai badge when aiGen is true', () => {
     const html = renderToStaticMarkup(<BlogCard {...base} aiGen={true} />);
-    expect(html).toContain('AI Badge');
+    expect(html).toContain('AI assisted');
   });
 
   it('applies the requested postit color class', () => {

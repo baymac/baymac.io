@@ -49,7 +49,9 @@ test.describe('mobile drawer', () => {
     ).toBeVisible();
   });
 
-  test('theme-toggle stays clickable while drawer is open', async ({ page }) => {
+  test('theme-toggle stays clickable while drawer is open', async ({
+    page,
+  }) => {
     // Regression for B7: aria-hidden on #app-root was hiding the header
     // (including the theme button) from a11y/test queries. Theme toggle
     // should remain reachable and functional while the drawer is open.
@@ -74,7 +76,10 @@ test.describe('mobile drawer', () => {
 
     await page.getByRole('button', { name: 'nav-open-button' }).click();
     // Click a link inside the drawer
-    await page.getByRole('link', { name: /^Blog$/i }).first().click();
+    await page
+      .getByRole('link', { name: /^Blog$/i })
+      .first()
+      .click();
     await page.waitForURL(/\/blog/);
 
     await expect(
