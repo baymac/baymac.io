@@ -4,48 +4,10 @@ import { UilCheckCircle, UilCopy } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import { useState } from 'react';
 import useCopy from '../../hooks/useCopy';
+import type { Wallet } from '../../lib/wallets';
 import Tape from '../Common/Tape';
 import Snackbar from '../Snackbar/Snackbar';
 import styles from './buymecrypto-card.module.css';
-
-interface Wallet {
-  coin: 'BTC' | 'ETH' | 'SOL' | 'ADA';
-  label: string;
-  network: string;
-  address: string;
-}
-
-// T14 will replace this with content/wallets.json (gated by the
-// scripts/validateWallets.js checksum). For now the only real address
-// is the bitcoin one; the others stay placeholders until the owner
-// fills them in.
-const WALLETS: Wallet[] = [
-  {
-    coin: 'BTC',
-    label: 'Bitcoin',
-    network: 'mainnet',
-    address: 'bc1qvrl9t4d9gk438v4k3qfwdj2kqquzma2ses7tqw',
-  },
-  {
-    coin: 'ETH',
-    label: 'Ethereum',
-    network: 'mainnet / L2',
-    address: '0x4a3bC5a8e7c1c9a5d4F9b2eEf7c8a91Bf3D2C4e6A',
-  },
-  {
-    coin: 'SOL',
-    label: 'Solana',
-    network: 'mainnet',
-    address: 'Bay4mAcCryptoPariChAypArich9aybBaybayMacM4cS0l',
-  },
-  {
-    coin: 'ADA',
-    label: 'Cardano',
-    network: 'mainnet',
-    address:
-      'addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3jcu5d8ps7zex2k2xt3uqxgjqnnj0',
-  },
-];
 
 interface CopyableProps {
   addressId: string;
@@ -94,10 +56,32 @@ function CopyableAddress({ addressId, onCopyError }: CopyableProps) {
   );
 }
 
-export default function BuyMeCryptoCard() {
-  const [active, setActive] = useState<Wallet['coin']>('BTC');
+interface BuyMeCryptoCardProps {
+  wallets: Wallet[];
+}
+
+export default function BuyMeCryptoCard({ wallets }: BuyMeCryptoCardProps) {
+  const [active, setActive] = useState<string>(wallets[0]?.coin ?? '');
   const [errorOpen, setErrorOpen] = useState(false);
-  const wallet = WALLETS.find((w) => w.coin === active) ?? WALLETS[0];
+
+  if (wallets.length === 0) {
+    return (
+      <div className={styles.paper}>
+        <div className={styles.body}>
+          <h1 className={styles.heading} id="modal-title">
+            buy me crypto
+          </h1>
+          <p className={styles.intro}>
+            no wallets configured — drop one into{' '}
+            <code>content/wallets.json</code> and regenerate the checksum
+            with <code>node scripts/walletsChecksum.js</code>.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const wallet = wallets.find((w) => w.coin === active) ?? wallets[0];
   const addressId = `wallet-address-${wallet.coin.toLowerCase()}`;
 
   return (
@@ -129,7 +113,7 @@ export default function BuyMeCryptoCard() {
           </p>
 
           <div className={styles.coinTabs} role="tablist" aria-label="Coin">
-            {WALLETS.map((w) => {
+            {wallets.map((w) => {
               const isSelected = w.coin === active;
               return (
                 <button

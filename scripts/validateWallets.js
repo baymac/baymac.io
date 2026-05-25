@@ -87,6 +87,13 @@ const CHAIN_VALIDATORS = {
     }
     return null;
   },
+  sui(addr) {
+    if (typeof addr !== 'string') return 'SUI address must be a string';
+    if (!/^0x[0-9a-fA-F]{64}$/.test(addr)) {
+      return 'SUI address must be "0x" + 64 hex chars';
+    }
+    return null;
+  },
 };
 
 function fail(message) {

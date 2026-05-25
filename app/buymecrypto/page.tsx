@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import BuyMeCryptoCard from '../../components/BuyMeCrypto/BuyMeCryptoCard';
+import { getWallets } from '../../lib/wallets';
 import styles from './buymecrypto-page.module.css';
 
 export const metadata: Metadata = {
@@ -8,9 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function BuyMeCryptoPage() {
+  const wallets = getWallets();
   return (
     <section className={styles.section} aria-labelledby="modal-title">
-      <BuyMeCryptoCard />
+      <BuyMeCryptoCard wallets={wallets} />
     </section>
   );
 }
