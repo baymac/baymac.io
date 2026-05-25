@@ -6,10 +6,17 @@
   /* Critical for grid children: allow the card to shrink with the column
      instead of pushing the grid wider when titles or tags are long (B6). */
   min-width: 0;
+  /* Establish stacking context so hover-lift can raise the card + its
+     tooltip above adjacent grid siblings (C4). Adjacent blog cards each
+     have their own stacking context (data-wobble → filter), so without
+     this the AI-badge tooltip gets clipped by the next card. */
+  position: relative;
+  z-index: 1;
 }
 
 .cardLink:hover {
   transform: rotate(0deg) translateY(-2px) !important;
+  z-index: 5;
 }
 
 /* Outer wrapper holds the card + tape strips; tape floats above with a

@@ -1,13 +1,11 @@
-/* Per prototype + B2: Projects is tinted in DARK mode (matches body in light). */
+/* C7: Projects is tinted in BOTH light and dark modes. Light = bluish accent,
+   dark = slate-blue band. Pairs with Timeline (which is white in light, dark
+   body in dark) so the section rhythm is: Hero → tinted → white → tinted. */
 .projects__section {
-  background-color: var(--body-color);
+  background-color: var(--section-alt-bg);
   color: var(--text-color);
   user-select: none;
   padding: var(--space-7) 0;
-}
-
-:global([data-theme='dark']) .projects__section {
-  background-color: var(--section-alt-bg);
 }
 
 .projects__container {
@@ -61,9 +59,10 @@
   color: var(--text-color);
   border: 2px solid var(--text-color);
   border-radius: var(--radius-sketchy);
-  /* Right padding leaves room for the absolute-positioned star icon
-     so titles never overlap it (B3). */
-  padding: var(--space-4) calc(var(--space-4) + 20px) var(--space-4)
+  /* Right padding leaves room for the absolute-positioned icon cluster
+     (★ + link) so titles never overlap them (B3 + C13). Cluster is
+     ~52px wide (star + gap + link). */
+  padding: var(--space-4) calc(var(--space-4) + 52px) var(--space-4)
     var(--space-4);
   font-family: var(--font-mono-stack);
   display: flex;
@@ -104,11 +103,21 @@
   word-break: break-word;
 }
 
-/* Star fixed at top-right corner per B3 (was inline next to the title). */
-.star {
+/* C13: corner cluster groups ★ + link as one set in the top-right.
+   Visual order matches the JSX (link first, then star) — but the user
+   asked for star first then link, so we reverse the flex order so the
+   star sits to the LEFT of the link inside the cluster. */
+.cornerIcons {
   position: absolute;
   top: var(--space-3);
   right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-direction: row-reverse;
+}
+
+.star {
   color: var(--first-color);
   font-size: 1.1rem;
   line-height: 1;
@@ -119,9 +128,7 @@
   align-items: center;
   color: var(--first-color);
   text-decoration: none;
-  min-width: 24px;
-  min-height: 24px;
-  flex-shrink: 0;
+  line-height: 0;
 }
 
 .cardDescription {

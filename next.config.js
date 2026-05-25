@@ -3,6 +3,11 @@
 
 const moduleExports = {
   turbopack: {},
+  // Move the Next.js dev-only build/route indicator out of the bottom-left
+  // corner where it overlapped the footer in mobile previews (C12).
+  devIndicators: {
+    position: 'bottom-right',
+  },
   async headers() {
     return [
       {

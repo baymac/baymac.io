@@ -47,7 +47,9 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+  /* Generous row gap so the disconnected tape strips above each card
+     have visible breathing room on mobile (C12). */
+  gap: var(--space-7);
 }
 
 @media screen and (min-width: 600px) {

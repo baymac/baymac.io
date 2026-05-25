@@ -16,7 +16,7 @@ test.describe('/ (home)', () => {
     const polaroids = page.locator(
       'img[alt*="red tabby cat wearing DJ headphones"]'
     );
-    const sentences = page.locator('p', { hasText: 'software engineer . dj' });
+    const sentences = page.locator('p', { hasText: 'software engineer · dj' });
 
     // Both compositions exist in DOM (one is hidden via @media).
     await expect(headings).toHaveCount(2);

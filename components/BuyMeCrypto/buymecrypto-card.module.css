@@ -42,7 +42,9 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: -1px;
-  color: var(--first-color);
+  /* Hard-coded blue so it pops on the cream paper bg in both themes —
+     --first-color in dark mode is pale-grey and washes out here (C10). */
+  color: hsl(230, 70%, 50%);
   margin: 0;
 }
 
@@ -181,7 +183,8 @@
 .signature {
   font-family: var(--font-hand-stack);
   font-size: 1.75rem;
-  color: var(--first-color);
+  /* Match .heading — readable on cream paper in both themes (C10). */
+  color: hsl(230, 70%, 50%);
   transform: rotate(-4deg);
   margin: 0;
 }

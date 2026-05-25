@@ -86,12 +86,25 @@
 
 .postitLink {
   color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  /* Simple border-bottom — text-decoration: underline rendered as a thick
+     light bar under Caveat (script font metrics span the descender row),
+     and the gradient version inherited the same visual weight (D3). */
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
 }
 
 .postitLink:hover {
   color: var(--first-color);
+  border-bottom-color: var(--first-color);
+}
+
+/* Browser default selection on dark page bg paints a light bar that
+   visually merged with the link's underline; force a contrasting
+   selection that reads as "highlighter on paper" on the postit (D3). */
+.postitLink::selection {
+  background: rgba(58, 46, 24, 0.25);
+  color: var(--postit-ink);
 }
 
 /*==================== Desktop scrapbook ====================*/

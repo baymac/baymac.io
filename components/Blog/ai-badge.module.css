@@ -20,8 +20,9 @@
   content: 'written with AI assistance';
   position: absolute;
   bottom: calc(100% + 0.375rem);
-  left: 50%;
-  transform: translateX(-50%);
+  /* Right-anchored so the tooltip extends LEFT (over the card) instead
+     of straddling into the next card on the right (C4). */
+  right: 0;
   background: var(--ai-color-dark);
   color: var(--ai-color-lighter);
   padding: 0.25rem 0.5rem;
@@ -32,6 +33,7 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s ease;
+  z-index: var(--z-tooltip);
 }
 
 .aiBadge:hover::after {

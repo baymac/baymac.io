@@ -31,8 +31,10 @@
   --text-color-light-second: hsla(220, 4%, 29%, 0.676);
   /* Unused */
   --input-color: hsl(230, 70%, 96%);
-  /* Body, nav menu (mobile), header bg */
-  --body-color: hsl(230, 60%, 99%);
+  /* Body, nav menu (mobile), header bg.
+     C7: bumped from 99%→97% so the page reads as a faint bluish journal
+     surface (not stark white) — the design call from the prototype. */
+  --body-color: hsl(230, 60%, 97%);
   /* Unused */
   --default-bw: hsl(0, 0%, 100%);
   --scroll-bar-color: hsl(230, 12%, 90%);
@@ -129,8 +131,10 @@
     0 0 0 1px rgba(0, 0, 0, 0.05);
 
   /*========== Tape (washi-tape decoration on cards) ==========*/
-  --tape-bg: rgba(180, 180, 140, 0.5);
-  --tape-border: rgba(0, 0, 0, 0.15);
+  /* D1: Paler greenish-khaki wash with a visible dashed border so it reads
+     as actual washi tape (not a solid grey blob). */
+  --tape-bg: rgba(200, 210, 170, 0.65);
+  --tape-border: rgba(70, 70, 50, 0.45);
 
   /*========== Modal "lined paper" surface (BuyMeCrypto) ==========*/
   --modal-paper: #f5f3ee;
@@ -278,12 +282,17 @@
     4px 8px 18px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.05);
 
-  --tape-bg: rgba(200, 200, 160, 0.25);
-  --tape-border: rgba(255, 255, 255, 0.1);
+  /* D1: Dark mode — paler/warmer washi so it stays visible against the
+     dark page bg. Border dashes lighter to read on dark. */
+  --tape-bg: rgba(210, 215, 180, 0.55);
+  --tape-border: rgba(255, 255, 255, 0.35);
 
-  --modal-paper: hsl(200, 8%, 14%);
-  --modal-paper-line: rgba(200, 200, 160, 0.12);
-  --modal-margin-line: rgba(220, 100, 100, 0.35);
+  /* C10: the lined-paper card is a "warm island" on the dark page —
+     same metaphor as the postits. Keep the paper cream so the dark ink
+     and notebook ruling stay readable in dark mode. */
+  --modal-paper: hsl(42, 35%, 90%);
+  --modal-paper-line: rgba(120, 100, 80, 0.30);
+  --modal-margin-line: rgba(190, 80, 80, 0.55);
 
   --shadow-card: 2px 6px 14px rgba(0, 0, 0, 0.35);
   --shadow-modal: 0 30px 80px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.4);

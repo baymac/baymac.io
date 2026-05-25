@@ -35,15 +35,18 @@ export default function Hero() {
 
   const polaroid = (
     <div className={styles.polaroidFrame} data-wobble>
-      {/* Single washi-tape strip OVER the polaroid image (per design B4). */}
+      {/* D2: Washi-tape strip stuck to the WALL above the polaroid top edge —
+          most of the tape sits above the frame with the bottom ~1/3 over the
+          paper. Reads as "pinned to a corkboard" instead of laid over the
+          photo. */}
       <Tape
-        rotate={-14}
+        rotate={-8}
         style={{
           position: 'absolute',
           left: '50%',
-          top: 4,
-          marginLeft: -34,
-          width: 68,
+          top: -12,
+          marginLeft: -36,
+          width: 72,
           height: 18,
           zIndex: 3,
         }}
@@ -54,7 +57,7 @@ export default function Hero() {
 
   const name = <h1 className={styles.name}>hey, i&apos;m parichay</h1>;
 
-  const signal = <p className={styles.signal}>software engineer . dj</p>;
+  const signal = <p className={styles.signal}>software engineer · dj</p>;
 
   const bio = (
     <p className={styles.bio}>
