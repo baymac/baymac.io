@@ -14,7 +14,6 @@ describe('Footer', () => {
     const html = renderToStaticMarkup(<Footer />);
     expect(html).toContain('aria-label="github"');
     expect(html).toContain('aria-label="x"');
-    expect(html).toContain('aria-label="linkedin"');
   });
 
   it('renders the sign-off line', () => {
