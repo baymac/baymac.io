@@ -94,7 +94,7 @@ export default function Timeline() {
                   marginLeft: -42,
                   width: 84,
                   height: 28,
-                  zIndex: 2,
+                  zIndex: 1,
                 }}
               />
               <article className={styles.card} data-wobble>

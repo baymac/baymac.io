@@ -51,6 +51,10 @@
   border-radius: var(--radius-sketchy);
   padding: var(--space-3) var(--space-4) var(--space-3);
   font-family: var(--font-mono-stack);
+  /* Sit above the tape's bottom half so the tape tucks behind the card —
+     only the top half peeks above the top edge. */
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: var(--space-1);

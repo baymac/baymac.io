@@ -34,6 +34,9 @@
   box-shadow: var(--shadow-card);
   border: 2px solid var(--postit-ink);
   position: relative;
+  /* Sit above the tape's bottom half so the tape tucks behind the card —
+     only the top half peeks above the top edge. */
+  z-index: 2;
   /* Prevent any inner content (long title, long URL) from blowing the card
      out past the grid column (B6). */
   min-width: 0;
