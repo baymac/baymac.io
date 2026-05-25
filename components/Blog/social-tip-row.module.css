@@ -1,0 +1,58 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin: var(--space-5) auto var(--space-7);
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-meta);
+  color: var(--text-color-light-second);
+}
+
+.link {
+  color: var(--first-color);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.dot {
+  opacity: 0.5;
+}
+
+.tipButton {
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-meta);
+  background: var(--first-color);
+  /* `--body-color` is white-ish in light theme (contrasts mid-blue
+     --first-color) and dark in dark theme (contrasts near-white slate
+     --first-color). Using --nav-items-color (pure white) hits 1.3:1 against
+     the dark-theme --first-color and fails AA. */
+  color: var(--body-color);
+  border: none;
+  border-radius: var(--radius-sketchy);
+  padding: var(--space-2) var(--space-4);
+  min-height: 44px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  font-weight: var(--font-medium);
+}
+
+.tipButton:hover {
+  opacity: 0.9;
+}
+
+.modalTitle {
+  font-family: var(--font-hand-stack);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-5);
+  color: var(--text-color);
+}

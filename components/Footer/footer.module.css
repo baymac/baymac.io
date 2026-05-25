@@ -9,12 +9,14 @@
   padding: 2rem 0 3rem;
 }
 
-/* Controls padding of footer items */
+/* Controls padding of footer items.
+   Matches Nav + section containers so footer edges align with the
+   logo↔theme-button line (B5). */
 .footer__container {
   row-gap: 1.5rem;
-  max-width: var(--big-screen-width);
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 0 var(--mb-1);
+  padding: 0 var(--page-padding-x);
 }
 
 .footer__title {
@@ -61,10 +63,51 @@
   color: var(--inverted-bw);
 }
 
-@media screen and (min-width: 351px) {
-  .footer__container {
-    padding: 0 var(--mb-1-5);
-  }
+/* "now playing" composition (Pass 7.C): Mixcloud iframe + social row + sign-off */
+.footer__now_playing {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--mb-1-5);
+  max-width: var(--big-screen-width);
+  margin: 0 auto;
+  padding: 0 var(--mb-1);
+}
+
+.footer__now_playing_label {
+  font-family: var(--font-hand-stack, inherit);
+  font-size: var(--h3-font-size);
+  color: var(--inverted-bw);
+}
+
+.footer__mixcloud {
+  width: 100%;
+  line-height: 0;
+}
+
+.footer__mixcloud :global(iframe) {
+  display: block;
+  width: 100%;
+  border: 0;
+  max-width: 100%;
+}
+
+.footer__now_playing_meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer__signoff_wrap {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding-x);
+}
+
+.footer__signoff {
+  font-size: var(--smaller-font-size);
+  text-align: center;
+  color: var(--text-color-light);
+  margin-top: var(--mb-2);
 }
 
 @media screen and (min-width: 768px) {
@@ -74,7 +117,7 @@
 
   .footer__container {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 6rem;
+    /* Keep --page-padding-x so footer matches the rest of the page. */
   }
 
   .footer__links_1,

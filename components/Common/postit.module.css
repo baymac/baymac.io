@@ -1,0 +1,24 @@
+.postit {
+  padding: var(--space-4);
+  font-family: var(--font-hand-stack);
+  font-size: 1.125rem;
+  color: var(--postit-ink);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.18);
+  display: inline-block;
+}
+
+.color1 {
+  background: var(--postit-1);
+}
+.color2 {
+  background: var(--postit-2);
+}
+.color3 {
+  background: var(--postit-3);
+}
+.color4 {
+  background: var(--postit-4);
+}
+.color5 {
+  background: var(--postit-5);
+}

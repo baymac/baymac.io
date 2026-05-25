@@ -1,40 +1,7 @@
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(/fonts/Inter-Regular.woff2) format("woff2");
-  unicode-range: U+000-5FF;
-}
-
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500 600;
-  font-display: swap;
-  src: url(/fonts/Inter-Medium.woff2) format("woff2");
-  unicode-range: U+000-5FF;
-}
-
-@font-face {
-  font-family: "Roboto Mono";
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url(/fonts/Roboto-Light.woff2) format("woff2");
-  unicode-range: U+000-5FF;
-}
-
-@font-face {
-  font-family: "Atkinson Hyperlegible";
-  font-style: normal;
-  font-weight: 400 600;
-  font-display: swap;
-  src: url(/fonts/AtkinsonHyperlegible-Regular.woff2) format("woff2");
-  unicode-range: U+000-5FF;
-}
-
-/*==================== GOOGLE FONTS ====================*/
+/*==================== FONTS ====================*/
+/* Fonts are loaded via `next/font/google` in app/layout.tsx and exposed as
+   CSS variables (--font-sans, --font-mono, --font-hand, --font-blog) which
+   the font-stack tokens below pick up automatically. */
 
 /*==================== VARIABLES CSS ====================*/
 :root {
@@ -64,8 +31,10 @@
   --text-color-light-second: hsla(220, 4%, 29%, 0.676);
   /* Unused */
   --input-color: hsl(230, 70%, 96%);
-  /* Body, nav menu (mobile), header bg */
-  --body-color: hsl(230, 60%, 99%);
+  /* Body, nav menu (mobile), header bg.
+     C7: bumped from 99%→97% so the page reads as a faint bluish journal
+     surface (not stark white) — the design call from the prototype. */
+  --body-color: hsl(230, 60%, 97%);
   /* Unused */
   --default-bw: hsl(0, 0%, 100%);
   --scroll-bar-color: hsl(230, 12%, 90%);
@@ -135,6 +104,105 @@
   --bs:
     0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
     0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+
+  /*==================== REDESIGN TOKENS (2026-05-24) ====================*/
+  /* These extend the existing system above. Mapping for prototype porting:
+     prototype --accent       → use existing --first-color
+     prototype --paper        → use existing --body-color
+     prototype --ink          → use existing --text-color
+     prototype --accent-soft  → use existing --nav-items-hover-color (light)
+     The tokens below are for paper-island elements (postits, polaroid, tape,
+     wobble) that don't have an existing equivalent. See DESIGN.md for rules. */
+
+  /*========== Postit color ramp (rotation order) ========== */
+  --postit-1: #fef4a8; /* warm yellow — start of rotation */
+  --postit-2: #c8e6c0; /* mint green */
+  --postit-3: #f8c8b0; /* coral pink */
+  --postit-4: #cfe0f5; /* powder blue */
+  --postit-5: #f4d6e8; /* dusty pink */
+  --postit-ink: #3a2e18; /* warm ink for use on any postit */
+
+  /*========== Polaroid frame ==========*/
+  --polaroid-paper: #fff;
+  --polaroid-gradient-top: #f7f4ee;
+  --polaroid-gradient-bottom: #ece6da;
+  --polaroid-shadow:
+    4px 8px 18px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.05);
+
+  /*========== Tape (washi-tape decoration on cards) ==========*/
+  /* D1: Paler greenish-khaki wash with a visible dashed border so it reads
+     as actual washi tape (not a solid grey blob). */
+  --tape-bg: rgba(200, 210, 170, 0.65);
+  --tape-border: rgba(70, 70, 50, 0.45);
+
+  /*========== Modal "lined paper" surface (BuyMeCrypto) ==========*/
+  --modal-paper: #f5f3ee;
+  --modal-paper-line: rgba(180, 180, 160, 0.25);
+  --modal-margin-line: rgba(190, 80, 80, 0.4);
+
+  /*========== Sketch / wobble accents ==========*/
+  --radius-sketchy: 4px;
+  --radius-crisp: 2px;
+  --radius-pill: 999px;
+
+  /*========== Type stack (consumed via next/font/google variables in T-fonts) ==========*/
+  --font-sans-stack:
+    var(--font-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono-stack:
+    var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
+  --font-hand-stack: var(--font-hand), "Caveat", "Kalam", cursive;
+  --font-blog-stack:
+    var(--font-blog), "Atkinson Hyperlegible", "Inter", sans-serif;
+
+  /*========== Type scale ==========*/
+  --text-hero: clamp(2.75rem, 5vw, 4rem); /* 44px → 64px hero */
+  --text-section: clamp(2rem, 3.5vw, 2.75rem); /* 32px → 44px section heading */
+  --text-card-title: 1.5rem; /* 24px */
+  --text-body: 1rem;
+  --text-meta: 0.875rem;
+  --text-micro: 0.6875rem;
+
+  /*========== Spacing scale (named 1–9) ==========*/
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.5rem; /* 24px */
+  --space-6: 2rem; /* 32px */
+  --space-7: 3rem; /* 48px */
+  --space-8: 4rem; /* 64px */
+  --space-9: 6rem; /* 96px */
+
+  /*========== Shadows (per-surface) ==========*/
+  --shadow-card: 2px 6px 14px rgba(0, 0, 0, 0.15);
+  --shadow-card-strong: 2px 4px 0 var(--first-color);
+  --shadow-modal: 0 30px 80px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* --shadow-polaroid is defined above with the polaroid block */
+
+  /*========== Page container (matches Nav max-width + edges) ========== */
+  /* Aligns logo-edge ↔ theme-button-edge with section content so all
+     pages share the same rhythm (per F9). Nav, sections, and footer all
+     consume both tokens so their inner content shares the same edges. */
+  --page-max-width: 1000px;
+  --page-padding-x: 1.5rem; /* 24px desktop; overridden smaller below for mobile */
+
+  /*========== Section background alternation (F7 + F19 + B2) ========== */
+  /* Tint colors copied from the prototype's PALETTES.original. Tinted
+     sections set background to --section-alt-bg via :global([data-theme])
+     selectors in each section's .module.css. */
+  --section-alt-bg: hsl(230, 60%, 88%); /* prototype's light-mode tint */
+
+  /*========== Card surface (used by Projects + Timeline) ========== */
+  --card-bg: #fff;
+}
+
+/* Smaller horizontal page padding on phones — content stays close to the
+   viewport edge so cards don't shrink awkwardly. */
+@media screen and (max-width: 600px) {
+  :root {
+    --page-padding-x: 1rem;
+  }
 }
 
 /* Font size for large devices */
@@ -167,7 +235,10 @@
   --title-color-alt: hsl(217, 89%, 80%);
   /* blog title links */
   --text-color: hsl(210, 19%, 94%);
-  --text-color-light-second: hsla(223, 25%, 86%, 0.837);
+  /* Bumped from hsla(223, 25%, 86%, 0.837) which composited to ~#bdc4d3 and
+     failed AA contrast (3.39:1) on featured-card / timeline-card slate-blue
+     backgrounds. Now resolves to ~#eff1f5 → ~5.2:1 on hsl(210, 22%, 40%). */
+  --text-color-light-second: hsl(223, 25%, 95%);
 
   --input-color: hsl(230, 29%, 16%);
   /*hsl(0, 0%, 13%);*/
@@ -193,6 +264,53 @@
   --ai-color-light: hsl(25, 85%, 25%);
   --ai-color-lighter: hsl(25, 85%, 15%);
   --ai-color-dark: hsl(25, 85%, 70%);
+
+  /*==================== REDESIGN TOKENS — DARK THEME ====================*/
+  /* Postit + polaroid colors stay roughly the same — they're "warm islands"
+     sitting on the cool dark page (Pass 5.A complementary-color editorial
+     direction). Slightly desaturated to read on dark.
+     See DESIGN.md → "Palette" section for rationale. */
+
+  /* Dark-mode postits: same hue + chroma as light mode, dimmed via OKLCH so
+     they don't blast against the dark page bg. L is chosen as the smallest
+     value that still clears WCAG AA 4.5:1 for the small mono text (tags,
+     date, "read it →") sitting on the postit surface — going darker breaks
+     accessibility on tag pills (which composite a faint dark overlay on the
+     postit) and on the post-page NextPostCard. */
+  --postit-1: oklch(0.84 0.12 100); /* dimmed yellow */
+  --postit-2: oklch(0.82 0.06 138); /* dimmed mint */
+  --postit-3: oklch(0.8 0.08 47); /* dimmed coral */
+  --postit-4: oklch(0.82 0.05 252); /* dimmed powder blue */
+  --postit-5: oklch(0.82 0.05 350); /* dimmed dusty pink */
+  --postit-ink: #2a1e08; /* warm dark ink, still readable on dimmed postits */
+
+  --polaroid-paper: hsl(200, 8%, 18%);
+  --polaroid-gradient-top: hsl(200, 8%, 22%);
+  --polaroid-gradient-bottom: hsl(200, 8%, 14%);
+  --polaroid-shadow:
+    4px 8px 18px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  /* D1: Dark mode — paler/warmer washi so it stays visible against the
+     dark page bg. Border dashes lighter to read on dark. */
+  --tape-bg: rgba(210, 215, 180, 0.55);
+  --tape-border: rgba(255, 255, 255, 0.35);
+
+  /* C10: the lined-paper card is a "warm island" on the dark page —
+     same metaphor as the postits. Keep the paper cream so the dark ink
+     and notebook ruling stay readable in dark mode. */
+  --modal-paper: hsl(42, 35%, 90%);
+  --modal-paper-line: rgba(120, 100, 80, 0.3);
+  --modal-margin-line: rgba(190, 80, 80, 0.55);
+
+  --shadow-card: 2px 6px 14px rgba(0, 0, 0, 0.35);
+  --shadow-modal: 0 30px 80px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  /*========== Dark theme: section alt bg + card bg ========== */
+  /* Tint color from the prototype's PALETTES.original.dark.tint
+     (hsl(230, 30%, 40%)) — a saturated slate-blue band against the
+     near-black body color. */
+  --section-alt-bg: hsl(230, 30%, 40%);
+  --card-bg: hsl(200, 7%, 14%);
 }
 
 /*========== Button Dark/Light ==========*/
@@ -210,6 +328,9 @@
 
 html {
   height: 100%;
+  /* Sticky header takes ~4rem (var(--header-height)) — reserve that so
+     in-page anchor scrolls (#blog, #experience) don't land under it. */
+  scroll-padding-top: calc(var(--header-height) + var(--space-3));
 }
 
 body {
@@ -284,6 +405,56 @@ img {
 
 .prevent-scroll {
   overflow: hidden;
+}
+
+/*==================== Wobble / hand-drawn filter ====================*/
+/* Apply via the `data-wobble` attribute on any element. The SVG <filter>
+   itself lives in app/layout.tsx so it's a single defs reference per page.
+   See DESIGN.md → "Wobble" for the "paper elements only" rule. */
+[data-wobble] {
+  filter: url(#wobble);
+}
+
+/*==================== Skip-to-content link (a11y bundle T9) ====================*/
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--first-color);
+  color: var(--nav-items-color);
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  font-family: var(--font-sans-stack);
+  font-weight: var(--font-medium);
+  z-index: calc(var(--z-modal) + 1);
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--inverted-bw);
+  outline-offset: 2px;
+}
+
+/*==================== prefers-reduced-motion (Arch 1G) ====================*/
+/* Global rule: any future animation is covered by default. Add the
+   `motion-essential` class to an element to opt back in (use sparingly:
+   focus indicators, things that lose meaning without motion). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+  [data-wobble] {
+    filter: none;
+  }
+}
+.motion-essential {
+  animation-duration: revert;
+  transition-duration: revert;
 }
 
 input:-webkit-autofill,

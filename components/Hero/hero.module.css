@@ -1,0 +1,250 @@
+.hero {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  /* Header is `position: fixed`, height = var(--header-height) + 1.2rem on
+     desktop (~83px). Add a real visible gap below it so the polaroid +
+     headline aren't hugging the header edge. */
+  padding: calc(var(--header-height) + var(--space-8)) var(--page-padding-x)
+    var(--space-8);
+  position: relative;
+}
+
+/*==================== Shared polaroid frame ====================*/
+
+.polaroidFrame {
+  position: relative;
+  display: inline-block;
+  background: var(--polaroid-paper);
+  padding: var(--space-3);
+  box-shadow: var(--polaroid-shadow);
+  border-radius: var(--radius-crisp);
+  transform: rotate(-3deg);
+}
+
+.polaroidWindow {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--polaroid-gradient-top) 0%,
+    var(--polaroid-gradient-bottom) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Hairline frame around the photo well. In dark mode the dark-bg cat
+     already has visual edges against the dark polaroid paper; in light mode
+     the white-bg cat blends into the white paper, so without this stroke
+     the photo window has no defined boundary. */
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .polaroidWindow {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.polaroidImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Theme-aware image swap: render both <Image> elements (SSR safe — avoids
+   the hydration flicker that useTheme() would cause), then let the active
+   data-theme attribute show the right one. The dark variant stacks on top
+   of the light via absolute positioning so the polaroid window doesn't
+   collapse to zero height when one is display:none. */
+.polaroidImageLight,
+.polaroidImageDark {
+  position: absolute;
+  inset: 0;
+}
+
+.polaroidImageDark {
+  opacity: 0;
+}
+
+[data-theme="dark"] .polaroidImageLight {
+  opacity: 0;
+}
+
+[data-theme="dark"] .polaroidImageDark {
+  opacity: 1;
+}
+
+.polaroidFallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-hand-stack);
+  font-size: 96px;
+  font-weight: 700;
+  color: var(--first-color);
+  background: var(--polaroid-gradient-top);
+}
+
+/*==================== Shared text ====================*/
+
+.name {
+  font-family: var(--font-hand-stack);
+  font-size: var(--text-hero);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.signal {
+  font-family: var(--font-sans-stack);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  margin-top: var(--space-4);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.bio {
+  font-family: var(--font-mono-stack);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  opacity: 0.85;
+  margin-top: var(--space-4);
+  color: var(--text-color);
+}
+
+.postitLink,
+.postitLink:link,
+.postitLink:visited,
+.postitLink:active {
+  /* Pin to the dark postit ink in every state. Earlier inherit + hover
+     swap to --first-color washed the link out in dark mode (--first-color
+     resolves to a pale grey-blue ≈ same value as the mint postit bg).
+     Also overrides :visited so the browser doesn't repaint it purple. */
+  color: var(--postit-ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--postit-ink);
+  padding-bottom: 1px;
+}
+
+.postitLink:hover,
+.postitLink:focus {
+  color: var(--postit-ink);
+  border-bottom-width: 2.5px;
+}
+
+/* Browser default selection paints a light bar that visually merged
+   with the link's underline in dark mode — force a translucent dark
+   wash that reads as "highlighter on paper" on the mint postit. */
+.postitLink::selection {
+  background: rgba(58, 46, 24, 0.3);
+  color: var(--postit-ink);
+}
+
+/*==================== Desktop scrapbook ====================*/
+
+.desktop {
+  display: flex;
+  gap: var(--space-7);
+  align-items: flex-start;
+  position: relative;
+  min-height: 360px;
+}
+
+.polaroidColumn {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.textColumn {
+  flex: 1;
+  min-width: 0;
+  padding-top: var(--space-4);
+  padding-right: 240px;
+  position: relative;
+}
+
+.desktopPostits {
+  /* postits become absolute inside the relative textColumn */
+}
+
+.postitCity {
+  position: absolute;
+  right: 0;
+  top: var(--space-2);
+  width: 180px;
+  font-size: 1.125rem;
+}
+
+.postitDj {
+  position: absolute;
+  right: 70px;
+  top: 220px;
+  width: 170px;
+  font-size: 1.125rem;
+}
+
+/*==================== Mobile stacked ====================*/
+
+.mobile {
+  display: none;
+  text-align: center;
+}
+
+.mobilePolaroid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+}
+
+.mobile .name {
+  text-align: center;
+}
+
+.mobile .signal {
+  text-align: center;
+}
+
+.mobile .bio {
+  text-align: left;
+  margin-top: var(--space-4);
+}
+
+.mobilePostits {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mobilePostits .postitCity,
+.mobilePostits .postitDj {
+  position: static;
+  width: 150px;
+  font-size: 1rem;
+}
+
+/*==================== Responsive switch ====================*/
+
+@media (max-width: 833px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+}
+
+@media (min-width: 834px) {
+  .desktop {
+    display: flex;
+  }
+  .mobile {
+    display: none;
+  }
+}

@@ -1,0 +1,91 @@
+/* Modal-route shell for /buymecrypto (intercepted by app/@modal/(.)buymecrypto).
+   Direct-load /buymecrypto still renders the full-page version. */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: rgba(255, 255, 255, 0.28);
+  /* backdrop-filter is applied via inline style on the element — Turbopack's
+     CSS optimizer (lightningcss) strips it from bundled stylesheets. */
+}
+
+/* Scroll on the container (not the dialog) so the tape strips that
+   protrude above the paper edge aren't clipped by an inner scroll origin. */
+.container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--page-padding-x);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.dialog {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  /* No overflow / max-height here — the container handles scroll. The
+     paper's tape strips sit at top: -18px and need to render outside the
+     dialog box without being clipped. */
+}
+
+/* Card uses page-context top/bottom margin and a heavy drop shadow tuned
+   for the full-page route. Inside the modal the overlay centers it and
+   the backdrop would show the shadow as a dark band — neutralise both.
+   First child is the close button, second is the paper card. */
+.dialog > :nth-child(2) {
+  margin: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.closeBtn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: hsl(210, 29%, 14%);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.closeBtn:hover {
+  background: hsl(210, 29%, 8%);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid hsl(230, 70%, 50%);
+  outline-offset: 2px;
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: var(--space-3);
+  }
+}

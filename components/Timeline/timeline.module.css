@@ -1,181 +1,110 @@
+/* C7: Timeline sits on the plain body color in both themes. Section bg rhythm
+   is now Hero → Projects (tinted) → Timeline (body) → … */
 .timeline__section {
-  background-color: var(--first-color-lighter);
-  color: var(--title-color);
-  border-top: 1px solid var(--footer-border-color);
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  background-color: var(--body-color);
+  color: var(--text-color);
+  padding: var(--space-7) 0;
 }
 
 .timeline__container {
-  gap: 1rem;
-  max-width: var(--big-screen-width);
-  margin: 2rem auto;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
 }
 
 .timeline__title {
-  font-size: var(--h1-font-size);
-  margin-bottom: 1rem;
-  font-weight: var(--font-semi-bold);
-  color: var(--title-color);
-}
-
-.timeline__subtitle {
-  font-size: var(--normal-font-size);
-  color: var(--text-color-light-second);
-  margin-bottom: 1rem;
-}
-
-.timeline__content {
-  max-width: 900px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.timeline__item {
-  display: flex;
-  margin-bottom: 3rem;
-  position: relative;
-}
-
-.timeline__marker {
-  position: relative;
-  margin-right: 2rem;
-  flex-shrink: 0;
-}
-
-.timeline__dot {
-  width: 16px;
-  height: 16px;
-  background-color: var(--first-color);
-  border-radius: 50%;
-  border: 3px solid var(--body-color);
-  box-shadow: 0 0 0 3px var(--first-color);
-  z-index: 2;
-  position: relative;
-}
-
-.timeline__line {
-  position: absolute;
-  left: 50%;
-  top: 16px;
-  transform: translateX(-50%);
-  width: 2px;
-  height: calc(100% + 1rem);
-  background-color: var(--first-color);
-  opacity: 0.3;
-}
-
-.timeline__content {
-  flex: 1;
-  text-align: left;
-  background-color: var(--body-color);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--footer-border-color);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.timeline__header {
-  margin-bottom: 1rem;
-}
-
-.timeline__jobTitle {
-  font-size: var(--h3-font-size);
-  font-weight: var(--font-semi-bold);
-  color: var(--title-color);
-  margin-bottom: 0.5rem;
-}
-
-.timeline__company {
-  display: block;
-  font-size: var(--normal-font-size);
-  font-weight: var(--font-medium);
-  color: var(--first-color);
-  margin-bottom: 0.25rem;
-}
-
-.timeline__period {
-  display: block;
-  font-size: var(--small-font-size);
-  color: var(--text-color-light);
-  font-weight: var(--font-regular);
-  margin-bottom: 0.25rem;
-}
-
-.timeline__location {
-  display: block;
-  font-size: var(--small-font-size);
-  color: var(--text-color-light);
-  font-weight: var(--font-regular);
-  font-style: italic;
-}
-
-.timeline__description {
-  margin-bottom: 0;
-}
-
-.timeline__descItem {
-  font-size: var(--normal-font-size);
+  font-family: var(--font-hand-stack);
+  font-size: var(--text-section);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1px;
   color: var(--text-color);
-  margin-bottom: 0.75rem;
-  line-height: 1.6;
+  margin: 0 0 var(--space-6);
 }
 
-.timeline__descItem:last-child {
-  margin-bottom: 0;
+.timeline__annot {
+  font-family: var(--font-hand-stack);
+  font-size: 1.25rem;
+  color: var(--first-color);
+  margin-left: var(--space-2);
 }
 
-/* Responsive design */
-@media screen and (max-width: 768px) {
-  .timeline__title {
-    font-size: var(--h2-font-size);
-  }
+/*==================== Stamp grid ====================*/
 
-  .timeline__subtitle {
-    font-size: var(--small-font-size);
-    margin-bottom: 2rem;
-  }
-
-  .timeline__item {
-    margin-bottom: 2rem;
-  }
-
-  .timeline__marker {
-    margin-right: 1.5rem;
-  }
-
-  .timeline__content {
-    padding: 1rem;
-  }
-
-  .timeline__jobTitle {
-    font-size: var(--h4-font-size);
-  }
-
-  .timeline__descItem {
-    font-size: var(--small-font-size);
-  }
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5) var(--space-4);
+  align-items: flex-start;
 }
 
-@media screen and (max-width: 480px) {
-  .timeline__item {
+.cardWrap {
+  position: relative;
+  flex: 0 0 auto;
+  width: 220px;
+}
+
+.card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: var(--radius-sketchy);
+  padding: var(--space-3) var(--space-4) var(--space-3);
+  font-family: var(--font-mono-stack);
+  /* Sit above the tape's bottom half so the tape tucks behind the card —
+     only the top half peeks above the top edge. */
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.company {
+  font-family: var(--font-hand-stack);
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--first-color);
+  margin: 0;
+  line-height: 1;
+}
+
+.title {
+  font-family: var(--font-mono-stack);
+  font-size: 0.75rem;
+  opacity: 0.85;
+  margin: var(--space-1) 0 0;
+  color: var(--text-color);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-family: var(--font-mono-stack);
+  font-size: 0.6875rem;
+  opacity: 0.7;
+  margin-top: var(--space-3);
+  color: var(--text-color);
+}
+
+.tagLine {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px dashed currentColor;
+  font-family: var(--font-mono-stack);
+  font-size: 0.6875rem;
+  opacity: 0.65;
+  color: var(--text-color);
+}
+
+@media (max-width: 833px) {
+  .grid {
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    gap: var(--space-6);
   }
-
-  .timeline__marker {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-
-  .timeline__line {
-    display: none;
-  }
-
-  .timeline__content {
-    width: 100%;
+  .cardWrap {
+    width: 260px;
   }
 }

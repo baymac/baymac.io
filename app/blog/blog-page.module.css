@@ -1,0 +1,94 @@
+.section {
+  /* Top padding clears the sticky header (matches Hero top spacing). */
+  padding: calc(var(--header-height) + var(--space-8)) 0 var(--space-8);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-padding-x);
+}
+
+.headerRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+/* Cross-page heading hierarchy: smaller than the home hero. */
+.heading {
+  font-family: var(--font-hand-stack);
+  font-size: var(--text-section);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.headingAnnot {
+  font-family: var(--font-hand-stack);
+  font-size: 1.375rem;
+  color: var(--first-color);
+  margin-left: var(--space-2);
+}
+
+.headerMeta {
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-micro);
+  opacity: 0.55;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Generous row gap so the disconnected tape strips above each card
+     have visible breathing room on mobile (C12). */
+  gap: var(--space-7);
+}
+
+@media screen and (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+}
+
+.emptyZero {
+  margin-top: var(--space-7);
+  text-align: center;
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-meta);
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.emptyZero a {
+  color: var(--first-color);
+  text-decoration: underline;
+}
+
+.rss {
+  margin-top: var(--space-7);
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-micro);
+  opacity: 0.6;
+  color: var(--text-color);
+}
+
+.rssLink {
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}

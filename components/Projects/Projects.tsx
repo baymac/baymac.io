@@ -1,123 +1,166 @@
 import cn from 'classnames';
-import Image from 'next/image';
 import rootStyles from '../../styles/root.module.css';
 import styles from './projects.module.css';
 
+function LinkIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d="M10,17.55,8.23,19.27a2.47,2.47,0,0,1-3.5-3.5l4.54-4.55a2.46,2.46,0,0,1,3.39-.09l.12.1a1,1,0,0,0,1.4-1.43A2.75,2.75,0,0,0,14,9.59a4.46,4.46,0,0,0-6.09.22L3.31,14.36a4.48,4.48,0,0,0,6.33,6.33L11.37,19A1,1,0,0,0,10,17.55ZM20.69,3.31a4.49,4.49,0,0,0-6.33,0L12.63,5A1,1,0,0,0,14,6.45l1.73-1.72a2.47,2.47,0,0,1,3.5,3.5l-4.54,4.55a2.46,2.46,0,0,1-3.39.09l-.12-.1a1,1,0,0,0-1.4,1.43,2.75,2.75,0,0,0,.23.21,4.47,4.47,0,0,0,6.09-.22l4.55-4.55A4.49,4.49,0,0,0,20.69,3.31Z"
+      />
+    </svg>
+  );
+}
+
 interface Project {
+  id: string;
   title: string;
   description: string;
   link?: string;
   github?: string;
+  featured?: boolean;
+  prize?: string;
 }
 
-const projects = [
-  {
-    id: 'ace-base',
-    title: 'Ace Base',
-    description:
-      'A fast and responsive website for a tennis academy. POV not a designer',
-    link: 'https://acebasetennis.in/',
-  },
-  {
-    id: 'fail-tell',
-    title: 'Fail Tell',
-    description:
-      'Helped with infrastructure and product development and talent acquisition for a mental wellness platform',
-  },
-  {
-    id: 'material-ui-cron',
-    title: 'Material UI Cron',
-    description: 'An intuitive UI for building Cron expressions',
-    link: 'https://github.com/baymac/material-ui-cron',
-  },
-  {
-    id: 'biryanify',
-    title: 'Biryanify',
-    description:
-      'Managed operations, marketing and web and app development for a cloud kitchen startup',
-  },
-  {
-    id: 'upload-pdf-to-drive',
-    title: 'Upload PDF to Drive',
-    description:
-      'A GitHub action that uploads PDFs to Google Drive. Useful for LaTeX builds.',
-    link: 'https://github.com/baymac/upload-pdf-to-drive',
-  },
-  {
-    id: 'eslint-plugin',
-    title: 'ESLint Plugin',
-    description:
-      'An ESLint plugin for custom error handling and type-safe equality checks',
-    link: 'https://github.com/minswap/eslint-plugin',
-  },
+// Featured = won money or major grant. Star + accent border only — same
+// card size + section as every other project (per design feedback F4 + F18).
+// Order: paid projects first (most recent / biggest impact first), then
+// unpaid sorted by relevance (active + substantive at the top).
+const projects: Project[] = [
   {
     id: 'noodles-fi',
     title: 'Noodles.fi',
-    description:
-      'An analytics platform for SUI DeFi. Built for SUI Bangkok Hacker House hackathon. Won 1st place ($3k).',
+    description: 'SUI DeFi analytics. 1st place hackathon.',
     link: 'https://github.com/sui-foundation/sui-demo-day-bangkok/blob/main/demo-projects/noodles.fi.md',
+    featured: true,
+    prize: '$3k',
   },
   {
     id: 'cred-jack',
     title: 'Cred Jack',
-    description:
-      'A gamified token rewards system using CRED app. Built for Solana Building Out Loud hackathon. Won 1st place ($5k).',
+    description: 'Token rewards via CRED. 1st place hackathon.',
     link: 'https://github.com/baymac/cred-jack',
-  },
-  {
-    id: 'buy-me-crypto',
-    title: 'Buy Me Crypto',
-    description:
-      'A crypto platform enabling creators and fans to support each other. Submission for Solana Ignition.',
-    link: 'https://github.com/baymac/buy-me-crypto',
+    featured: true,
+    prize: '$5k',
   },
   {
     id: 'wallet-connect-cardano',
     title: 'Wallet Connect Cardano',
-    description:
-      'A dApp library that supports Cardano for compatible wallets. Received $5k grant from dcSpark.',
+    description: 'dApp lib for Cardano. dcSpark grant.',
     link: 'https://x.com/dcspark_io/status/1688489778042351616',
+    featured: true,
+    prize: '$5k',
   },
   {
-    id: 'publish-docs-to-drive',
-    title: 'Publish Docs to Drive',
-    description:
-      'An AppScript that publishes Google Docs to Google Drive as PDF.',
-    link: 'https://github.com/baymac/fun-hacks/tree/master/Apps%20Script/Publish%20Over%20Drive%20-%20Docs',
+    id: 'gitlab-branch-source-plugin',
+    title: 'GitLab Branch Source',
+    description: 'Jenkins multibranch for GitLab. GSoC.',
+    link: 'https://github.com/jenkinsci/gitlab-branch-source-plugin',
+    featured: true,
+    prize: '$3k',
   },
   {
-    id: 'publish-form-to-database',
-    title: 'Publish Form to Database',
-    description:
-      'An AppScript that publishes Google Form responses to Firebase.',
-    link: 'https://github.com/baymac/fun-hacks/blob/master/Apps%20Script/Firebase%20Response/form.gs',
+    id: 'ace-base',
+    title: 'Ace Base',
+    description: 'Tennis academy site. POV not a designer.',
+    link: 'https://acebasetennis.in/',
+    featured: true,
+    prize: '$100',
   },
   {
-    id: 'phone-alarm-bot',
-    title: 'Phone Alarm Bot',
-    description:
-      'A SL4A script to call a phone number at a specified time. Useful for waking up someone who has early morning flight.',
-    link: 'https://github.com/baymac/fun-hacks/blob/master/Python/Android%20call%20bot/callBot.py',
+    id: 'dj',
+    title: 'DJ',
+    description: 'Enrich tracks from Beatport + many other sources.',
+    link: 'https://github.com/baymac/dj',
+  },
+  {
+    id: 'self-notes',
+    title: 'Self Notes',
+    description: 'Local RAG over Notion. Ollama-powered.',
+    link: 'https://github.com/baymac/self-notes',
+  },
+  {
+    id: 'buy-me-crypto',
+    title: 'Buy Me Crypto',
+    description: 'Creator tipping on Solana. Solana Ignition.',
+    link: 'https://github.com/baymac/buy-me-crypto',
+  },
+  {
+    id: 'eslint-plugin',
+    title: 'ESLint Plugin',
+    description: 'Custom error handling + type-safe equality.',
+    link: 'https://github.com/minswap/eslint-plugin',
+  },
+  {
+    id: 'material-ui-cron',
+    title: 'Material UI Cron',
+    description: 'Intuitive cron expression builder.',
+    link: 'https://github.com/baymac/material-ui-cron',
+  },
+  {
+    id: 'yt-sum',
+    title: 'YT Sum',
+    description: 'Chrome ext: summarize YouTube videos.',
+    link: 'https://github.com/baymac/yt-sum',
+  },
+  {
+    id: 'x-article-pdf',
+    title: 'X Article PDF',
+    description: 'Save X (Twitter) articles as PDFs.',
+    link: 'https://github.com/baymac/x-article-pdf',
+  },
+  {
+    id: 'quick-vpn',
+    title: 'Quick VPN',
+    description: 'One-shot VPN connect script.',
+    link: 'https://github.com/baymac/quick-vpn',
+  },
+  {
+    id: 'fail-tell',
+    title: 'Fail Tell',
+    description: 'Mental wellness platform. Infra + product.',
+  },
+  {
+    id: 'biryanify',
+    title: 'Biryanify',
+    description: 'Cloud kitchen ops, marketing, web/app.',
+  },
+  {
+    id: 'upload-pdf-to-drive',
+    title: 'Upload PDF to Drive',
+    description: 'GitHub Action for LaTeX builds.',
+    link: 'https://github.com/baymac/upload-pdf-to-drive',
   },
   {
     id: 'command-keeper',
     title: 'Command Keeper',
-    description:
-      'A gnome shell extension to store commands and copy to clipboard when needed.',
+    description: 'Gnome shell extension for commands.',
     link: 'https://github.com/baymac/command-keeper',
   },
   {
-    id: 'personal-blog',
-    title: 'Personal Blog',
-    description:
-      "A personal blog to showcase my projects and share ideas. Couldn't renew my domain now it is unaffordable, so using a backup",
-    link: 'https://github.com/baymac/baymac.io',
+    id: 'phone-alarm-bot',
+    title: 'Phone Alarm Bot',
+    description: 'SL4A wake-up call script.',
+    link: 'https://github.com/baymac/fun-hacks/blob/master/Python/Android%20call%20bot/callBot.py',
+  },
+  {
+    id: 'publish-docs-to-drive',
+    title: 'Publish Docs to Drive',
+    description: 'AppScript: Docs → PDF on Drive.',
+    link: 'https://github.com/baymac/fun-hacks/tree/master/Apps%20Script/Publish%20Over%20Drive%20-%20Docs',
   },
   {
     id: 'set-proxy',
     title: 'Set Proxy',
-    description:
-      'A CLI tool to set proxy for linux services. Develop website for this project. Internship at Kharagpur Winter of Code (KWoC).',
+    description: 'CLI proxy setter for Linux. KWoC.',
     link: 'https://github.com/thealphadollar/set_proxy',
   },
 ];
@@ -128,44 +171,58 @@ export default function Projects() {
       className={cn(rootStyles.section, styles.projects__section)}
       id="projects"
     >
-      <div
-        className={cn(
-          rootStyles.container,
-          rootStyles.grid,
-          styles.projects__container
-        )}
-      >
-        <h2 className={styles.projects__title}>Projects</h2>
-        <p className={styles.projects__subtitle}>
-          A collection of my work across web dev, blockchain and open source
-        </p>
+      <div className={cn(rootStyles.container, styles.projects__container)}>
+        <h2 className={styles.projects__title}>
+          things i&apos;ve built{' '}
+          <span className={styles.projects__annot}>(★ = got paid)</span>
+        </h2>
 
-        <div className={styles.projects__grid}>
+        <div className={styles.grid}>
           {projects.map((project) => (
-            <div key={project.id} className={styles.project__card}>
-              <div className={styles.project__header}>
-                <h3 className={styles.project__title}>{project.title}</h3>
+            <article
+              key={project.id}
+              className={cn(
+                styles.card,
+                project.featured && styles.cardFeatured
+              )}
+              data-wobble
+            >
+              <div className={styles.cornerIcons}>
+                {project.featured && (
+                  <span
+                    className={styles.star}
+                    role="img"
+                    aria-label="featured project"
+                    title={
+                      project.prize
+                        ? `Featured — ${project.prize}`
+                        : 'Featured project'
+                    }
+                  >
+                    ★
+                  </span>
+                )}
                 {project.link && (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.project__link}
+                    className={styles.cardLink}
+                    aria-label={`${project.title} link`}
                   >
-                    <Image
-                      src="/images/link.svg"
-                      alt="Link"
-                      width={24}
-                      height={24}
-                    />
+                    <LinkIcon />
                   </a>
                 )}
               </div>
-
-              <p className={styles.project__description}>
+              <div className={styles.cardHeader}>
+                <h3 className={styles.cardTitle} title={project.title}>
+                  {project.title}
+                </h3>
+              </div>
+              <p className={styles.cardDescription} title={project.description}>
                 {project.description}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </div>

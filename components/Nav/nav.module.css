@@ -9,14 +9,15 @@
 }
 
 .nav {
-  max-width: var(--big-screen-width);
+  max-width: var(--page-max-width);
   height: var(--header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  padding-top: var(--mb-1);
-  padding-bottom: var(--mb-1);
+  /* Horizontal padding matches every section container so logo edge ↔
+     theme-button edge align with content edges on every page (B5). */
+  padding: var(--mb-1) var(--page-padding-x);
 }
 
 .nav__toggle,
@@ -166,6 +167,7 @@
   .nav {
     height: calc(var(--header-height) + 1.2rem);
     column-gap: 1rem;
+    padding: var(--mb-1) var(--page-padding-x);
   }
 
   .nav__close,

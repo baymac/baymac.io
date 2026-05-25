@@ -1,26 +1,23 @@
-import cn from 'classnames';
 import type { Metadata } from 'next';
-import BuyMeCrypto from '../../components/BuyMeCrypto/BuyMeCrypto';
-import blogStyles from '../../styles/pageStyles/blog.module.css';
-import rootStyles from '../../styles/root.module.css';
+import BuyMeCryptoModalShell from '../../components/BuyMeCrypto/BuyMeCryptoModalShell';
+import { getWallets } from '../../lib/wallets';
+import HomePage from '../page';
 
 export const metadata: Metadata = {
   title: 'Buy Me Crypto - Parichay',
-  description: 'Support Parichay by buying crypto',
+  description: 'Support Parichay by tipping a wallet address',
 };
 
+// Direct loads (deep link, refresh) render the home page with the modal
+// overlaid on top — same visual as the intercepted route from anywhere
+// else in the app. Closing the modal pushes to "/" because there's no
+// in-app history to pop.
 export default function BuyMeCryptoPage() {
+  const wallets = getWallets();
   return (
-    <section className={rootStyles.section}>
-      <div
-        className={cn(
-          rootStyles.container,
-          rootStyles.grid,
-          blogStyles.blog__container
-        )}
-      >
-        <BuyMeCrypto />
-      </div>
-    </section>
+    <>
+      <HomePage />
+      <BuyMeCryptoModalShell wallets={wallets} closeFallback="/" />
+    </>
   );
 }

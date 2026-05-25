@@ -3,6 +3,16 @@
 
 const moduleExports = {
   turbopack: {},
+  // Move the Next.js dev-only build/route indicator out of the bottom-left
+  // corner where it overlapped the footer in mobile previews (C12).
+  devIndicators: {
+    position: 'bottom-right',
+  },
+  // Dev-only: allow cross-origin requests (HMR WebSocket, server actions)
+  // from tunneled origins so sharing a Cloudflare/ngrok preview URL doesn't
+  // break hydration, theme toggle, or intercepting routes (e.g. the modal
+  // form of /buymecrypto). Next.js 15+ blocks these by default.
+  allowedDevOrigins: ['*.trycloudflare.com', '*.ngrok-free.app', '*.ngrok.io'],
   async headers() {
     return [
       {
@@ -23,6 +33,7 @@ const ContentSecurityPolicy = `
   media-src none;
   connect-src *;
   font-src 'self';
+  frame-src https://www.mixcloud.com https://player-widget.mixcloud.com https://follow-widget.mixcloud.com;
 `;
 
 const securityHeaders = [

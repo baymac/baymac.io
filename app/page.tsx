@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import About from '../components/About/About';
+import Hero from '../components/Hero/Hero';
 import Projects from '../components/Projects/Projects';
-import Skills from '../components/Skills/Skills';
 import Timeline from '../components/Timeline/Timeline';
 
 export const metadata: Metadata = {
@@ -17,13 +16,16 @@ export const metadata: Metadata = {
   ],
 };
 
+// Section order locked in design Pass 1.B: lead with hero, then strongest proof
+// (Projects), then supporting evidence (Timeline). Skills was cut in Pass 1.D
+// (project descriptions carry the tech-stack signal). About is replaced by Hero
+// (Pass 1.A scrapbook composition).
 export default function HomePage() {
   return (
     <>
-      <About />
-      <Skills />
-      <Timeline />
+      <Hero />
       <Projects />
+      <Timeline />
     </>
   );
 }

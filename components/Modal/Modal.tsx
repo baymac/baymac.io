@@ -63,11 +63,7 @@ function Modal(props: IModalProps) {
     // biome-ignore lint/a11y/noStaticElementInteractions: modal overlay captures keyboard events for accessibility
     <div className={styles.modal__overlay} onKeyDown={handleKeyDown}>
       <div className={styles.modal__backdrop} aria-hidden="true" />
-      <FocusTrap
-        focusTrapOptions={{
-          returnFocusOnDeactivate: false,
-        }}
-      >
+      <FocusTrap>
         {/* biome-ignore lint/a11y/noStaticElementInteractions: click-outside handler for modal dismiss */}
         <div
           className={styles.modal__container}
@@ -82,6 +78,9 @@ function Modal(props: IModalProps) {
             className={styles.modal__content}
             id="modal-content"
             tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
           >
             <div className={styles.modal__content_header}>
               <button

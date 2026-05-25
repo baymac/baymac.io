@@ -39,6 +39,29 @@
   justify-self: right;
 }
 
+.footer__crypto_copy_button {
+  grid-area: copy;
+  justify-self: right;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.footer__crypto_caption {
+  margin-top: var(--space-2);
+  font-family: var(--font-mono-stack);
+  font-size: var(--text-micro);
+  color: var(--text-color-light-second);
+  line-height: 1.4;
+}
+
 @media screen and (min-width: 768px) {
   .footer__crypto_copy_icon {
     cursor: pointer;
