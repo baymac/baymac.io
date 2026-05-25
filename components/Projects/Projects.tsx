@@ -191,6 +191,7 @@ export default function Projects() {
                 {project.featured && (
                   <span
                     className={styles.star}
+                    role="img"
                     aria-label="featured project"
                     title={
                       project.prize

@@ -1,12 +1,13 @@
 'use client';
 
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { useState } from 'react';
 import styles from './hero.module.css';
 
 export interface IHeroPolaroidProps {
-  srcLight: string;
-  srcDark: string;
+  /** Static import so next/image can auto-generate the blur placeholder. */
+  srcLight: StaticImageData;
+  srcDark: StaticImageData;
   alt: string;
   /** Polaroid window size — drives <Image> width/height. */
   size?: number;
@@ -35,7 +36,7 @@ export default function HeroPolaroid({
       style={{ width: size, height: size + 40 }}
     >
       {errored ? (
-        <div className={styles.polaroidFallback} aria-label={alt}>
+        <div className={styles.polaroidFallback} role="img" aria-label={alt}>
           {initial}
         </div>
       ) : (
@@ -46,7 +47,7 @@ export default function HeroPolaroid({
             width={size}
             height={size + 40}
             priority
-            placeholder="empty"
+            placeholder="blur"
             className={`${styles.polaroidImage} ${styles.polaroidImageLight}`}
             onError={() => setErrored(true)}
           />
@@ -56,7 +57,7 @@ export default function HeroPolaroid({
             aria-hidden="true"
             width={size}
             height={size + 40}
-            placeholder="empty"
+            placeholder="blur"
             className={`${styles.polaroidImage} ${styles.polaroidImageDark}`}
             onError={() => setErrored(true)}
           />

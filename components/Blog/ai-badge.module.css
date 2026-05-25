@@ -48,13 +48,13 @@
    translucent slate tint with light text so it mirrors the light-mode
    translucent feel. The blog card overrides this for its warm postit
    surface (see blog-card.module.css). */
-[data-theme='dark'] .aiBadge {
+[data-theme="dark"] .aiBadge {
   background: hsla(212, 33%, 70%, 0.12);
   color: hsl(212, 33%, 92%);
   border-color: hsla(212, 33%, 70%, 0.28);
 }
 
-[data-theme='dark'] .aiBadge::after {
+[data-theme="dark"] .aiBadge::after {
   background: hsla(212, 25%, 22%, 0.94);
   color: hsl(212, 33%, 92%);
 }

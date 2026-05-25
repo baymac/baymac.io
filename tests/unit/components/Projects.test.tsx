@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 vi.mock('next/image', () => ({
   __esModule: true,
   default: ({ alt, src }: { alt: string; src: string }) => (
+    // biome-ignore lint/performance/noImgElement: intentional <img> in a test mock — see Hero.test.tsx for the same pattern + rationale.
     <img alt={alt} src={src} />
   ),
 }));

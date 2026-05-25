@@ -4,15 +4,17 @@
   justify-content: center;
 }
 
-.squareHolder .square {
-  animation: loading 1.5s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
-}
-
+/* Base .square rule first so the descendant override below ascends in
+   specificity (avoids lint/style/noDescendingSpecificity). */
 .square {
   width: 1rem;
   height: 1rem;
   border-radius: 4px;
   background-color: var(--first-color);
+}
+
+.squareHolder .square {
+  animation: loading 1.5s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
 }
 
 @keyframes loading {

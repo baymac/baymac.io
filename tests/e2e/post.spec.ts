@@ -6,8 +6,10 @@ test.describe('/posts/[id]', () => {
   // posts the user has in their content/ submodule.
   async function gotoFirstPost(page: import('@playwright/test').Page) {
     await page.goto('/blog');
-    const firstPost = page.locator('article').first();
-    await firstPost.locator('..').click();
+    // BlogCard wraps each <article> in <Link href="/posts/..."> two levels up
+    // (<a> > .cardOuter > <article>). Click the link directly so the test
+    // doesn't depend on which intermediate element is interactive.
+    await page.locator('a[href^="/posts/"]').first().click();
     await page.waitForURL(/\/posts\/[^/]+$/);
   }
 

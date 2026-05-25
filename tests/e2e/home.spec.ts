@@ -31,15 +31,15 @@ test.describe('/ (home)', () => {
     expect(visibilities.some((v) => v)).toBe(true);
   });
 
-  test('renders Projects uniform grid with 3 starred featured', async ({
+  test('renders Projects uniform grid with starred featured cards', async ({
     page,
   }) => {
     await page.goto('/');
-    // F4 + F18: single tier, same-size cards. 3 cards carry the ★ marker
-    // (the "(★ = won money)" annotation in the heading also contains a ★,
-    // so total ★ occurrences on the page is 4).
+    // F4 + F18: single tier, same-size cards. Each card with `featured: true`
+    // in Projects.tsx carries the ★ marker. The current list is Noodles.fi,
+    // Cred Jack, Wallet Connect Cardano, GitLab Branch Source Plugin, Ace Base.
     const featuredStars = page.locator('[aria-label="featured project"]');
-    await expect(featuredStars).toHaveCount(3);
+    await expect(featuredStars).toHaveCount(5);
     await expect(page.getByText('Noodles.fi').first()).toBeVisible();
     await expect(page.getByText('Cred Jack').first()).toBeVisible();
     await expect(

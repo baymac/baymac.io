@@ -46,6 +46,11 @@ function runScript(): RunResult {
   try {
     const stdout = execFileSync(process.execPath, [SCRIPT_PATH], {
       encoding: 'utf-8',
+      // Pipe ALL three streams so the child's stderr is captured (asserted
+      // on by negative-path tests) instead of inheriting the parent's
+      // stderr — which would print "validateWallets: ..." noise to the
+      // terminal even on green runs.
+      stdio: 'pipe',
       env: {
         ...process.env,
         VALIDATE_WALLETS_PATH: walletsPath,
@@ -72,9 +77,12 @@ function runScript(): RunResult {
 describe('validateWallets — pure helpers', () => {
   it('exports the chain validators', () => {
     expect(validator.CHAIN_VALIDATORS.btc).toBeTypeOf('function');
-    expect(validator.CHAIN_VALIDATORS.eth).toBeTypeOf('function');
-    expect(validator.CHAIN_VALIDATORS.sol).toBeTypeOf('function');
-    expect(validator.CHAIN_VALIDATORS.ada).toBeTypeOf('function');
+    expect(validator.CHAIN_VALIDATORS.sui).toBeTypeOf('function');
+    // ETH/SOL/ADA were dropped when the supported chain list was trimmed.
+    expect(Object.keys(validator.CHAIN_VALIDATORS).sort()).toEqual([
+      'btc',
+      'sui',
+    ]);
   });
 
   describe('BTC validator', () => {
@@ -96,50 +104,21 @@ describe('validateWallets — pure helpers', () => {
     });
   });
 
-  describe('ETH validator', () => {
-    it('accepts 0x + 40 hex', () => {
-      expect(
-        validator.CHAIN_VALIDATORS.eth(
-          '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'
-        )
-      ).toBeNull();
+  describe('SUI validator', () => {
+    it('accepts 0x + 64 hex', () => {
+      const addr = `0x${'a'.repeat(64)}`;
+      expect(validator.CHAIN_VALIDATORS.sui(addr)).toBeNull();
     });
     it('rejects missing 0x', () => {
-      expect(
-        validator.CHAIN_VALIDATORS.eth(
-          'de0B295669a9FD93d5F28D9Ec85E40f4cb697BAe'
-        )
-      ).toMatch(/0x/);
+      expect(validator.CHAIN_VALIDATORS.sui('a'.repeat(64))).toMatch(/0x/);
     });
     it('rejects wrong length', () => {
-      expect(validator.CHAIN_VALIDATORS.eth('0xdeadbeef')).toMatch(/40 hex/);
+      expect(validator.CHAIN_VALIDATORS.sui('0xdeadbeef')).toMatch(/64 hex/);
     });
-  });
-
-  describe('SOL validator', () => {
-    it('accepts a base58 address', () => {
-      const addr = 'DYw8jCTfwHNRJhhmFcbXvVDTqWMEVFBX6ZKUmG5CNSKK';
-      expect(validator.CHAIN_VALIDATORS.sol(addr)).toBeNull();
-    });
-    it('rejects out-of-range length', () => {
-      expect(validator.CHAIN_VALIDATORS.sol('short')).toMatch(/length/);
-    });
-    it('rejects 0/O/I/l (non-base58 chars)', () => {
-      const bad = `0${'A'.repeat(40)}`;
-      expect(validator.CHAIN_VALIDATORS.sol(bad)).toMatch(/base58/);
-    });
-  });
-
-  describe('ADA validator', () => {
-    it('accepts a valid addr1 bech32 body', () => {
-      const addr = `addr1${'qpzry9x8gf2tvdw0s3jn54khce6mua7l'.repeat(2)}`;
-      expect(validator.CHAIN_VALIDATORS.ada(addr)).toBeNull();
-    });
-    it('rejects non-addr1 prefix', () => {
-      expect(validator.CHAIN_VALIDATORS.ada('addr2foo')).toMatch(/addr1/);
-    });
-    it('rejects non-bech32 chars', () => {
-      expect(validator.CHAIN_VALIDATORS.ada('addr1bio')).toMatch(/bech32/);
+    it('rejects non-hex chars', () => {
+      expect(validator.CHAIN_VALIDATORS.sui(`0x${'z'.repeat(64)}`)).toMatch(
+        /64 hex/
+      );
     });
   });
 
@@ -225,32 +204,10 @@ describe('validateWallets — main() via subprocess', () => {
     expect(stderr).toMatch(/placeholder address detected/);
   });
 
-  it('detects the ETH placeholder address', () => {
-    const json = JSON.stringify({
-      eth: '0x4a3bC5a8e7c1c9a5d4F9b2eEf7c8a91Bf3D2C4e6A',
-    });
-    setFixture({ walletsJson: json, checksum: sha256(json) });
-    const { code, stderr } = runScript();
-    expect(code).toBe(1);
-    expect(stderr).toMatch(/placeholder address detected/);
-  });
-
-  it('detects the ADA placeholder address', () => {
-    const json = JSON.stringify({
-      ada: 'addr1qx2fxv2umyhttkxyxp8x0dlpdt3k6cwng5pxj3jhsydzer3jcu5d8ps7zex2k2xt3uqxgjqnnj0',
-    });
-    setFixture({ walletsJson: json, checksum: sha256(json) });
-    const { code, stderr } = runScript();
-    expect(code).toBe(1);
-    expect(stderr).toMatch(/placeholder address detected/);
-  });
-
-  it('passes with valid BTC/ETH/SOL/ADA addresses + matching checksum', () => {
+  it('passes with valid BTC + SUI addresses + matching checksum', () => {
     const json = JSON.stringify({
       btc: 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq',
-      eth: '0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe',
-      sol: 'DYw8jCTfwHNRJhhmFcbXvVDTqWMEVFBX6ZKUmG5CNSKK',
-      ada: `addr1${'qpzry9x8gf2tvdw0s3jn54khce6mua7l'.repeat(2)}`,
+      sui: `0x${'a'.repeat(64)}`,
     });
     setFixture({ walletsJson: json, checksum: sha256(json) });
     const { code, stdout, stderr } = runScript();
@@ -267,11 +224,11 @@ describe('validateWallets — main() via subprocess', () => {
     expect(stderr).toMatch(/BTC address invalid/);
   });
 
-  it('fails when an ETH address has invalid format', () => {
-    const json = JSON.stringify({ eth: '0xnothex' });
+  it('fails when a SUI address has invalid format', () => {
+    const json = JSON.stringify({ sui: '0xnothex' });
     setFixture({ walletsJson: json, checksum: sha256(json) });
     const { code, stderr } = runScript();
     expect(code).toBe(1);
-    expect(stderr).toMatch(/ETH address invalid/);
+    expect(stderr).toMatch(/SUI address invalid/);
   });
 });

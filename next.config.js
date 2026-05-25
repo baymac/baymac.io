@@ -12,11 +12,7 @@ const moduleExports = {
   // from tunneled origins so sharing a Cloudflare/ngrok preview URL doesn't
   // break hydration, theme toggle, or intercepting routes (e.g. the modal
   // form of /buymecrypto). Next.js 15+ blocks these by default.
-  allowedDevOrigins: [
-    '*.trycloudflare.com',
-    '*.ngrok-free.app',
-    '*.ngrok.io',
-  ],
+  allowedDevOrigins: ['*.trycloudflare.com', '*.ngrok-free.app', '*.ngrok.io'],
   async headers() {
     return [
       {

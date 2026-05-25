@@ -39,7 +39,7 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-[data-theme='dark'] .polaroidWindow {
+[data-theme="dark"] .polaroidWindow {
   border-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -65,11 +65,11 @@
   opacity: 0;
 }
 
-[data-theme='dark'] .polaroidImageLight {
+[data-theme="dark"] .polaroidImageLight {
   opacity: 0;
 }
 
-[data-theme='dark'] .polaroidImageDark {
+[data-theme="dark"] .polaroidImageDark {
   opacity: 1;
 }
 

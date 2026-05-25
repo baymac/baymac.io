@@ -39,6 +39,8 @@ const PLACEHOLDER_PATTERNS = [
 ];
 
 // Chain format validators. Returns null on success, or an error string.
+// Only BTC + SUI are supported — ETH/SOL/ADA were dropped when the wallet
+// list was trimmed to these two chains.
 const BECH32_CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
 
 function isBech32Body(body) {
@@ -58,32 +60,6 @@ const CHAIN_VALIDATORS = {
     const body = addr.slice(3);
     if (!isBech32Body(body)) {
       return 'BTC address contains non-bech32 characters';
-    }
-    return null;
-  },
-  eth(addr) {
-    if (typeof addr !== 'string') return 'ETH address must be a string';
-    if (!/^0x[0-9a-fA-F]{40}$/.test(addr)) {
-      return 'ETH address must be "0x" + 40 hex chars';
-    }
-    return null;
-  },
-  sol(addr) {
-    if (typeof addr !== 'string') return 'SOL address must be a string';
-    if (addr.length < 32 || addr.length > 44) {
-      return `SOL address length ${addr.length} outside 32–44 range`;
-    }
-    if (!/^[1-9A-HJ-NP-Za-km-z]+$/.test(addr)) {
-      return 'SOL address contains non-base58 characters';
-    }
-    return null;
-  },
-  ada(addr) {
-    if (typeof addr !== 'string') return 'ADA address must be a string';
-    if (!addr.startsWith('addr1')) return 'ADA address must start with "addr1"';
-    const body = addr.slice(5);
-    if (!isBech32Body(body)) {
-      return 'ADA address contains non-bech32 characters';
     }
     return null;
   },

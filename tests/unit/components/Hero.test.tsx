@@ -15,7 +15,10 @@ vi.mock('next/image', () => ({
     src: string;
     width: number;
     height: number;
-  }) => <img alt={alt} src={src} width={width} height={height} />,
+  }) => (
+    // biome-ignore lint/performance/noImgElement: intentional <img> in a test mock — replacing next/image with a plain element keeps the unit test free of next runtime + image-optimizer wiring.
+    <img alt={alt} src={src} width={width} height={height} />
+  ),
 }));
 
 import Hero from '../../../components/Hero/Hero';

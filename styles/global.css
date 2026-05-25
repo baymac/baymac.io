@@ -271,17 +271,17 @@
      direction). Slightly desaturated to read on dark.
      See DESIGN.md → "Palette" section for rationale. */
 
-  /* Dark-mode postits: same hue + chroma as light mode, but dimmed via OKLCH
-     so they don't blast against the dark page bg. OKLCH is perceptually
-     uniform, so dropping L by ~0.2 hits the same "muted" feel across all
-     five colors without shifting their character (a hex/HSL knockdown would
-     desaturate unevenly). The warm postit-ink still passes contrast on
-     L≈0.72 surfaces. */
-  --postit-1: oklch(0.74 0.115 100); /* dimmed yellow */
-  --postit-2: oklch(0.7 0.06 138); /* dimmed mint */
-  --postit-3: oklch(0.68 0.075 47); /* dimmed coral */
-  --postit-4: oklch(0.7 0.05 252); /* dimmed powder blue */
-  --postit-5: oklch(0.7 0.05 350); /* dimmed dusty pink */
+  /* Dark-mode postits: same hue + chroma as light mode, dimmed via OKLCH so
+     they don't blast against the dark page bg. L is chosen as the smallest
+     value that still clears WCAG AA 4.5:1 for the small mono text (tags,
+     date, "read it →") sitting on the postit surface — going darker breaks
+     accessibility on tag pills (which composite a faint dark overlay on the
+     postit) and on the post-page NextPostCard. */
+  --postit-1: oklch(0.84 0.12 100); /* dimmed yellow */
+  --postit-2: oklch(0.82 0.06 138); /* dimmed mint */
+  --postit-3: oklch(0.8 0.08 47); /* dimmed coral */
+  --postit-4: oklch(0.82 0.05 252); /* dimmed powder blue */
+  --postit-5: oklch(0.82 0.05 350); /* dimmed dusty pink */
   --postit-ink: #2a1e08; /* warm dark ink, still readable on dimmed postits */
 
   --polaroid-paper: hsl(200, 8%, 18%);

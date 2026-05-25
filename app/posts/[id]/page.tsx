@@ -74,9 +74,7 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <article className={cn(rootStyles.section, blogStyles.blog__article)}>
-      <div
-        className={cn(rootStyles.grid, blogStyles.blog__container)}
-      >
+      <div className={cn(rootStyles.grid, blogStyles.blog__container)}>
         <h1
           className={cn(
             blogStyles.headingXl,

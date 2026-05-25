@@ -1,12 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
+// Static imports so next/image generates an auto-blurred placeholder at
+// build time (no manual blurDataURL upkeep).
+import catDark from '../../public/images/parichay-cat.jpg';
+import catLight from '../../public/images/parichay-cat-white.jpg';
 import Postit from '../Common/Postit';
 import Tape from '../Common/Tape';
 import HeroPolaroid from './HeroPolaroid';
 import styles from './hero.module.css';
 
-const CAT_SRC_DARK = '/images/parichay-cat.jpg';
-const CAT_SRC_LIGHT = '/images/parichay-cat-white.jpg';
 const CAT_ALT = "Parichay's avatar — a red tabby cat wearing DJ headphones";
 
 interface CurrentCityShape {
@@ -51,11 +53,7 @@ export default function Hero() {
           zIndex: 3,
         }}
       />
-      <HeroPolaroid
-        srcLight={CAT_SRC_LIGHT}
-        srcDark={CAT_SRC_DARK}
-        alt={CAT_ALT}
-      />
+      <HeroPolaroid srcLight={catLight} srcDark={catDark} alt={CAT_ALT} />
     </div>
   );
 

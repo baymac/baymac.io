@@ -139,7 +139,7 @@
    the single post page. Selector includes .cardOuter for specificity so it
    wins over the base [data-theme='dark'] .aiBadge regardless of CSS load
    order. */
-[data-theme='dark'] .cardOuter .aiBadge {
+[data-theme="dark"] .cardOuter .aiBadge {
   background: hsla(212, 33%, 60%, 0.18);
   color: hsl(212, 33%, 22%);
   border-color: hsla(212, 33%, 30%, 0.32);
