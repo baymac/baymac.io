@@ -49,7 +49,7 @@ ai-gen: true   # optional — shows an AI badge on the listing and post
 
 ### Styling
 
-CSS Modules throughout — each component has its own `.module.css`. Global styles in `styles/global.css`. Root layout utilities in `styles/root.module.css`. Theme (dark/light) is handled by `next-themes` with a `data-theme` attribute on `<html>`.
+CSS Modules throughout — each component has its own `.module.css`. Global styles in `styles/global.css`. Root layout utilities in `styles/root.module.css`. Theme (dark/light) is handled by `context/ThemeProvider.tsx` (custom — replaces next-themes for Next 16 / React 19 compat). It sets a `data-theme` attribute on `<html>` and persists to localStorage under key `theme`. A FOUC-prevention bootstrap script (`lib/themeScript.ts`) is injected inline into `<head>` from `app/layout.tsx` (server component) so React 19 does not warn about scripts inside client components.
 
 ### App context
 

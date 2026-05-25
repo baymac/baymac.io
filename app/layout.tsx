@@ -5,10 +5,11 @@ import {
   Inter,
   JetBrains_Mono,
 } from 'next/font/google';
-import { ThemeProvider } from 'next-themes';
 import Footer from '../components/Footer/Footer';
 import Nav from '../components/Nav/Nav';
 import AppContextProvider from '../context/AppContextProvider';
+import ThemeProvider from '../context/ThemeProvider';
+import { themeScript } from '../lib/themeScript';
 import styles from '../styles/root.module.css';
 import '../styles/global.css';
 
@@ -175,11 +176,52 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${mono.variable} ${hand.variable} ${blog.variable}`}
     >
+      <head>
+        {/* Inline theme bootstrap — sets data-theme before paint to avoid a
+            light-mode flash. Must be a plain inline <script> in <head> so the
+            HTML parser executes it before any body paints; next/script
+            beforeInteractive runs after the Next.js runtime and would cause
+            a flash on light-themed pages. React 19 logs a dev-only warning
+            about scripts inside components, but the script still executes
+            correctly from the SSR'd HTML and the warning does not appear in
+            production builds. */}
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted inline bootstrap
+          dangerouslySetInnerHTML={{ __html: themeScript }}
+        />
+      </head>
       <body>
+        {/* Global SVG defs for the hand-drawn `data-wobble` filter referenced
+            from styles/global.css (`[data-wobble] { filter: url(#wobble) }`).
+            Mounted once at the document root so every element with
+            `data-wobble` — blog cards, project cards, timeline cards, hero
+            polaroid — can reference `#wobble` without redefining it. The svg
+            itself is invisible (zero size, absolute positioning). */}
+        <svg
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            width: 0,
+            height: 0,
+            overflow: 'hidden',
+          }}
+        >
+          <defs>
+            <filter id="wobble">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.02"
+                numOctaves="2"
+                seed="3"
+              />
+              <feDisplacementMap in="SourceGraphic" scale="1.2" />
+            </filter>
+          </defs>
+        </svg>
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem>
+        <ThemeProvider defaultTheme="dark">
           <AppContextProvider>
             <div id="app-root">
               <div className={styles.root}>
