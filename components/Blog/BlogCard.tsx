@@ -38,13 +38,15 @@ export default function BlogCard({
       style={{ transform: `rotate(${rotate}deg)` }}
     >
       <div className={styles.cardOuter}>
+        {/* Two tape strips floating ABOVE the card with a visible gap
+            (disconnected sticker per design B4). */}
         <Tape
           rotate={-8 + rotate * 2}
-          style={{ left: 30, top: -10, width: 56 }}
+          style={{ left: 30, top: 0, width: 56, height: 16 }}
         />
         <Tape
           rotate={6 - rotate * 2}
-          style={{ right: 40, top: -10, width: 44 }}
+          style={{ right: 40, top: 0, width: 44, height: 16 }}
         />
         <article
           className={cn(styles.card, styles[`color${color}`])}

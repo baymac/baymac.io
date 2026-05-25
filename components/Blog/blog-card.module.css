@@ -3,16 +3,21 @@
   text-decoration: none;
   color: inherit;
   transition: transform 0.2s ease;
+  /* Critical for grid children: allow the card to shrink with the column
+     instead of pushing the grid wider when titles or tags are long (B6). */
+  min-width: 0;
 }
 
 .cardLink:hover {
   transform: rotate(0deg) translateY(-2px) !important;
 }
 
-/* Outer wrapper holds the card + tape strips; tape sits above the card. */
+/* Outer wrapper holds the card + tape strips; tape floats above with a
+   visible gap so it reads as a separate sticker, not bleed-over (B4). */
 .cardOuter {
   position: relative;
-  padding-top: 14px;
+  padding-top: 26px;
+  min-width: 0;
 }
 
 .card {
@@ -21,6 +26,10 @@
   box-shadow: var(--shadow-card);
   border: 2px solid var(--postit-ink);
   position: relative;
+  /* Prevent any inner content (long title, long URL) from blowing the card
+     out past the grid column (B6). */
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .color1 { background: var(--postit-1); }
@@ -44,6 +53,8 @@
 .tags {
   display: flex;
   gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .tag {
@@ -59,6 +70,16 @@
   line-height: 1.1;
   margin: 0 0 var(--space-3);
   color: var(--postit-ink);
+  /* Prevent long unbroken strings (code fragments, URLs) from overflowing
+     the card on narrow viewports (B6). */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+  }
 }
 
 .footer {

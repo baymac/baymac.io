@@ -1,7 +1,12 @@
+/* Per prototype + B2: Timeline is tinted in LIGHT mode (matches body in dark). */
 .timeline__section {
   background-color: var(--body-color);
   color: var(--text-color);
   padding: var(--space-7) 0;
+}
+
+:global([data-theme='light']) .timeline__section {
+  background-color: var(--section-alt-bg);
 }
 
 .timeline__container {

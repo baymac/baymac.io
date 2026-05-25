@@ -175,16 +175,27 @@
 
   /*========== Page container (matches Nav max-width + edges) ========== */
   /* Aligns logo-edge ↔ theme-button-edge with section content so all
-     pages share the same rhythm (per F9). Identical to --big-screen-width
-     but named explicitly for section-level consumption. */
+     pages share the same rhythm (per F9). Nav, sections, and footer all
+     consume both tokens so their inner content shares the same edges. */
   --page-max-width: 1000px;
+  --page-padding-x: 1.5rem; /* 24px desktop; overridden smaller below for mobile */
 
-  /*========== Section background alternation (F7 + F19) ========== */
-  /* Two-color rhythm. Sections set --section-bg to one of these two. */
-  --section-alt-bg: hsl(230, 35%, 97%); /* barely-tinted lavender */
+  /*========== Section background alternation (F7 + F19 + B2) ========== */
+  /* Tint colors copied from the prototype's PALETTES.original. Tinted
+     sections set background to --section-alt-bg via :global([data-theme])
+     selectors in each section's .module.css. */
+  --section-alt-bg: hsl(230, 60%, 88%); /* prototype's light-mode tint */
 
   /*========== Card surface (used by Projects + Timeline) ========== */
   --card-bg: #fff;
+}
+
+/* Smaller horizontal page padding on phones — content stays close to the
+   viewport edge so cards don't shrink awkwardly. */
+@media screen and (max-width: 600px) {
+  :root {
+    --page-padding-x: 1rem;
+  }
 }
 
 /* Font size for large devices */
@@ -278,9 +289,10 @@
   --shadow-modal: 0 30px 80px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.4);
 
   /*========== Dark theme: section alt bg + card bg ========== */
-  /* One step lighter than --body-color (hsl(200,5%,12%)) so the alt
-     section reads as a distinct band on the dark page. */
-  --section-alt-bg: hsl(200, 8%, 17%);
+  /* Tint color from the prototype's PALETTES.original.dark.tint
+     (hsl(230, 30%, 40%)) — a saturated slate-blue band against the
+     near-black body color. */
+  --section-alt-bg: hsl(230, 30%, 40%);
   --card-bg: hsl(200, 7%, 14%);
 }
 

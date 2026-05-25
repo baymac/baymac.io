@@ -13,21 +13,29 @@ import Projects from '../../../components/Projects/Projects';
 describe('Projects', () => {
   it('marks exactly 3 cards as featured with ★', () => {
     const html = renderToStaticMarkup(<Projects />);
-    const starMatches = html.match(/aria-label="featured project">★/g) ?? [];
+    // Star is now an absolute element at top-right (B3) — match the
+    // aria-label attribute, not the inline string position.
+    const starMatches = html.match(/aria-label="featured project"/g) ?? [];
     expect(starMatches.length).toBe(3);
   });
 
   it('renders all projects in a single uniform grid (no two-tier split)', () => {
     const html = renderToStaticMarkup(<Projects />);
     const cards = html.match(/data-wobble="true"/g) ?? [];
-    // 14 projects total in the data set, all rendered as same-size cards.
     expect(cards.length).toBe(14);
   });
 
-  it('renders prize annotation on featured cards', () => {
+  it('does NOT render the +$prize line on featured cards (B3)', () => {
+    // Per B3 the explicit "+$3k" / "+$5k" lines were removed so all cards
+    // stay the same size; prize amount lives in the star's `title` tooltip.
     const html = renderToStaticMarkup(<Projects />);
-    expect(html).toContain('+$3k');
-    expect(html).toContain('+$5k');
+    expect(html).not.toMatch(/>\+\$3k<|>\+\$5k</);
+  });
+
+  it('keeps the prize amount discoverable via the star title attribute', () => {
+    const html = renderToStaticMarkup(<Projects />);
+    expect(html).toContain('Featured — $3k');
+    expect(html).toContain('Featured — $5k');
   });
 
   it('renders the section annotation "(★ = won money)"', () => {

@@ -1,10 +1,11 @@
 .hero {
-  max-width: 1000px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  /* Top padding clears the sticky header so the polaroid + handwritten name
-     never get partially covered on cold load. */
-  padding: calc(var(--header-height) + var(--space-5)) var(--space-5)
-    var(--space-7);
+  /* Header is `position: fixed`, height = var(--header-height) + 1.2rem on
+     desktop (~83px). Add a real visible gap below it so the polaroid +
+     headline aren't hugging the header edge. */
+  padding: calc(var(--header-height) + var(--space-8)) var(--page-padding-x)
+    var(--space-8);
   position: relative;
 }
 

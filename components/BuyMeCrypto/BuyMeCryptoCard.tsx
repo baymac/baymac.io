@@ -104,13 +104,14 @@ export default function BuyMeCryptoCard() {
     <>
       <div className={styles.paper}>
         <div className={styles.marginLine} aria-hidden="true" />
+        {/* Disconnected tape — sits above the paper with a visible gap (B4). */}
         <Tape
           rotate={-22}
-          style={{ left: -10, top: -8, width: 64, zIndex: 2 }}
+          style={{ left: 24, top: -18, width: 70, height: 18, zIndex: 2 }}
         />
         <Tape
           rotate={20}
-          style={{ right: -10, top: -8, width: 64, zIndex: 2 }}
+          style={{ right: 24, top: -18, width: 70, height: 18, zIndex: 2 }}
         />
 
         <div className={styles.body}>

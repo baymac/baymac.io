@@ -43,8 +43,7 @@ const projects: Project[] = [
   {
     id: 'buy-me-crypto',
     title: 'Buy Me Crypto',
-    description:
-      'Creator support on Solana. Submission for Solana Ignition.',
+    description: 'Creator tipping on Solana. Solana Ignition.',
     link: 'https://github.com/baymac/buy-me-crypto',
   },
   {
@@ -126,36 +125,39 @@ export default function Projects() {
               className={cn(styles.card, project.featured && styles.cardFeatured)}
               data-wobble
             >
+              {project.featured && (
+                <span
+                  className={styles.star}
+                  aria-label="featured project"
+                  title={
+                    project.prize
+                      ? `Featured — ${project.prize}`
+                      : 'Featured project'
+                  }
+                >
+                  ★
+                </span>
+              )}
               <div className={styles.cardHeader}>
                 <h3 className={styles.cardTitle}>{project.title}</h3>
-                <div className={styles.cardActions}>
-                  {project.featured && (
-                    <span className={styles.star} aria-label="featured project">
-                      ★
-                    </span>
-                  )}
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.cardLink}
-                      aria-label={`${project.title} link`}
-                    >
-                      <Image
-                        src="/images/link.svg"
-                        alt=""
-                        width={18}
-                        height={18}
-                      />
-                    </a>
-                  )}
-                </div>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.cardLink}
+                    aria-label={`${project.title} link`}
+                  >
+                    <Image
+                      src="/images/link.svg"
+                      alt=""
+                      width={18}
+                      height={18}
+                    />
+                  </a>
+                )}
               </div>
               <p className={styles.cardDescription}>{project.description}</p>
-              {project.prize && (
-                <p className={styles.cardPrize}>+{project.prize}</p>
-              )}
             </article>
           ))}
         </div>

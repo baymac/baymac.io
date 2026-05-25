@@ -9,12 +9,14 @@
   padding: 2rem 0 3rem;
 }
 
-/* Controls padding of footer items */
+/* Controls padding of footer items.
+   Matches Nav + section containers so footer edges align with the
+   logo↔theme-button line (B5). */
 .footer__container {
   row-gap: 1.5rem;
-  max-width: var(--big-screen-width);
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 0 var(--mb-1);
+  padding: 0 var(--page-padding-x);
 }
 
 .footer__title {
@@ -96,9 +98,9 @@
 }
 
 .footer__signoff_wrap {
-  max-width: var(--big-screen-width);
+  max-width: var(--page-max-width);
   margin: 0 auto;
-  padding: 0 var(--mb-1);
+  padding: 0 var(--page-padding-x);
 }
 
 .footer__signoff {
@@ -108,12 +110,6 @@
   margin-top: var(--mb-2);
 }
 
-@media screen and (min-width: 351px) {
-  .footer__container {
-    padding: 0 var(--mb-1-5);
-  }
-}
-
 @media screen and (min-width: 768px) {
   .footer__bg {
     padding: 3rem 0 3.5rem;
@@ -121,12 +117,7 @@
 
   .footer__container {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 6rem;
-  }
-
-  .footer__now_playing {
-    padding: 0 6rem;
-    row-gap: var(--mb-2);
+    /* Keep --page-padding-x so footer matches the rest of the page. */
   }
 
   .footer__links_1,

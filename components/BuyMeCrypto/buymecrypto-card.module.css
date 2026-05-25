@@ -4,6 +4,9 @@
 .paper {
   position: relative;
   max-width: 540px;
+  width: 100%;
+  /* Top margin clears the disconnected tape strips that float above the
+     paper edge by -18px. */
   margin: var(--space-7) auto;
   background: var(--modal-paper);
   color: var(--postit-ink);

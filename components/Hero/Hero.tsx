@@ -35,13 +35,18 @@ export default function Hero() {
 
   const polaroid = (
     <div className={styles.polaroidFrame} data-wobble>
+      {/* Single washi-tape strip OVER the polaroid image (per design B4). */}
       <Tape
-        rotate={-12}
-        style={{ position: 'absolute', left: 20, top: -10, zIndex: 3 }}
-      />
-      <Tape
-        rotate={10}
-        style={{ position: 'absolute', right: 20, top: -10, zIndex: 3 }}
+        rotate={-14}
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: 4,
+          marginLeft: -34,
+          width: 68,
+          height: 18,
+          zIndex: 3,
+        }}
       />
       <HeroPolaroid src={CAT_SRC} alt={CAT_ALT} />
     </div>
