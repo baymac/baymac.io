@@ -11,7 +11,18 @@ const fs = require('node:fs');
 const path = require('node:path');
 const sharp = require('sharp');
 
-const SRC = path.join(__dirname, '..', 'public', 'images', 'parichay-cat.jpg');
+// Source is the alpha-extracted PNG (run scripts/extractCatTransparent.js
+// first if it doesn't exist). The original JPEG can't carry transparency,
+// so we mask out the corner-connected black bg into a real RGBA PNG and
+// favicon-generate from that — browsers + iOS home-screen + Android maskable
+// icons all render the cat over the OS background instead of a black square.
+const SRC = path.join(
+  __dirname,
+  '..',
+  'public',
+  'images',
+  'parichay-cat-transparent.png'
+);
 const OUT_DIR = path.join(__dirname, '..', 'public', 'favicons');
 
 const SIZES = {
