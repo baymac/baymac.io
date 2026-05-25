@@ -84,26 +84,31 @@
   color: var(--text-color);
 }
 
-.postitLink {
-  color: inherit;
-  /* Simple border-bottom — text-decoration: underline rendered as a thick
-     light bar under Caveat (script font metrics span the descender row),
-     and the gradient version inherited the same visual weight (D3). */
+.postitLink,
+.postitLink:link,
+.postitLink:visited,
+.postitLink:active {
+  /* Pin to the dark postit ink in every state. Earlier inherit + hover
+     swap to --first-color washed the link out in dark mode (--first-color
+     resolves to a pale grey-blue ≈ same value as the mint postit bg).
+     Also overrides :visited so the browser doesn't repaint it purple. */
+  color: var(--postit-ink);
   text-decoration: none;
-  border-bottom: 1.5px solid currentColor;
+  border-bottom: 1.5px solid var(--postit-ink);
   padding-bottom: 1px;
 }
 
-.postitLink:hover {
-  color: var(--first-color);
-  border-bottom-color: var(--first-color);
+.postitLink:hover,
+.postitLink:focus {
+  color: var(--postit-ink);
+  border-bottom-width: 2.5px;
 }
 
-/* Browser default selection on dark page bg paints a light bar that
-   visually merged with the link's underline; force a contrasting
-   selection that reads as "highlighter on paper" on the postit (D3). */
+/* Browser default selection paints a light bar that visually merged
+   with the link's underline in dark mode — force a translucent dark
+   wash that reads as "highlighter on paper" on the mint postit. */
 .postitLink::selection {
-  background: rgba(58, 46, 24, 0.25);
+  background: rgba(58, 46, 24, 0.3);
   color: var(--postit-ink);
 }
 
