@@ -38,15 +38,17 @@ export default function BlogCard({
       style={{ transform: `rotate(${rotate}deg)` }}
     >
       <div className={styles.cardOuter}>
-        {/* Two tape strips floating ABOVE the card with a visible gap
-            (disconnected sticker per design B4). */}
+        {/* Two tape strips straddling the top edge — half above, half on
+            the card. cardOuter padding-top reserves space for the top half;
+            negative `top` pulls the tape up so its center sits on the
+            article's top edge. Matches design ref 2jyMDW. */}
         <Tape
           rotate={-10 + rotate * 2}
-          style={{ left: 36, top: 0, width: 72, height: 20 }}
+          style={{ left: 32, top: 0, width: 84, height: 28 }}
         />
         <Tape
           rotate={8 - rotate * 2}
-          style={{ right: 48, top: 0, width: 60, height: 20 }}
+          style={{ right: 44, top: 1, width: 76, height: 26 }}
         />
         <article
           className={cn(styles.card, styles[`color${color}`])}

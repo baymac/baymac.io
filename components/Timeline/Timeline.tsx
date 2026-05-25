@@ -85,11 +85,15 @@ export default function Timeline() {
               <Tape
                 rotate={CARD_ROTATIONS[index % CARD_ROTATIONS.length] * -2}
                 style={{
+                  /* Half-on / half-off: tape center sits on the card's top
+                     edge. cardWrap has no padding-top, so tape top = -h/2
+                     puts its center at y=0 (the article top). Matches the
+                     washi design ref (lu5BsM). */
                   left: '50%',
-                  top: -10,
-                  marginLeft: -38,
-                  width: 76,
-                  height: 22,
+                  top: -14,
+                  marginLeft: -42,
+                  width: 84,
+                  height: 28,
                   zIndex: 2,
                 }}
               />

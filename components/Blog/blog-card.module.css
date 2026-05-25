@@ -19,11 +19,12 @@
   z-index: 5;
 }
 
-/* Outer wrapper holds the card + tape strips; tape floats above with a
-   visible gap so it reads as a separate sticker, not bleed-over (B4). */
+/* Outer wrapper holds the card + tape strips. Tape is half-on / half-off:
+   top half sits in the padding above the article, bottom half overlaps the
+   article's top edge — matches the washi-tape design reference (2jyMDW). */
 .cardOuter {
   position: relative;
-  padding-top: 26px;
+  padding-top: 14px;
   min-width: 0;
 }
 
