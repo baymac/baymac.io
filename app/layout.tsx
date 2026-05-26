@@ -8,6 +8,7 @@ import {
 import Footer from '../components/Footer/Footer';
 import Nav from '../components/Nav/Nav';
 import AppContextProvider from '../context/AppContextProvider';
+import PostBannerProvider from '../context/PostBannerProvider';
 import ThemeProvider from '../context/ThemeProvider';
 import { themeScript } from '../lib/themeScript';
 import styles from '../styles/root.module.css';
@@ -223,15 +224,17 @@ export default function RootLayout({
         </a>
         <ThemeProvider defaultTheme="dark">
           <AppContextProvider>
-            <div id="app-root">
-              <div className={styles.root}>
-                <Nav />
-                <main id="main-content">{children}</main>
-                <Footer />
+            <PostBannerProvider>
+              <div id="app-root">
+                <div className={styles.root}>
+                  <Nav />
+                  <main id="main-content">{children}</main>
+                  <Footer />
+                </div>
               </div>
-            </div>
-            {modal}
-            <div id="modal-root" />
+              {modal}
+              <div id="modal-root" />
+            </PostBannerProvider>
           </AppContextProvider>
         </ThemeProvider>
       </body>

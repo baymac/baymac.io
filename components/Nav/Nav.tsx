@@ -18,6 +18,7 @@ import Logo from '../Logo/Logo';
 import NavLinkBigScreen from './NavLinkBigScreen';
 import NavLinkMobile from './NavLinkMobile';
 import styles from './nav.module.css';
+import PostBanner from './PostBanner';
 
 export default function Nav() {
   const { navBarOpen, setNavBarOpen } = useAppContext();
@@ -114,6 +115,7 @@ export default function Nav() {
           )}
         </div>
       </nav>
+      <PostBanner />
       <NavLinkMobile />
     </header>
   );
