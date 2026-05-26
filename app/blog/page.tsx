@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import BackToTopFab from '../../components/Blog/BackToTopFab';
 import BlogCard from '../../components/Blog/BlogCard';
 import { getSortedPostsData } from '../../lib/posts';
 import styles from './blog-page.module.css';
@@ -84,6 +85,7 @@ export default function BlogPage() {
           </a>
         </p>
       </div>
+      <BackToTopFab />
     </section>
   );
 }
