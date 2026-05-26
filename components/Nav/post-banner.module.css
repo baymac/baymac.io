@@ -1,0 +1,74 @@
+/* Compact post-banner that grows out of the bottom edge of the header in
+   sync with the post H1 scrolling out. All sizing/easing values come from
+   JS-set CSS custom properties (--p raw progress 0→1, --eased eased
+   counterpart). The "merge" feel comes from the inner title scaling DOWN
+   from 1.18× to 1× as the body H1 fades up & out simultaneously. */
+.banner {
+  height: calc(var(--eased, 0) * 52px);
+  overflow: hidden;
+  background: var(--banner-bg);
+  color: var(--banner-ink);
+  border-bottom: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.banner[data-visible] {
+  border-bottom-color: var(--banner-border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, calc(var(--p, 0) * 0.18));
+}
+
+.inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 var(--page-padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.title {
+  font-family: var(--blog-font);
+  font-weight: var(--font-medium);
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--banner-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.2;
+  /* Top-to-bottom slide-in: starts 18px above its final position and
+     descends into place. Opacity ramps from 0 at p=0.2 to 1 at p=0.85
+     so the text only appears once the banner has grown enough to show
+     it cleanly. */
+  opacity: clamp(0, calc((var(--p, 0) - 0.2) / 0.65), 1);
+  transform: translateY(calc((1 - var(--eased, 0)) * -18px));
+  will-change: transform, opacity;
+}
+
+.mins {
+  font-family: var(--font-mono-stack);
+  font-size: 10.5px;
+  letter-spacing: 0.5px;
+  color: var(--banner-ink);
+  flex: 0 0 auto;
+  white-space: nowrap;
+  border-left: 1px solid var(--banner-border);
+  padding-left: 12px;
+  line-height: 1.4;
+  opacity: clamp(0, calc((var(--p, 0) - 0.2) / 0.65 * 0.7), 0.7);
+  /* Mirror the title's slide so both descend together as one curtain. */
+  transform: translateY(calc((1 - var(--eased, 0)) * -18px));
+  will-change: transform, opacity;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 1rem;
+  }
+}

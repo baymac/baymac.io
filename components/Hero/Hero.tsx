@@ -1,9 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
-// Static imports so next/image generates an auto-blurred placeholder at
+// Static import so next/image generates an auto-blurred placeholder at
 // build time (no manual blurDataURL upkeep).
-import catDark from '../../public/images/parichay-cat.jpg';
-import catLight from '../../public/images/parichay-cat-white.jpg';
+import cat from '../../public/images/parichay-cat.jpg';
 import Postit from '../Common/Postit';
 import Tape from '../Common/Tape';
 import HeroPolaroid from './HeroPolaroid';
@@ -53,7 +52,7 @@ export default function Hero() {
           zIndex: 3,
         }}
       />
-      <HeroPolaroid srcLight={catLight} srcDark={catDark} alt={CAT_ALT} />
+      <HeroPolaroid src={cat} alt={CAT_ALT} />
     </div>
   );
 

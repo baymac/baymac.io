@@ -14,6 +14,7 @@ interface PostData {
   title: string;
   tags?: string;
   'ai-gen'?: boolean;
+  mins?: number;
 }
 
 const postsDirectory = path.join(
@@ -85,10 +86,18 @@ export async function getPostData(id: string) {
     .replace(/<pre>/g, '<pre tabindex="0">')
     .replace(/<table>/g, '<table tabindex="0">');
 
+  // ~220 wpm reading speed; min 1 so very short notes still show "1 min".
+  const wordCount = matterResult.content
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+  const mins = Math.max(1, Math.round(wordCount / 220));
+
   // Combine the data with the id and contentHtml
   return {
     id,
     contentHtml,
+    mins,
     ...matterResult.data,
-  } as PostData & { contentHtml: string };
+  } as PostData & { contentHtml: string; mins: number };
 }

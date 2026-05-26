@@ -1,9 +1,8 @@
 import cn from 'classnames';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import AiBadge from '../../../components/Blog/AiBadge';
-import BlogDate from '../../../components/Blog/Date';
 import NextPostCard from '../../../components/Blog/NextPostCard';
+import PostTitle from '../../../components/Blog/PostTitle';
 import SocialTipRow from '../../../components/Blog/SocialTipRow';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
 import blogStyles from '../../../styles/pageStyles/blog.module.css';
@@ -16,6 +15,7 @@ interface PostData {
   contentHtml: string;
   'ai-gen'?: boolean;
   tags?: string;
+  mins?: number;
 }
 
 interface PageProps {
@@ -75,21 +75,12 @@ export default async function PostPage({ params }: PageProps) {
   return (
     <article className={cn(rootStyles.section, blogStyles.blog__article)}>
       <div className={cn(rootStyles.grid, blogStyles.blog__container)}>
-        <h1
-          className={cn(
-            blogStyles.headingXl,
-            blogStyles.blog__headingColor,
-            blogStyles.blog__headingFont
-          )}
-        >
-          {postData.title}
-        </h1>
-        <div
-          className={cn(blogStyles.blog__SlugColor, blogStyles.blog__SlugFont)}
-        >
-          <BlogDate dateString={postData.date} />
-          {postData['ai-gen'] && <AiBadge />}
-        </div>
+        <PostTitle
+          title={postData.title}
+          date={postData.date}
+          aiGen={postData['ai-gen']}
+          mins={postData.mins}
+        />
         <div
           className={cn(blogStyles.blog__contentFont)}
           // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted markdown content compiled at build time

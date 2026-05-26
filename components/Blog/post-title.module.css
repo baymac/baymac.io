@@ -1,0 +1,12 @@
+/* As the banner takes over (--p ramps 0→1), fade & gently lift the body
+   title so the two appear to morph into each other (paired with the banner
+   title scaling DOWN from above). Both ramps are anchored to p=0.15 → 0.75
+   so the body title is fully gone slightly before the banner is fully
+   formed — the visual handoff. */
+.wrapper {
+  opacity: clamp(0, calc(1 - (var(--p, 0) - 0.15) / 0.6), 1);
+  transform: translateY(
+    calc(-1 * clamp(0px, calc((var(--p, 0) - 0.15) / 0.6 * 8px), 8px))
+  );
+  will-change: opacity, transform;
+}
