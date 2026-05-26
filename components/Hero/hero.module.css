@@ -50,29 +50,6 @@
   display: block;
 }
 
-/* Theme-aware image swap: render both <Image> elements (SSR safe — avoids
-   the hydration flicker that useTheme() would cause), then let the active
-   data-theme attribute show the right one. The dark variant stacks on top
-   of the light via absolute positioning so the polaroid window doesn't
-   collapse to zero height when one is display:none. */
-.polaroidImageLight,
-.polaroidImageDark {
-  position: absolute;
-  inset: 0;
-}
-
-.polaroidImageDark {
-  opacity: 0;
-}
-
-[data-theme="dark"] .polaroidImageLight {
-  opacity: 0;
-}
-
-[data-theme="dark"] .polaroidImageDark {
-  opacity: 1;
-}
-
 .polaroidFallback {
   width: 100%;
   height: 100%;

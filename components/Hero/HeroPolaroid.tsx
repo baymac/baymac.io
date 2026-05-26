@@ -6,8 +6,7 @@ import styles from './hero.module.css';
 
 export interface IHeroPolaroidProps {
   /** Static import so next/image can auto-generate the blur placeholder. */
-  srcLight: StaticImageData;
-  srcDark: StaticImageData;
+  src: StaticImageData;
   alt: string;
   /** Polaroid window size — drives <Image> width/height. */
   size?: number;
@@ -15,15 +14,8 @@ export interface IHeroPolaroidProps {
   initial?: string;
 }
 
-/**
- * Client leaf that renders the polaroid image and swaps to a styled initial
- * if `next/image` reports onError. Renders both light and dark variants;
- * CSS [data-theme] selectors in hero.module.css show the right one — keeps
- * the swap SSR-safe (no hydration flicker via useTheme).
- */
 export default function HeroPolaroid({
-  srcLight,
-  srcDark,
+  src,
   alt,
   size = 280,
   initial = 'P',
@@ -40,28 +32,16 @@ export default function HeroPolaroid({
           {initial}
         </div>
       ) : (
-        <>
-          <Image
-            src={srcLight}
-            alt={alt}
-            width={size}
-            height={size + 40}
-            priority
-            placeholder="blur"
-            className={`${styles.polaroidImage} ${styles.polaroidImageLight}`}
-            onError={() => setErrored(true)}
-          />
-          <Image
-            src={srcDark}
-            alt=""
-            aria-hidden="true"
-            width={size}
-            height={size + 40}
-            placeholder="blur"
-            className={`${styles.polaroidImage} ${styles.polaroidImageDark}`}
-            onError={() => setErrored(true)}
-          />
-        </>
+        <Image
+          src={src}
+          alt={alt}
+          width={size}
+          height={size + 40}
+          priority
+          placeholder="blur"
+          className={styles.polaroidImage}
+          onError={() => setErrored(true)}
+        />
       )}
     </div>
   );
