@@ -50,7 +50,12 @@ export default function PostTitle({ title, date, aiGen, mins }: Props) {
         className={cn(blogStyles.blog__SlugColor, blogStyles.blog__SlugFont)}
       >
         <BlogDate dateString={date} />
-        {mins !== undefined && <span> · {mins} min read</span>}
+        {mins !== undefined && (
+          <>
+            <span className={blogStyles.blog__SlugSep}>·</span>
+            <span>{mins} min read</span>
+          </>
+        )}
         {aiGen && <AiBadge />}
       </div>
     </div>

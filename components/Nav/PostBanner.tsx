@@ -10,7 +10,7 @@ function eased(p: number) {
 }
 
 export default function PostBanner() {
-  const { post, progress } = usePostBanner();
+  const { post, progress, secondsLeft } = usePostBanner();
 
   // Inline style carries the live scroll-driven values; the module css
   // consumes them via custom properties so visual identity (colors, font,
@@ -36,10 +36,21 @@ export default function PostBanner() {
       data-visible={visible || undefined}
     >
       <div className={styles.inner}>
-        <span className={styles.title}>{post.title}</span>
-        {post.mins !== undefined && (
-          <span className={styles.mins}>{post.mins} min</span>
-        )}
+        <div className={styles.pill}>
+          <span aria-hidden="true" className={styles.tape1} />
+          <span aria-hidden="true" className={styles.tape2} />
+          <span className={styles.title}>{post.title}</span>
+          {secondsLeft !== null &&
+            (secondsLeft >= 60 ? (
+              <span className={styles.mins}>
+                {Math.ceil(secondsLeft / 60)} min left
+              </span>
+            ) : secondsLeft > 0 ? (
+              <span className={styles.mins}>{secondsLeft} sec left</span>
+            ) : (
+              <span className={styles.done}>purr purr ~</span>
+            ))}
+        </div>
       </div>
     </div>
   );

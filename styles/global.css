@@ -65,7 +65,7 @@
   /*========== Font and typography ==========*/
   --body-font: "Inter", sans-serif;
 
-  --blog-font: "Atkinson Hyperlegible", sans-serif;
+  --blog-font: "Atkinson Hyperlegible", "Inter", sans-serif;
 
   --big-screen-width: 1000px;
 
@@ -196,14 +196,20 @@
   /*========== Card surface (used by Projects + Timeline) ========== */
   --card-bg: #fff;
 
-  /*========== Post-banner (compact strip under the nav on /posts/*) ========== */
-  /* Deliberately distinct from the header so the banner reads as a content
-     strip, not part of the nav. Light = soft tint; dark = card surface.
-     Ink + border lifted from the page palette so the banner blends with
-     content underneath. */
+  /*========== Post-banner (scrapbook clipping under the nav on /posts/*) ========== */
+  /* Content-width pill with dashed border + washi-tape accents on the top
+     corners. The pill background is a soft tint so it reads as a clipping
+     pinned over the page; tape uses a postit yellow so it pops as a scrapbook
+     flourish, not chrome. Mobile drops the pill and tape and falls back to a
+     plain tinted strip — there's no room for the decorative layer. */
   --banner-bg: var(--section-alt-bg);
   --banner-ink: var(--title-color);
   --banner-border: var(--footer-border-color);
+  /* Subtle pencil-line dashed border for the pill — kept at 1px (browsers
+     won't render sub-pixel dashes reliably) but with low ink alpha so the
+     stroke reads as paper texture, not solid chrome. */
+  --banner-divider: rgba(0, 0, 0, 0.1);
+  --banner-tape-bg: var(--postit-1);
 }
 
 /* Smaller horizontal page padding on phones — content stays close to the
@@ -321,8 +327,10 @@
   --section-alt-bg: hsl(230, 30%, 40%);
   --card-bg: hsl(200, 7%, 14%);
 
-  /*========== Post-banner: dark mode uses card-bg, matching the spec ========== */
+  /*========== Post-banner: dark mode (scrapbook) ========== */
   --banner-bg: var(--card-bg);
+  --banner-divider: rgba(255, 255, 255, 0.12);
+  --banner-tape-bg: var(--postit-2);
 }
 
 /*========== Button Dark/Light ==========*/

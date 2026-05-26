@@ -1,22 +1,26 @@
-/* Compact post-banner that grows out of the bottom edge of the header in
-   sync with the post H1 scrolling out. All sizing/easing values come from
-   JS-set CSS custom properties (--p raw progress 0→1, --eased eased
-   counterpart). The "merge" feel comes from the inner title scaling DOWN
-   from 1.18× to 1× as the body H1 fades up & out simultaneously. */
+/* Scrapbook-style sticky banner: a content-width "clipping" pill with a
+   dashed border on three sides and washi-tape strips on the top corners,
+   pinned under the nav. Outer band is transparent on desktop so the pill
+   floats on the page surface; mobile drops the decorative layer (no pill,
+   no tape) and falls back to a plain tinted strip. Sizing/easing values
+   come from JS-set CSS custom properties (--p raw 0→1, --eased counterpart).
+   Overflow:visible lets tape peek above the band. */
+/* Positioned absolutely at the bottom edge of the <header> so the banner
+   grows downward over the page content without expanding the header itself —
+   the nav row stays at a constant height as scroll progresses. */
 .banner {
-  height: calc(var(--eased, 0) * 52px);
-  overflow: hidden;
-  background: var(--banner-bg);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: calc(var(--eased, 0) * 56px);
+  overflow: visible;
+  background: transparent;
   color: var(--banner-ink);
   border-bottom: 1px solid transparent;
   display: flex;
-  align-items: center;
-  transition: box-shadow 0.2s ease;
-}
-
-.banner[data-visible] {
-  border-bottom-color: var(--banner-border);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, calc(var(--p, 0) * 0.18));
+  align-items: stretch;
+  pointer-events: none;
 }
 
 .inner {
@@ -25,15 +29,62 @@
   width: 100%;
   padding: 0 var(--page-padding-x);
   display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.pill {
+  flex: 1;
+  min-width: 0;
+  background: var(--banner-bg);
+  border-left: 1px dashed var(--banner-divider);
+  border-right: 1px dashed var(--banner-divider);
+  border-bottom: 1px dashed var(--banner-divider);
+  border-radius: 0 0 8px 8px;
+  padding: 0 1.1rem;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
+  position: relative;
+}
+
+/* Washi-tape accents — two strips on the top corners. Border excludes the
+   top edge so they read as folded-under paper. Drop ~7px with the same eased
+   curve as the title, at the same opacity ramp so everything lands together. */
+.tape1,
+.tape2 {
+  position: absolute;
+  background: var(--banner-tape-bg);
+  border: 1px solid var(--banner-divider);
+  border-top: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.tape1 {
+  top: -6px;
+  left: 28px;
+  width: 56px;
+  height: 14px;
+  opacity: clamp(0, calc((var(--p, 0) - 0.2) / 0.65 * 0.85), 0.85);
+  transform: translateY(calc((1 - var(--eased, 0)) * -7.2px)) rotate(-3deg);
+}
+
+.tape2 {
+  top: -5px;
+  right: 72px;
+  width: 44px;
+  height: 12px;
+  opacity: clamp(0, calc((var(--p, 0) - 0.2) / 0.65 * 0.7), 0.7);
+  transform: translateY(calc((1 - var(--eased, 0)) * -7.2px)) rotate(4deg);
 }
 
 .title {
-  font-family: var(--blog-font);
-  font-weight: var(--font-medium);
-  font-size: 1.125rem;
+  font-family: var(--font-blog-stack);
+  font-weight: 500;
+  font-size: 1.125rem; /* 18px */
   letter-spacing: -0.02em;
   color: var(--banner-ink);
   white-space: nowrap;
@@ -42,33 +93,74 @@
   flex: 1;
   min-width: 0;
   line-height: 1.2;
-  /* Top-to-bottom slide-in: starts 18px above its final position and
-     descends into place. Opacity ramps from 0 at p=0.2 to 1 at p=0.85
-     so the text only appears once the banner has grown enough to show
-     it cleanly. */
   opacity: clamp(0, calc((var(--p, 0) - 0.2) / 0.65), 1);
   transform: translateY(calc((1 - var(--eased, 0)) * -18px));
   will-change: transform, opacity;
 }
 
+/* Read-time meta. Hand-script font + slight rotation so it reads as a
+   margin note scribbled on the clipping. Keeps the "X min left / X sec left"
+   copy from before — only the typographic register changes. */
 .mins {
-  font-family: var(--font-mono-stack);
-  font-size: 10.5px;
-  letter-spacing: 0.5px;
+  font-family: var(--font-hand-stack);
+  font-size: 1.25rem; /* 20px */
+  font-weight: 600;
+  letter-spacing: 0;
   color: var(--banner-ink);
   flex: 0 0 auto;
   white-space: nowrap;
-  border-left: 1px solid var(--banner-border);
-  padding-left: 12px;
-  line-height: 1.4;
-  opacity: clamp(0, calc((var(--p, 0) - 0.2) / 0.65 * 0.7), 0.7);
-  /* Mirror the title's slide so both descend together as one curtain. */
-  transform: translateY(calc((1 - var(--eased, 0)) * -18px));
+  line-height: 1;
+  opacity: clamp(0, calc((var(--p, 0) - 0.2) / 0.65 * 0.85), 0.85);
+  transform: translateY(calc((1 - var(--eased, 0)) * -18px)) rotate(-2deg);
   will-change: transform, opacity;
 }
 
+/* End-of-article flourish ("purr purr ~"). Same hand-script as .mins but
+   at full opacity so it pops as a small reward. */
+.done {
+  font-family: var(--font-hand-stack);
+  font-size: 1.375rem; /* 22px */
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--banner-ink);
+  flex: 0 0 auto;
+  white-space: nowrap;
+  line-height: 1;
+  opacity: clamp(0, calc((var(--p, 0) - 0.2) / 0.65), 1);
+  transform: translateY(calc((1 - var(--eased, 0)) * -18px)) rotate(-2deg);
+  will-change: transform, opacity;
+}
+
+/* Mobile: keep the scrapbook look — full-width pill (no gutter outside),
+   smaller corner radius + inner padding, and scaled-down tape strips pulled
+   closer to the pill edges so they don't crowd at narrow widths. */
 @media screen and (max-width: 600px) {
+  .pill {
+    border-radius: 0 0 6px 6px;
+    padding: 0 0.875rem;
+    gap: 10px;
+  }
+
+  .tape1 {
+    top: -5px;
+    left: 16px;
+    width: 40px;
+    height: 10px;
+  }
+
+  .tape2 {
+    top: -4px;
+    right: 24px;
+    width: 30px;
+    height: 9px;
+  }
+
   .title {
-    font-size: 1rem;
+    font-size: 1rem; /* 16px */
+  }
+
+  .mins,
+  .done {
+    font-size: 1rem; /* 16px */
   }
 }

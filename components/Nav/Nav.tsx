@@ -9,7 +9,7 @@ import {
 } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { createElement, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
 import { useTheme } from '../../context/ThemeProvider';
@@ -30,6 +30,18 @@ export default function Nav() {
   useEffect(() => setMounted(true), []);
 
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Browser-style back: if there's history to pop, return to the previous
+  // page (typically /blog, with its scroll position restored by App Router).
+  // If the user landed on this post directly (no history), push to /blog.
+  const goBack = () => {
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/blog');
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -48,17 +60,16 @@ export default function Nav() {
           </Link>
         )}
         {pathname?.startsWith('/posts') && (
-          <Link href={'/blog'} passHref>
-            <button
-              className={styles.nav__logo_button}
-              aria-label="back-button"
-              type="button"
-            >
-              <div className={styles.nav__logo}>
-                <UilArrowLeft />
-              </div>
-            </button>
-          </Link>
+          <button
+            onClick={goBack}
+            className={styles.nav__logo_button}
+            aria-label="back-button"
+            type="button"
+          >
+            <div className={styles.nav__logo}>
+              <UilArrowLeft />
+            </div>
+          </button>
         )}
         <NavLinkBigScreen />
         <div className={styles.nav__btns}>

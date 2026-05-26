@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import BackToTopFab from '../../../components/Blog/BackToTopFab';
 import NextPostCard from '../../../components/Blog/NextPostCard';
 import PostTitle from '../../../components/Blog/PostTitle';
 import SocialTipRow from '../../../components/Blog/SocialTipRow';
@@ -89,6 +90,7 @@ export default async function PostPage({ params }: PageProps) {
         <NextPostCard currentPostId={resolvedId} />
         <SocialTipRow />
       </div>
+      <BackToTopFab />
     </article>
   );
 }

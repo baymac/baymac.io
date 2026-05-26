@@ -20,6 +20,7 @@ interface PostBannerCtx {
   setPost: (p: PostInfo | null) => void;
   registerTitleEl: (el: HTMLElement | null) => void;
   progress: number;
+  secondsLeft: number | null;
 }
 
 const Ctx = createContext<PostBannerCtx>({
@@ -27,6 +28,7 @@ const Ctx = createContext<PostBannerCtx>({
   setPost: () => {},
   registerTitleEl: () => {},
   progress: 0,
+  secondsLeft: null,
 });
 
 export function usePostBanner() {
@@ -43,6 +45,7 @@ export default function PostBannerProvider({
 }) {
   const [post, setPost] = useState<PostInfo | null>(null);
   const [progress, setProgress] = useState(0);
+  const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
   const [titleEl, setTitleEl] = useState<HTMLElement | null>(null);
 
   const registerTitleEl = useCallback((el: HTMLElement | null) => {
@@ -50,10 +53,12 @@ export default function PostBannerProvider({
   }, []);
 
   const rafRef = useRef(0);
+  const totalMins = post?.mins;
 
   useEffect(() => {
     if (!titleEl) {
       setProgress(0);
+      setSecondsLeft(totalMins !== undefined ? totalMins * 60 : null);
       return;
     }
 
@@ -71,6 +76,27 @@ export default function PostBannerProvider({
         Math.min(1, (fullyOpenAt + BANNER_RANGE - rect.bottom) / BANNER_RANGE)
       );
       setProgress(p);
+
+      // Read-progress through the content body. The PostTitle wrapper's next
+      // sibling is the dangerouslySetInnerHTML div (see app/posts/[id]/page.tsx).
+      // Reading is complete when the content's bottom reaches the viewport
+      // bottom — i.e. you can see the whole tail of the article.
+      if (totalMins !== undefined) {
+        const totalSecs = totalMins * 60;
+        const contentEl = titleEl.nextElementSibling as HTMLElement | null;
+        if (contentEl) {
+          const cRect = contentEl.getBoundingClientRect();
+          const visibleArea = Math.max(1, window.innerHeight - headerH);
+          const scrolled = headerH - cRect.top;
+          const total = Math.max(1, cRect.height - visibleArea);
+          const read = Math.max(0, Math.min(1, scrolled / total));
+          setSecondsLeft(Math.max(0, Math.ceil(totalSecs * (1 - read))));
+        } else {
+          setSecondsLeft(totalSecs);
+        }
+      } else {
+        setSecondsLeft(null);
+      }
     };
 
     const onScroll = () => {
@@ -85,10 +111,12 @@ export default function PostBannerProvider({
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, [titleEl]);
+  }, [titleEl, totalMins]);
 
   return (
-    <Ctx.Provider value={{ post, setPost, registerTitleEl, progress }}>
+    <Ctx.Provider
+      value={{ post, setPost, registerTitleEl, progress, secondsLeft }}
+    >
       {children}
     </Ctx.Provider>
   );
