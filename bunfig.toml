@@ -1,0 +1,8 @@
+[test]
+# Only scan unit tests. The Playwright e2e specs (tests/e2e/*.spec.ts) use
+# their own runner and would crash under `bun test`, so keep them out of
+# discovery — a bare `bun test` should just run the unit suite.
+root = "tests/unit"
+preload = "./tests/setup.ts"
+coverageReporter = ["text", "lcov"]
+coveragePathIgnorePatterns = ["tests/", ".next/", "node_modules/"]

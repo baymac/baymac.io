@@ -1,8 +1,8 @@
+import { afterEach, beforeEach, describe, expect, it, mock } from 'bun:test';
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-vi.mock('use-clipboard-copy', () => ({
+mock.module('use-clipboard-copy', () => ({
   useClipboard: () => {
     const state = { copied: false };
     return {

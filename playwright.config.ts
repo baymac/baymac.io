@@ -5,9 +5,9 @@ const BASE_URL = process.env.BASE_URL ?? `http://localhost:${PORT}`;
 
 /* C9 — dev-server handling:
    In local runs Playwright will REUSE whatever server is already responding
-   on BASE_URL (whether you started `yarn dev` yourself or it's a different
+   on BASE_URL (whether you started `bun run dev` yourself or it's a different
    long-running process). Only if nothing is listening does it spawn one
-   itself. In CI we always spawn `yarn start` against the production build
+   itself. In CI we always spawn `bun run start` against the production build
    so test failures aren't masked by HMR/dev-only behavior. */
 const isCI = !!process.env.CI;
 
@@ -38,7 +38,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: isCI ? 'yarn start' : 'yarn dev',
+    command: isCI ? 'bun run start' : 'bun run dev',
     url: BASE_URL,
     // Local: attach to an existing dev server on :3000 instead of failing.
     reuseExistingServer: !isCI,

@@ -1,5 +1,5 @@
+import { describe, expect, it } from 'bun:test';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { describe, expect, it } from 'vitest';
 import Footer from '../../../components/Footer/Footer';
 
 describe('Footer', () => {

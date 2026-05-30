@@ -1,7 +1,7 @@
+import { describe, expect, it, mock } from 'bun:test';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { describe, expect, it, vi } from 'vitest';
 
-vi.mock('next/image', () => ({
+mock.module('next/image', () => ({
   __esModule: true,
   default: ({ alt, src }: { alt: string; src: string }) => (
     // biome-ignore lint/performance/noImgElement: intentional <img> in a test mock — see Hero.test.tsx for the same pattern + rationale.

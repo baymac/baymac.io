@@ -1,9 +1,9 @@
+import { describe, expect, it, mock } from 'bun:test';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { describe, expect, it, vi } from 'vitest';
 
 // next/image renders a <img> in SSR — minimal stub keeps the test isolated
 // from next's transformer.
-vi.mock('next/image', () => ({
+mock.module('next/image', () => ({
   __esModule: true,
   default: ({
     alt,

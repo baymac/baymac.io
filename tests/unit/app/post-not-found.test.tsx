@@ -1,7 +1,7 @@
+import { describe, expect, it, mock } from 'bun:test';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { describe, expect, it, vi } from 'vitest';
 
-vi.mock('../../../lib/posts', () => ({
+mock.module('../../../lib/posts', () => ({
   getSortedPostsData: () => [
     { id: 'a', title: 'A', date: '2026-05-01' },
     { id: 'b', title: 'B', date: '2026-04-01' },

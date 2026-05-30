@@ -4,13 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
+Tooling runs on Bun (no Node/Yarn). Use `bun install` to set up.
+
 ```bash
-yarn dev          # start dev server (runs on :3000, falls back to next available port)
-yarn build        # production build (also generates sitemap + RSS feed via webpack hooks)
-yarn lint         # check with Biome
-yarn lint:fix     # auto-fix lint issues
-yarn format       # format with Biome
-yarn update-content "<msg>"  # commit + push content submodule and parent in one step
+bun run dev          # start dev server (runs on :3000, falls back to next available port)
+bun run build        # production build (also generates sitemap + RSS feed via webpack hooks)
+bun run lint         # check with Biome
+bun run lint:fix     # auto-fix lint issues
+bun run format       # format with Biome
+bun test             # run unit tests (bun's built-in runner; scoped to tests/unit via bunfig)
+bun run test:e2e     # run Playwright e2e tests
+bun run update-content "<msg>"  # commit + push content submodule and parent in one step
 ```
 
 To pull the latest blog posts from the content submodule:
@@ -23,7 +27,7 @@ git submodule update --remote
 
 ### Content submodule
 
-Blog posts live in a separate repo (`github.com/baymac/content`) mounted at `content/`. When cloning fresh, run `git submodule update --init --recursive`. Adding a post means committing to `content/posts/` first, then committing the updated submodule pointer in the parent repo. `yarn update-content` does both.
+Blog posts live in a separate repo (`github.com/baymac/content`) mounted at `content/`. When cloning fresh, run `git submodule update --init --recursive`. Adding a post means committing to `content/posts/` first, then committing the updated submodule pointer in the parent repo. `bun run update-content` does both.
 
 ### Blog post format
 

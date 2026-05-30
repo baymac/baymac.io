@@ -8,17 +8,17 @@
     "url": "https://baymac.lol"
   },
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
-    "build": "node scripts/validateWallets.js && node scripts/generateSitemap.js && node scripts/generateRss.js && next build",
+    "dev": "next dev",
+    "build": "bun scripts/validateWallets.js && bun scripts/generateSitemap.js && bun scripts/generateRss.js && next build",
     "start": "next start",
     "lint": "biome check .",
     "lint:fix": "biome check --write --unsafe .",
     "format": "biome format --write .",
     "update-content": "./scripts/update_content.sh",
-    "test": "yarn test:unit && yarn test:e2e",
-    "test:unit": "vitest run",
-    "test:unit:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
+    "test": "bun run test:unit && bun run test:e2e",
+    "test:unit": "bun test",
+    "test:unit:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "size": "size-limit"
@@ -45,17 +45,16 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@biomejs/biome": "^2.4.13",
+    "@happy-dom/global-registrator": "^20.9.0",
     "@playwright/test": "^1.60.0",
     "@size-limit/preset-app": "^12.1.0",
+    "@types/bun": "^1.3.14",
     "@types/node": "^25.6.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
-    "@vitest/coverage-v8": "^4.1.7",
     "globby": "^16.2.0",
-    "happy-dom": "^20.9.0",
     "rss": "^1.2.2",
     "size-limit": "^12.1.0",
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
+    "typescript": "^6.0.3"
   }
 }
