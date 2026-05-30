@@ -1,6 +1,6 @@
+import { afterEach, beforeEach, describe, expect, it, mock } from 'bun:test';
 import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import Modal from '../../../components/Modal/Modal';
 
 let container: HTMLDivElement;
@@ -36,7 +36,7 @@ async function render(ui: React.ReactNode) {
 
 describe('Modal', () => {
   it('renders nothing when closed', async () => {
-    const handleClose = vi.fn();
+    const handleClose = mock();
     await render(
       <Modal open={false} handleClose={handleClose}>
         <h2 id="modal-title">title</h2>
@@ -47,7 +47,7 @@ describe('Modal', () => {
   });
 
   it('renders with role=dialog, aria-modal, aria-labelledby when open', async () => {
-    const handleClose = vi.fn();
+    const handleClose = mock();
     await render(
       <Modal open={true} handleClose={handleClose}>
         <h2 id="modal-title">Buy Me Crypto</h2>
@@ -60,7 +60,7 @@ describe('Modal', () => {
   });
 
   it('calls handleClose when close button clicked', async () => {
-    const handleClose = vi.fn();
+    const handleClose = mock();
     await render(
       <Modal open={true} handleClose={handleClose}>
         <h2 id="modal-title">x</h2>

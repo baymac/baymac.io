@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import usePreventScroll from '../../../hooks/usePreventScroll';
 import { renderHook } from '../../helpers/renderHook';
 

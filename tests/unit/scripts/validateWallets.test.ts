@@ -8,12 +8,12 @@
  * This avoids depending on (or clobbering) the real content/ submodule files.
  */
 
+import { afterEach, beforeEach, describe, expect, it } from 'bun:test';
 import { execFileSync } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import * as validator from '../../../scripts/validateWallets.js';
 

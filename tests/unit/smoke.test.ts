@@ -1,7 +1,7 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'bun:test';
 
 describe('test infrastructure smoke', () => {
-  it('vitest runs', () => {
+  it('the runner runs', () => {
     expect(1 + 1).toBe(2);
   });
 });
