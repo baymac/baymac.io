@@ -82,10 +82,10 @@ const projects: Project[] = [
     link: 'https://github.com/baymac/dj',
   },
   {
-    id: 'self-notes',
-    title: 'Self Notes',
-    description: 'Local RAG over Notion. Ollama-powered.',
-    link: 'https://github.com/baymac/self-notes',
+    id: 'pbrain',
+    title: 'pbrain',
+    description: 'Personal brain: Notion + vault + Claude Code.',
+    link: 'https://github.com/baymac/pbrain',
   },
   {
     id: 'buy-me-crypto',
@@ -134,12 +134,6 @@ const projects: Project[] = [
     description: 'Cloud kitchen ops, marketing, web/app.',
   },
   {
-    id: 'upload-pdf-to-drive',
-    title: 'Upload PDF to Drive',
-    description: 'GitHub Action for LaTeX builds.',
-    link: 'https://github.com/baymac/upload-pdf-to-drive',
-  },
-  {
     id: 'command-keeper',
     title: 'Command Keeper',
     description: 'Gnome shell extension for commands.',
@@ -150,12 +144,6 @@ const projects: Project[] = [
     title: 'Phone Alarm Bot',
     description: 'SL4A wake-up call script.',
     link: 'https://github.com/baymac/fun-hacks/blob/master/Python/Android%20call%20bot/callBot.py',
-  },
-  {
-    id: 'publish-docs-to-drive',
-    title: 'Publish Docs to Drive',
-    description: 'AppScript: Docs → PDF on Drive.',
-    link: 'https://github.com/baymac/fun-hacks/tree/master/Apps%20Script/Publish%20Over%20Drive%20-%20Docs',
   },
   {
     id: 'set-proxy',

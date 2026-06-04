@@ -23,7 +23,7 @@ describe('Projects', () => {
   it('renders all projects in a single uniform grid (no two-tier split)', () => {
     const html = renderToStaticMarkup(<Projects />);
     const cards = html.match(/data-wobble="true"/g) ?? [];
-    expect(cards.length).toBe(20);
+    expect(cards.length).toBe(18);
   });
 
   it('does NOT render the +$prize line on featured cards (B3)', () => {
