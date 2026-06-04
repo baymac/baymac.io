@@ -139,18 +139,6 @@ const projects: Project[] = [
     description: 'Gnome shell extension for commands.',
     link: 'https://github.com/baymac/command-keeper',
   },
-  {
-    id: 'phone-alarm-bot',
-    title: 'Phone Alarm Bot',
-    description: 'SL4A wake-up call script.',
-    link: 'https://github.com/baymac/fun-hacks/blob/master/Python/Android%20call%20bot/callBot.py',
-  },
-  {
-    id: 'set-proxy',
-    title: 'Set Proxy',
-    description: 'CLI proxy setter for Linux. KWoC.',
-    link: 'https://github.com/thealphadollar/set_proxy',
-  },
 ];
 
 export default function Projects() {
