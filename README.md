@@ -2,6 +2,8 @@ Personal Blog/Portfolio website. Fully responsive with dark mode. Bootstrapped u
 
 Tooling runs on [Bun](https://bun.sh): `bun install`, `bun run dev`, `bun run build`, `bun test`.
 
+See [DESIGN.md](./DESIGN.md) for the visual design system and token reference.
+
 ## Update content locally
 
 ```

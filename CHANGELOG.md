@@ -8,4 +8,4 @@ All notable changes to this project will be documented in this file.
 - Replaced Self Notes project (local RAG/Ollama) with pbrain (personal brain: Notion + vault + Claude Code)
 
 ### Removed
-- Removed Upload PDF to Drive and Publish Docs to Drive from the projects list
+- Upload PDF to Drive and Publish Docs to Drive from the projects list
