@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.0.2] - 2026-06-12
+
+### Added
+- Blog post: how to permanently disable the Conductor session auto-resume launch agent (`launchctl disable`) so it stops restarting after every reboot
+
 ## [0.1.0.1] - 2026-06-04
 
 ### Changed
