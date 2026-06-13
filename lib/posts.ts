@@ -51,7 +51,19 @@ export function rehypeCopyButton() {
   return (tree: Parameters<typeof visit>[0]) => {
     visit(tree, 'element', (node: Element) => {
       if (node.tagName === 'pre') {
-        node.properties = { ...node.properties, tabIndex: 0 };
+        // The inner <code> is the horizontal scroll container (see
+        // blog.module.css — overflow lives on <code> so the absolutely
+        // positioned copy button stays pinned). A scrollable region must be
+        // keyboard-focusable to satisfy WCAG 2.1.1 (axe
+        // scrollable-region-focusable), so tabindex goes on the <code>, not the
+        // (no-longer-scrolling) <pre>.
+        const code = node.children.find(
+          (child): child is Element =>
+            child.type === 'element' && child.tagName === 'code'
+        );
+        if (code) {
+          code.properties = { ...code.properties, tabIndex: 0 };
+        }
         const copyButton: Element = {
           type: 'element',
           tagName: 'button',

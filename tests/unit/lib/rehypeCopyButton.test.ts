@@ -32,9 +32,11 @@ describe('rehypeCopyButton plugin', () => {
     expect(html).toContain('class="copy-btn"');
   });
 
-  it('sets tabindex="0" on <pre> elements', async () => {
+  it('sets tabindex="0" on the inner <code> (the scrollable region)', async () => {
     const html = await process('```\nplain\n```');
-    expect(html).toMatch(/tabindex="0"/);
+    // The <code> is the horizontal scroll container, so it must be the
+    // keyboard-focusable element (WCAG 2.1.1 / axe scrollable-region-focusable).
+    expect(html).toMatch(/<code[^>]+tabindex="0"/);
   });
 
   it('includes both copy-icon and check-icon spans', async () => {
