@@ -1,12 +1,89 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import type { Element } from 'hast';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
+import { visit } from 'unist-util-visit';
 import constants from './constants';
+
+// SVG path data (GitHub Octicons)
+const COPY_P1 =
+  'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z';
+const COPY_P2 =
+  'M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z';
+const CHECK_P =
+  'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z';
+
+function hastSvg(...paths: string[]): Element {
+  return {
+    type: 'element',
+    tagName: 'svg',
+    properties: {
+      width: '16',
+      height: '16',
+      viewBox: '0 0 16 16',
+      fill: 'currentColor',
+      ariaHidden: 'true',
+    },
+    children: paths.map((d) => ({
+      type: 'element',
+      tagName: 'path',
+      properties: { d },
+      children: [],
+    })),
+  };
+}
+
+function hastSpan(className: string, ...svgPaths: string[]): Element {
+  return {
+    type: 'element',
+    tagName: 'span',
+    properties: { className: [className] },
+    children: [hastSvg(...svgPaths)],
+  };
+}
+
+export function rehypeCopyButton() {
+  return (tree: Parameters<typeof visit>[0]) => {
+    visit(tree, 'element', (node: Element) => {
+      if (node.tagName === 'pre') {
+        // The inner <code> is the horizontal scroll container (see
+        // blog.module.css — overflow lives on <code> so the absolutely
+        // positioned copy button stays pinned). A scrollable region must be
+        // keyboard-focusable to satisfy WCAG 2.1.1 (axe
+        // scrollable-region-focusable), so tabindex goes on the <code>, not the
+        // (no-longer-scrolling) <pre>.
+        const code = node.children.find(
+          (child): child is Element =>
+            child.type === 'element' && child.tagName === 'code'
+        );
+        if (code) {
+          code.properties = { ...code.properties, tabIndex: 0 };
+        }
+        const copyButton: Element = {
+          type: 'element',
+          tagName: 'button',
+          properties: {
+            type: 'button',
+            className: ['copy-btn'],
+            ariaLabel: 'Copy code',
+          },
+          children: [
+            hastSpan('copy-icon', COPY_P1, COPY_P2),
+            hastSpan('check-icon', CHECK_P),
+          ],
+        };
+        node.children.push(copyButton);
+      } else if (node.tagName === 'table') {
+        node.properties = { ...node.properties, tabIndex: 0 };
+      }
+    });
+  };
+}
 
 interface PostData {
   id: string;
@@ -70,21 +147,17 @@ export async function getPostData(id: string) {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
-  // Use remark/rehype to convert markdown into HTML string with syntax highlighting
+  // Use remark/rehype to convert markdown into HTML string with syntax
+  // highlighting and copy buttons. rehypeCopyButton also adds tabindex="0" to
+  // pre/table for keyboard accessibility (replaces the old regex post-process).
   const processedContent = await remark()
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeHighlight)
+    .use(rehypeCopyButton)
     .use(rehypeStringify)
     .process(matterResult.content);
-  // Add tabindex="0" to every scrollable region so keyboard users can scroll
-  // long code blocks + wide tables (axe-core flags both `<pre>` and `<table>`
-  // with `overflow-x: auto` as serious WCAG 2.1.1 / 2.1.3 violations when
-  // they lack focusable content). Cheap post-process beats a rehype plugin.
-  const contentHtml = processedContent
-    .toString()
-    .replace(/<pre>/g, '<pre tabindex="0">')
-    .replace(/<table>/g, '<table tabindex="0">');
+  const contentHtml = processedContent.toString();
 
   // ~220 wpm reading speed; min 1 so very short notes still show "1 min".
   const wordCount = matterResult.content

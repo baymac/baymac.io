@@ -1,12 +1,5 @@
 'use client';
 
-import {
-  UilApps,
-  UilArrowLeft,
-  UilMoon,
-  UilMultiply,
-  UilSun,
-} from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -14,6 +7,13 @@ import { createElement, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
 import { useTheme } from '../../context/ThemeProvider';
 import rootStyles from '../../styles/root.module.css';
+import {
+  UilApps,
+  UilArrowLeft,
+  UilMoon,
+  UilMultiply,
+  UilSun,
+} from '../Icons/UilIcons';
 import Logo from '../Logo/Logo';
 import NavLinkBigScreen from './NavLinkBigScreen';
 import NavLinkMobile from './NavLinkMobile';

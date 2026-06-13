@@ -1,9 +1,9 @@
 'use client';
 
-import { UilCheckCircle, UilCopy } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import { useState } from 'react';
 import useCopy from '../../hooks/useCopy';
+import { UilCheckCircle, UilCopy } from '../Icons/UilIcons';
 import Snackbar from '../Snackbar/Snackbar';
 import styles from './buymecrypto.module.css';
 

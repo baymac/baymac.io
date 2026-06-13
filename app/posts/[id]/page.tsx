@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BackToTopFab from '../../../components/Blog/BackToTopFab';
 import NextPostCard from '../../../components/Blog/NextPostCard';
+import PostContent from '../../../components/Blog/PostContent';
 import PostTitle from '../../../components/Blog/PostTitle';
 import SocialTipRow from '../../../components/Blog/SocialTipRow';
 import { getAllPostIds, getPostData } from '../../../lib/posts';
@@ -82,11 +83,7 @@ export default async function PostPage({ params }: PageProps) {
           aiGen={postData['ai-gen']}
           mins={postData.mins}
         />
-        <div
-          className={cn(blogStyles.blog__contentFont)}
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted markdown content compiled at build time
-          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-        />
+        <PostContent contentHtml={postData.contentHtml} />
         <NextPostCard currentPostId={resolvedId} />
         <SocialTipRow />
       </div>

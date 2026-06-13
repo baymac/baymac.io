@@ -1,6 +1,5 @@
 'use client';
 
-import { UilMultiply } from '@iconscout/react-unicons';
 import { FocusTrap } from 'focus-trap-react';
 import { useRouter } from 'next/navigation';
 import {
@@ -13,6 +12,7 @@ import {
 import { createPortal } from 'react-dom';
 import usePreventScroll from '../../hooks/usePreventScroll';
 import type { Wallet } from '../../lib/wallets';
+import { UilMultiply } from '../Icons/UilIcons';
 import BuyMeCryptoCard from './BuyMeCryptoCard';
 import styles from './buymecrypto-modal.module.css';
 

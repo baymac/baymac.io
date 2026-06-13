@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.0.3] - 2026-06-13
+
+### Added
+- Copy button on every code block in blog posts — one click copies the snippet to clipboard; button shows a checkmark for 2 s then resets
+- Keyboard accessibility: `tabindex="0"` on `<pre>` and `<table>` elements rendered from Markdown
+
 ## [0.1.0.2] - 2026-06-12
 
 ### Added

@@ -1,7 +1,7 @@
-import { UilGithub } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
 import rootStyles from '../../styles/root.module.css';
+import { UilGithub } from '../Icons/UilIcons';
 import footerStyles from './footer.module.css';
 
 function XIcon({ className }: { className?: string }) {
