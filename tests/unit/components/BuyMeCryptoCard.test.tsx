@@ -65,12 +65,16 @@ describe('BuyMeCryptoCard', () => {
     await render(<BuyMeCryptoCard wallets={WALLETS} />);
     const tabs = container.querySelectorAll('[role="tab"]');
     expect((tabs[0] as HTMLElement).getAttribute('aria-selected')).toBe('true');
-    expect((tabs[1] as HTMLElement).getAttribute('aria-selected')).toBe('false');
+    expect((tabs[1] as HTMLElement).getAttribute('aria-selected')).toBe(
+      'false'
+    );
   });
 
   it('switching coin tab shows the selected wallet address', async () => {
     await render(<BuyMeCryptoCard wallets={WALLETS} />);
-    const suiTab = container.querySelectorAll('[role="tab"]')[1] as HTMLButtonElement;
+    const suiTab = container.querySelectorAll(
+      '[role="tab"]'
+    )[1] as HTMLButtonElement;
     await act(async () => {
       suiTab.click();
     });
@@ -99,7 +103,9 @@ describe('BuyMeCryptoCard', () => {
       btn.click();
     });
 
-    expect(container.textContent).toContain('copy failed — select address manually');
+    expect(container.textContent).toContain(
+      'copy failed — select address manually'
+    );
 
     if (original) Object.defineProperty(navigator, 'clipboard', original);
   });

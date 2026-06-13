@@ -18,7 +18,7 @@ describe('getWallets', () => {
     expect(Array.isArray(wallets)).toBe(true);
   });
 
-  it('each wallet has uppercase coin, non-empty label/network/address (when submodule init\'d)', () => {
+  it("each wallet has uppercase coin, non-empty label/network/address (when submodule init'd)", () => {
     if (!hasWallets) return; // skip when running without submodule
     for (const w of wallets) {
       expect(w.coin).toBe(w.coin.toUpperCase());
@@ -29,7 +29,7 @@ describe('getWallets', () => {
     }
   });
 
-  it('coin codes are alphanumeric and all caps (when submodule init\'d)', () => {
+  it("coin codes are alphanumeric and all caps (when submodule init'd)", () => {
     if (!hasWallets) return;
     for (const w of wallets) {
       expect(/^[A-Z0-9]+$/.test(w.coin)).toBe(true);

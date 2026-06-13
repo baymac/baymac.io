@@ -32,7 +32,11 @@ async function renderProvider(out: Record<string, unknown>) {
   await act(async () => {
     root = createRoot(container);
     root.render(
-      createElement(PostBannerProvider, null, createElement(ContextCapture, { out }))
+      createElement(
+        PostBannerProvider,
+        null,
+        createElement(ContextCapture, { out })
+      )
     );
   });
 }
