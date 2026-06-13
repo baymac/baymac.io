@@ -1,6 +1,5 @@
 'use client';
 
-import { UilMultiply } from '@iconscout/react-unicons';
 import { FocusTrap } from 'focus-trap-react';
 import type React from 'react';
 import {
@@ -12,6 +11,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import usePreventScroll from '../../hooks/usePreventScroll';
+import { UilMultiply } from '../Icons/UilIcons';
 import styles from './modal.module.css';
 
 export interface IModalProps {

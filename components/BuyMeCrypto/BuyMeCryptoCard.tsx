@@ -1,11 +1,11 @@
 'use client';
 
-import { UilCheckCircle, UilCopy } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import { useState } from 'react';
 import useCopy from '../../hooks/useCopy';
 import type { Wallet } from '../../lib/wallets';
 import Tape from '../Common/Tape';
+import { UilCheckCircle, UilCopy } from '../Icons/UilIcons';
 import Snackbar from '../Snackbar/Snackbar';
 import styles from './buymecrypto-card.module.css';
 

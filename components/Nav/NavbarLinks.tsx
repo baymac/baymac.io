@@ -1,11 +1,11 @@
 'use client';
 
-import { UilBitcoinCircle, UilHome, UilPen } from '@iconscout/react-unicons';
 import cn from 'classnames';
 import Link from 'next/link';
 import { createElement } from 'react';
 import { useAppContext } from '../../context/AppContextProvider';
 import useNavSelection from '../../hooks/useNavSelection';
+import { UilBitcoinCircle, UilHome, UilPen } from '../Icons/UilIcons';
 import styles from './navlink.module.css';
 
 export interface INavItem {
