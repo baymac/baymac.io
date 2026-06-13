@@ -145,13 +145,18 @@
   background-color: var(--first-color-lighter);
   padding: 1rem;
   border-radius: 0.5rem;
-  overflow-x: auto;
+  /* The <pre> stays a non-scrolling positioning anchor so the absolutely
+     positioned copy button stays pinned. The horizontal scroll lives on the
+     inner <code> (below) — otherwise the button scrolls away with the code. */
+  overflow: visible;
   margin: 1.5rem 0;
   border: 1px solid var(--footer-border-color);
   max-width: 100%;
 }
 
 .blog__contentFont pre code {
+  display: block;
+  overflow-x: auto;
   background-color: transparent;
   padding: 0;
   color: var(--text-color);
@@ -369,7 +374,7 @@
   }
 
   .blog__contentFont pre {
-    overflow-x: auto;
+    overflow: visible;
     white-space: pre-wrap;
     word-wrap: break-word;
   }
