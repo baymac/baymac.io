@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.0.4] - 2026-06-14
+
+### Added
+- Blog post update: `at`-command one-time scheduling section added to the Conductor session auto-resume post — shows how to use macOS `at` for a single-shot script run without a recurring launchd job
+- Unit test coverage for `PostBannerProvider` (context propagation, `setPost`, `registerTitleEl`), `PostBanner` (all `secondsLeft` display branches, `aria-hidden` state), `BuyMeCryptoCard` (empty-wallets state, coin tab switching, copy error snackbar), and `lib/wallets` (structure + CI guard for uninitialised submodule)
+
 ## [0.1.0.3] - 2026-06-13
 
 ### Added
